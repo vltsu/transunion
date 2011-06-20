@@ -10,19 +10,6 @@ jquery:install:
 - --quiet
 - --skip
 - --ui
-formtastic:install:
-- --force
-- --pretend
-- --quiet
-- --skip
-formtastic:form:
-- --force
-- --pretend
-- --quiet
-- --skip
-- --haml
-- --partial
-- --controller=
 cucumber:feature:
 - --force
 - --pretend

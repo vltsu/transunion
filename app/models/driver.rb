@@ -1,7 +1,8 @@
+# encoding: UTF-8
 class Driver < ActiveRecord::Base
   belongs_to :carrier_company 
 
-  validates_presence_of :firstname
-  validates_presence_of :lastname
-  validates_presence_of :carrier_company_id
+  validates :firstname, :presence => { :message => "Имя не может быть пустым" }
+  validates :lastname, :presence => true
+  validates :carrier_company_id, :presence => true
 end

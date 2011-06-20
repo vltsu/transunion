@@ -33,8 +33,6 @@ cucumber-rails -v0.3.2
 diff-lcs -v1.1.2
 erubis -v2.6.6
 factory_girl -v1.3.3
-formtastic -v1.2.4
-formtastic -v1.2.3
 gherkin -v2.3.3
 gherkin -v2.2.9
 heroku -v2.2.8

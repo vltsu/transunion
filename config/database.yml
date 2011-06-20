@@ -6,7 +6,7 @@ development:
     password: rails
     host: localhost
 
-test: &test
+test: #&test
     adapter: mysql2
     database: transunion_rails_test
     encoding: utf8
@@ -22,5 +22,5 @@ production:
     password: rails
     host: localhost
 
-cucumber:
-  <<: *test
+#cucumber:
+#  <<: *test
