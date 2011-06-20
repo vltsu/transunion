@@ -120,6 +120,18 @@ table td span{
     margin-left: 45%;
 }
 
+.fieldBothLeft {
+    border-bottom: 3px black solid;
+    border-top: 3px black solid;
+    border-left: 3px black solid;
+}
+
+.fieldBothRight {
+    border-bottom: 3px black solid;
+    border-top: 3px black solid;
+    border-right: 3px black solid;
+}  
+
 .fieldInnerMiddleLeft {
     border-bottom: 1px black dotted;
     border-top: 1px black dotted;

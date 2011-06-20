@@ -1,7 +1,6 @@
-<div>
-  <p>
-    <%= link_to 'Добавить водителя', new_driver_path, :class => 'editLink' %>
-  </p>
+<br />
+<div style="width: 170px; margin: 0px auto;"> 
+    <%= link_to image_tag("add_driver_button.jpg", :border=>0), new_driver_path, :class => 'editLink', :style => 'width: 300px; margin: 0px auto;' %>
 </div>
 <table>
   <tr>
@@ -10,8 +9,7 @@
     <th class="th1">Компания</th>
     <th class="th1">Город</th>
     <th class="th1">моб.тел.</th>
-    <th class="th1">Редактировать</th>
-    <th class="th1">Удалить</th>
+    <th class="th1">Открыть</th>
   </tr>
   <% @drivers.each do |driver| %>
     <tr <%= cycle('class=odd','class=even') %>>    
@@ -20,8 +18,7 @@
       <td class="th3"><%= driver.carrier_company.title %></td>
       <td class="th3"><%= driver.city %></td>
       <td class="th3"><%= driver.mobile_phone %></td>
-      <td class="th3"><%= link_to 'Редактировать', edit_driver_path(driver) %></td>
-      <td class="th3"><%= link_to 'Удалить', driver, :confirm => 'Вы уверены?', :method => :delete %></td>
+      <td class="th3"><%= link_to 'Открыть', driver %></td>
     </tr>
   <% end %>
 </table>
