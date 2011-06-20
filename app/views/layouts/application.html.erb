@@ -1,14 +1,85 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
   <title>Transunion</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag :all, "main", :recursive => true %>
   <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "menu/ddsmoothmenu" %>
   <%= csrf_meta_tag %>
+  <script type="text/javascript">
+    ddsmoothmenu.init({
+      mainmenuid: "smoothmenu1", //menu DIV id
+      orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+      classname: 'ddsmoothmenu', //class added to menu's outer DIV
+      contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+    })
+  </script>
 </head>
 <body>
+  <div id="smoothmenu1" class="ddsmoothmenu">
+    <ul>
+      <li class="menuTitle"><a href="/request">ЗАЯВКИ</a></li>
 
-<%= yield %>
+      <li class="menuTitle"><a href="javascript:void(0);">ОРГАНИЗАЦИИ</a>
+        <ul>
+          <li><a href="/customercompanies">Заказчики</a></li>
+          <li><a href="/carriercompanies">Перевозчики</a></li>
+          <li><a href="/companytypes">ОПФ</a></li>
+        </ul>
+      </li>
+
+      <li class="menuTitle"><a href="javascript:void(0);">ТРАНСПОРТ</a>
+        <ul>
+          <li><a href="/cars">Машины</a></li>
+          <li><a href="/drivers">Водители</a></li>
+          <li><a href="javascript:void(0);">Прочее</a>
+            <ul>
+              <li><a href="/carmodels">Модель ТС</a></li>
+              <li><a href="/cartypes">Тип ТС</a></li>
+              <li><a href="/cartonnages">Тоннаж</a></li>
+              <li><a href="/traffictypes">Вид перевозок</a></li>
+              <li><a href="/cargoclassification">Классификация груза</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menuTitle"><a href="javascript:void(0);">СОТРУДНИКИ</a>
+        <ul>
+          <li><a href="/colleagues">Сотрудники</a></li>
+          <li><a href="/users">Пользователи</a></li>
+        </ul>
+      </li>
+
+      <li class="menuTitle"><a href="javascript:void(0);">БУХГАЛТЕРИЯ</a>
+        <ul>
+          <li><a href="/finance">Финансы</a></li>
+          <li><a href="javascript:void(0);">Прочее</a>
+            <ul>
+              <li><a href="/incomesection">Статьи прихода</a></li>
+              <li><a href="/expenditure">Статьи расхода</a></li>
+              <li><a href="/paymentmethods">Способы оплаты</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menuTitle"><a href="javascript:void(0);">ОТЧЁТЫ</a>
+        <ul>
+          <li><a href="/salary">Зарплата</a></li>
+          <li><a href="/report/bill">Приход по счёту</a></li>
+        </ul>
+      </li>
+
+      <li style="float: right;"><a style="color:#FFD700;" href="/index/logout">Выход</a></li>
+    
+    </ul>
+    <br style="clear: left" />
+  </div>
+  <div id="main-content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

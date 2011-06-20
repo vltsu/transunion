@@ -1,2 +1,6 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function() {
+//    $('.ddate').datetimeEntry({datetimeFormat: 'Y-O-D H:M:S'});
+//    $('.ddateshort').datetimeEntry({datetimeFormat: 'Y-O-D'});
+//    $('.ddatemonth').datetimeEntry({datetimeFormat: 'Y-O'});
+});
+

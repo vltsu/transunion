@@ -1,0 +1,49 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lastname: MyString
+  firstname: MyString
+  middlename: MyString
+  region: MyString
+  city: MyString
+  district: MyString
+  street: MyString
+  type: MyString
+  house: MyString
+  apartment: MyString
+  mobile_phone: MyString
+  email: MyString
+  home_phone: MyString
+  passport_series: MyString
+  passport_number: MyString
+  passport_issue_date: MyString
+  passport_issue_whom: 2011-06-12
+  carrier_company_id: 1
+  citizenship: MyString
+  date_of_birth: MyString
+  about: MyString
+  med_book: false
+
+two:
+  lastname: MyString
+  firstname: MyString
+  middlename: MyString
+  region: MyString
+  city: MyString
+  district: MyString
+  street: MyString
+  type: MyString
+  house: MyString
+  apartment: MyString
+  mobile_phone: MyString
+  email: MyString
+  home_phone: MyString
+  passport_series: MyString
+  passport_number: MyString
+  passport_issue_date: MyString
+  passport_issue_whom: 2011-06-12
+  carrier_company_id: 1
+  citizenship: MyString
+  date_of_birth: MyString
+  about: MyString
+  med_book: false

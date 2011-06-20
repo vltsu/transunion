@@ -1,0 +1,2 @@
+module CartypesHelper
+end

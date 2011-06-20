@@ -1,4 +1,10 @@
 Transunion::Application.routes.draw do
+  resources :cartypes
+
+  resources :carrier_companies
+
+  resources :drivers
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

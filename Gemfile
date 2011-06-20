@@ -5,7 +5,19 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
+gem 'mysql2', '0.2.6'
+
+gem 'formtastic', '~> 1.2.3'
+gem "ruby-debug19"
+gem "russian"
+gem "jquery-rails", '>= 1.0.3'
+gem "active_scaffold"
+
+group :development, :test do
+  gem "rspec-rails", ">= 2.0.0"
+  gem "cucumber-rails", ">=0.3.2"
+  gem "webrat", ">= 0.7.2"
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

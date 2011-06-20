@@ -1,0 +1,83 @@
+<h1>Listing carrier_companies</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Legal address</th>
+    <th>Actual address</th>
+    <th>Company type</th>
+    <th>Ogrn</th>
+    <th>Okpo</th>
+    <th>Inn</th>
+    <th>Kpp</th>
+    <th>Phone</th>
+    <th>Fax</th>
+    <th>Email</th>
+    <th>Current account</th>
+    <th>Bank</th>
+    <th>Correspondent account</th>
+    <th>Bik</th>
+    <th>Operates basis</th>
+    <th>Company face</th>
+    <th>Manager name</th>
+    <th>Respons refuse loading day</th>
+    <th>Respons idle excessively hours</th>
+    <th>Respons idle excessively percent</th>
+    <th>Respons payment late</th>
+    <th>Respons transport replacement req</th>
+    <th>Respons compensation for damage</th>
+    <th>Respons undeliver transport loading</th>
+    <th>Respons transport late loading hours</th>
+    <th>Respons transport late loading percent</th>
+    <th>Respons transport late destination hours</th>
+    <th>Respons transport late destination percent</th>
+    <th>Respons document late</th>
+    <th>Black label</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @carrier_companies.each do |carrier_company| %>
+  <tr>
+    <td><%= carrier_company.title %></td>
+    <td><%= carrier_company.legal_address %></td>
+    <td><%= carrier_company.actual_address %></td>
+    <td><%= carrier_company.company_type %></td>
+    <td><%= carrier_company.ogrn %></td>
+    <td><%= carrier_company.okpo %></td>
+    <td><%= carrier_company.inn %></td>
+    <td><%= carrier_company.kpp %></td>
+    <td><%= carrier_company.phone %></td>
+    <td><%= carrier_company.fax %></td>
+    <td><%= carrier_company.email %></td>
+    <td><%= carrier_company.current_account %></td>
+    <td><%= carrier_company.bank %></td>
+    <td><%= carrier_company.correspondent_account %></td>
+    <td><%= carrier_company.bik %></td>
+    <td><%= carrier_company.operates_basis %></td>
+    <td><%= carrier_company.company_face %></td>
+    <td><%= carrier_company.manager_name %></td>
+    <td><%= carrier_company.respons_refuse_loading_day %></td>
+    <td><%= carrier_company.respons_idle_excessively_hours %></td>
+    <td><%= carrier_company.respons_idle_excessively_percent %></td>
+    <td><%= carrier_company.respons_payment_late %></td>
+    <td><%= carrier_company.respons_transport_replacement_req %></td>
+    <td><%= carrier_company.respons_compensation_for_damage %></td>
+    <td><%= carrier_company.respons_undeliver_transport_loading %></td>
+    <td><%= carrier_company.respons_transport_late_loading_hours %></td>
+    <td><%= carrier_company.respons_transport_late_loading_percent %></td>
+    <td><%= carrier_company.respons_transport_late_destination_hours %></td>
+    <td><%= carrier_company.respons_transport_late_destination_percent %></td>
+    <td><%= carrier_company.respons_document_late %></td>
+    <td><%= carrier_company.black_label %></td>
+    <td><%= link_to 'Show', carrier_company %></td>
+    <td><%= link_to 'Edit', edit_carrier_company_path(carrier_company) %></td>
+    <td><%= link_to 'Destroy', :action => 'destroy', :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Carrier company', new_carrier_company_path %>

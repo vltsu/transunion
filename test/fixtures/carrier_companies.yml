@@ -1,0 +1,67 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  legal_address: MyString
+  actual_address: MyString
+  company_type: MyString
+  ogrn: MyString
+  okpo: MyString
+  inn: MyString
+  kpp: MyString
+  phone: MyString
+  fax: MyString
+  email: MyString
+  current_account: MyString
+  bank: MyString
+  correspondent_account: MyString
+  bik: MyString
+  operates_basis: MyString
+  company_face: MyString
+  manager_name: MyString
+  respons_refuse_loading_day: MyString
+  respons_idle_excessively_hours: MyString
+  respons_idle_excessively_percent: MyString
+  respons_payment_late: MyString
+  respons_transport_replacement_req: MyString
+  respons_compensation_for_damage: MyString
+  respons_undeliver_transport_loading: MyString
+  respons_transport_late_loading_hours: MyString
+  respons_transport_late_loading_percent: MyString
+  respons_transport_late_destination_hours: MyString
+  respons_transport_late_destination_percent: MyString
+  respons_document_late: MyString
+  black_label: false
+
+two:
+  title: MyString
+  legal_address: MyString
+  actual_address: MyString
+  company_type: MyString
+  ogrn: MyString
+  okpo: MyString
+  inn: MyString
+  kpp: MyString
+  phone: MyString
+  fax: MyString
+  email: MyString
+  current_account: MyString
+  bank: MyString
+  correspondent_account: MyString
+  bik: MyString
+  operates_basis: MyString
+  company_face: MyString
+  manager_name: MyString
+  respons_refuse_loading_day: MyString
+  respons_idle_excessively_hours: MyString
+  respons_idle_excessively_percent: MyString
+  respons_payment_late: MyString
+  respons_transport_replacement_req: MyString
+  respons_compensation_for_damage: MyString
+  respons_undeliver_transport_loading: MyString
+  respons_transport_late_loading_hours: MyString
+  respons_transport_late_loading_percent: MyString
+  respons_transport_late_destination_hours: MyString
+  respons_transport_late_destination_percent: MyString
+  respons_document_late: MyString
+  black_label: false
