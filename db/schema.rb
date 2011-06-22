@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615205345) do
+ActiveRecord::Schema.define(:version => 20110622124705) do
 
   create_table "carrier_companies", :force => true do |t|
     t.string   "title"
@@ -78,6 +78,47 @@ ActiveRecord::Schema.define(:version => 20110615205345) do
     t.date     "date_of_birth"
     t.string   "about"
     t.boolean  "med_book"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "lastname"
+    t.string   "firstname"
+    t.string   "middlename"
+    t.string   "city"
+    t.string   "district"
+    t.string   "street"
+    t.string   "house"
+    t.string   "housing"
+    t.string   "apartment"
+    t.string   "mobile_phone_business"
+    t.string   "mobile_phone_personal"
+    t.string   "email"
+    t.string   "icq"
+    t.string   "skype"
+    t.string   "home_phone"
+    t.string   "passport_series"
+    t.datetime "passport_issue_date"
+    t.string   "passport_issue_whom"
+    t.string   "passport_address"
+    t.string   "citizenship"
+    t.datetime "date_of_birth"
+    t.string   "about"
+    t.string   "position"
+    t.decimal  "salary",                :precision => 10, :scale => 0
+    t.decimal  "premium_percent",       :precision => 10, :scale => 0
+    t.decimal  "request_percent",       :precision => 10, :scale => 0
+    t.string   "global_experience"
+    t.string   "unbroken_experience"
+    t.string   "visluga_let"
+    t.string   "university"
+    t.string   "speciality"
+    t.string   "inn"
+    t.string   "pensionnoe"
+    t.string   "medical_insurance"
+    t.string   "working_contract"
+    t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

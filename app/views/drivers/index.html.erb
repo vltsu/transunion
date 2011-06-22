@@ -1,6 +1,6 @@
 <br />
 <div style="width: 170px; margin: 0px auto;"> 
-    <%= link_to image_tag("add_driver_button.jpg", :border=>0), new_driver_path, :class => 'editLink', :style => 'width: 300px; margin: 0px auto;' %>
+    <%= link_to image_tag("add_driver_button.jpg", :border=>0), new_driver_path, :class => 'editLink', :id => 'addDriverLink', :style => 'width: 300px; margin: 0px auto;' %>
 </div>
 <table>
   <tr>
@@ -18,7 +18,7 @@
       <td class="th3"><%= driver.carrier_company.title %></td>
       <td class="th3"><%= driver.city %></td>
       <td class="th3"><%= driver.mobile_phone %></td>
-      <td class="th3"><%= link_to 'Открыть', driver %></td>
+      <td class="th3"><%= link_to 'Открыть', driver, :id => "showDriverLink" %></td>
     </tr>
   <% end %>
 </table>

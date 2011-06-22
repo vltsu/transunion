@@ -1,0 +1,161 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :middlename %><br />
+    <%= f.text_field :middlename %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :district %><br />
+    <%= f.text_field :district %>
+  </div>
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :house %><br />
+    <%= f.text_field :house %>
+  </div>
+  <div class="field">
+    <%= f.label :housing %><br />
+    <%= f.text_field :housing %>
+  </div>
+  <div class="field">
+    <%= f.label :apartment %><br />
+    <%= f.text_field :apartment %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_phone_business %><br />
+    <%= f.text_field :mobile_phone_business %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_phone_personal %><br />
+    <%= f.text_field :mobile_phone_personal %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :icq %><br />
+    <%= f.text_field :icq %>
+  </div>
+  <div class="field">
+    <%= f.label :skype %><br />
+    <%= f.text_field :skype %>
+  </div>
+  <div class="field">
+    <%= f.label :home_phone %><br />
+    <%= f.text_field :home_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_series %><br />
+    <%= f.text_field :passport_series %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_issue_date %><br />
+    <%= f.datetime_select :passport_issue_date %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_issue_whom %><br />
+    <%= f.text_field :passport_issue_whom %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_address %><br />
+    <%= f.text_field :passport_address %>
+  </div>
+  <div class="field">
+    <%= f.label :citizenship %><br />
+    <%= f.text_field :citizenship %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.datetime_select :date_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :about %><br />
+    <%= f.text_field :about %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :salary %><br />
+    <%= f.text_field :salary %>
+  </div>
+  <div class="field">
+    <%= f.label :premium_percent %><br />
+    <%= f.text_field :premium_percent %>
+  </div>
+  <div class="field">
+    <%= f.label :request_percent %><br />
+    <%= f.text_field :request_percent %>
+  </div>
+  <div class="field">
+    <%= f.label :global_experience %><br />
+    <%= f.text_field :global_experience %>
+  </div>
+  <div class="field">
+    <%= f.label :unbroken_experience %><br />
+    <%= f.text_field :unbroken_experience %>
+  </div>
+  <div class="field">
+    <%= f.label :visluga_let %><br />
+    <%= f.text_field :visluga_let %>
+  </div>
+  <div class="field">
+    <%= f.label :university %><br />
+    <%= f.text_field :university %>
+  </div>
+  <div class="field">
+    <%= f.label :speciality %><br />
+    <%= f.text_field :speciality %>
+  </div>
+  <div class="field">
+    <%= f.label :inn %><br />
+    <%= f.text_field :inn %>
+  </div>
+  <div class="field">
+    <%= f.label :pensionnoe %><br />
+    <%= f.text_field :pensionnoe %>
+  </div>
+  <div class="field">
+    <%= f.label :medical_insurance %><br />
+    <%= f.text_field :medical_insurance %>
+  </div>
+  <div class="field">
+    <%= f.label :working_contract %><br />
+    <%= f.text_field :working_contract %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.text_field :role %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

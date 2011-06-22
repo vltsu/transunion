@@ -1,0 +1,95 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Middlename</th>
+    <th>City</th>
+    <th>District</th>
+    <th>Street</th>
+    <th>House</th>
+    <th>Housing</th>
+    <th>Apartment</th>
+    <th>Mobile phone business</th>
+    <th>Mobile phone personal</th>
+    <th>Email</th>
+    <th>Icq</th>
+    <th>Skype</th>
+    <th>Home phone</th>
+    <th>Passport series</th>
+    <th>Passport issue date</th>
+    <th>Passport issue whom</th>
+    <th>Passport address</th>
+    <th>Citizenship</th>
+    <th>Date of birth</th>
+    <th>About</th>
+    <th>Position</th>
+    <th>Salary</th>
+    <th>Premium percent</th>
+    <th>Request percent</th>
+    <th>Global experience</th>
+    <th>Unbroken experience</th>
+    <th>Visluga let</th>
+    <th>University</th>
+    <th>Speciality</th>
+    <th>Inn</th>
+    <th>Pensionnoe</th>
+    <th>Medical insurance</th>
+    <th>Working contract</th>
+    <th>Type</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.lastname %></td>
+    <td><%= user.firstname %></td>
+    <td><%= user.middlename %></td>
+    <td><%= user.city %></td>
+    <td><%= user.district %></td>
+    <td><%= user.street %></td>
+    <td><%= user.house %></td>
+    <td><%= user.housing %></td>
+    <td><%= user.apartment %></td>
+    <td><%= user.mobile_phone_business %></td>
+    <td><%= user.mobile_phone_personal %></td>
+    <td><%= user.email %></td>
+    <td><%= user.icq %></td>
+    <td><%= user.skype %></td>
+    <td><%= user.home_phone %></td>
+    <td><%= user.passport_series %></td>
+    <td><%= user.passport_issue_date %></td>
+    <td><%= user.passport_issue_whom %></td>
+    <td><%= user.passport_address %></td>
+    <td><%= user.citizenship %></td>
+    <td><%= user.date_of_birth %></td>
+    <td><%= user.about %></td>
+    <td><%= user.position %></td>
+    <td><%= user.salary %></td>
+    <td><%= user.premium_percent %></td>
+    <td><%= user.request_percent %></td>
+    <td><%= user.global_experience %></td>
+    <td><%= user.unbroken_experience %></td>
+    <td><%= user.visluga_let %></td>
+    <td><%= user.university %></td>
+    <td><%= user.speciality %></td>
+    <td><%= user.inn %></td>
+    <td><%= user.pensionnoe %></td>
+    <td><%= user.medical_insurance %></td>
+    <td><%= user.working_contract %></td>
+    <td><%= user.type %></td>
+    <td><%= user.role %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

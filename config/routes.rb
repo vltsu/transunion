@@ -1,4 +1,13 @@
 Transunion::Application.routes.draw do
+
+  resources :users
+
+  resources :people
+
+  root :to =>'index#index'
+
+  get "index/index"
+
   resources :cartypes
 
   resources :carrier_companies

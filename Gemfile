@@ -11,12 +11,15 @@ gem "ruby-debug19"
 gem "russian"
 gem "jquery-rails", '>= 1.0.3'
 gem "active_scaffold"
+gem "launchy"
 
 group :development, :test do
   gem "rspec-rails", ">= 2.0.0"
   gem "cucumber-rails", ">=0.3.2"
   gem "webrat", ">= 0.7.2"
   gem "database_cleaner"
+  gem "factory_girl_rails"
+  gem "mocha"
 end
 
 # Use unicorn as the web server
