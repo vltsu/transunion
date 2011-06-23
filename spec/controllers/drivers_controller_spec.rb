@@ -3,10 +3,9 @@ require 'spec_helper'
 describe DriversController do
 
   it 'should create a new driver' do
-    drivers_count_before = Driver.count
-    @driver = Factory.create(:driver)
-    @driver.should be_valid
-    Driver.count.should == drivers_count_before + 1
+    expect {
+      @driver = Factory.create(:driver)
+    }.to change(Driver, :count).by(1)
   end
 
   it 'should validate firstname, lastname and carrier_company_id' do

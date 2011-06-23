@@ -1,14 +1,14 @@
 Given /^an sign-in page$/ do
 end
 
-When /^I enter "([^"]*)" in login field and "([^"]*)" in password field $/ do |login, pass|
-  person  = Factory.create(:person)
-  visit sign_in_page
-  fill_in "person[login]", :with => #{login}
-  fill_in "person[pass]", :with => #{pass}
-  click_button "person_submit"
+When /^I enter "([^"]*)" in login field and "([^"]*)" in password field$/ do |login, pass|
+  user = Factory.create(:user)
+  visit signin_form_url
+  fill_in "username", :with => login
+  fill_in "password", :with => pass
+  click_button 'submit'
 end
 
 Then /^I redirected to site index page$/ do
-  find_by_id("person_lastname").value.should =~ /TestLastname/
+  click_link 'signout'
 end

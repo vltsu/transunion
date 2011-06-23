@@ -6,6 +6,6 @@ Feature: Authenticate user
 
   Scenario: Authenticate user
     Given an sign-in page
-    When I enter "TestUser" in login field and "TestPassword" in password field
+    When I enter "user" in login field and "password" in password field
     Then I redirected to site index page
 

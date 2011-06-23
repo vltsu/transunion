@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20110622124705) do
     t.string   "citizenship"
     t.datetime "date_of_birth"
     t.string   "about"
-    t.string   "position"
+    t.integer  "position"
     t.decimal  "salary",                :precision => 10, :scale => 0
     t.decimal  "premium_percent",       :precision => 10, :scale => 0
     t.decimal  "request_percent",       :precision => 10, :scale => 0
@@ -119,6 +119,9 @@ ActiveRecord::Schema.define(:version => 20110622124705) do
     t.string   "medical_insurance"
     t.string   "working_contract"
     t.integer  "role"
+    t.string   "login"
+    t.string   "password_salt"
+    t.string   "password_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,12 +1,11 @@
-FeatureQq
-: Create user
+Feature: Create user
 
-  So managers can add drivers to database
-  As a registered user
-  I want to create a driver from a specific company
+  So managers can add users to database
+  As a user with manager role
+  I want to create a new user with manager role
 
-  Scenario: Create driver
-    Given an index drivers page
-    When I create a driver with firstname Ivan and lastname Petrov with company CarrierCompany
-    Then Driver with name Ivan Petrov and CarrierCompany company created
+  Scenario: Create user
+    Given an index users page
+    When I create a user with firstname "Иван", lastname "Петров", middlename "Борисович" with role "manager"
+    Then User "Петров" "Иван" "Борисович" with role "manager" created
 

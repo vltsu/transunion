@@ -1,9 +1,7 @@
 Transunion::Application.routes.draw do
 
   resources :users
-
-  resources :people
-
+  
   root :to =>'index#index'
 
   get "index/index"
@@ -13,6 +11,12 @@ Transunion::Application.routes.draw do
   resources :carrier_companies
 
   resources :drivers
+
+  resources :index
+
+  match 'signin_form' => 'index#signin_form', :as => :signin_form
+  match 'signin'      => 'index#signin'
+  match 'signout'     => 'index#signout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

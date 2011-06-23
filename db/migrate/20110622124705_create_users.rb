@@ -23,7 +23,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :citizenship
       t.datetime :date_of_birth
       t.string :about
-      t.string :position
+      t.integer :position
       t.decimal :salary
       t.decimal :premium_percent
       t.decimal :request_percent
@@ -37,6 +37,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :medical_insurance
       t.string :working_contract
       t.integer :role
+      t.string :login
+      t.string :password_salt
+      t.string :password_hash
 
       t.timestamps
     end

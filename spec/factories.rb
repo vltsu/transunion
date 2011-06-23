@@ -8,3 +8,7 @@ Factory.define :driver do |f|
   f.association :carrier_company, :factory => :carrier_company
 end
 
+Factory.define :user do |f|
+  f.login    'user'
+  f.password 'password'
+end

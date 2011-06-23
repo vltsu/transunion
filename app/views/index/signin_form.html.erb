@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta http-equiv="Content-Language" content="en-US" >
+  </head>
+  <body>
+    <div style="margin-left: 300px;">
+      <h2>Вход на сайт</h2>
+      <% if notice %>
+        <b style='color:blue'><%= notice %></b>
+        <br /><br />
+      <% end %>
+      <form action="/signin" method='post'>
+        <table>
+          <tr>
+            <td id="borNone">Логин:</td>
+            <td id="borNone"><%= text_field_tag 'username' %></td>
+          </tr>
+          <tr>
+            <td id="borNone">Пароль:</td>
+            <td id="borNone"><%= password_field_tag 'password' %></td>
+          </tr>
+          <tr>
+            <td id="borNone" colspan="2" align="center"><%= submit_tag "Войти", :id => 'submit' %></td>
+          </tr>
+        </table>
+      </form>  
+    </div>
+  </body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                            

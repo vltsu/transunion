@@ -117,7 +117,7 @@
       </tr>
       <tr>
           <td class="fieldName fieldInnerBottomLeft">Примечание:</td>
-          <td class="fieldForm fieldInnerBottomRight"><%= f.text_field :about, :class => "inp"  %></td>
+          <td class="fieldForm fieldInnerBottomRight"><%= f.text_area :about, :size => '28x5', :class => "inp"  %></td>
       </tr>
       <% # Не показывать кнопку сохранить для просмотра карточки %>
       <% if !(params[:action] == 'show') %> 
