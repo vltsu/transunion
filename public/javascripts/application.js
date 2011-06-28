@@ -1,6 +1,9 @@
 $(document).ready(function() {
-//    $('.ddate').datetimeEntry({datetimeFormat: 'Y-O-D H:M:S'});
-//    $('.ddateshort').datetimeEntry({datetimeFormat: 'Y-O-D'});
-//    $('.ddatemonth').datetimeEntry({datetimeFormat: 'Y-O'});
+    function requiredField() {
+      html = "<span style='color: red; font-size: 16px;'>*</span>"
+      $('.required').after(html)
+    }
+
+    requiredField()
 });
 

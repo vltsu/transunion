@@ -12,11 +12,11 @@
   <table>
       <tr>
           <td class="fieldName fieldInnerTopLeft">Фамилия:</td>
-          <td class="fieldForm fieldInnerTopRight"><%= f.text_field :lastname, :class => "inp" %></td>
+          <td class="fieldForm fieldInnerTopRight"><%= f.text_field :lastname, :class => "inp required" %></td>
       </tr>
       <tr>
           <td class="fieldName fieldInnerMiddleLeft">Имя:</td>
-          <td class="fieldForm fieldInnerMiddleRight"><%= f.text_field :firstname, :class => "inp"  %></td>
+          <td class="fieldForm fieldInnerMiddleRight"><%= f.text_field :firstname, :class => "inp required"  %></td>
       </tr>
       <tr>
           <td class="fieldName fieldInnerBottomLeft">Отчество:</td>
@@ -27,7 +27,7 @@
       </tr>
       <tr>
           <td class="fieldName fieldBothLeft">Компания:</td>
-          <td class="fieldForm fieldBothRight"><%= f.collection_select :carrier_company_id, CarrierCompany.find(:all), :id, :title, :include_blank => true %></td>
+          <td class="fieldForm fieldBothRight"><%= f.collection_select :carrier_company_id, CarrierCompany.find(:all), :id, :title, { :include_blank => true}, {:class => 'required'} %></td>
       </tr>
       <tr>
           <td style="border-width: 0px;border:none none;" align="center" colspan="2"><span style="font-style: italic; text-decoration: underline;">Адрес</span></td>
