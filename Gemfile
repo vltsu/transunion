@@ -13,6 +13,7 @@ gem "jquery-rails", '>= 1.0.3'
 gem "active_scaffold"
 gem "launchy"
 gem "will_paginate", "~> 3.0.pre2"
+gem "escape_utils"
 
 group :development, :test do
   gem "rspec-rails", ">= 2.0.0"

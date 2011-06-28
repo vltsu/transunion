@@ -324,6 +324,11 @@ table td span{
     color: #000000;
 }
 
+.field_with_errors {
+    border: 2px red dotted;
+
+}
+
 #height {
     background: url("../images/icons.png") no-repeat scroll -10px -374px transparent;
 }
@@ -416,5 +421,10 @@ input.summ {
 
 #outcome {
     background: #f8ccca;
+}
+
+#notice {
+  width: 200px;
+  margin: 0px auto;
 }
 

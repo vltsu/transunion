@@ -4,14 +4,20 @@
 <%- content_for(:head) do -%>
 <%= javascript_include_tag 'disableForms' -%>
 <%- end -%>
-
-<p id="notice"><%= notice %></p>
-
+<% if notice %>
+  <br />
+  <div id="notice"><%= notice %></div>
+  <br />
+<% end %>
 <%= render 'form' %>
 
 <br /><br />
 <div style="width: 600px; margin: 0px auto;">
-  <%= link_to image_tag("editButton.jpg"), edit_driver_path(@driver) %> 
-  <%= link_to image_tag("deleteButton.jpg"), @driver, :confirm => 'Вы уверены', :method => :delete %>
+  <%= link_to image_tag("editButton.jpg"), edit_driver_path(@driver), :id => 'editDriverLink' %> 
+  <%= link_to image_tag("deleteButton.jpg"), @driver, :confirm => 'Вы уверены', :id => 'deleteDriverLink', :method => :delete %>
 </div>
-
+<br />
+<div style="width: 200px; margin: 0px auto;">
+  <%= link_to 'к списку водителей', drivers_path %>
+</div>
+<br />

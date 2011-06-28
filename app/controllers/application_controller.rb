@@ -22,7 +22,9 @@ class ApplicationController < ActionController::Base
     acl.add_resource('drivers')
     acl.add_resource('cartypes')
 
+    acl.allow('manager','index')
     acl.allow('manager','users')
+    acl.allow('manager','drivers')
 
     acl.allow('administrator','index')
     acl.allow('administrator','drivers')

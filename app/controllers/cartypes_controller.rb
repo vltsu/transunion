@@ -2,7 +2,6 @@ class CartypesController < ApplicationController
   # GET /cartypes
   # GET /cartypes.xml
   def index
-    #@cartypes = Cartype.all
     @cartypes = Cartype.paginate :page => params[:page], :order => 'id DESC'
 
     respond_to do |format|

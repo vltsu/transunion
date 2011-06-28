@@ -2,12 +2,10 @@
 
   <% if @driver.errors.any? %>
     <div style="width: 450px; margin: 0px auto;" id="error_explanation">
-      <h2><%= pluralize(@driver.errors.count, "error") %> prohibited this driver from being saved:</h2>
-      <ul>
-        <% @driver.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+      <h2 align='center'>Чтобы сохранить:</h2>
+        <% @driver.errors.each do |key,message| %>
+          - <%= message %><br />
         <% end %>
-      </ul>
     </div>
     <br />
   <% end %>

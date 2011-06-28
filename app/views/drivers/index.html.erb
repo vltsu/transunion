@@ -1,5 +1,9 @@
 <%= request.env["SERVER_ADDR"] %>
-<br />
+<% if notice %>
+  <br />
+  <div id='notice'><%= notice %></div>
+  <br />
+<% end %>
 <div style="width: 170px; margin: 0px auto;"> 
     <%= link_to image_tag("add_driver_button.jpg", :border=>0), new_driver_path, :class => 'editLink', :id => 'addDriverLink', :style => 'width: 300px; margin: 0px auto;' %>
 </div>
@@ -24,3 +28,8 @@
   <% end %>
 </table>
 <br />
+<div style="width: 10%; margin: 0px auto;">
+  <%= will_paginate(@cartypes, :previous_label => '&#8592;',
+                               :next_label     => '&#8594;'
+                    ) %>
+</div>

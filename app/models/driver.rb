@@ -1,8 +1,10 @@
 # encoding: UTF-8
 class Driver < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 20
   belongs_to :carrier_company 
 
-  validates :firstname, :presence => { :message => "Имя не может быть пустым" }
-  validates :lastname, :presence => true
-  validates :carrier_company_id, :presence => true
+  validates :lastname, :presence => { :message => "Укажите фамилию" }
+  validates :firstname, :presence => { :message => "Укажите имя" }
+  validates :carrier_company_id, :presence => { :message => "Выберите компанию" }
 end
