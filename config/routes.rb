@@ -2,7 +2,7 @@ Transunion::Application.routes.draw do
 
   resources :users
   
-  root :to =>'index#index'
+  root :to =>'index#index', :as => :home
 
   get "index/index"
 

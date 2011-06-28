@@ -1,17 +1,27 @@
 class ApplicationController < ActionController::Base
- before_filter :check_authentication, 
+  before_filter :check_authentication, 
                 :check_authorization, 
                 :except => [:signin_form, :signin]
+  before_filter :hide_sign_in_form, :only => [:signin_form]
 
-  def check_authentication
-    unless session[:user]
-      session[:intended_action] = action_name
-      raise 'Access denyed'
+  #Hide sign-in form for logined user
+  def hide_sign_in_form
+    if session[:user]
+      redirect_to home_url
     end
   end
 
-  def check_authorization
+  #Check if user logined
+  def check_authentication
+    unless session[:user]
+      session[:intended_action] = action_name
+      redirect_to signin_form_url
+    end
+  end
 
+  #Check if logined user has access to requested
+  #controller and action
+  def check_authorization
     acl = Acl.new()
 
     acl.add_role('administrator')
