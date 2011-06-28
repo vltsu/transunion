@@ -36,7 +36,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :pensionnoe
       t.string :medical_insurance
       t.string :working_contract
-      t.integer :role
+      t.string :role
       t.string :login
       t.string :password_salt
       t.string :password_hash

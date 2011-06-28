@@ -17,4 +17,9 @@
     </tr>
   <% end %>  
 </table>
-                                                                                                                                
+<br />
+<div style="width: 10%; margin: 0px auto;">
+  <%= will_paginate(@cartypes, :previous_label => '&#8592;',
+                               :next_label     => '&#8594;'
+                   ) %>
+</div>

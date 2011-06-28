@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20110622124705) do
     t.string   "pensionnoe"
     t.string   "medical_insurance"
     t.string   "working_contract"
-    t.integer  "role"
+    t.string   "role"
     t.string   "login"
     t.string   "password_salt"
     t.string   "password_hash"

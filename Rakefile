@@ -4,4 +4,10 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
+task :make_coffee do
+  puts "make coffee"
+end
+
+task :default => 'make_coffee'
+
 Transunion::Application.load_tasks

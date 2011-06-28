@@ -178,7 +178,25 @@
       <td class="fieldForm fieldBothRight"><%= f.text_area :about, :size => "28x5", :class => "inp"  %></td>
     </tr>
     <tr>
-      <td colspan="2" align="center" class="borNone"><%= f.submit "Сохранить" %></td>
+      <td style="border-width: 0px;border:none none;" align="center" colspan="2"><span style="font-style: italic; text-decoration: underline;">Дополнительно</span></td>
     </tr>
+    <tr>
+      <td class="fieldName fieldInnerTopLeft">Логин:</td>
+      <td class="fieldForm fieldInnerTopRight"><%= f.text_field :login, :class => "inp"  %></td>
+    </tr>
+    <tr>
+      <td class="fieldName fieldInnerMiddleLeft">Роль:</td>
+      <td class="fieldForm fieldInnerMiddleRight"><%= f.select :role, options_for_select([ ['менеджер','manager'],['администратор','administrator'] ], @user.role), :class => 'inp' %></td>
+    </tr>
+    <tr>
+      <td class="fieldName fieldInnerBottomLeft">Пароль:</td>
+      <td class="fieldForm fieldInnerBottomRight"><%=  %></td>
+    </tr>
+    <% # Не показывать кнопку сохранить для просмотра карточки %>
+    <% if !(params[:action] == 'show') %> 
+      <tr>
+        <td colspan="2" align="center" class="borNone"><%= f.submit "Сохранить" %></td>
+      </tr>
+    <% end %>
   </table>
 <% end %>
