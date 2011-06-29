@@ -14,7 +14,7 @@
 <% for attribute in attributes -%>
       %td.th3= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
-    %td.th3= link_to 'Открыть', <%= singular_table_name %>, :id => "show<%= singular_table_name.capitalize %>Link"
+      %td.th3= link_to 'Открыть', <%= singular_table_name %>, :id => "show<%= singular_table_name.capitalize %>Link"
 
 %br
 %div{ :style => 'width: 10%; margin: 0px auto;' }
