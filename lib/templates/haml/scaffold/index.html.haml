@@ -1,23 +1,21 @@
-%h1 Listing <%= plural_table_name %>
-
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 170px; margin: 0px auto;'}
+  = link_to image_tag("add_<%= singular_table_name %>_button.jpg", :border=>0), new_<%= singular_table_name %>_path, :class => 'editLink', :id => 'add<%= singular_table_name.capitalize %>Link', :style => 'width: 300px; margin: 0px auto;'
 %table
   %tr
 <% for attribute in attributes -%>
-    %th <%= attribute.human_name %>
+    %th.th1 <%= attribute.human_name %>
 <% end -%>
-    %th
-    %th
-    %th
+    %th.th1 Открыть
 
   - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-    %tr
+    %tr { :class => cycle('odd','even') }
 <% for attribute in attributes -%>
-      %td= <%= singular_table_name %>.<%= attribute.name %>
+      %td.th3= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
-      %td= link_to 'Show', <%= singular_table_name %>
-      %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
-      %td= link_to 'Destroy', <%= singular_table_name %>, :confirm => 'Are you sure?', :method => :delete
+    %td.th3= link_to 'Открыть', <%= singular_table_name %>, :id => "show<%= singular_table_name.capitalize %>Link"
 
 %br
-
-MY OWN CONTENT
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@<%= singular_table_name %>, :previous_label => '&#8592;', :next_label => '&#8594;')

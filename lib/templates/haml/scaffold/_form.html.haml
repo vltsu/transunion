@@ -1,15 +1,19 @@
 = form_for @<%= singular_table_name %> do |f|
   -if @<%= singular_table_name %>.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@<%= singular_table_name %>.errors.count, "error")} prohibited this <%= singular_table_name %> from being saved:"
-      %ul
-        - @<%= singular_table_name %>.errors.full_messages.each do |msg|
-          %li= msg
+    %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
+      %h2{:align=>'center'} Чтобы сохранить:
+      - @<%= singular_table_name %>.errors.each do |key,message| 
+        = message
+      %br/
+    %br/
 
+  %table
 <% for attribute in attributes -%>
-  .field
-    = f.label :<%= attribute.name %>
-    = f.<%= attribute.field_type %> :<%= attribute.name %>
+    %tr
+      %td{:class => 'fieldName'} <%= attribute.name %>:
+      %td{:class => 'fieldForm'}= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'inp'
 <% end -%>
-  .actions
-    = f.submit 'Save'
+  -# Не показывать кнопку сохранить для просмотра карточки
+  - if !(params[:action] == 'show')
+    %tr
+      %td{:colspan=>'2', :align=>'center', :class=>'borNone'}= f.submit 'Сохранить'

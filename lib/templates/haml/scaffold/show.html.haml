@@ -1,11 +1,17 @@
-%p#notice= notice
+%h1{:class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red;"} Просмотр карточки ...
+%br/
+- content_for(:head) do 
+  = javascript_include_tag 'disableForms' 
+- if notice 
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%br/
+= render 'form'
+%br/ 
+%br/
 
-<% for attribute in attributes -%>
-%p
-  %b <%= attribute.human_name %>:
-  = @<%= singular_table_name %>.<%= attribute.name %>
-<% end -%>
-
-= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
-\|
-= link_to 'Back', <%= index_helper %>_path
+%div{:style =>"width: 600px; margin: 0px auto;"}
+  = link_to image_tag("editButton.jpg"), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :id => 'edit<%= singular_table_name.capitalize %>Link'
+  = link_to image_tag("deleteButton.jpg"), @<%= singular_table_name %>, :confirm => 'Вы уверены', :id => 'delete<%= singular_table_name.capitalize %>Link', :method => :delete
+%br/
+%div{:style => "width: 200px; margin: 0px auto;"}
+  = link_to 'к списку ...', <%= index_helper %>_path
