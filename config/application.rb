@@ -36,7 +36,15 @@ module Transunion
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
+    #Automate load files from /lib
     config.autoload_paths += %W(#{config.root}/lib)
+
+    #Custom generators
+    config.generators do |g|
+      g.template_engine :haml
+      g.test_framework :rspec, :fixture => true, :views => false
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

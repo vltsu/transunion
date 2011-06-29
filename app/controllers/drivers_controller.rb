@@ -3,28 +3,16 @@ class DriversController < ApplicationController
   # GET /drivers
   def index
     @drivers = Driver.paginate :page => params[:page], :order => 'id DESC'
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
   end
 
   # GET /drivers/1
   def show
     @driver = Driver.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   # GET /drivers/new
   def new
     @driver = Driver.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   # GET /drivers/1/edit
@@ -36,12 +24,10 @@ class DriversController < ApplicationController
   def create
     @driver = Driver.new(params[:driver])
 
-    respond_to do |format|
-      if @driver.save
-        format.html { redirect_to({:action => 'index'}, {:notice => 'Водитель добавлен'}) }
-      else
-        format.html { render :action => "new" }
-      end
+    if @driver.save
+      redirect_to({:action => 'index'}, {:notice => 'Водитель добавлен'}) 
+    else
+      render :action => "new"
     end
   end
 
@@ -49,12 +35,10 @@ class DriversController < ApplicationController
   def update
     @driver = Driver.find(params[:id])
 
-    respond_to do |format|
-      if @driver.update_attributes(params[:driver])
-        format.html { redirect_to(@driver, :notice => 'Изменения внесены') }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @driver.update_attributes(params[:driver])
+      redirect_to(@driver, :notice => 'Изменения внесены') 
+    else
+      render :action => "edit" 
     end
   end
 
@@ -63,8 +47,6 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
     @driver.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(drivers_url) }
-    end
+    redirect_to drivers_url 
   end
 end

@@ -1,0 +1,24 @@
+= request.env["SERVER_ADDR"]
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 170px; margin: 0px auto;'}
+  = link_to image_tag("add_driver_button.jpg", :border=>0), new_driver_path, :class => 'editLink', :id => 'addDriverLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 №
+    %th.th1 ФИО
+    %th.th1 Компания
+    %th.th1 Город
+    %th.th1 моб.тел.
+    %th.th1 Открыть
+  - @drivers.each do |driver|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= driver.id
+      %td.th3= driver.lastname+' '+driver.firstname+' '+driver.middlename
+      %td.th3= driver.carrier_company.title
+      %td.th3= driver.city
+      %td.th3= driver.mobile_phone
+      %td.th3= link_to 'Открыть', driver, :id => "showDriverLink"
+%br/
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@cartypes, :previous_label => '&#8592;', :next_label => '&#8594;')
