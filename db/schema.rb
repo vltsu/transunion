@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622124705) do
+ActiveRecord::Schema.define(:version => 20110629151839) do
 
   create_table "carrier_companies", :force => true do |t|
     t.string   "title"

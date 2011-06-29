@@ -25,6 +25,7 @@ gem "haml"
 gem "haml-rails"
 #scaffold generator for non-rails ways
 gem "rails3-generators"
+gem "cucumber_scaffold"
 
 group :development, :test do
   gem "rspec-rails", ">= 2.0.0"
