@@ -23,8 +23,9 @@ class <%= controller_class_name %>Controller < ApplicationController
   # POST <%= route_url %>
   def create
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "params[:#{singular_table_name}]") %>
+ 
     if @<%= orm_instance.save %>
-      redirect_to(@<%= singular_table_name %>, :notice => '<%= human_name %> добавлен') 
+      redirect_to({:action => 'index'}, {:notice => '<%= human_name %> добавлен'}) 
     else
       render :action => "new" 
     end
@@ -33,6 +34,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # PUT <%= route_url %>/1
   def update
     @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+
     if @<%= orm_instance.update_attributes("params[:#{singular_table_name}]") %>
       redirect_to(@<%= singular_table_name %>, :notice => 'Изменения внесены') 
     else
