@@ -8,12 +8,12 @@
     %br/
 
   %table
-  <% for attribute in attributes -%>
+<% for attribute in attributes -%>
     %tr
       %td{:class => 'fieldName'} <%= attribute.name %>:
       %td{:class => 'fieldForm'}= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'inp'
-  <% end -%>
-  -# Не показывать кнопку сохранить для просмотра карточки
-  - if !(params[:action] == 'show')
-    %tr
-      %td{:colspan=>'2', :align=>'center', :class=>'borNone'}= f.submit 'Сохранить'
+<% end -%>
+    -# Не показывать кнопку сохранить для просмотра карточки
+    - if !(params[:action] == 'show')
+      %tr
+        %td{:colspan=>'2', :align=>'center', :class=>'borNone'}= f.submit 'Сохранить'
