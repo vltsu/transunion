@@ -1,4 +1,4 @@
-= form_for @<%= singular_table_name %> do |f|
+- form_for @<%= singular_table_name %> do |f|
   -if @<%= singular_table_name %>.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
@@ -8,11 +8,11 @@
     %br/
 
   %table
-<% for attribute in attributes -%>
+  <% for attribute in attributes -%>
     %tr
       %td{:class => 'fieldName'} <%= attribute.name %>:
       %td{:class => 'fieldForm'}= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'inp'
-<% end -%>
+  <% end -%>
   -# Не показывать кнопку сохранить для просмотра карточки
   - if !(params[:action] == 'show')
     %tr
