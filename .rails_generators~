@@ -4,6 +4,31 @@ rspec:install:
 - --pretend
 - --quiet
 - --skip
+authlogic:session:
+- --fixture
+- --fixture-replacement=
+- --dir=
+- --force
+- --pretend
+- --quiet
+- --skip
+- --test-framework=
+mongo_mapper:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --host=
+mustache:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+koala:install:
+- --force
+- --pretend
+- --quiet
+- --skip
 jquery:install:
 - --force
 - --pretend
@@ -216,54 +241,6 @@ observer:
 - --quiet
 - --skip
 - --orm=
-test_unit:controller:
-- --force
-- --pretend
-- --quiet
-- --skip
-test_unit:model:
-- --force
-- --pretend
-- --quiet
-- --skip
-- --fixture
-- --fixture-replacement=
-test_unit:scaffold:
-- --force
-- --pretend
-- --quiet
-- --skip
-- --force-plural
-test_unit:helper:
-- --force
-- --pretend
-- --quiet
-- --skip
-test_unit:mailer:
-- --force
-- --pretend
-- --quiet
-- --skip
-test_unit:integration:
-- --force
-- --pretend
-- --quiet
-- --skip
-test_unit:performance:
-- --force
-- --pretend
-- --quiet
-- --skip
-test_unit:plugin:
-- --force
-- --pretend
-- --quiet
-- --skip
-test_unit:observer:
-- --force
-- --pretend
-- --quiet
-- --skip
 mailer:
 - --force
 - --pretend
