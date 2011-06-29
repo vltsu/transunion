@@ -10,7 +10,7 @@
     %th.th1 Открыть
 
   - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-    %tr { :class => cycle('odd','even') }
+    %tr{ :class => cycle('odd','even') }
 <% for attribute in attributes -%>
       %td.th3= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>

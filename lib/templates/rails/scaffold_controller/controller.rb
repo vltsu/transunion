@@ -2,7 +2,7 @@
 class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   def index
-    @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
+    @<%= plural_table_name %> = <%= class_name %>.paginate :page => params[:page], :order => 'id DESC'
   end
 
   # GET <%= route_url %>/1
