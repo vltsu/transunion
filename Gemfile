@@ -7,23 +7,14 @@ gem 'rails', '3.0.8'
 
 gem 'mysql2', '0.2.6'
 
-#to activate debugger
 gem "ruby-debug19"
-#rusification for rails
 gem "russian"
-#jquery plugin
 gem "jquery-rails", '>= 1.0.3'
 gem "active_scaffold"
 gem "launchy"
-#gem for pagination
 gem "will_paginate", "~> 3.0.pre2"
-#gem fix mistake in rake
 gem "escape_utils"
-#work with html
 gem "haml"
-#scaffold for haml
-gem "haml-rails"
-#scaffold generator for non-rails ways
 gem "rails3-generators"
 
 group :development, :test do
