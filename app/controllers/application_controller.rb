@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     acl.add_resource('users')
     acl.add_resource('index')
     acl.add_resource('drivers')
-    acl.add_resource('cartypes')
+    acl.add_resource('carrier_companies')
 
     acl.allow('manager','index')
     acl.allow('manager','users')
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     acl.allow('administrator','index')
     acl.allow('administrator','drivers')
     acl.allow('administrator','users')
-    acl.allow('administrator','cartypes')
+    acl.allow('administrator','carrier_companies')
 
     user_role = User.find(session[:user]).role
     

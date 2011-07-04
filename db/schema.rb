@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629151839) do
+ActiveRecord::Schema.define(:version => 20110704110849) do
 
   create_table "carrier_companies", :force => true do |t|
     t.string   "title"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20110629151839) do
     t.string   "operates_basis"
     t.string   "company_face"
     t.string   "manager_name"
-    t.string   "respons_refuse_loading_day"
+    t.decimal  "respons_refuse_loading_day",                  :precision => 5, :scale => 2
     t.string   "respons_idle_excessively_hours"
     t.string   "respons_idle_excessively_percent"
     t.string   "respons_payment_late"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20110629151839) do
     t.string   "respons_transport_late_loading_hours"
     t.string   "respons_transport_late_loading_percent"
     t.string   "respons_transport_late_destination_hours"
-    t.string   "respons_transport_late_destination_percent"
+    t.string   "response_transport_late_destination_percent"
     t.string   "respons_document_late"
     t.boolean  "black_label"
     t.datetime "created_at"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(:version => 20110629151839) do
     t.date     "date_of_birth"
     t.string   "about"
     t.boolean  "med_book"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tests", :force => true do |t|
+    t.string   "test"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

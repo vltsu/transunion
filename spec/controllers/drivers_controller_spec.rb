@@ -18,6 +18,7 @@ describe DriversController do
     @driver_without_carrier_company_id = Factory.build(:driver, :carrier_company_id => nil)
     @driver_without_carrier_company_id.should_not be_valid
   end
+
 end
 
 

@@ -35,6 +35,16 @@ jquery:install:
 - --quiet
 - --skip
 - --ui
+cucumber_scaffold:feature:
+- --force
+- --pretend
+- --quiet
+- --skip
+cucumber_scaffold:install:
+- --force
+- --pretend
+- --quiet
+- --skip
 cucumber:feature:
 - --force
 - --pretend
@@ -159,6 +169,7 @@ scaffold:
 - --integration-tool=
 - --template-engine=
 - --helper
+- --form-builder=
 - --force
 - --pretend
 - --quiet
@@ -175,6 +186,7 @@ helper:
 - --skip
 - --test-framework=
 scaffold_controller:
+- --form-builder=
 - --singleton
 - --controller-specs
 - --view-specs

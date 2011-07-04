@@ -10,8 +10,8 @@
   %table
 <% for attribute in attributes -%>
     %tr
-      %td{:class => 'fieldName'} <%= attribute.name %>:
-      %td{:class => 'fieldForm'}= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'inp'
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} <%= attribute.name %>:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'inp'
 <% end -%>
     -# Не показывать кнопку сохранить для просмотра карточки
     - if !(params[:action] == 'show')

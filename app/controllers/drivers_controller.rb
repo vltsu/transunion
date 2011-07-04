@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class DriversController < ApplicationController
+
   # GET /drivers
   def index
     @drivers = Driver.paginate :page => params[:page], :order => 'id DESC'
