@@ -10,9 +10,58 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110705111401) do
+ActiveRecord::Schema.define(:version => 20110705180106) do
 
   create_table "carrier_companies", :force => true do |t|
+    t.string   "title"
+    t.string   "legal_address"
+    t.string   "actual_address"
+    t.integer  "opf_id"
+    t.integer  "company_face_id"
+    t.string   "ogrn"
+    t.string   "okpo"
+    t.string   "inn"
+    t.string   "kpp"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.string   "current_account"
+    t.string   "bank"
+    t.string   "correspondent_account"
+    t.string   "bik"
+    t.string   "operates_basis"
+    t.string   "company_face"
+    t.string   "manager_name"
+    t.decimal  "respons_refuse_loading_day",                  :precision => 5, :scale => 2
+    t.decimal  "respons_idle_excessively_hours",              :precision => 5, :scale => 2
+    t.decimal  "respons_idle_excessively_percent",            :precision => 5, :scale => 2
+    t.decimal  "respons_payment_late",                        :precision => 5, :scale => 2
+    t.string   "respons_transport_replacement_req"
+    t.string   "respons_compensation_for_damage"
+    t.decimal  "respons_undeliver_transport_loading",         :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_loading_hours",        :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_loading_percent",      :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_destination_hours",    :precision => 5, :scale => 2
+    t.decimal  "response_transport_late_destination_percent", :precision => 5, :scale => 2
+    t.decimal  "respons_document_late",                       :precision => 5, :scale => 2
+    t.boolean  "black_label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cartypes", :force => true do |t|
+    t.string   "cartype"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_faces", :force => true do |t|
+    t.string   "company_face"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customer_companies", :force => true do |t|
     t.string   "title"
     t.string   "legal_address"
     t.string   "actual_address"
@@ -44,18 +93,6 @@ ActiveRecord::Schema.define(:version => 20110705111401) do
     t.decimal  "response_transport_late_destination_percent", :precision => 5, :scale => 2
     t.decimal  "respons_document_late",                       :precision => 5, :scale => 2
     t.boolean  "black_label"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "cartypes", :force => true do |t|
-    t.string   "cartype"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "company_faces", :force => true do |t|
-    t.string   "company_face"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

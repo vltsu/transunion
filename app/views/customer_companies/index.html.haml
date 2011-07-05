@@ -1,0 +1,23 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 270px; margin: 0px auto;'}
+  = link_to image_tag("add_customer_company_button.jpg", :border=>0), new_customer_company_path, :class => 'editLink', :id => 'addCustomer_companyLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 №
+    %th.th1 Название
+    %th.th1 Фактический адрес
+    %th.th1 Телефон
+    %th.th1 Открыть
+
+  - @customer_companies.each do |customer_company|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= customer_company.id
+      %td.th3= customer_company.title
+      %td.th3= customer_company.actual_address
+      %td.th3= customer_company.phone
+      %td.th3= link_to 'Открыть', customer_company, :id => "showCustomer_companyLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@customer_company, :previous_label => '&#8592;', :next_label => '&#8594;')

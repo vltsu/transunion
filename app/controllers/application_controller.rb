@@ -31,17 +31,21 @@ class ApplicationController < ActionController::Base
     acl.add_resource('index')
     acl.add_resource('drivers')
     acl.add_resource('carrier_companies')
+    acl.add_resource('customer_companies')
     acl.add_resource('opfs')
     acl.add_resource('company_faces')
 
     acl.allow('manager','index')
     acl.allow('manager','users')
     acl.allow('manager','drivers')
+    acl.allow('manager','carrier_companies')
+    acl.allow('manager','customer_companies')
 
     acl.allow('administrator','index')
     acl.allow('administrator','drivers')
     acl.allow('administrator','users')
     acl.allow('administrator','carrier_companies')
+    acl.allow('administrator','customer_companies')
     acl.allow('administrator','opfs')
     acl.allow('administrator','company_faces')
 

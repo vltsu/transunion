@@ -1,0 +1,17 @@
+%h1{:class => "tableTitle", :style => "width: 600px; margin: 0px auto; color:red;"} Просмотр карточки компании заказчика
+%br/
+- content_for(:head) do 
+  = javascript_include_tag 'disableForms' 
+- if notice 
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%br/
+= render 'form'
+%br/ 
+%br/
+
+%div{:style =>"width: 600px; margin: 0px auto;"}
+  = link_to image_tag("editButton.jpg"), edit_customer_company_path(@customer_company), :id => 'editCustomer_companyLink'
+  = link_to image_tag("deleteButton.jpg"), @customer_company, :confirm => 'Вы уверены', :id => 'deleteCustomer_companyLink', :method => :delete
+%br/
+%div{:style => "width: 300px; margin: 0px auto;"}
+  = link_to 'к списку компаний заказчиков', customer_companies_path

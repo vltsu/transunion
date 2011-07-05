@@ -1,11 +1,11 @@
 - content_for(:head) do
   - javascript_include_tag 'hide_show'
 
-- form_for @carrier_company do |f|
-  -if @carrier_company.errors.any?
+= form_for @customer_company do |f|
+  -if @customer_company.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @carrier_company.errors.each do |key,message| 
+      - @customer_company.errors.each do |key,message| 
         = message
         %br/
     %br/
@@ -85,35 +85,35 @@
         %td{:class => 'borNone', :align => 'center', :colspan=> '2'}!= "<span style = 'font-size:16px;font-style:italic;text-decoration:underline;'> Ответственность Транс-Юнион:</span>"
       %tr
         %td{:class => 'fieldName fieldInnerTopLeft'} Штраф за отказ от ТС в день погрузки:
-        %td{:class => 'fieldForm fieldInnerTopRight'}!= "в размере  #{f.text_field :respons_refuse_loading_day, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '20' : @carrier_company.respons_refuse_loading_day } % от стоимости перевозки."
+        %td{:class => 'fieldForm fieldInnerTopRight'}!= "в размере  #{f.text_field :respons_refuse_loading_day, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '20' : @customer_company.respons_refuse_loading_day } % от стоимости перевозки."
       %tr
-        %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за простой ТС более: #{f.text_field :respons_idle_excessively_hours, :size => '5', :class=>'inp', :value => params[:action] == 'new' ? '2' : @carrier_company.respons_idle_excessively_hours} часов"
-        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_idle_excessively_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @carrier_company.respons_idle_excessively_percent} % от стоимости перевозки за каждый час простоя."
+        %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за простой ТС более: #{f.text_field :respons_idle_excessively_hours, :size => '5', :class=>'inp', :value => params[:action] == 'new' ? '2' : @customer_company.respons_idle_excessively_hours} часов"
+        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_idle_excessively_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @customer_company.respons_idle_excessively_percent} % от стоимости перевозки за каждый час простоя."
       %tr
         %td{:class => 'fieldName fieldInnerBottomLeft'} Штраф за просрочку оплаты счетов:
-        %td{:class => 'fieldForm fieldInnerBottomRight'}!= "в размере #{f.text_field :respons_payment_late, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '2' : @carrier_company.respons_payment_late} % от суммы просроченного платежа за каждый день просрочки."
+        %td{:class => 'fieldForm fieldInnerBottomRight'}!= "в размере #{f.text_field :respons_payment_late, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '2' : @customer_company.respons_payment_late} % от суммы просроченного платежа за каждый день просрочки."
       %tr
         %td{:class => 'borNone', :align => 'center', :colspan => '2'}!= "<span style='font-size: 16px; font-style: italic; text-decoration: underline;'>Ответственность перевозчика:</span>"
       %tr
         %td{:class => 'fieldName fieldInnerTopLeft'} Требования по замене ТС:
         %td{:class => 'fieldForm fieldInnerTopRight'}= f.text_field :respons_transport_replacement_req, :class => 'inp', :size => 80, :id =>'resp', 
-          :value => params[:action] == 'new' ? 'в случае поломки или аварии ТС в пути следования предоставить взамен равноценное исправное ТС своими силами не позднее 24 часов с момента неисправности ТС и за свой счет.' : @carrier_company.respons_transport_replacement_req
+          :value => params[:action] == 'new' ? 'в случае поломки или аварии ТС в пути следования предоставить взамен равноценное исправное ТС своими силами не позднее 24 часов с момента неисправности ТС и за свой счет.' : @customer_company.respons_transport_replacement_req
       %tr
         %td{:class => 'fieldName fieldInnerMiddleLeft'} Возмещение ущерба:
         %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :respons_compensation_for_damage, :class => 'inp', :size => 80, :id => 'resp',
-          :value => params[:action] == 'new' ? 'в случае повреждения, недостачи, утраты груза – в размере пропорциональном стоимости повреждённого,  недостающего, утраченного  груза согласно ТТН.' : @carrier_company.respons_compensation_for_damage
+          :value => params[:action] == 'new' ? 'в случае повреждения, недостачи, утраты груза – в размере пропорциональном стоимости повреждённого,  недостающего, утраченного  груза согласно ТТН.' : @customer_company.respons_compensation_for_damage
       %tr
         %td{:class => 'fieldName fieldInnerMiddleLeft'} Штраф за неподачу ТС под погрузку:
-        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_undeliver_transport_loading, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '10' : @carrier_company.respons_undeliver_transport_loading } % от стоимости перевозки."
+        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_undeliver_transport_loading, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '10' : @customer_company.respons_undeliver_transport_loading } % от стоимости перевозки."
       %tr
-        %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за опоздание ТС под погрузку более: #{f.text_field :respons_transport_late_loading_hours, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '2' : @carrier_company.respons_transport_late_loading_hours } часов"
-        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_transport_late_loading_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @carrier_company.respons_transport_late_loading_percent } % от стоимости перевозки за каждый час опоздания."
+        %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за опоздание ТС под погрузку более: #{f.text_field :respons_transport_late_loading_hours, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '2' : @customer_company.respons_transport_late_loading_hours } часов"
+        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_transport_late_loading_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @customer_company.respons_transport_late_loading_percent } % от стоимости перевозки за каждый час опоздания."
       %tr
-        %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за просрочку доставки груза более: #{f.text_field :respons_transport_late_destination_hours, :class => 'inp', :size=>'5', :value => params[:action] == 'new' ? '4' : @carrier_company.respons_transport_late_destination_hours } часов"
-        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :response_transport_late_destination_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @carrier_company.response_transport_late_destination_percent } % от стоимости перевозки за каждый час просрочки."
+        %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за просрочку доставки груза более: #{f.text_field :respons_transport_late_destination_hours, :class => 'inp', :size=>'5', :value => params[:action] == 'new' ? '4' : @customer_company.respons_transport_late_destination_hours } часов"
+        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :response_transport_late_destination_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @customer_company.response_transport_late_destination_percent } % от стоимости перевозки за каждый час просрочки."
       %tr
         %td{:class => 'fieldName fieldInnerBottomLeft'} Штраф за несвоевременное возвращение документов:
-        %td{:class => 'fieldForm fieldInnerBottomRight'}!= "в размере #{f.text_field :respons_document_late, :class => 'inp', :size=>'5', :value => params[:action] == 'new' ? '0.5' : @carrier_company.respons_document_late} % от стоимости перевозки за каждый день просрочки"
+        %td{:class => 'fieldForm fieldInnerBottomRight'}!= "в размере #{f.text_field :respons_document_late, :class => 'inp', :size=>'5', :value => params[:action] == 'new' ? '0.5' : @customer_company.respons_document_late} % от стоимости перевозки за каждый день просрочки"
     -# Не показывать кнопку сохранить для просмотра карточки
     - if !(params[:action] == 'show')
       %tr
