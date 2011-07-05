@@ -22,7 +22,6 @@ class Acl
   end
 
   def check_access(role_name, controller_name, action_name)
-    debugger 
     deb = ResourceRegistry.get_all
     if AccessRegistry.check(role_name, controller_name, action_name) == true
       return true
