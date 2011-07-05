@@ -1,0 +1,17 @@
+%h1{:class => "tableTitle", :style => "width: 350px; margin: 0px auto; color:red;"} Просмотр карточки ОПФ
+%br/
+- content_for(:head) do 
+  = javascript_include_tag 'disableForms' 
+- if notice 
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%br/
+= render 'form'
+%br/ 
+%br/
+
+%div{:style =>"width: 600px; margin: 0px auto;"}
+  = link_to image_tag("editButton.jpg"), edit_opf_path(@opf), :id => 'editOpfLink'
+  = link_to image_tag("deleteButton.jpg"), @opf, :confirm => 'Вы уверены', :id => 'deleteOpfLink', :method => :delete
+%br/
+%div{:style => "width: 200px; margin: 0px auto;"}
+  = link_to 'к списку ОПФ', opfs_path

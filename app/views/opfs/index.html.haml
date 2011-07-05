@@ -1,0 +1,19 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 140px; margin: 0px auto;'}
+  = link_to image_tag("add_opf_button.jpg", :border=>0), new_opf_path, :class => 'editLink', :id => 'addOpfLink', :style => 'width: 150px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 №
+    %th.th1 ОПФ
+    %th.th1 Открыть
+
+  - @opfs.each do |opf|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= opf.id
+      %td.th3= opf.opf
+      %td.th3= link_to 'Открыть', opf, :id => "showOpfLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@opf, :previous_label => '&#8592;', :next_label => '&#8594;')

@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  resources :opfs
+
   resources :users
   
   root :to =>'index#index', :as => :home

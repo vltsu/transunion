@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704110849) do
+ActiveRecord::Schema.define(:version => 20110705095232) do
 
   create_table "carrier_companies", :force => true do |t|
     t.string   "title"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(:version => 20110704110849) do
     t.date     "date_of_birth"
     t.string   "about"
     t.boolean  "med_book"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "opfs", :force => true do |t|
+    t.string   "opf"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

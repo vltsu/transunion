@@ -18,3 +18,13 @@ Factory.define :user do |f|
   f.password 'password'
   f.role     'manager'
 end
+
+Factory.define :admin, :class => User do |u|
+  u.login     'admin'
+  u.password  'password'
+  u.role      'administrator'
+end
+
+Factory.define :opf do |f|
+  f.opf    'ZAO'
+end

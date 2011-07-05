@@ -1,18 +1,16 @@
-= form_for @<%= singular_table_name %> do |f|
-  -if @<%= singular_table_name %>.errors.any?
+= form_for @opf do |f|
+  -if @opf.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @<%= singular_table_name %>.errors.each do |key,message| 
+      - @opf.errors.each do |key,message| 
         = message
       %br/
     %br/
 
   %table
-<% for attribute in attributes -%>
     %tr
-      %td{:class => 'fieldName fieldInnerMiddleLeft'} <%= attribute.name %>:
-      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'inp'
-<% end -%>
+      %td{:class => 'fieldName fieldBothLeft'} opf:
+      %td{:class => 'fieldForm fieldBothRight'}= f.text_field :opf, :class => 'inp'
     -# Не показывать кнопку сохранить для просмотра карточки
     - if !(params[:action] == 'show')
       %tr
