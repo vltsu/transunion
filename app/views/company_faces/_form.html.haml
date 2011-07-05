@@ -1,16 +1,16 @@
-= form_for @opf do |f|
-  -if @opf.errors.any?
+= form_for @company_face do |f|
+  -if @company_face.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @opf.errors.each do |key,message| 
+      - @company_face.errors.each do |key,message| 
         = message
       %br/
     %br/
 
   %table
     %tr
-      %td{:class => 'fieldName fieldBothLeft'} ОПФ:
-      %td{:class => 'fieldForm fieldBothRight'}= f.text_field :opf, :class => 'inp'
+      %td{:class => 'fieldName fieldBothLeft'} Компания в лице:
+      %td{:class => 'fieldForm fieldBothRight'}= f.text_field :company_face, :class => 'inp'
     -# Не показывать кнопку сохранить для просмотра карточки
     - if !(params[:action] == 'show')
       %tr

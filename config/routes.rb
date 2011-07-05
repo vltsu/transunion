@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  resources :company_faces
+
   resources :opfs
 
   resources :users

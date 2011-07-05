@@ -2,8 +2,9 @@
 class CarrierCompany < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
-  has_one :driver
-  has_one :opf
+  has_many :driver
+  has_one  :opf
+  has_one  :company_face
 
   validates :title,          :presence => { :message => "Укажите название компании" }
   validates :company_type,   :presence => { :message => "Укажите тип компании" }
