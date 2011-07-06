@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
     acl.add_resource('opfs')
     acl.add_resource('company_faces')
     acl.add_resource('car_types')
+    acl.add_resource('car_models')
 
     acl.allow('manager','index')
     acl.allow('manager','users')
@@ -50,6 +51,7 @@ class ApplicationController < ActionController::Base
     acl.allow('administrator','opfs')
     acl.allow('administrator','company_faces')
     acl.allow('administrator','car_types')
+    acl.allow('administrator','car_models')
 
     user_role = User.find(session[:user]).role
     

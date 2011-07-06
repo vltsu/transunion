@@ -92,3 +92,11 @@ end
 Factory.define :car_type2, :class => CarType do |f|
   f.car_type 'Benzovoz'
 end
+
+Factory.define :car_model do |f|
+  f.car_model 'Man'
+end
+
+Factory.define :car_model2, :class => CarModel do |f|
+  f.car_model 'Mercedes'
+end
