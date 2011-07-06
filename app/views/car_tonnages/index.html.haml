@@ -1,0 +1,17 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 150px; margin: 0px auto;'}
+  = link_to image_tag("add_car_tonnage_button.jpg", :border=>0), new_car_tonnage_path, :class => 'editLink', :id => 'addCar_tonnageLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 Тоннаж
+    %th.th1 Открыть
+
+  - @car_tonnages.each do |car_tonnage|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= car_tonnage.car_tonnage
+      %td.th3= link_to 'Открыть', car_tonnage, :id => "showCar_tonnageLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@car_tonnage, :previous_label => '&#8592;', :next_label => '&#8594;')

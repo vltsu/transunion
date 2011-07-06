@@ -100,3 +100,11 @@ end
 Factory.define :car_model2, :class => CarModel do |f|
   f.car_model 'Mercedes'
 end
+
+Factory.define :car_tonnage do |f|
+  f.car_tonnage '11.11'
+end
+
+Factory.define :car_tonnage2, :class => CarTonnage do |f|
+  f.car_tonnage '15.15'
+end
