@@ -1,0 +1,35 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 170px; margin: 0px auto;'}
+  = link_to image_tag("add_car_button.jpg", :border=>0), new_car_path, :class => 'editLink', :id => 'addCarLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 №
+    %th.th1 Марка
+    %th.th1 Г/в
+    %th.th1 Грузоподъемность
+    %th.th1 Кузов
+    %th.th1 Объем
+    %th.th1 Д/Ш/В
+    %th.th1 Пер/гор
+    %th.th1 Пер/обл
+    %th.th1 Пер/Межг
+    %th.th1 Открыть
+
+  - @cars.each do |car|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= car.id
+      %td.th3= car.car_model.car_model
+      %td.th3= car.year
+      %td.th3= car.car_tonnage.car_tonnage
+      %td.th3= car.car_type.car_type
+      %td.th3= car.body_volume
+      %td.th3= "#{car.dimensions_width}/#{car.dimensions_length}/#{car.dimensions_height}"
+      %td{ :class => 'th3', :style => car.operation_city ? 'background:green;' : 'background:red;'  }!= "#{car.operation_city ? 'Да' : 'Нет'}"
+      %td{ :class => 'th3', :style => car.operation_region ? 'background:green;' : 'background:red;'  }!= "#{car.operation_region ? 'Да' : 'Нет'}"
+      %td{ :class => 'th3', :style => car.operation_intercity ? 'background:green;' : 'background:red;'  }!= "#{car.operation_intercity ? 'Да' : 'Нет'}"
+      %td.th3= link_to 'Открыть', car, :id => "showCarLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@car, :previous_label => '&#8592;', :next_label => '&#8594;')

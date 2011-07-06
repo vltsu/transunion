@@ -57,6 +57,13 @@ Factory.define :driver do |f|
   f.association :carrier_company, :factory => :carrier_company
 end
 
+Factory.define :driver2, :class => Driver do |f|
+  f.lastname 'Abrahabr'
+  f.firstname 'Fedor'
+  f.middlename 'Selenovich'
+  f.association :carrier_company, :factory => :carrier_company
+end
+
 Factory.define :user do |f|
   f.login    'user'
   f.password 'password'
@@ -107,4 +114,11 @@ end
 
 Factory.define :car_tonnage2, :class => CarTonnage do |f|
   f.car_tonnage '15.15'
+end
+
+Factory.define :car do |f|
+  f.association :car_type, :factory => :car_type
+  f.association :car_model, :factory => :car_model
+  f.association :driver, :factory => :driver
+  f.association :car_tonnage, :factory => :car_tonnage
 end

@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  resources :cars
+
   resources :car_tonnages
 
   resources :car_models

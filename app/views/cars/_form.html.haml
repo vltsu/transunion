@@ -1,0 +1,75 @@
+= form_for @car do |f|
+  -if @car.errors.any?
+    %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
+      %h2{:align=>'center'} Чтобы сохранить:
+      - @car.errors.each do |key,message| 
+        = message
+        %br/
+    %br/
+
+  %table
+    %tr
+      %td{:class => 'fieldName fieldInnerTopLeft'} Марка автомобиля:
+      %td{:class => 'fieldForm fieldInnerTopRight'}= f.collection_select :car_model_id, CarModel.find(:all), :id, :car_model, { :include_blank => true },
+        { :class => 'inp required' }
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Тип:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :type, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Год:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :year, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Гос. номер:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :state_number, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Тоннаж:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.collection_select :car_tonnage_id, CarTonnage.find(:all), :id, :car_tonnage, { :include_blank => true },
+        { :class => 'inp required' }
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Тип кузова:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.collection_select :car_type_id, CarType.find(:all), :id, :car_type, { :include_blank => true }, 
+        { :class => 'inp required' }
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Гос. номер кузова:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :body_state_number, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Объем кузова:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :body_volume, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Паллет:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :body_pallet, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} В+Б+З:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :body_v_b_z, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Длина кузова:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "#{f.text_field :dimensions_width, :class => 'inp', :size => 6} м"
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Ширина кузова:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "#{f.text_field :dimensions_length, :class => 'inp', :size => 6} м"
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Высота кузова:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "#{f.text_field :dimensions_height, :class => 'inp', :size => 6} м"
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Примечание:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :about, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Эксплуатация город:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.check_box :operation_city, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Эксплуатация область:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.check_box :operation_region, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Эксплуатация межгород:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.check_box :operation_intercity, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Санитарный паспорт:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.check_box :san_passport, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerBottomLeft'} Водитель:
+      %td{:class => 'fieldForm fieldInnerBottomRight'}= f.collection_select :driver_id, Driver.find(:all), :id, :full_name, { :include_blank => true },
+        { :class => 'inp required' }
+    -# Не показывать кнопку сохранить для просмотра карточки
+    - if !(params[:action] == 'show')
+      %tr
+        %td{:colspan=>'2', :align=>'center', :class=>'borNone'}= f.submit 'Сохранить'

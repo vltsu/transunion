@@ -1,0 +1,17 @@
+%h1{:class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red;"} Просмотр карточки автомобиля
+%br/
+- content_for(:head) do 
+  = javascript_include_tag 'disableForms' 
+- if notice 
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%br/
+= render 'form'
+%br/ 
+%br/
+
+%div{:style =>"width: 600px; margin: 0px auto;"}
+  = link_to image_tag("editButton.jpg"), edit_car_path(@car), :id => 'editCarLink'
+  = link_to image_tag("deleteButton.jpg"), @car, :confirm => 'Вы уверены', :id => 'deleteCarLink', :method => :delete
+%br/
+%div{:style => "width: 200px; margin: 0px auto;"}
+  = link_to 'к списку автомобилей', cars_path

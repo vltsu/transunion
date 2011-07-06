@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110706182859) do
+ActiveRecord::Schema.define(:version => 20110706192747) do
 
   create_table "car_models", :force => true do |t|
     t.string   "car_model"
@@ -63,6 +63,30 @@ ActiveRecord::Schema.define(:version => 20110706182859) do
     t.decimal  "response_transport_late_destination_percent", :precision => 5, :scale => 2
     t.decimal  "respons_document_late",                       :precision => 5, :scale => 2
     t.boolean  "black_label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cars", :force => true do |t|
+    t.integer  "car_model_id"
+    t.integer  "car_type_id"
+    t.integer  "car_tonnage_id"
+    t.string   "type"
+    t.string   "year"
+    t.string   "state_number"
+    t.string   "body_state_number"
+    t.string   "body_volume"
+    t.string   "body_pallet"
+    t.string   "body_v_b_z"
+    t.decimal  "dimensions_width",    :precision => 5, :scale => 2
+    t.decimal  "dimensions_length",   :precision => 5, :scale => 2
+    t.decimal  "dimensions_height",   :precision => 5, :scale => 2
+    t.string   "about"
+    t.boolean  "operation_city"
+    t.boolean  "operation_region"
+    t.boolean  "operation_intercity"
+    t.integer  "driver_id"
+    t.boolean  "san_passport"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
