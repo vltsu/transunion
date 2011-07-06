@@ -3,5 +3,6 @@ class CompanyFace < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
 
-  belongs_to :carrier_company
+  has_many :carrier_company
+  has_many :customer_company
 end

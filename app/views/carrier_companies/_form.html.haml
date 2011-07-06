@@ -1,7 +1,7 @@
 - content_for(:head) do
   - javascript_include_tag 'hide_show'
 
-- form_for @carrier_company do |f|
+= form_for @carrier_company do |f|
   -if @carrier_company.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
