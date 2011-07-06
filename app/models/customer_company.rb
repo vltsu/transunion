@@ -1,5 +1,10 @@
 # encoding: UTF-8
 class CustomerCompany < ActiveRecord::Base
+
+  cattr_accessor :params
+
+  before_validation :standartise_fields
+
   cattr_reader :per_page
   @@per_page = 20
   has_many :driver
@@ -15,16 +20,32 @@ class CustomerCompany < ActiveRecord::Base
   validates :actual_address,  :presence => { :message => "Укажите фактический адрес" }
   validates :phone,           :presence => { :message => "Укажите телефон" }
 
-  validates :respons_refuse_loading_day,       :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за отказ от ТС в день погрузки'" }
-  validates :respons_idle_excessively_hours,   :format => { :with => /^\d{1,4}([.,]\d{1,2})?$/, :message => "Введите число в формате 1111.11 в поле 'Штраф за простой ТС более n часов'" }
-  validates :respons_idle_excessively_percent, :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за простой ТС %'" }
-  validates :respons_payment_late,             :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за просрочку оплаты счетов'" }
+  validates_numericality_of :respons_refuse_loading_day
+  validates_numericality_of :respons_idle_excessively_hours
+  validates_numericality_of :respons_idle_excessively_percent
+  validates_numericality_of :respons_payment_late
+          
+  validates_numericality_of :respons_undeliver_transport_loading
+  validates_numericality_of :respons_transport_late_loading_hours
+  validates_numericality_of :respons_transport_late_loading_percent
+  validates_numericality_of :respons_transport_late_destination_hours
+  validates_numericality_of :response_transport_late_destination_percent
+  validates_numericality_of :respons_document_late
+                    
+  def standartise_fields
+    #Проверка на случай если данные идут не из формы, а из fixtures
+    if params
+      self.respons_refuse_loading_day                  = params[:respons_refuse_loading_day].to_s.gsub(/,/,'.')
+      self.respons_idle_excessively_hours              = params[:respons_idle_excessively_hours].to_s.gsub(/,/,'.')
+      self.respons_idle_excessively_percent            = params[:respons_idle_excessively_percent].to_s.gsub(/,/,'.')
+      self.respons_payment_late                        = params[:respons_payment_late].to_s.gsub(/,/,'.')
+      self.respons_undeliver_transport_loading         = params[:respons_undeliver_transport_loading].to_s.gsub(/,/,'.')
+      self.respons_transport_late_loading_hours        = params[:respons_transport_late_loading_hours].to_s.gsub(/,/,'.')
+      self.respons_transport_late_loading_percent      = params[:respons_transport_late_loading_percent].to_s.gsub(/,/,'.')
+      self.respons_transport_late_destination_hours    = params[:respons_transport_late_destination_hours].to_s.gsub(/,/,'.')
+      self.response_transport_late_destination_percent = params[:response_transport_late_destination_percent].to_s.gsub(/,/,'.')
+      self.respons_document_late                       = params[:respons_document_late].to_s.gsub(/,/,'.')
+    end
+  end
 
-  validates :respons_undeliver_transport_loading,        :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за неподачу ТС под подгрузку'" }
-  validates :respons_transport_late_loading_hours,       :format => { :with => /^\d{1,4}([.,]\d{1,2})?$/, :message => "Введите число в формате 1111.11 в поле 'Штраф за опоздание ТС под погрузку часов '" }
-  validates :respons_transport_late_loading_percent,     :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за опоздание ТС под подгрузку %'" }
-  validates :respons_transport_late_destination_hours,   :format => { :with => /^\d{1,4}([.,]\d{1,2})?$/, :message => "Введите число в формате 1111.11 в поле 'Штраф за просрочку доставки груза часов'" }
-  validates :response_transport_late_destination_percent, :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за просрочку доставки груза %'" }
-  validates :respons_document_late,                      :format => { :with => /^\d{1,2}([.,]\d{1,2})?$/, :message => "Введите число в формате 11.11 в поле 'Штраф за несвоевременное возвращение документов'" }
-  
 end

@@ -12,12 +12,12 @@ Factory.define :carrier_company do |f|
   f.respons_idle_excessively_percent '11.11'
   f.respons_payment_late '11.11'
 
-  f.respons_undeliver_transport_loading '11.11' 
+  f.respons_undeliver_transport_loading '11.11'
   f.respons_transport_late_loading_hours '11.11'
   f.respons_transport_late_loading_percent '11.11'
   f.respons_transport_late_destination_hours '11.11'
   f.response_transport_late_destination_percent '11.11'
-  f.respons_document_late '11.11' 
+  f.respons_document_late '11.11'
 end
 
 Factory.sequence :carrier_company_title do |n|

@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class CustomerCompaniesController < ApplicationController
-  before_filter :standartise_fields, :only => [:update, :create]
+  before_filter do
+    #Передача params в модель
+    CustomerCompany.params = params[:customer_company]
+  end
 
   # GET /customer_companies
   def index
@@ -50,22 +53,6 @@ class CustomerCompaniesController < ApplicationController
     @customer_company.destroy
 
     redirect_to(customer_companies_url)
-  end
-
-  protected
-
-  # Решение проблемы с '.' и ','
-  def standartise_fields
-    params[:customer_company][:respons_refuse_loading_day].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_idle_excessively_hours].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_idle_excessively_percent].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_payment_late].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_undeliver_transport_loading].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_transport_late_loading_hours].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_transport_late_loading_percent].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_transport_late_destination_hours].sub!(/,/,'.').to_f
-    params[:customer_company][:response_transport_late_destination_percent].sub!(/,/,'.').to_f
-    params[:customer_company][:respons_document_late].sub!(/,/,'.').to_f
   end
 
 end
