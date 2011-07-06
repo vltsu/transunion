@@ -24,6 +24,32 @@ Factory.sequence :carrier_company_title do |n|
   "CarrierCompany#{n}"
 end
 
+Factory.define :customer_company do |f|
+  f.title { Factory.next(:customer_company_title) }
+  f.association :opf, :factory => :opf
+  f.association :company_face, :factory => :company_face
+  f.manager_name 'Ivan Petrov'
+  f.operates_basis 'Ustava'
+  f.legal_address 'Moscow, 5'
+  f.actual_address 'Magadan, 8'
+  f.phone '12345'
+  f.respons_refuse_loading_day '11.11'
+  f.respons_idle_excessively_hours '11.11'
+  f.respons_idle_excessively_percent '11.11'
+  f.respons_payment_late '11.11'
+
+  f.respons_undeliver_transport_loading '11.11'
+  f.respons_transport_late_loading_hours '11.11'
+  f.respons_transport_late_loading_percent '11.11'
+  f.respons_transport_late_destination_hours '11.11'
+  f.response_transport_late_destination_percent '11.11'
+  f.respons_document_late '11.11'
+end
+
+Factory.sequence :customer_company_title do |n|
+  "CustomerCompany#{n}"
+end
+
 Factory.define :driver do |f|
   f.lastname 'Petrov'
   f.firstname 'Ivan'
