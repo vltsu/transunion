@@ -11,7 +11,7 @@ class Resource
     end
 
     #Получeние списка action's контроллера    
-    actions = Object.const_get( class_name ).instance_methods
+    actions = Object.const_get( class_name ).instance_methods(false)
     #Преобразование элементов массива из Symbols в Strings
     actions.map!(&:to_s)
     #Формирование хэша вида { controller_name => ['action1','action2','action3'] }

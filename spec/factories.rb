@@ -84,3 +84,11 @@ end
 Factory.define :company_face2, :class => CompanyFace do |f|
   f.company_face 'CIO'
 end
+
+Factory.define :car_type do |f|
+  f.car_type 'Refrijerator'
+end
+
+Factory.define :car_type2, :class => CarType do |f|
+  f.car_type 'Benzovoz'
+end

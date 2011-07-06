@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  resources :car_types
+
   resources :customer_companies
 
   resources :company_faces

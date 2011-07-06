@@ -1,0 +1,17 @@
+%h1{:class => "tableTitle", :style => "width: 400px; margin: 0px auto; color:red;"} Просмотр карточки типа ТС
+%br/
+- content_for(:head) do 
+  = javascript_include_tag 'disableForms' 
+- if notice 
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%br/
+= render 'form'
+%br/ 
+%br/
+
+%div{:style =>"width: 600px; margin: 0px auto;"}
+  = link_to image_tag("editButton.jpg"), edit_car_type_path(@car_type), :id => 'editCar_typeLink'
+  = link_to image_tag("deleteButton.jpg"), @car_type, :confirm => 'Вы уверены', :id => 'deleteCar_typeLink', :method => :delete
+%br/
+%div{:style => "width: 200px; margin: 0px auto;"}
+  = link_to 'к списку типов ТС', car_types_path
