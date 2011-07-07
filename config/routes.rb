@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  resources :payment_methods
+
   resources :cargo_classifications
 
   resources :cars

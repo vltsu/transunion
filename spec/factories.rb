@@ -130,3 +130,7 @@ end
 Factory.define :cargo_classification2, :class => CargoClassification do |f|
   f.classification 'Forest'
 end
+
+Factory.define :payment_method do |f|
+  f.payment_method 'Beznal'
+end
