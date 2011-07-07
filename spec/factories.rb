@@ -122,3 +122,11 @@ Factory.define :car do |f|
   f.association :driver, :factory => :driver
   f.association :car_tonnage, :factory => :car_tonnage
 end
+
+Factory.define :cargo_classification do |f|
+  f.classification 'Products'
+end
+
+Factory.define :cargo_classification2, :class => CargoClassification do |f|
+  f.classification 'Forest'
+end

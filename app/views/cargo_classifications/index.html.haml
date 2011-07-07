@@ -1,0 +1,19 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 270px; margin: 0px auto;'}
+  = link_to image_tag("add_cargo_classification_button.jpg", :border=>0), new_cargo_classification_path, :class => 'editLink', :id => 'addCargo_classificationLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 № 
+    %th.th1 Классификация груза
+    %th.th1 Открыть
+
+  - @cargo_classifications.each do |cargo_classification|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= cargo_classification.id
+      %td.th3= cargo_classification.classification
+      %td.th3= link_to 'Открыть', cargo_classification, :id => "showCargo_classificationLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@cargo_classification, :previous_label => '&#8592;', :next_label => '&#8594;')

@@ -101,7 +101,7 @@ table td span{
 }
 
 .even {
-    background: url("/images/alt_bg.png") no-repeat scroll left top transparent;
+    background: #f3b0bb;
 }
 
 .borNone {

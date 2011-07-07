@@ -1,0 +1,17 @@
+= form_for @cargo_classification do |f|
+  -if @cargo_classification.errors.any?
+    %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
+      %h2{:align=>'center'} Чтобы сохранить:
+      - @cargo_classification.errors.each do |key,message| 
+        = message
+        %br/
+    %br/
+
+  %table
+    %tr
+      %td{:class => 'fieldName fieldBothLeft'} Классификация груза:
+      %td{:class => 'fieldForm fieldBothRight'}= f.text_field :classification, :class => 'inp'
+    -# Не показывать кнопку сохранить для просмотра карточки
+    - if !(params[:action] == 'show')
+      %tr
+        %td{:colspan=>'2', :align=>'center', :class=>'borNone'}= f.submit 'Сохранить'
