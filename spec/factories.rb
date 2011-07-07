@@ -134,3 +134,7 @@ end
 Factory.define :payment_method do |f|
   f.payment_method 'Beznal'
 end
+
+Factory.define :payment_way do |f|
+  f.payment_way 'Na ruki'
+end
