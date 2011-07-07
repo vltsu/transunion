@@ -138,3 +138,7 @@ end
 Factory.define :payment_way do |f|
   f.payment_way 'Na ruki'
 end
+
+Factory.define :payment_doc do |f|
+  f.payment_doc 'Po faximilnim'
+end

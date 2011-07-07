@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  resources :payment_docs
+
   resources :payment_ways
 
   resources :payment_methods

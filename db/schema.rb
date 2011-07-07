@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707104135) do
+ActiveRecord::Schema.define(:version => 20110707111118) do
 
   create_table "car_models", :force => true do |t|
     t.string   "car_model"
@@ -175,6 +175,12 @@ ActiveRecord::Schema.define(:version => 20110707104135) do
 
   create_table "opfs", :force => true do |t|
     t.string   "opf"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_docs", :force => true do |t|
+    t.string   "payment_doc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
     acl.add_resource('cargo_classifications')
     acl.add_resource('payment_methods')
     acl.add_resource('payment_ways')
+    acl.add_resource('payment_docs')
 
     acl.allow('manager','index')
     acl.allow('manager','users')
@@ -63,6 +64,7 @@ class ApplicationController < ActionController::Base
     acl.allow('administrator','cargo_classifications')
     acl.allow('administrator','payment_methods')
     acl.allow('administrator','payment_ways')
+    acl.allow('administrator','payment_docs')
 
     user_role = User.find(session[:user]).role
     

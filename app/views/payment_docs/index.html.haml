@@ -1,0 +1,19 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 300px; margin: 0px auto;'}
+  = link_to image_tag("add_payment_doc_button.jpg", :border=>0), new_payment_doc_path, :class => 'editLink', :id => 'addPayment_docLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 №
+    %th.th1 Оплата по документам
+    %th.th1 Открыть
+
+  - @payment_docs.each do |payment_doc|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= payment_doc.id
+      %td.th3= payment_doc.payment_doc
+      %td.th3= link_to 'Открыть', payment_doc, :id => "showPayment_docLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@payment_doc, :previous_label => '&#8592;', :next_label => '&#8594;')
