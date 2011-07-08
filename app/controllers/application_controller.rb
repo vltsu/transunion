@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
     acl.add_resource('payment_methods')
     acl.add_resource('payment_ways')
     acl.add_resource('payment_docs')
+    acl.add_resource('requests')
 
     acl.allow('manager','index')
     acl.allow('manager','users')
@@ -49,6 +50,7 @@ class ApplicationController < ActionController::Base
     acl.allow('manager','carrier_companies')
     acl.allow('manager','customer_companies')
     acl.allow('manager','cars')
+    acl.allow('manager','requests')
 
     acl.allow('administrator','index')
     acl.allow('administrator','drivers')
@@ -65,6 +67,7 @@ class ApplicationController < ActionController::Base
     acl.allow('administrator','payment_methods')
     acl.allow('administrator','payment_ways')
     acl.allow('administrator','payment_docs')
+    acl.allow('administrator','requests')
 
     user_role = User.find(session[:user]).role
     

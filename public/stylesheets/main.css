@@ -130,7 +130,7 @@ table td span{
     border-bottom: 3px black solid;
     border-top: 3px black solid;
     border-right: 3px black solid;
-}  
+}
 
 .fieldInnerMiddleLeft {
     border-bottom: 1px black dotted;
@@ -428,3 +428,6 @@ input.summ {
   margin: 0px auto;
 }
 
+.radio {
+  font-weight: normal;
+}

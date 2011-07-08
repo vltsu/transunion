@@ -26,7 +26,7 @@ class DriversController < ApplicationController
     @driver = Driver.new(params[:driver])
 
     if @driver.save
-      redirect_to({:action => 'index'}, {:notice => 'Водитель добавлен'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Водитель добавлен'})
     else
       render :action => "new"
     end
@@ -37,9 +37,9 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
 
     if @driver.update_attributes(params[:driver])
-      redirect_to(@driver, :notice => 'Изменения внесены') 
+      redirect_to(@driver, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 
@@ -48,6 +48,6 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
     @driver.destroy
 
-    redirect_to drivers_url 
+    redirect_to drivers_url
   end
 end
