@@ -13,8 +13,6 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
-    @request.loading_points.build
-    @request.unloading_points.build
   end
   # GET /requests/1/edit
   def edit
