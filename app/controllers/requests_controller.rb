@@ -13,8 +13,9 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+    @request.loading_points.build
+    @request.unloading_points.build
   end
-
   # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
@@ -23,11 +24,11 @@ class RequestsController < ApplicationController
   # POST /requests
   def create
     @request = Request.new(params[:request])
- 
+
     if @request.save
-      redirect_to({:action => 'index'}, {:notice => 'Request добавлен'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Заявка добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +37,9 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
 
     if @request.update_attributes(params[:request])
-      redirect_to(@request, :notice => 'Изменения внесены') 
+      redirect_to(@request, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707123049) do
+ActiveRecord::Schema.define(:version => 20110710164926) do
 
   create_table "car_models", :force => true do |t|
     t.string   "car_model"
@@ -169,6 +169,20 @@ ActiveRecord::Schema.define(:version => 20110707123049) do
     t.date     "date_of_birth"
     t.string   "about"
     t.boolean  "med_book"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "loading_points", :force => true do |t|
+    t.datetime "date"
+    t.string   "time"
+    t.integer  "request_id"
+    t.string   "contact_person"
+    t.string   "phone"
+    t.integer  "point_number"
+    t.string   "adress"
+    t.string   "phone_work"
+    t.string   "shipper"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -391,6 +405,20 @@ ActiveRecord::Schema.define(:version => 20110707123049) do
 
   create_table "tests", :force => true do |t|
     t.string   "test"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unloading_points", :force => true do |t|
+    t.datetime "date"
+    t.string   "time"
+    t.integer  "request_id"
+    t.string   "contact_person"
+    t.string   "phone"
+    t.integer  "point_number"
+    t.string   "adress"
+    t.string   "phone_work"
+    t.string   "consignee"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

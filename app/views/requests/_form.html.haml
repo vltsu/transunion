@@ -1,3 +1,13 @@
+- content_for(:head) do
+  - javascript_include_tag 'cargopoints'
+- content_for(:head) do
+  - javascript_include_tag 'request_add'
+- content_for(:head) do
+  - javascript_include_tag 'transport_select'
+- content_for(:head) do
+  - javascript_include_tag 'jquery-datetimeentry/jquery.datetimeentry.js'
+- content_for(:head) do
+  - stylesheet_link_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.css'
 = form_for @request do |f|
   -if @request.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
@@ -11,11 +21,14 @@
       Тип документа
       %br/
       %br/
-      - [['request','Заявка'], ['contract-request','Договор-заявка']].each do |type,name|
-        .radio
-          = radio_button_tag 'type', type , @request_type == type
-          = label_tag "type_#{type}", name.humanize
-          %br/
+      .radio
+        = radio_button_tag 'type', 'request' , params[:action] == 'new' ? true : @request_type == 'request'
+        = label_tag "type_request", "Заявка"
+        %br/
+      .radio
+        = radio_button_tag 'type', 'contract_request' , @request_type == 'contract_request'
+        = label_tag "type_contract_request", "Договор-заявка"
+        %br/
   %table{ :width => '1280px', :class => 'request', :cellspacing=> '0' }
     %col{ :id => 'one',   :width => '140px' }
     %col{ :id => 'two',   :width => '140px' }
@@ -182,6 +195,110 @@
     %tr
       %td{ :class=>'borNone', :align=>'center', :colspan=>9 }
         %br/
+    %tbody#point1
+      %tr
+        %td{ :class => 'borNone subTitle', :align => 'center', :colspan => 4 }
+          Погрузка
+        %td.fieldBetween
+        %td{ :class => 'borNone subTitle', :align => 'center', :colspan => 4 }
+          Разгрузка
+      %tr
+        %td{ :class => 'borNone', :align => 'center', :colspan => 4 }
+          %span{ :style => 'font-style:italic; text-decoration:underline;' }
+            Первая точка погрузки
+        %td.fieldBetween
+        %td{ :class => 'borNone', :align => 'center', :colspan => 4 }
+          %span{ :style => 'font-style:italic; text-decoration:underline;' }
+            Первая точка разгрузки
+      %tr
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
+          Дата, время погрузки:
+        %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
+          = f.fields_for :loading_points do |loading_point_form|
+            != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry'} до:#{loading_point_form.text_field :loading_time, :size => 5, :class => 'inp'}"
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
+          Дата, время погрузки:
+        %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
+          = f.fields_for :unloading_points do |unloading_point_form|
+            != "#{unloading_point_form.text_field :date, :size => 10, :class => 'inp ddateshort'} до:#{unloading_point_form.text_field :loading_time, :size => 5, :class => 'inp'}"
+      %tr
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Адрес погрузки:
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :loading_points do |loading_point_form|
+            = loading_point_form.text_field :adress, :size => 25, :class => 'inp required'
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Адрес разгрузки:
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :unloading_points do |unloading_point_form|
+            = unloading_point_form.text_field :date, :size => 25, :class => 'inp required'
+      %tr
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Грузоотправитель:
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :loading_points do |loading_point_form|
+            = loading_point_form.text_field :shipper, :size => 25, :class => 'inp required'
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Грузополучатель:
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :unloading_points do |unloading_point_form|
+            = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp required'
+      %tr
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Контактное лицо:
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :loading_points do |loading_point_form|
+            = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp required'
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Контактное лицо:
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :unloading_points do |unloading_point_form|
+            = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp required'
+      %tr
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Телефон для связи (моб):
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :loading_points do |loading_point_form|
+            = loading_point_form.text_field :phone, :size => 25, :class => 'inp required'
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+          Телефон для связи (моб):
+        %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+          = f.fields_for :unloading_points do |unloading_point_form|
+            = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp required'
+      %tr
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
+          Телефон для связи (раб):
+        %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
+          = f.fields_for :loading_points do |loading_point_form|
+            = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp required'
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
+          Телефон для связи (раб):
+        %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
+          = f.fields_for :unloading_points do |unloading_point_form|
+            = unloading_point_form.text_field :phone, :size => 25, :class => 'inp required'
+      %tr
+        %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => '1' }
+          %p
+        %td{ :colspan => 2, :class => 'borNone', :id => 'loadingButtonDelete', :num => 1, :style => 'background:none; cursor:default;' }
+        %td.fieldBetween
+        %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => '1' }
+          %p
+        %td{ :colspan => 2, :class => 'borNone', :id => 'unloadingButtonDelete', :num => 1, :style => 'background:none; cursor:default;' }
+    %tr
+      %td{ :class=>'borNone', :align=>'center', :colspan=>9 }
+        %br/
+    %tr
+      %td{ :class=>'borNone', :align=>'center', :colspan=>9 }
+        %hr
+    %tr
+      %td{ :class=>'borNone', :align=>'center', :colspan=>9 }
+        %br/
     %tr
       %td{ :class=>'title borNone', :align=>'center', :colspan=>9 }
         Расчет стоимости (основной тариф)
@@ -262,213 +379,213 @@
       %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
         != "#{f.text_field :carrier_dop_prab_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Д/т погрузки:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_dop_tochka_pogr_count, :size => '2', :class => 'inp'}точка"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_dop_tochka_pogr_price, :size => '6', :class => 'inp'}руб./точка"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_dop_tochka_pogr_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Д/т погрузки:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_dop_tochka_pogr_count, :size => '2', :class => 'inp'}точка"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_dop_tochka_pogr_price, :size => '6', :class => 'inp'}руб./точка"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_dop_tochka_pogr_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Д/т разгрузки:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_dop_tochka_razgr_count, :size => '2', :class => 'inp'}точка"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_dop_tochka_razgr_price, :size => '6', :class => 'inp'}руб./точка"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_dop_tochka_razgr_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Д/т разгрузки:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_dop_tochka_razgr_count, :size => '2', :class => 'inp'}точка"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_dop_tochka_razgr_price, :size => '6', :class => 'inp'}руб./точка"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_dop_tochka_razgr_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Растентовка(л/з):
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_rastentovka_count, :size => '2', :class => 'inp'}точка"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_rastentovka_price, :size => '6', :class => 'inp'}руб./точка"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_rastentovka_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Растентовка(л/з):
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_rastentovka_count, :size => '2', :class => 'inp'}точка"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_rastentovka_price, :size => '6', :class => 'inp'}руб./точка"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_rastentovka_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Перегруз:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_pereg_count, :size => '2', :class => 'inp'}тонн"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_pereg_price, :size => '6', :class => 'inp'}руб./тонн"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_pereg_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Перегруз:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_pereg_count, :size => '2', :class => 'inp'}тонн"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_pereg_price, :size => '6', :class => 'inp'}руб./тонн"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_pereg_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Ночная стоянка:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_night_stay_count, :size => '2', :class => 'inp'}ночь"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_night_stay_price, :size => '6', :class => 'inp'}руб./ночь"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_night_stay_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Ночная стоянка:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_night_stay_count, :size => '2', :class => 'inp'}ночь"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_night_stay_price, :size => '6', :class => 'inp'}руб./ночь"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_night_stay_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Межгород:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_mezgorod_count, :size => '2', :class => 'inp'}км*2"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_mezgorod_price, :size => '6', :class => 'inp'}руб./км"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_mezgorod_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Межгород:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_mezgorod_count, :size => '2', :class => 'inp'}км*2"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_mezgorod_price, :size => '6', :class => 'inp'}руб./км"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_mezgorod_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Сопровожд.(г/о):
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_soprov_count, :size => '2', :class => 'inp'}рейс"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_soprov_price, :size => '6', :class => 'inp'}руб./рейс"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_soprov_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Сопровожд.(г/о):
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_soprov_count, :size => '2', :class => 'inp'}рейс"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_soprov_price, :size => '6', :class => 'inp'}руб./рейс"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_soprov_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Возврат груза:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_vozvr_count, :size => '2', :class => 'inp'}%"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_vozvr_price, :size => '6', :class => 'inp'}руб./рейс"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_vozvr_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Возврат груза:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_vozvr_count, :size => '2', :class => 'inp'}%"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_vozvr_price, :size => '6', :class => 'inp'}руб./рейс"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_vozvr_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerMiddleLeft' }
         Негабарит:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_negabarit_count, :size => '2', :class => 'inp'}%"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_negabarit_price, :size => '6', :class => 'inp'}руб./рейс"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_negabarit_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerMiddleLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerMiddleLeft' }
         Негабарит:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_negabarit_count, :size => '2', :class => 'inp'}%"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_negabarit_price, :size => '6', :class => 'inp'}руб./рейс"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_negabarit_summ, :class => 'summ', :size => '6'}руб."
     %tr
-      %td{:class => 'customer fieldName fieldInnerBottomLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldName fieldInnerBottomLeft' }
         Грузчики:
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_gruzch_count, :size => '2', :class => 'inp'}чел"
-      %td{:class => 'customer fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMediumMiddle' }
         != "#{f.text_field :customer_dop_gruzch_price, :size => '6', :class => 'inp'}руб./чел"
-      %td{:class => 'customer fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'customer fieldInnerMiddleRight' }
         != "#{f.text_field :customer_dop_gruzch_summ, :class => 'summ', :size => '6'}руб."
       %td.fieldBetween
-      %td{:class => 'carrier fieldName fieldInnerBottomLeft', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldName fieldInnerBottomLeft' }
         Грузчики:
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_gruzch_count, :size => '2', :class => 'inp'}чел"
-      %td{:class => 'carrier fieldInnerMediumMiddle', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMediumMiddle' }
         != "#{f.text_field :carrier_dop_gruzch_price, :size => '6', :class => 'inp'}руб./чел"
-      %td{:class => 'carrier fieldInnerMiddleRight', :style => 'border-top:1px black solid;'}
+      %td{:class => 'carrier fieldInnerMiddleRight' }
         != "#{f.text_field :carrier_dop_gruzch_summ, :class => 'summ', :size => '6'}руб."
     %tr
       %td.borNone
-      %td{ :align => 'right', :colspan => 2, :style => 'border-top:1px black solid;', :class => 'fieldInnerMiddleLeft fieldName' }
+      %td{ :align => 'right', :colspan => 2 , :class => 'fieldInnerMiddleLeft fieldName', :style => 'border-top:1px black solid' }
         %b Итого за доп. усл. заказчику:
-      %td{ :colspan => 1, :style => 'border-top:1px black solid;', :class => 'fieldInnerMiddleRight customer' }
+      %td{ :colspan => 1 , :class => 'fieldInnerMiddleRight customer', :style => 'border-top: 1px black solid; '}
         %b
-          != "#{f.text_field :customer_dop_summ, :class => 'inp', :size => 6} руб."
+          != "#{f.text_field :customer_dop_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб. "
       %td.fieldBetween
       %td.borNone
-      %td{ :align => 'right', :colspan => 2, :style => 'border-top:1px black solid;', :class => 'fieldInnerMiddleLeft fieldName' }
+      %td{ :align => 'right', :colspan => 2 , :class => 'fieldInnerMiddleLeft fieldName' , :style => 'border-top:1px black solid;' }
         %b Итого за доп. усл. перевозчику:
-      %td{ :colspan => 1, :style => 'border-top:1px black solid;', :class => 'fieldInnerMiddleRight customer' }
+      %td{ :colspan => 1 , :class => 'fieldInnerMiddleRight customer', :style => 'border-top:1px black solid;' }
         %b
-          != "#{f.text_field :carrier_dop_summ, :class => 'inp', :size => 6} руб."
+          != "#{f.text_field :carrier_dop_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
     %tr
       %td.borNone
       %td{ :align => 'right', :colspan => 2, :class => 'fieldInnerBottomLeft fieldName' }
         %b Всего за рейс заказчику
       %td{ :colspan => 1, :class => 'fieldInnerBottomRight', :style => 'background: #FFC0CB;' }
         %b
-          != "#{f.text_field :customer_total_summ, :class => 'inp', :size =>6} руб."
+          != "#{f.text_field :customer_total_summ, :class => 'summ', :size =>8, :readonly => 'readonly'} руб."
       %td.fieldBetween
       %td.borNone
       %td{ :align => 'right', :colspan => 2, :class => 'fieldInnerBottomLeft fieldName' }
         %b Всего за рейс перевозчику
       %td{ :colspan => 1, :class => 'fieldInnerBottomRight', :style => 'background: #FFC0CB;' }
         %b
-          != "#{f.text_field :carrier_total_summ, :class => 'inp', :size =>6} руб."
+          != "#{f.text_field :carrier_total_summ, :class => 'summ', :size =>8, :readonly => 'readonly'} руб."
     %tr
       %td{ :class=>'borNone', :align=>'center', :colspan=>9 }
         %br
@@ -539,12 +656,12 @@
       %td{ :colspan => 2, :class => 'customer fieldName fieldInnerMiddleLeft' }
         Сумма к оплате заказчику:
       %td{ :colspan => 2, :class => 'customer fieldInnerMiddleRight' }
-        != "#{f.text_field :customer_summ_to_pay, :class => 'inp', :size => '8', :readonly => 'readonly'} руб."
+        != "#{f.text_field :customer_summ_to_pay, :class => 'summ', :size => '8', :readonly => 'readonly'} руб."
       %td.fieldBetween
       %td{ :colspan => 2, :class => 'carrier fieldName fieldInnerMiddleLeft' }
         Сумма к оплате перевозчику:
       %td{ :colspan => 2, :class => 'carrier fieldInnerMiddleRight' }
-        != "#{f.text_field :carrier_summ_to_pay, :class => 'inp', :size => '8', :readonly => 'readonly'} руб."
+        != "#{f.text_field :carrier_summ_to_pay, :class => 'summ', :size => '8', :readonly => 'readonly'} руб."
     %tr
       %td{ :colspan => 2, :class => 'customer fieldName fieldInnerMiddleLeft' }
         По документам:

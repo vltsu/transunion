@@ -429,5 +429,6 @@ input.summ {
 }
 
 .radio {
+  text-decoration: none;
   font-weight: normal;
 }
