@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Factory.define :carrier_company do |f|
   f.title { Factory.next(:carrier_company_title) }
   f.association :opf, :factory => :opf
@@ -51,16 +52,16 @@ Factory.sequence :customer_company_title do |n|
 end
 
 Factory.define :driver do |f|
-  f.lastname 'Petrov'
-  f.firstname 'Ivan'
-  f.middlename 'Ivanovich'
+  f.lastname 'Кузьменко'
+  f.firstname 'Иван'
+  f.middlename 'Спиридонович'
   f.association :carrier_company, :factory => :carrier_company
 end
 
 Factory.define :driver2, :class => Driver do |f|
-  f.lastname 'Abrahabr'
-  f.firstname 'Fedor'
-  f.middlename 'Selenovich'
+  f.lastname 'Иванов'
+  f.firstname 'Семен'
+  f.middlename 'Петрович'
   f.association :carrier_company, :factory => :carrier_company
 end
 
@@ -93,11 +94,11 @@ Factory.define :company_face2, :class => CompanyFace do |f|
 end
 
 Factory.define :car_type do |f|
-  f.car_type 'Refrijerator'
+  f.car_type 'Тент'
 end
 
 Factory.define :car_type2, :class => CarType do |f|
-  f.car_type 'Benzovoz'
+  f.car_type 'Рефрижератор'
 end
 
 Factory.define :car_model do |f|
@@ -109,11 +110,11 @@ Factory.define :car_model2, :class => CarModel do |f|
 end
 
 Factory.define :car_tonnage do |f|
-  f.car_tonnage '11.11'
+  f.car_tonnage '11.5'
 end
 
 Factory.define :car_tonnage2, :class => CarTonnage do |f|
-  f.car_tonnage '15.15'
+  f.car_tonnage '15'
 end
 
 Factory.define :car do |f|
@@ -123,12 +124,19 @@ Factory.define :car do |f|
   f.association :car_tonnage, :factory => :car_tonnage
 end
 
+Factory.define :car2, :class => Car do |f|
+  f.association :car_type, :factory => :car_type2
+  f.association :car_model, :factory => :car_model2
+  f.association :driver, :factory => :driver2
+  f.association :car_tonnage, :factory => :car_tonnage2
+end
+
 Factory.define :cargo_classification do |f|
-  f.classification 'Products'
+  f.classification 'Продукты'
 end
 
 Factory.define :cargo_classification2, :class => CargoClassification do |f|
-  f.classification 'Forest'
+  f.classification 'Металлопродукция'
 end
 
 Factory.define :payment_method do |f|

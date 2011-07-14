@@ -1,8 +1,8 @@
 /* http://keith-wood.name/datetimeEntry.html
-   Date and time entry for jQuery v1.0.0.
+   Date and time entry for jQuery v1.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) September 2010.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses.
+   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
+   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
    Please attribute the author if you use it. */
 
 /* Turn an input field into an entry point for a date and/or time value.
@@ -13,7 +13,7 @@
    Attach it with $('input selector').datetimeEntry(); for default settings,
    or configure it with options like:
    $('input selector').datetimeEntry(
-      {spinnerImage: 'spinnerSquare.png', spinnerSize: [20, 20, 0]}); */
+      {spinnerImage: '/javascripts/jquery-datetimeentry/spinnerSquare.png', spinnerSize: [20, 20, 0]}); */
 
 (function($) { // Hide scope, no $ conflict
 
@@ -58,7 +58,7 @@ function DatetimeEntry() {
 		minTime: null, // The earliest selectable time regardless of date, or null for no limit
 		maxTime: null, // The latest selectable time regardless of date, or null for no limit
 		timeSteps: [1, 1, 1], // Steps for each of hours/minutes/seconds when incrementing/decrementing
-		spinnerImage: '/js/jquery-datetimeentry/spinnerDefault.png', // The URL of the images to use for the date spinner
+		spinnerImage: '/javascripts/jquery-datetimeentry/spinnerDefault.png', // The URL of the images to use for the date spinner
 			// Seven images packed horizontally for normal, each button pressed, and disabled
 		spinnerSize: [20, 20, 8], // The width and height of the spinner image,
 			// and size of centre button for current date
@@ -115,7 +115,7 @@ $.extend(DatetimeEntry.prototype, {
 		var spinnerText = this._get(inst, 'spinnerText');
 		var spinnerSize = this._get(inst, 'spinnerSize');
 		var appendText = this._get(inst, 'appendText');
-		var spinner = (!spinnerImage ? null :
+		var spinner = (!spinnerImage ? null : 
 			$('<span class="datetimeEntry_control" style="display: inline-block; ' +
 			'background: url(\'' + spinnerImage + '\') 0 0 no-repeat; ' +
 			'width: ' + spinnerSize[0] + 'px; height: ' + spinnerSize[1] + 'px;' +
@@ -219,7 +219,7 @@ $.extend(DatetimeEntry.prototype, {
 		inst._fields = [];
 		inst._ampmField = -1;
 		for (var i = 0; i < datetimeFormat.length; i++) {
-			if (datetimeFormat.charAt(i).match(/y|Y|o|O|n|N|d|D|w|W|h|H|m|M|s|S|a/)) {
+			if (datetimeFormat.charAt(i).match(/[yYoOnNdDwWhHmMsSa]/)) {
 				inst._fields.push(i);
 			}
 			if (datetimeFormat.charAt(i) == 'a') {
@@ -246,13 +246,18 @@ $.extend(DatetimeEntry.prototype, {
 	},
 
 	/* Initialise the current datetime for a datetime entry input field.
-	   @param  input  (element) input field to update
-	   @param  time   (Date) the new datetime or null for now */
+	   @param  input     (element) input field to update
+	   @param  datetime  (Date) the new datetime or null for now */
 	_setDatetimeDatetimeEntry: function(input, datetime) {
 		var inst = $.data(input, PROP_NAME);
 		if (inst) {
-			this._setDatetime(inst, datetime ? (typeof datetime == 'object' ?
-				new Date(datetime.getTime()) : datetime) : null);
+			if (datetime === null || datetime === '') {
+				inst.input.val('');
+			}
+			else {
+				this._setDatetime(inst, datetime ? (typeof datetime == 'object' ?
+					new Date(datetime.getTime()) : datetime) : null);
+			}
 		}
 	},
 
@@ -422,6 +427,9 @@ $.extend(DatetimeEntry.prototype, {
 	_expandSpinner: function(event) {
 		var spinner = $.datetimeEntry._getSpinnerTarget(event);
 		var inst = $.data($.datetimeEntry._getInput(spinner), PROP_NAME);
+		if ($.datetimeEntry._isDisabledDatetimeEntry(inst.input[0])) {
+			return;
+		}
 		var spinnerBigImage = $.datetimeEntry._get(inst, 'spinnerBigImage');
 		if (spinnerBigImage) {
 			inst._expanded = true;
@@ -713,7 +721,7 @@ $.extend(DatetimeEntry.prototype, {
 					month = num;
 					skipNumber();
 					break;
-				case 'n': case 'N':
+				case 'n': case 'N': 
 					var monthNames = this._get(inst, field == 'N' ? 'monthNames' : 'monthNamesShort');
 					for (var j = 0; j < monthNames.length; j++) {
 						if (value.substring(index).substr(0, monthNames[j].length).toLowerCase() ==
@@ -1222,7 +1230,7 @@ $.extend(DatetimeEntry.prototype, {
 
 /* jQuery extend now ignores nulls!
    @param  target  (object) the object to update
-   @param  props   (object) the new settings
+   @param  props   (object) the new settings 
    @return  (object) the updated object */
 function extendRemove(target, props) {
 	$.extend(target, props);
@@ -1259,7 +1267,7 @@ $.fn.datetimeEntry = function(options) {
 				$.datetimeEntry._connectDatetimeEntry(
 					this, $.extend(inlineSettings, options));
 			}
-		}
+		} 
 	});
 };
 
@@ -1267,3 +1275,4 @@ $.fn.datetimeEntry = function(options) {
 $.datetimeEntry = new DatetimeEntry(); // Singleton instance
 
 })(jQuery);
+

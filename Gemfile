@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-
 gem 'rails', '3.0.8'
 
 # Bundle edge Rails instead:
@@ -34,6 +33,8 @@ group :development, :test do
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem "mocha"
+  gem "capybara"
+  gem "launchy"
 end
 
 # Use unicorn as the web server

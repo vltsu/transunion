@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for :user do |f| %>
 
   <% if @user.errors.any? %>
     <div style="width: 450px; margin: 0px auto;" id="error_explanation">
@@ -193,7 +193,7 @@
       <td class="fieldForm fieldInnerBottomRight"><%=  %></td>
     </tr>
     <% # Не показывать кнопку сохранить для просмотра карточки %>
-    <% if !(params[:action] == 'show') %> 
+    <% if !(params[:action] == 'show') %>
       <tr>
         <td colspan="2" align="center" class="borNone"><%= f.submit "Сохранить" %></td>
       </tr>

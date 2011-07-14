@@ -23,6 +23,12 @@ class Car < ActiveRecord::Base
   validates_numericality_of :dimensions_length, :allow_nil => true
   validates_numericality_of :dimensions_height, :allow_nil => true
 
+  def name
+    "#{self.car_model.car_model} #{self.car_type.car_type} #{self.car_tonnage.car_tonnage}"
+  end
+
+  protected
+
   def standartise_fields
     #Проверка на случай если данные идут не из формы, а из fixtures
     if params

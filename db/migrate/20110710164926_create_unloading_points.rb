@@ -7,7 +7,7 @@ class CreateUnloadingPoints < ActiveRecord::Migration
       t.string :contact_person
       t.string :phone
       t.integer :point_number
-      t.string :adress
+      t.string :address
       t.string :phone_work
       t.string :consignee
 

@@ -4,389 +4,44 @@
   = link_to image_tag("add_request_button.jpg", :border=>0), new_request_path, :class => 'editLink', :id => 'addRequestLink', :style => 'width: 300px; margin: 0px auto;'
 %table
   %tr
-    %th.th1 Item
-    %th.th1 Cargo classification
-    %th.th1 Weight
-    %th.th1 Volume
-    %th.th1 Temperature
-    %th.th1 Evropallet
-    %th.th1 Bigpallet
-    %th.th1 Belts count
-    %th.th1 Height
-    %th.th1 Width
-    %th.th1 Length
-    %th.th1 Loading up
-    %th.th1 Loading down
-    %th.th1 Loading side
-    %th.th1 Crate body
-    %th.th1 Customer company
-    %th.th1 Carrier company
-    %th.th1 Driver
-    %th.th1 Car
-    %th.th1 Cars count
-    %th.th1 Carrier rate summ
-    %th.th1 Carrier rate podacha hours
-    %th.th1 Carrier rate hour price
-    %th.th1 Carrier dop prab price
-    %th.th1 Carrier dop prab count
-    %th.th1 Carrier dop prab summ
-    %th.th1 Carrier dop prostoy price
-    %th.th1 Carrier dop prostoy count
-    %th.th1 Carrier dop prostoy summ
-    %th.th1 Carrier dop dop tochka pogr price
-    %th.th1 Carrier dop dop tochka pogr count
-    %th.th1 Carrier dop dop tochka pogr summ
-    %th.th1 Carrier dop dop tochka razgr price
-    %th.th1 Carrier dop dop tochka razgr count
-    %th.th1 Carrier dop dop tochka razgr summ
-    %th.th1 Carrier dop vozvr price
-    %th.th1 Carrier dop vozvr count
-    %th.th1 Carrier dop vozvr summ
-    %th.th1 Carrier dop pereg price
-    %th.th1 Carrier dop pereg count
-    %th.th1 Carrier dop pereg summ
-    %th.th1 Carrier dop night stay price
-    %th.th1 Carrier dop night stay count
-    %th.th1 Carrier dop night stay summ
-    %th.th1 Carrier dop mezgorod price
-    %th.th1 Carrier dop mezgorod count
-    %th.th1 Carrier dop mezgorod summ
-    %th.th1 Carrier dop rastentovka price
-    %th.th1 Carrier dop rastentovka count
-    %th.th1 Carrier dop rastentovka summ
-    %th.th1 Carrier dop soprov price
-    %th.th1 Carrier dop soprov count
-    %th.th1 Carrier dop soprov summ
-    %th.th1 Carrier dop negabarit price
-    %th.th1 Carrier dop negabarit count
-    %th.th1 Carrier dop negabarit summ
-    %th.th1 Carrier dop gruzch price
-    %th.th1 Carrier dop gruzch count
-    %th.th1 Carrier dop gruzch summ
-    %th.th1 Carrier dop summ
-    %th.th1 Carrier total summ
-    %th.th1 Carrier rate hours
-    %th.th1 Carrier rate sverh price
-    %th.th1 Carrier rate sverh count
-    %th.th1 Carrier rate sverh summ
-    %th.th1 Carrier rate total summ
-    %th.th1 Carrier dop discount
-    %th.th1 Carrier summ
-    %th.th1 Carrier total summ
-    %th.th1 Carrier summ to pay
-    %th.th1 Carrier prepayment
-    %th.th1 Carrier payment method
-    %th.th1 Carrier payment way
-    %th.th1 Carrier maturity
-    %th.th1 Carrier payment docs
-    %th.th1 Carrier documents return term
-    %th.th1 Customer rate summ
-    %th.th1 Customer rate podacha hours
-    %th.th1 Customer rate hour price
-    %th.th1 Customer dop summ
-    %th.th1 Customer rate hours
-    %th.th1 Customer rate sverh price
-    %th.th1 Customer rate sverh count
-    %th.th1 Customer rate sverh summ
-    %th.th1 Customer rate total summ
-    %th.th1 Customer dop prab price
-    %th.th1 Customer dop prab count
-    %th.th1 Customer dop prab summ
-    %th.th1 Customer dop dop tochka pogr price
-    %th.th1 Customer dop dop tochka pogr count
-    %th.th1 Customer dop dop tochka pogr summ
-    %th.th1 Customer dop dop tochka razgr price
-    %th.th1 Customer dop dop tochka razgr count
-    %th.th1 Customer dop dop tochka razgr summ
-    %th.th1 Customer dop vozvr price
-    %th.th1 Customer dop vozvr count
-    %th.th1 Customer dop vozvr summ
-    %th.th1 Customer dop pereg price
-    %th.th1 Customer dop pereg count
-    %th.th1 Customer dop pereg summ
-    %th.th1 Customer dop night stay price
-    %th.th1 Customer dop night stay count
-    %th.th1 Customer dop night stay summ
-    %th.th1 Customer dop mezgorod price
-    %th.th1 Customer dop mezgorod count
-    %th.th1 Customer dop mezgorod summ
-    %th.th1 Customer dop rastentovka price
-    %th.th1 Customer dop rastentovka count
-    %th.th1 Customer dop rastentovka summ
-    %th.th1 Customer dop soprov price
-    %th.th1 Customer dop soprov count
-    %th.th1 Customer dop soprov summ
-    %th.th1 Customer dop negabarit price
-    %th.th1 Customer dop negabarit count
-    %th.th1 Customer dop negabarit summ
-    %th.th1 Customer dop gruzch price
-    %th.th1 Customer dop gruzch count
-    %th.th1 Customer dop gruzch summ
-    %th.th1 Customer total summ
-    %th.th1 Customer summ to pay
-    %th.th1 Customer invoice number
-    %th.th1 Customer payed summ
-    %th.th1 Customer prepayment
-    %th.th1 Customer payment method
-    %th.th1 Customer payment way
-    %th.th1 Customer maturity
-    %th.th1 Customer payment doc
-    %th.th1 Customer documents return term
-    %th.th1 User
-    %th.th1 Manager fot
-    %th.th1 Manager percent
-    %th.th1 Manager premium
-    %th.th1 Manager total summ
-    %th.th1 Account expenditure
-    %th.th1 Account money
-    %th.th1 Account parish date
-    %th.th1 Account parish summ
-    %th.th1 Account consumption date
-    %th.th1 Account consumption respect
-    %th.th1 Account consumption summ
-    %th.th1 Responsibility transport replacement requirement
-    %th.th1 Compensation for damage
-    %th.th1 Undeliver transport loading city
-    %th.th1 Undeliver transport loading intercity
-    %th.th1 Transport late loading city
-    %th.th1 Transport late loading intercity
-    %th.th1 Transport late destination city
-    %th.th1 Transport late destination intercity
-    %th.th1 Transport refuse loading day city
-    %th.th1 Transport refuse loading day intercity
-    %th.th1 Transport idle excessively city
-    %th.th1 Transport idle excessively intercity
-    %th.th1 Payment late
-    %th.th1 Document late
-    %th.th1 Customer responsibility car deny price
-    %th.th1 Customer responsibility car deny summ
-    %th.th1 Customer responsibility prostoy count
-    %th.th1 Customer responsibility prostoy price
-    %th.th1 Customer responsibility prostoy summ
-    %th.th1 Customer responsibility payment late count
-    %th.th1 Customer responsibility payment late price
-    %th.th1 Customer responsibility payment late summ
-    %th.th1 Customer responsibility document late count
-    %th.th1 Customer responsibility document late price
-    %th.th1 Customer responsibility document late summ
-    %th.th1 Carrier responsibility car deny price
-    %th.th1 Carrier responsibility car deny summ
-    %th.th1 Carrier responsibility late count
-    %th.th1 Carrier responsibility late price
-    %th.th1 Carrier responsibility late summ
-    %th.th1 Carrier responsibility delivery late count
-    %th.th1 Carrier responsibility delivery late price
-    %th.th1 Carrier responsibility delivery late summ
-    %th.th1 Carrier responsibility document late count
-    %th.th1 Carrier responsibility document late price
-    %th.th1 Carrier responsibility document late summ
-    %th.th1 Carrier responsibility summ
-    %th.th1 Customer responsibility summ
-    %th.th1 Transport idle excessively hours
-    %th.th1 Transport late loading hours
-    %th.th1 Transport late destination hours
-    %th.th1 Request type
-    %th.th1 Other conditions
-    %th.th1 Carrier rate total summ
-    %th.th1 Customer rate total summ
-    %th.th1 Bill
-    %th.th1 Is finished
-    %th.th1 Customer payment way for salary
-    %th.th1 Carrier payment way for salary
-    %th.th1 Открыть
+    %th{ :class => 'th1', :colspan => 4, :rowspan => 2 } №
+    %th{ :class => 'th1', :colspan => 4, :rowspan => 2 } Дата
+    %th{ :class => 'th1', :colspan => 4, :rowspan => 2 } Заказчик
+    %th{ :class => 'th1', :colspan => 4, :style => 'border-bottom: none;' } Маршрут движения
+    %th{ :class => 'th1', :colspan => 4, :style => 'border-bottom: none;' } Перевозчик
+    %th{ :class => 'th1', :colspan => 2, :style => 'border-bottom: none;' } Опл. пер-ку
+    %th{ :class => 'th1', :colspan => 4, :style => 'border-bottom: none;' } Опл. зак-ком
+    %th{ :class => 'th1', :colspan => 4, :rowspan => 2 }
+  %tr
+    %td{ :class => 'th2', :colspan => 2 } Точки погрузки
+    %td{ :class => 'th2', :colspan => 2 } Точки разгрузки
+    %td{ :class => 'th2', :colspan => 2 } Компания
+    %td{ :class => 'th2', :colspan => 2, :style => 'text-align: center;' } Водитель
+    %td{ :class => 'th2', :colspan => 1, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Стоим.
+    %td{ :class => 'th2', :colspan => 1, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Опл.
+    %td{ :class => 'th2', :colspan => 2, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Сумма заказчику
+    %td{ :class => 'th2', :colspan => 2, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Опл.
 
   - @requests.each do |request|
     %tr{ :class => cycle('odd','even') }
-      %td.th3= request.item
-      %td.th3= request.cargo_classification_id
-      %td.th3= request.weight
-      %td.th3= request.volume
-      %td.th3= request.temperature
-      %td.th3= request.evropallet
-      %td.th3= request.bigpallet
-      %td.th3= request.belts_count
-      %td.th3= request.height
-      %td.th3= request.width
-      %td.th3= request.length
-      %td.th3= request.loading_up
-      %td.th3= request.loading_down
-      %td.th3= request.loading_side
-      %td.th3= request.crate_body
-      %td.th3= request.customer_company_id
-      %td.th3= request.carrier_company_id
-      %td.th3= request.driver_id
-      %td.th3= request.car_id
-      %td.th3= request.cars_count
-      %td.th3= request.carrier_rate_summ
-      %td.th3= request.carrier_rate_podacha_hours
-      %td.th3= request.carrier_rate_hour_price
-      %td.th3= request.carrier_dop_prab_price
-      %td.th3= request.carrier_dop_prab_count
-      %td.th3= request.carrier_dop_prab_summ
-      %td.th3= request.carrier_dop_prostoy_price
-      %td.th3= request.carrier_dop_prostoy_count
-      %td.th3= request.carrier_dop_prostoy_summ
-      %td.th3= request.carrier_dop_dop_tochka_pogr_price
-      %td.th3= request.carrier_dop_dop_tochka_pogr_count
-      %td.th3= request.carrier_dop_dop_tochka_pogr_summ
-      %td.th3= request.carrier_dop_dop_tochka_razgr_price
-      %td.th3= request.carrier_dop_dop_tochka_razgr_count
-      %td.th3= request.carrier_dop_dop_tochka_razgr_summ
-      %td.th3= request.carrier_dop_vozvr_price
-      %td.th3= request.carrier_dop_vozvr_count
-      %td.th3= request.carrier_dop_vozvr_summ
-      %td.th3= request.carrier_dop_pereg_price
-      %td.th3= request.carrier_dop_pereg_count
-      %td.th3= request.carrier_dop_pereg_summ
-      %td.th3= request.carrier_dop_night_stay_price
-      %td.th3= request.carrier_dop_night_stay_count
-      %td.th3= request.carrier_dop_night_stay_summ
-      %td.th3= request.carrier_dop_mezgorod_price
-      %td.th3= request.carrier_dop_mezgorod_count
-      %td.th3= request.carrier_dop_mezgorod_summ
-      %td.th3= request.carrier_dop_rastentovka_price
-      %td.th3= request.carrier_dop_rastentovka_count
-      %td.th3= request.carrier_dop_rastentovka_summ
-      %td.th3= request.carrier_dop_soprov_price
-      %td.th3= request.carrier_dop_soprov_count
-      %td.th3= request.carrier_dop_soprov_summ
-      %td.th3= request.carrier_dop_negabarit_price
-      %td.th3= request.carrier_dop_negabarit_count
-      %td.th3= request.carrier_dop_negabarit_summ
-      %td.th3= request.carrier_dop_gruzch_price
-      %td.th3= request.carrier_dop_gruzch_count
-      %td.th3= request.carrier_dop_gruzch_summ
-      %td.th3= request.carrier_dop_summ
-      %td.th3= request.carrier_total_summ
-      %td.th3= request.carrier_rate_hours
-      %td.th3= request.carrier_rate_sverh_price
-      %td.th3= request.carrier_rate_sverh_count
-      %td.th3= request.carrier_rate_sverh_summ
-      %td.th3= request.carrier_rate_total_summ
-      %td.th3= request.carrier_dop_discount
-      %td.th3= request.carrier_summ
-      %td.th3= request.carrier_total_summ
-      %td.th3= request.carrier_summ_to_pay
-      %td.th3= request.carrier_prepayment
-      %td.th3= request.carrier_payment_method_id
-      %td.th3= request.carrier_payment_way_id
-      %td.th3= request.carrier_maturity
-      %td.th3= request.carrier_payment_docs_id
-      %td.th3= request.carrier_documents_return_term
-      %td.th3= request.customer_rate_summ
-      %td.th3= request.customer_rate_podacha_hours
-      %td.th3= request.customer_rate_hour_price
-      %td.th3= request.customer_dop_summ
-      %td.th3= request.customer_rate_hours
-      %td.th3= request.customer_rate_sverh_price
-      %td.th3= request.customer_rate_sverh_count
-      %td.th3= request.customer_rate_sverh_summ
-      %td.th3= request.customer_rate_total_summ
-      %td.th3= request.customer_dop_prab_price
-      %td.th3= request.customer_dop_prab_count
-      %td.th3= request.customer_dop_prab_summ
-      %td.th3= request.customer_dop_dop_tochka_pogr_price
-      %td.th3= request.customer_dop_dop_tochka_pogr_count
-      %td.th3= request.customer_dop_dop_tochka_pogr_summ
-      %td.th3= request.customer_dop_dop_tochka_razgr_price
-      %td.th3= request.customer_dop_dop_tochka_razgr_count
-      %td.th3= request.customer_dop_dop_tochka_razgr_summ
-      %td.th3= request.customer_dop_vozvr_price
-      %td.th3= request.customer_dop_vozvr_count
-      %td.th3= request.customer_dop_vozvr_summ
-      %td.th3= request.customer_dop_pereg_price
-      %td.th3= request.customer_dop_pereg_count
-      %td.th3= request.customer_dop_pereg_summ
-      %td.th3= request.customer_dop_night_stay_price
-      %td.th3= request.customer_dop_night_stay_count
-      %td.th3= request.customer_dop_night_stay_summ
-      %td.th3= request.customer_dop_mezgorod_price
-      %td.th3= request.customer_dop_mezgorod_count
-      %td.th3= request.customer_dop_mezgorod_summ
-      %td.th3= request.customer_dop_rastentovka_price
-      %td.th3= request.customer_dop_rastentovka_count
-      %td.th3= request.customer_dop_rastentovka_summ
-      %td.th3= request.customer_dop_soprov_price
-      %td.th3= request.customer_dop_soprov_count
-      %td.th3= request.customer_dop_soprov_summ
-      %td.th3= request.customer_dop_negabarit_price
-      %td.th3= request.customer_dop_negabarit_count
-      %td.th3= request.customer_dop_negabarit_summ
-      %td.th3= request.customer_dop_gruzch_price
-      %td.th3= request.customer_dop_gruzch_count
-      %td.th3= request.customer_dop_gruzch_summ
-      %td.th3= request.customer_total_summ
-      %td.th3= request.customer_summ_to_pay
-      %td.th3= request.customer_invoice_number
-      %td.th3= request.customer_payed_summ
-      %td.th3= request.customer_prepayment
-      %td.th3= request.customer_payment_method_id
-      %td.th3= request.customer_payment_way_id
-      %td.th3= request.customer_maturity
-      %td.th3= request.customer_payment_doc_id
-      %td.th3= request.customer_documents_return_term
-      %td.th3= request.user_id
-      %td.th3= request.manager_fot
-      %td.th3= request.manager_percent
-      %td.th3= request.manager_premium
-      %td.th3= request.manager_total_summ
-      %td.th3= request.account_expenditure
-      %td.th3= request.account_money
-      %td.th3= request.account_parish_date
-      %td.th3= request.account_parish_summ
-      %td.th3= request.account_consumption_date
-      %td.th3= request.account_consumption_respect
-      %td.th3= request.account_consumption_summ
-      %td.th3= request.responsibility_transport_replacement_requirement
-      %td.th3= request.compensation_for_damage
-      %td.th3= request.undeliver_transport_loading_city
-      %td.th3= request.undeliver_transport_loading_intercity
-      %td.th3= request.transport_late_loading_city
-      %td.th3= request.transport_late_loading_intercity
-      %td.th3= request.transport_late_destination_city
-      %td.th3= request.transport_late_destination_intercity
-      %td.th3= request.transport_refuse_loading_day_city
-      %td.th3= request.transport_refuse_loading_day_intercity
-      %td.th3= request.transport_idle_excessively_city
-      %td.th3= request.transport_idle_excessively_intercity
-      %td.th3= request.payment_late
-      %td.th3= request.document_late
-      %td.th3= request.customer_responsibility_car_deny_price
-      %td.th3= request.customer_responsibility_car_deny_summ
-      %td.th3= request.customer_responsibility_prostoy_count
-      %td.th3= request.customer_responsibility_prostoy_price
-      %td.th3= request.customer_responsibility_prostoy_summ
-      %td.th3= request.customer_responsibility_payment_late_count
-      %td.th3= request.customer_responsibility_payment_late_price
-      %td.th3= request.customer_responsibility_payment_late_summ
-      %td.th3= request.customer_responsibility_document_late_count
-      %td.th3= request.customer_responsibility_document_late_price
-      %td.th3= request.customer_responsibility_document_late_summ
-      %td.th3= request.carrier_responsibility_car_deny_price
-      %td.th3= request.carrier_responsibility_car_deny_summ
-      %td.th3= request.carrier_responsibility_late_count
-      %td.th3= request.carrier_responsibility_late_price
-      %td.th3= request.carrier_responsibility_late_summ
-      %td.th3= request.carrier_responsibility_delivery_late_count
-      %td.th3= request.carrier_responsibility_delivery_late_price
-      %td.th3= request.carrier_responsibility_delivery_late_summ
-      %td.th3= request.carrier_responsibility_document_late_count
-      %td.th3= request.carrier_responsibility_document_late_price
-      %td.th3= request.carrier_responsibility_document_late_summ
-      %td.th3= request.carrier_responsibility_summ
-      %td.th3= request.customer_responsibility_summ
-      %td.th3= request.transport_idle_excessively_hours
-      %td.th3= request.transport_late_loading_hours
-      %td.th3= request.transport_late_destination_hours
-      %td.th3= request.request_type
-      %td.th3= request.other_conditions
-      %td.th3= request.carrier_rate_total_summ
-      %td.th3= request.customer_rate_total_summ
-      %td.th3= request.bill_id
-      %td.th3= request.is_finished
-      %td.th3= request.customer_payment_way_for_salary
-      %td.th3= request.carrier_payment_way_for_salary
-      %td.th3= link_to 'Открыть', request, :id => "showRequestLink"
+      %td{ :class => 'th3', :colspan => '4' }= request.id
+      %td{ :class => 'th3', :colspan => '4' }= request.created_at.strftime("%d-%m-%y %H:%M")
+      %td{ :class => 'th3', :colspan => '4' }= request.customer_company.name
+      %td{ :class => 'th3', :colspan => '2' }
+        - request.loading_points.each do |lp|
+          != "#{lp.point_number}) #{lp.address}"
+          %br/
+      %td{ :class => 'th3', :colspan => '2' }
+        - request.unloading_points.each do |up|
+          != "#{up.point_number}) #{up.address}"
+          %br/
+      %td{ :class => 'th3', :colspan => '2' }= request.carrier_company.name
+      %td{ :class => 'th3', :colspan => '2' }= request.driver.full_name
+      %td{ :class => 'th3', :colspan => '1' }= request.carrier_summ_to_pay
+      %td{ :class => 'th3', :colspan => '1' } Оплачено
+      %td{ :class => 'th3', :colspan => '2' }= request.customer_summ_to_pay
+      %td{ :class => 'th3', :colspan => '2' } Оплачено
+      %td{ :class => 'th3', :colspan => '4' }= link_to 'Открыть', request, :id => 'showRequestLink'
 
 %br
 %div{ :style => 'width: 10%; margin: 0px auto;' }

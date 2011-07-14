@@ -1,0 +1,118 @@
+%tr
+  %td{ :class => 'borNone', :align => 'center', :colspan => 9 }
+    %br/
+%tr
+  %td{ :class => 'borNone', :align => 'center', :colspan => 9 }
+    %hr/
+%tr
+  %td{ :class => 'borNone', :align => 'center', :colspan => 9 }
+    %br/
+%tr
+  %td{ :class => 'title borNone', :align => 'center', :colspan => 9 }
+    Штрафные санкции
+%tr
+  %td{ :class => 'borNone', :align => 'center', :colspan => 9 }
+    %br/
+%tr
+  %td{ :class => 'borNone', :align => 'center', :colspan => 4 }
+    %span{ :style => 'font-size: 14px; font-style: italic; text-decoration: underline;' }
+      Ответственность Заказчика
+  %td.fieldBetween
+  %td{ :class => 'borNone', :align => 'center', :colspan => 4 }
+    %span{ :style => 'font-size: 14px; font-style: italic; text-decoration: underline;' }
+      Ответственность Перевозчика
+%tr
+  %td{ :align => 'center', :class => 'fieldInnerTopLeft', :style => 'background:#D3D3D3;' }
+    Наименование
+  %td{ :align => 'center', :class => 'fieldInnerMediumTop', :style => 'background:#D3D3D3;' }
+    Норматив
+  %td{ :align => 'center', :class => 'fieldInnerMediumTop', :style => 'background:#D3D3D3;' }
+    Стоимость
+  %td{ :align => 'center', :class => 'fieldInnerTopRight', :style => 'background:#D3D3D3;' }
+    Сумма
+  %td.fieldBetween
+  %td{ :align => 'center', :class => 'fieldInnerTopLeft', :style => 'background:#D3D3D3;' }
+    Наименование
+  %td{ :align => 'center', :class => 'fieldInnerMediumTop', :style => 'background:#D3D3D3;' }
+    Норматив
+  %td{ :align => 'center', :class => 'fieldInnerMediumTop', :style => 'background:#D3D3D3;' }
+    Стоимость
+  %td{ :align => 'center', :class => 'fieldInnerTopRight', :style => 'background:#D3D3D3;' }
+    Сумма
+%tr
+  %td.customer.fieldName.fieldInnerMiddleLeft
+    Отказ от ТС:
+  %td.customer.fieldInnerMediumMiddle
+    в день погр.
+  %td.customer.fieldInnerMediumMiddle
+    != "#{f.text_field :customer_responsibility_car_deny_price, :class => 'inp', :size => 4}%"
+  %td.customer.fieldInnerMiddleRight
+    != "#{f.text_field :customer_responsibility_car_deny_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
+  %td.fieldBetween
+  %td.carrier.fieldName.fieldInnerMiddleLeft
+    Неподача ТС:
+  %td.carrier.fieldInnerMediumMiddle
+    в день погр.
+  %td.carrier.fieldInnerMediumMiddle
+    != "#{f.text_field :carrier_responsibility_car_deny_price, :class => 'inp', :size => 4}%"
+  %td.carrier.fieldInnerMiddleRight
+    != "#{f.text_field :carrier_responsibility_car_deny_summ, :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
+%tr
+  %td.customer.fieldName.fieldInnerMiddleLeft
+    Простой ТС:
+  %td.customer.fieldInnerMediumMiddle
+    != "#{f.text_field :customer_responsibility_prostoy_count, :class => 'inp', :size => 2}часов"
+  %td.customer.fieldInnerMediumMiddle
+    != "#{f.text_field :customer_responsibility_prostoy_price, :class => 'inp', :size => 4}%"
+  %td.customer.fieldInnerMiddleRight
+    != "#{f.text_field :customer_responsibility_prostoy_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
+  %td.fieldBetween
+  %td.carrier.fieldName.fieldInnerMiddleLeft
+    Опоздание ТС:
+  %td.carrier.fieldInnerMediumMiddle
+    != "#{f.text_field :carrier_responsibility_late_count, :class => 'inp', :size => 2}часа"
+  %td.carrier.fieldInnerMediumMiddle
+    != "#{f.text_field :carrier_responsibility_late_price, :class => 'inp', :size => 4}%"
+  %td.carrier.fieldInnerMiddleRight
+    != "#{f.text_field :carrier_responsibility_late_summ, :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
+%tr
+  %td.customer.fieldName.fieldInnerBottomLeft
+    Задержка опл.:
+  %td.customer.fieldInnerMediumMiddle
+    != "#{f.text_field :customer_responsibility_payment_late_count, :class => 'inp', :size => 2}часов"
+  %td.customer.fieldInnerMediumMiddle
+    != "#{f.text_field :customer_responsibility_payment_late_price, :class => 'inp', :size => 4}%"
+  %td.customer.fieldInnerMiddleRight
+    != "#{f.text_field :customer_responsibility_payment_late_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
+  %td.fieldBetween
+  %td.carrier.fieldName.fieldInnerMiddleLeft
+    Просрочка дост.:
+  %td.carrier.fieldInnerMediumMiddle
+    != "#{f.text_field :carrier_responsibility_delivery_late_count, :class => 'inp', :size => 2}часа"
+  %td.carrier.fieldInnerMediumMiddle
+    != "#{f.text_field :carrier_responsibility_delivery_late_price, :class => 'inp', :size => 4}%"
+  %td.carrier.fieldInnerMiddleRight
+    != "#{f.text_field :carrier_responsibility_delivery_late_summ, :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
+%tr
+  %td.borNone
+  %td{ :class => 'fieldInnerBottomLeft fieldName', :style => 'border-top:1px black solid;', :align => 'right', :colspan => 2 }
+    %b Итого за штрафные санкции:
+  %td{ :class => 'customer borNone fieldInnerBottomRight', :style => 'border-top:1px black solid;', :colspan => 1 }
+    %b!= "#{f.text_field :customer_responsibility_summ, :class => 'summ', :readonly => 'readonly', :size => 8 } руб."
+  %td.fieldBetween
+  %td{ :class => 'carrier fieldName fieldInnerBottomLeft' }
+    Возврат док.:
+  %td{ :class => 'carrier fieldInnerMediumMiddle' }
+    != "#{f.text_field :carrier_responsibility_document_late_count, :class => 'inp', :size => 2}б/дней"
+  %td{ :class => 'carrier fieldInnerMediumMiddle' }
+    != "#{f.text_field :carrier_responsibility_document_late_price, :class => 'inp', :size => 4}%"
+  %td{ :class => 'carrier fieldInnerMiddleRight' }
+    != "#{f.text_field :carrier_responsibility_document_late_summ, :class => 'summ', :readonly => 'readonly', :size => 6 } руб."
+%tr
+  %td{ :class => 'borNone', :colspan => 4 }
+  %td{ :class => 'fieldBetween' }
+  %td.borNone
+  %td{ :class => 'fieldInnerBottomLeft fieldName', :style => 'border-top:1px black solid;', :align => 'right', :colspan => 2 }
+    %b Итого за штрафные санкции:
+  %td{ :class => 'carrier borNone fieldInnerBottomRight', :style => 'border-top:1px black solid;', :colspan => 1 }
+    %b!= "#{f.text_field :carrier_responsibility_summ, :class => 'summ', :readonly => 'readonly', :size => 8 } руб."

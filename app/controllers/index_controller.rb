@@ -1,9 +1,9 @@
 # coding: utf-8
 
 class IndexController < ApplicationController
-  layout nil 
+  layout nil
   layout 'application', :except => :signin_form
- 
+
   def index
   end
 
@@ -15,7 +15,7 @@ class IndexController < ApplicationController
       session[:user] = user.id
       redirect_to :action => session[:intended_action]
     else
-      redirect_to({:action => 'signin_form'}, {:notice => "Неверный логин или пароль"}) 
+      redirect_to({:action => 'signin_form'}, {:notice => "Неверный логин или пароль"})
     end
   end
 

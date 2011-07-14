@@ -7,7 +7,7 @@ class CustomerCompany < ActiveRecord::Base
 
   cattr_reader :per_page
   @@per_page = 20
-  has_many :driver
+  has_many :requests
   belongs_to  :opf
   belongs_to  :company_face
 
@@ -24,14 +24,18 @@ class CustomerCompany < ActiveRecord::Base
   validates_numericality_of :respons_idle_excessively_hours
   validates_numericality_of :respons_idle_excessively_percent
   validates_numericality_of :respons_payment_late
-          
+
   validates_numericality_of :respons_undeliver_transport_loading
   validates_numericality_of :respons_transport_late_loading_hours
   validates_numericality_of :respons_transport_late_loading_percent
   validates_numericality_of :respons_transport_late_destination_hours
   validates_numericality_of :response_transport_late_destination_percent
   validates_numericality_of :respons_document_late
-                    
+
+  def name
+    "#{self.opf.opf} #{self.title}"
+  end
+
   def standartise_fields
     #Проверка на случай если данные идут не из формы, а из fixtures
     if params

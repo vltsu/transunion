@@ -106,7 +106,7 @@ table td span{
 
 .borNone {
     border-width: 0px;
-    border:none none;
+    border-style:none;
 }
 
 .borNoneExceptBottom {
@@ -199,7 +199,7 @@ table td span{
 
 .fieldBetween {
     border-width: 0px;
-    border:none none;
+    border-style: none;
 }
 
 #addButton a {

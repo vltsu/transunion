@@ -5,6 +5,7 @@
   <title>Transunion</title>
   <%= stylesheet_link_tag :all, "main", :recursive => true %>
   <%= javascript_include_tag :defaults %>
+  <%= yield(:head) -%>
   <%= javascript_include_tag "menu/ddsmoothmenu" %>
   <%= csrf_meta_tag %>
   <script type="text/javascript">
@@ -15,7 +16,6 @@
       contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
     })
   </script>
-  <%= yield(:head) -%>
 </head>
 <body>
   <div id="smoothmenu1" class="ddsmoothmenu">
@@ -74,7 +74,7 @@
       </li>
 
       <li style="float: right;"><a style="color:#FFD700;" id='signout' href="/signout">Выход</a></li>
-    
+
     </ul>
     <br style="clear: left" />
   </div>

@@ -21,9 +21,29 @@ class RequestsController < ApplicationController
 
   # POST /requests
   def create
+
+    (1..9).each do |num|
+      lp_params = params[:request]["loading_point#{num}"]
+      if lp_params  && lp_params['address']
+        lp_params[:point_number] = num
+        lp = LoadingPoint.new(lp_params)
+        lp.save
+      end
+
+      if params[:request]['unloading_point#{num}'] && params[:request]['unloading_point#{num}']['address']
+        up = UnloadingPoint.new(params[:request]['unloading_point#{num}'])
+        up.save
+      end
+
+      params[:request].delete("loading_point#{num}".to_sym)
+      params[:request].delete("unloading_point#{num}".to_sym)
+
+    end
+
+
     @request = Request.new(params[:request])
 
-    if @request.save
+    if @request.save &&
       redirect_to({:action => 'index'}, {:notice => 'Заявка добавлена'})
     else
       render :action => "new"
