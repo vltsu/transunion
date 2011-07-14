@@ -140,13 +140,25 @@ Factory.define :cargo_classification2, :class => CargoClassification do |f|
 end
 
 Factory.define :payment_method do |f|
-  f.payment_method 'Beznal'
+  f.payment_method 'Безнал'
+end
+
+Factory.define :payment_method2, :class => PaymentMethod do |f|
+  f.payment_method 'Нал'
 end
 
 Factory.define :payment_way do |f|
-  f.payment_way 'Na ruki'
+  f.payment_way 'На руки'
+end
+
+Factory.define :payment_way2, :class => PaymentWay do |f|
+  f.payment_way 'На карту'
 end
 
 Factory.define :payment_doc do |f|
-  f.payment_doc 'Po faximilnim'
+  f.payment_doc 'По оригиналам'
+end
+
+Factory.define :payment_doc2, :class => PaymentDoc do |f|
+  f.payment_doc 'По копиям'
 end

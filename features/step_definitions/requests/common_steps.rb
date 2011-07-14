@@ -9,5 +9,10 @@ And /^I have all required fixtures up$/ do
   Factory.create(:driver2)
   Factory.create(:car)
   Factory.create(:car2)
-
+  Factory.create(:payment_method)
+  Factory.create(:payment_method2)
+  Factory.create(:payment_way)
+  Factory.create(:payment_way2)
+  Factory.create(:payment_doc)
+  Factory.create(:payment_doc2)
 end

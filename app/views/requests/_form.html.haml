@@ -26,11 +26,11 @@
       %br/
       %br/
       .radio
-        = radio_button_tag 'request_type', 'request' , params[:action] == 'new' ? true : @request_type == 'request'
+        = radio_button_tag 'request[request_type]', 'request' , @request.request_type == 'request' || (params[:action] == 'new' && @request.request_type == nil) ? true : nil
         = label_tag "request", "Заявка"
         %br/
       .radio
-        = radio_button_tag 'request_type', 'contract_request' , @request_type == 'contract_request'
+        = radio_button_tag 'request[request_type]', 'contract_request', @request.request_type == 'contract_request' ? true : nil
         = label_tag "contract_request", "Договор-заявка"
         %br/
   %table{ :width => '1280px', :class => 'request', :cellspacing=> '0' }
@@ -288,7 +288,7 @@
             = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
       %tr
         %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => '1' }
-          %p
+          %p#loadingButton1
         %td{ :colspan => 2, :class => 'borNone', :id => 'loadingButtonDelete', :num => 1, :style => 'background:none; cursor:default;' }
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => '1' }
@@ -673,13 +673,13 @@
         По документам:
       %td{ :colspan => 2, :class => 'customer fieldInnerMiddleRight' }
         = f.collection_select :customer_payment_doc_id, PaymentDoc.find(:all), :id, :payment_doc, { :include_blank => true },
-           { :class => 'required' }
+           { :class => 'required inp' }
       %td.fieldBetween
       %td{ :colspan => 2, :class => 'carrier fieldName fieldInnerMiddleLeft' }
         По документам:
       %td{ :colspan => 2, :class => 'carrier fieldInnerMiddleRight' }
         = f.collection_select :carrier_payment_doc_id, PaymentDoc.find(:all), :id, :payment_doc, { :include_blank => true },
-           { :class => 'required' }
+           { :class => 'required inp' }
     %tr
       %td{ :colspan => 2, :class => 'customer fieldName fieldInnerBottomLeft' }
         Номер счёта:

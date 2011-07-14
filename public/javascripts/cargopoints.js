@@ -21,7 +21,7 @@ $(document).ready(function() {
 
                 htmlDate  = "\t\t<td colspan='2' id='loadingDateText"+nextId+"' class='fieldName fieldInnerTopLeft' >Дата, время погрузки:</td>\n"
                 htmlDate += "\t\t<td colspan='2' id='loadingDateForm"+nextId+"' class='fieldInnerTopRight fieldForm'>"
-                htmlDate += "<input type='text' name='request[loading_point"+nextId+"][date]' id='loadingDate"+nextId+"' value='' class='ddate' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[loading_point"+nextId+"][time]' name='request[loading_point"+nextId+"][time]'></td>\n</td>\n"
+                htmlDate += "<input type='text' name='request[loading_point"+nextId+"][date]' id='loadingDate"+nextId+"' value='' class='inp ddateshort' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[loading_point"+nextId+"][time]' name='request[loading_point"+nextId+"][time]'></td>\n</td>\n"
                 htmlDate += "\t\t<td class='fieldBetween'>"
                 $('#emptyLoadingDate'+nextId).replaceWith(htmlDate)
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
                 html +=        "\t<tr>\n"
                 html +=            "\t\t<td colspan='2' id='loadingDateText"+nextId+"' class='fieldName fieldInnerTopLeft' >Дата, время погрузки:</td>\n"
                 html +=            "\t\t<td colspan='2' id='loadingDateForm"+nextId+"' class='fieldInnerTopRight fieldForm'>"
-                html +=            "<input type='text' name='request[loading_point"+nextId+"][date]' id='loadingDate"+nextId+"' value='' class='ddate' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[loading_point"+nextId+"][time]' name='request[loading_point"+nextId+"][time]'></td>\n</td>\n"
+                html +=            "<input type='text' name='request[loading_point"+nextId+"][date]' id='loadingDate"+nextId+"' value='' class='inp ddateshort' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[loading_point"+nextId+"][time]' name='request[loading_point"+nextId+"][time]'></td>\n</td>\n"
                 html +=            "\t\t<td id='emptyUnloadingDate"+nextId+"' class='borNone' colspan='5'></td>\n"
                 html +=        "\t</tr>\n"
                 html +=        "\t<tr>\n"
@@ -123,7 +123,7 @@ $(document).ready(function() {
                 $(html).insertAfter("#point"+id)
             }
             removeExtraButtons('loading',id)
-            $('.ddate').datetimeEntry({datetimeFormat: 'Y-O-D H:M:S'})
+            $('.ddateshort').datetimeEntry({datetimeFormat: 'Y-O-D'})
             return true
         }
     );
@@ -151,7 +151,7 @@ $(document).ready(function() {
                 htmlDate  = "\t<td class='fieldBetween'></td>\n"
                 htmlDate += "\t\t<td colspan='2' id='unloadingDateText"+nextId+"' class='fieldName fieldInnerTopLeft' >Дата, время разгрузки:</td>\n"
                 htmlDate += "\t\t<td colspan='2' id='unloadingDateForm"+nextId+"' class='fieldInnerTopRight fieldForm'>"
-                htmlDate += "<input type='text' name='request[unloading_point"+nextId+"][date]' id='unloadingDate"+nextId+"' class='ddate' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[unloading_point"+nextId+"][time]' name='request[unloading_point"+nextId+"][time]'></td>\n</td>\n"
+                htmlDate += "<input type='text' name='request[unloading_point"+nextId+"][date]' id='unloadingDate"+nextId+"' class='inp ddateshort' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[unloading_point"+nextId+"][time]' name='request[unloading_point"+nextId+"][time]'></td>\n</td>\n"
                 $('#emptyUnloadingDate'+nextId).replaceWith(htmlDate)
 
                 htmlAddress = "\t\t<td class='fieldBetween'></td>\n"
@@ -205,7 +205,7 @@ $(document).ready(function() {
                 html +=            "\t\t<td id='emptyLoadingDate"+nextId+"' class='borNone' colspan='5'></td>\n"
                 html +=            "\t\t<td colspan='2' id='unloadingDateText"+nextId+"' class='fieldName fieldInnerTopLeft'>Дата, время разгрузки:</td>\n"
                 html +=            "\t\t<td colspan='2' id='unloadingDateForm"+nextId+"' class='fieldInnerTopRight fieldForm'>\n"
-                html +=            "\t\t<input type='text' name='request[unloading_point"+nextId+"][date]' id='unloadingDate"+nextId+"' value='' class='ddate' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[unloading_point"+nextId+"][time]' name='request[unloading_point"+nextId+"][time]'></td>\n\n"
+                html +=            "\t\t<input type='text' name='request[unloading_point"+nextId+"][date]' id='unloadingDate"+nextId+"' value='' class='inp ddateshort' size='10'> до: <input type='text' size='5' class='inp' value='' id='request[unloading_point"+nextId+"][time]' name='request[unloading_point"+nextId+"][time]'></td>\n\n"
                 html +=        "\t</tr>\n"
                 html +=        "\t<tr>\n"
                 html +=            "\t\t<td id='emptyLoadingAddress"+nextId+"' class='borNone' colspan='5'></td>\n"
@@ -252,7 +252,7 @@ $(document).ready(function() {
                 $(html).insertAfter("#point"+id)
             }
             removeExtraButtons('unloading',id)
-            $('.ddate').datetimeEntry({datetimeFormat: 'Y-O-D H:M:S'})
+            $('.ddateshort').datetimeEntry({datetimeFormat: 'Y-O-D'})
             return true
         }
     );

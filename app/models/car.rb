@@ -30,6 +30,7 @@ class Car < ActiveRecord::Base
   protected
 
   def standartise_fields
+    raise params[:request]
     #Проверка на случай если данные идут не из формы, а из fixtures
     if params
       self.dimensions_width  = params[:dimensions_width].to_s.gsub(/,/,'.')
