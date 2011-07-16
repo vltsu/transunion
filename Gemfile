@@ -12,6 +12,7 @@ gem "ruby-debug19"
 gem "russian"
 #jquery plugin
 gem "jquery-rails", '>= 1.0.3'
+gem "client_side_validations"
 gem "active_scaffold"
 gem "launchy"
 #gem for pagination

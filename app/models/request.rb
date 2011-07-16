@@ -17,6 +17,9 @@ class Request < ActiveRecord::Base
   has_many :loading_points
   has_many :unloading_points
 
+  accepts_nested_attributes_for :loading_points,   :reject_if => lambda { |a| a[:address].blank? }
+  accepts_nested_attributes_for :unloading_points, :reject_if => lambda { |a| a[:address].blank? }
+
   validates :request_type,               :presence => { :message => 'Выберите тип документа' }
   validates :cargo_classification_id,    :presence => { :message => 'Выберите класс груза' }
   validates :item,                       :presence => { :message => 'Введите название груза' }
@@ -28,7 +31,7 @@ class Request < ActiveRecord::Base
   validates :customer_payment_way_id,    :presence => { :message => 'Выберите способ оплаты заказчику' }
   validates :customer_payment_doc_id,    :presence => { :message => 'Выберите тип документов для заказчика' }
   validates :carrier_payment_method_id,  :presence => { :message => 'Выберите вид расчёта с перевозчиком' }
-  validates :carrier_payment_way_id,     :presence => { :message => 'Выберите спрособ оплаты перевозчику' }
+  validates :carrier_payment_way_id,     :presence => { :message => 'Выберите спocоб оплаты перевозчику' }
   validates :carrier_payment_doc_id,     :presence => { :message => 'Выберите тип документов для перевозчика' }
 
   protected

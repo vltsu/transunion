@@ -13,33 +13,49 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+    9.times  do
+      @request.loading_points.build
+      @request.unloading_points.build
+    end
   end
   # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
+    @lp1 = @request.loading_points.new
+    @up1 = @request.unloading_points.new
   end
 
   # POST /requests
   def create
 
-    @request = Request.new(params[:request])
-
-    (1..9).each do |num|
-      lp_params = params[:request]["loading_point#{num}"]
-      if lp_params  && lp_params['address']
-        lp_params[:point_number] = num
-        lp = @request.loading_point.new(lp_params)
-        lp.save
-      end
-
-      if params[:request]['unloading_point#{num}'] && params[:request]['unloading_point#{num}']['address']
-        up = @request.unloading_point.new(params[:request]['unloading_point#{num}'])
-        up.save
-      end
-
-      params[:request].delete("loading_point#{num}".to_sym)
-      params[:request].delete("unloading_point#{num}".to_sym)
+    #Присваивание номеров точкам погрузки/разгрузки
+    (0..8).each do |num|
+       if params[:request]['loading_points_attributes']["#{num}".to_sym]
+         num == 0 ?  number = 1 : number = num
+         params[:request]['loading_points_attributes']["#{num}".to_sym]['point_number'] = (number).to_s
+         params[:request]['unloading_points_attributes']["#{num}".to_sym]['point_number'] = (number).to_s
+       end
     end
+
+#    params[:clean_request] = params[:request].reject{|k,v|( k == "loading_point1" || k == "unloading_point1" ) }
+
+    @request = Request.new(params[:request])
+#    @request.loading_points << LoadingPoint.create(params[:request][:loading_point1])
+#    @request.unloading_points << UnloadingPoint.create(params[:request][:unloading_point1])
+
+#    (2..9).each do |num|
+#      lp_params = params[:request]["loading_point#{num}"]
+#      if lp_params  && lp_params['address']
+#        lp_params[:point_number] = num
+#        lp = @request.loading_point.new(lp_params)
+#        lp.save
+#      end
+#
+#      if params[:request]['unloading_point#{num}'] && params[:request]['unloading_point#{num}']['address']
+#        up = @request.unloading_point.new(params[:request]['unloading_point#{num}'])
+#        up.save
+#      end
+#    end
 
     if @request.save
       redirect_to({:action => 'index'}, {:notice => 'Заявка добавлена'})

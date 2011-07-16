@@ -1,24 +1,23 @@
 - content_for(:head) do
   - javascript_include_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.js'
-%br/
 - content_for(:head) do
   - stylesheet_link_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.css'
-%br/
 - content_for(:head) do
   - javascript_include_tag 'cargopoints'
-%br/
+- content_for(:head) do
+  - javascript_include_tag 'validation'
 - content_for(:head) do
   - javascript_include_tag 'request_add'
-%br/
 - content_for(:head) do
   - javascript_include_tag 'transport_select'
 = form_for @request do |f|
   -if @request.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @request.errors.each do |key,message|
-        = message
-        %br/
+      - if @request.errors
+        - @request.errors.each do |key,message|
+          = message
+          %br/
     %br/
   %div{ :style => 'width:250px; margin: 0px auto;' }
     %span.title.borNone
@@ -33,6 +32,7 @@
         = radio_button_tag 'request[request_type]', 'contract_request', @request.request_type == 'contract_request' ? true : nil
         = label_tag "contract_request", "Договор-заявка"
         %br/
+
   %table{ :width => '1280px', :class => 'request', :cellspacing=> '0' }
     %col{ :id => 'one',   :width => '140px' }
     %col{ :id => 'two',   :width => '140px' }
@@ -216,82 +216,82 @@
             Первая точка разгрузки
       %tr
         %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-          Дата, время погрузки:
+          Дата, время разгрузки:
         %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
           = f.fields_for 'loading_point1' do |loading_point_form|
-            != "#{loading_point_form.text_field :date, :size => 10, :class => 'inp ddateshort'} до:#{loading_point_form.text_field :time, :size => 5, :class => 'inp'}"
+            != "#{loading_point_form.text_field :date, :name => 'request[loading_points_attributes][0][date]', :size => 10, :class => 'inp ddateshort required', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ?  params[:request][:loading_points_attributes]["0".to_sym][:date] : nil} до:#{loading_point_form.text_field :time, :name => 'request[loading_points_attributes][0][time]', :size => 5, :class => 'inp', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ?  params[:request][:loading_points_attributes]["0".to_sym][:time] : nil}"
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
           Дата, время погрузки:
         %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
           = f.fields_for :unloading_point1 do |unloading_point_form|
-            != "#{unloading_point_form.text_field :date, :size => 10, :class => 'inp ddateshort'} до:#{unloading_point_form.text_field :time, :size => 5, :class => 'inp'}"
+            != "#{unloading_point_form.text_field :date, :name => 'request[unloading_points_attributes][0][date]', :size => 10, :class => 'inp required ddateshort', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ?  params[:request][:unloading_points_attributes]["0".to_sym][:date] : nil} до:#{unloading_point_form.text_field :time, :name => 'request[unloading_points_attributes][0][time]', :size => 5, :class => 'inp', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ?  params[:request][:unloading_points_attributes]["0".to_sym][:time] : nil}"
       %tr
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Адрес погрузки:
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :loading_point1 do |loading_point_form|
-            = loading_point_form.text_field :address, :size => 25, :class => 'inp required'
+            = loading_point_form.text_field :address, :name => 'request[loading_points_attributes][0][address]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym][:address] : nil
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Адрес разгрузки:
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :unloading_point1 do |unloading_point_form|
-            = unloading_point_form.text_field :address, :size => 25, :class => 'inp required'
+            = unloading_point_form.text_field :address, :name => 'request[unloading_points_attributes][0][address]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym][:address] : nil
       %tr
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Грузоотправитель:
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :loading_point1 do |loading_point_form|
-            = loading_point_form.text_field :shipper, :size => 25, :class => 'inp required'
+            = loading_point_form.text_field :shipper, :name => 'request[loading_points_attributes][0][shipper]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym][:shipper] : nil
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Грузополучатель:
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :unloading_point1 do |unloading_point_form|
-            = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp required'
+            = unloading_point_form.text_field :consignee, :name => 'request[unloading_points_attributes][0][consignee]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym][:consignee] : nil
       %tr
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Контактное лицо:
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :loading_point1 do |loading_point_form|
-            = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp required'
+            = loading_point_form.text_field :contact_person, :name => 'request[loading_points_attributes][0][contact_person]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym][:contact_person] : nil
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Контактное лицо:
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :unloading_point1 do |unloading_point_form|
-            = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp required'
+            = unloading_point_form.text_field :contact_person, :name => 'request[unloading_points_attributes][0][contact_person]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym][:contact_person] : nil
       %tr
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Телефон для связи (моб):
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :loading_point1 do |loading_point_form|
-            = loading_point_form.text_field :phone, :size => 25, :class => 'inp required'
+            = loading_point_form.text_field :phone, :name => 'request[loading_points_attributes][0][phone]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym][:phone] : nil
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
           Телефон для связи (моб):
         %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
           = f.fields_for :unloading_point1 do |unloading_point_form|
-            = unloading_point_form.text_field :phone, :size => 25, :class => 'inp required'
+            = unloading_point_form.text_field :phone, :name => 'request[unloading_points_attributes][0][phone]', :size => 25, :class => 'inp required', :value => params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:unloading_points_attributes]["0".to_sym][:phone] : nil
       %tr
         %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
           Телефон для связи (раб):
         %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
           = f.fields_for :loading_point1 do |loading_point_form|
-            = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
+            = loading_point_form.text_field :phone_work, :name => 'request[loading_points_attributes][0][phone_work]', :size => 25, :class => 'inp', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym][:phone_work] : nil
         %td.fieldBetween
         %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
           Телефон для связи (раб):
         %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
           = f.fields_for :unloading_point1 do |unloading_point_form|
-            = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
+            = unloading_point_form.text_field :phone_work, :name => 'request[unloading_points_attributes][0][phone_work]', :size => 25, :class => 'inp', :value => params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym] ? params[:request] &&  params[:request][:loading_points_attributes]["0".to_sym][:phone_work] : nil
       %tr
-        %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => '1' }
-          %p#loadingButton1
+        %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 1 }
+          %p#loadingButton0
         %td{ :colspan => 2, :class => 'borNone', :id => 'loadingButtonDelete', :num => 1, :style => 'background:none; cursor:default;' }
         %td.fieldBetween
-        %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => '1' }
+        %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 1 }
           %p
         %td{ :colspan => 2, :class => 'borNone', :id => 'unloadingButtonDelete', :num => 1, :style => 'background:none; cursor:default;' }
     - if params[:action] == 'edit'
