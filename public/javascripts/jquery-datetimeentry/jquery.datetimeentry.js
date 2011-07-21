@@ -1,8 +1,8 @@
 /* http://keith-wood.name/datetimeEntry.html
    Date and time entry for jQuery v1.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) September 2010.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and
+   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses.
    Please attribute the author if you use it. */
 
 /* Turn an input field into an entry point for a date and/or time value.
@@ -115,13 +115,13 @@ $.extend(DatetimeEntry.prototype, {
 		var spinnerText = this._get(inst, 'spinnerText');
 		var spinnerSize = this._get(inst, 'spinnerSize');
 		var appendText = this._get(inst, 'appendText');
-		var spinner = (!spinnerImage ? null : 
+		var spinner = (!spinnerImage ? null :
 			$('<span class="datetimeEntry_control" style="display: inline-block; ' +
 			'background: url(\'' + spinnerImage + '\') 0 0 no-repeat; ' +
 			'width: ' + spinnerSize[0] + 'px; height: ' + spinnerSize[1] + 'px;' +
 			($.browser.mozilla && $.browser.version < '1.9' ? // FF 2- (Win)
 			' padding-left: ' + spinnerSize[0] + 'px; padding-bottom: ' +
-			(spinnerSize[1] - 18) + 'px;' : '') + '"></span>'));
+			(spinnerSize[1] - 18) + 'px;' : '') + '" title="Today"></span>'));
 		input.wrap('<span class="datetimeEntry_wrap"></span>').
 			after(appendText ? '<span class="datetimeEntry_append">' +
 			appendText + '</span>' : '').after(spinner || '');
@@ -451,7 +451,7 @@ $.extend(DatetimeEntry.prototype, {
 				(spinnerBigSize[1] - spinnerSize[1]) / 2 - (relative ? relative.top : 0)) +
 				'px; width: ' + spinnerBigSize[0] +
 				'px; height: ' + spinnerBigSize[1] + 'px; background: #fff url(' +
-				spinnerBigImage + ') no-repeat 0px 0px; z-index: 10;"></div>').
+				spinnerBigImage + ') no-repeat 0px 0px; z-index: 10;" title="Today"></div>').
 				mousedown($.datetimeEntry._handleSpinner).
 				mouseup($.datetimeEntry._endSpinner).
 				mouseout($.datetimeEntry._endExpand).
@@ -721,7 +721,7 @@ $.extend(DatetimeEntry.prototype, {
 					month = num;
 					skipNumber();
 					break;
-				case 'n': case 'N': 
+				case 'n': case 'N':
 					var monthNames = this._get(inst, field == 'N' ? 'monthNames' : 'monthNamesShort');
 					for (var j = 0; j < monthNames.length; j++) {
 						if (value.substring(index).substr(0, monthNames[j].length).toLowerCase() ==
@@ -1230,7 +1230,7 @@ $.extend(DatetimeEntry.prototype, {
 
 /* jQuery extend now ignores nulls!
    @param  target  (object) the object to update
-   @param  props   (object) the new settings 
+   @param  props   (object) the new settings
    @return  (object) the updated object */
 function extendRemove(target, props) {
 	$.extend(target, props);
@@ -1267,7 +1267,7 @@ $.fn.datetimeEntry = function(options) {
 				$.datetimeEntry._connectDatetimeEntry(
 					this, $.extend(inlineSettings, options));
 			}
-		} 
+		}
 	});
 };
 
@@ -1275,4 +1275,3 @@ $.fn.datetimeEntry = function(options) {
 $.datetimeEntry = new DatetimeEntry(); // Singleton instance
 
 })(jQuery);
-

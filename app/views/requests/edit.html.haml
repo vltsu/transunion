@@ -1,3 +1,21 @@
-%h1{ :class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red" } Изменение ...
+%h1{ :class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red" } Редактирование заявки
 %br/
 = render 'form'
+
+%div{:style => "display:none;"}
+  %p#customerRateSummService= @request.customer_rate_summ
+  %p#customerRateHoursService= @request.customer_rate_hours
+  %p#customerRatePodachaHoursService= @request.customer_rate_podacha_hours
+  %p#customerRateHourPriceService= @request.customer_rate_hour_price
+  %p#customerRateSverhPriceService= @request.customer_rate_sverh_price
+  %p#customerRateSverhCountService= @request.customer_rate_sverh_count
+  %p#customerRateSverhSummService= @request.customer_rate_sverh_summ
+  %p#customerRateTotalSummService= @request.customer_rate_total_summ
+  %p#carrierRateSummService= @request.carrier_rate_summ
+  %p#carrierRateHoursService= @request.carrier_rate_hours
+  %p#carrierRatePodachaHoursService= @request.carrier_rate_podacha_hours
+  %p#carrierRateHourPriceService= @request.carrier_rate_hour_price
+  %p#carrierRateSverhCountService= @request.carrier_rate_sverh_count
+  %p#carrierRateSverhPriceService= @request.carrier_rate_sverh_price
+  %p#carrierRateSverhSummService= @request.carrier_rate_sverh_summ
+  %p#carrierRateTotalSummService= @request.carrier_rate_total_summ

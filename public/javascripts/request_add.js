@@ -44,51 +44,39 @@ $(document).ready(function() {
 
 
     // Расчёт стоимости перевозки по повременному тарифу
-    $('#customerRateHours,#customerRatePodachaHours,#customerRateHourPrice,#customerRateSverhCount,#customerRateSverhPrice').live('change',
+    $('#customerRateHours,#customerRatePodachaHours,#customerRateHourPrice,#customerRateSverhCount').live('change',
         function () {
             if($('.customerPayMethodButton').attr('state') == 'povr') {
                 var customerRateHours          = $('#customerRateHours').val();
                 var customerRatePodachaHours   = $('#customerRatePodachaHours').val();
                 var customerRateHourPrice      = $('#customerRateHourPrice').val();
                 var customerRateSverhCount     = $('#customerRateSverhCount').val();
-                var customerRateSverhPrice     = $('#customerRateSverhPrice').val();
 
                 if (!customerRateHours) customerRateHours=0;
                 if (!customerRatePodachaHours) customerRatePodachaHours=0;
                 if (!customerRateHourPrice) customerRateHourPrice=0;
                 if (!customerRateSverhCount) customerRateSverhCount=0;
-                if (!customerRateSverhPrice) customerRateSverhPrice=0;
 
-                var customerRateSverhSumm = parseFloat(customerRateSverhCount) * parseFloat(customerRateSverhPrice)
-
-                $('#customerRateSverhSumm').val(customerRateSverhSumm);
-
-                var total = ( parseFloat(customerRateHours)+parseFloat(customerRatePodachaHours) ) * parseFloat(customerRateHourPrice) + (customerRateSverhCount * customerRateSverhPrice)
+                var total = ( parseFloat(customerRateHours)+parseFloat(customerRatePodachaHours) ) * parseFloat(customerRateHourPrice)
                 $('#request_customer_rate_total_summ').val(total);
             }
         }
     );
 
-    $('#carrierRateHours,#carrierRatePodachaHours,#carrierRateHourPrice,#carrierRateSverhCount,#carrierRateSverhPrice').live('change',
+    $('#carrierRateHours,#carrierRatePodachaHours,#carrierRateHourPrice,#carrierRateSverhCount').live('change',
         function () {
             if($('.carrierPayMethodButton').attr('state') == 'povr') {
                 var carrierRateHours          = $('#carrierRateHours').val();
                 var carrierRatePodachaHours   = $('#carrierRatePodachaHours').val();
                 var carrierRateHourPrice      = $('#carrierRateHourPrice').val();
                 var carrierRateSverhCount     = $('#carrierRateSverhCount').val();
-                var carrierRateSverhPrice     = $('#carrierRateSverhPrice').val();
 
                 if (!carrierRateHours) carrierRateHours=0;
                 if (!carrierRatePodachaHours) carrierRatePodachaHours=0;
                 if (!carrierRateHourPrice) carrierRateHourPrice=0;
                 if (!carrierRateSverhCount) carrierRateSverhCount=0;
-                if (!carrierRateSverhPrice) carrierRateSverhPrice=0;
 
-                var carrierRateSverhSumm = parseFloat(carrierRateSverhCount) * parseFloat(carrierRateSverhPrice)
-
-                $('#carrierRateSverhSumm').val(carrierRateSverhSumm);
-
-                var total = ( parseFloat(carrierRateHours)+parseFloat(carrierRatePodachaHours) ) * parseFloat(carrierRateHourPrice) + (carrierRateSverhCount * carrierRateSverhPrice)
+                var total = ( parseFloat(carrierRateHours)+parseFloat(carrierRatePodachaHours) ) * parseFloat(carrierRateHourPrice)
                 $('#request_carrier_rate_total_summ').val(total);
             }
         }
@@ -408,23 +396,23 @@ $(document).ready(function() {
             html = "\t<tbody id='rateVariants'><tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerTopLeft'>По договорному тарифу:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer dog fieldInnerTopRight'>\n"
-            html +=	"\t\t<input type='text' name='customerRateSumm' id='customerRateSumm' value='"+cusDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=	"\t\t<input type='text' name='request[customer_rate_summ]' id='customerRateSumm' value='"+cusDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerTopLeft'>По договорному тарифу:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier dog fieldInnerTopRight'>\n"
-            html +=	"\t\t<input type='text' name='carrierRateSumm' id='carrierRateSumm' value='"+carDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=	"\t\t<input type='text' name='request[carrier_rate_summ]' id='carrierRateSumm' value='"+carDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerBottomLeft customerNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldInnerMiddleRight customerNext'>\n"
-            html +=	"\t\t<input type='text' name='customerRateSverhPrice' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=	"\t\t<input type='text' name='request[customer_rate_sverh_price]' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerBottomLeft carrierNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldInnerMiddleRight'>\n"
-            html +=	"\t\t<input type='text' name='carrierRateSverhPrice' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=	"\t\t<input type='text' name='request[carrier_rate_sverh_price]' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
@@ -433,7 +421,7 @@ $(document).ready(function() {
             html +=	"\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='customer sdel fieldInnerBottomRight customerTotal' style='border-top: 1px solid black;'>\n"
-            html +=	"\t\t<input type='text' name='request_customer_rate_total_summ' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=	"\t\t<input type='text' name='request[customer_rate_total_summ]' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td class='borNone' colspan='2'></td>\n"
@@ -441,7 +429,7 @@ $(document).ready(function() {
             html +=	"\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='carrier sdel fieldInnerBottomRight' style='border-top: 1px solid black;'>\n"
-            html +=	"\t\t<input type='text' name='request_carrier_rate_total_summ' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=	"\t\t<input type='text' name='request[carrier_rate_total_summ]' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr></tbody>\n"
             $('#rateVariants').replaceWith(html)
@@ -450,40 +438,40 @@ $(document).ready(function() {
             html = "\t<tbody id='rateVariants'><tr>\n"
             html +=     "\t\t<td class='customer fieldName fieldInnerTopLeft customerPaymentPovrem1'>Мин.вр. работы:</td>\n"
             html +=    "\t\t<td class='customer fieldInnerMediumTop'>\n"
-            html +=        "\t\t<input type='text' name='customerRateHours' id='customerRateHours' value='"+cusMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.</td>\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_hours]' id='customerRateHours' value='"+cusMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.</td>\n"
             html +=    "\t\t<td class='customer fieldName fieldInnerMediumTop'  >Время подачи:</td>\n"
             html +=    "\t\t<td class='customer fieldInnerTopRight'>\n"
-            html +=       "\t\t <input type='text' name='customerRatePodachaHours' id='customerRatePodachaHours' value='"+cusVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=       "\t\t <input type='text' name='request[customer_rate_podacha_hours]' id='customerRatePodachaHours' value='"+cusVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='fieldBetween'></td>\n"
             html +=    "\t\t<td class='carrier fieldName fieldInnerTopLeft carrierPaymentPovrem1'>Мин.вр. работы:</td>\n"
             html +=    "\t\t<td class='carrier fieldInnerMediumTop'>\n"
-            html +=        "\t\t<input type='text' name='carrierRateHours' id='carrierRateHours' value='"+carMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_hours]' id='carrierRateHours' value='"+carMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='carrier fieldName fieldInnerMediumTop'>Время подачи:</td>\n"
             html +=    "\t\t<td class='carrier fieldInnerTopRight'>\n"
-            html +=        "\t\t<input type='text' name='carrierRatePodachaHours' id='carrierRatePodachaHours' value='"+carVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_podacha_hours]' id='carrierRatePodachaHours' value='"+carVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerMiddleLeft customerPaymentPovrem2'>Цена за час:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldInnerMiddleRight'>\n"
-            html +=    "\t\t<input type='text' name='customerRateHourPrice' id='customerRateHourPrice' value='"+cusHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.</td>\n"
+            html +=    "\t\t<input type='text' name='request[customer_rate_hour_price]' id='customerRateHourPrice' value='"+cusHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerMiddleLeft carrierPaymentPovrem2'  >Цена за час:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldInnerMiddleRight'>\n"
-            html +=         "\t\t<input type='text' name='carrierRateHourPrice' id='carrierRateHourPrice' value='"+carHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=         "\t\t<input type='text' name='request[carrier_rate_hour_price]' id='carrierRateHourPrice' value='"+carHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerBottomLeft customerNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldInnerMiddleRight customerNext'>\n"
-            html +=	"\t\t<input type='text' name='customerRateSverhPrice' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=	"\t\t<input type='text' name='request[customer_rate_sverh_price]' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerBottomLeft carrierNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldInnerMiddleRight'>\n"
-            html +=	"\t\t<input type='text' name='carrierRateSverhPrice' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=	"\t\t<input type='text' name='request[carrier_rate_sverh_price]' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
@@ -491,7 +479,7 @@ $(document).ready(function() {
             html +=    "\t\t<td colspan='1' align='right' class='customer fieldName fieldInnerBottomLeft customerTotal' style='border-top: 1px solid black;' >\n"
             html +=        "\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span></td>\n"
             html +=    "\t\t<td colspan='1' class='customer sdel fieldInnerBottomRight customerTotal' style='border-top: 1px solid black;'>\n"
-            html +=        "\t\t<input type='text' name='request_customer_rate_total_summ' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_total_summ]' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td class='borNone' colspan='2'></td>\n"
@@ -499,7 +487,7 @@ $(document).ready(function() {
             html +=        "\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='carrier sdel fieldInnerBottomRight' style='border-top: 1px solid black;'>\n"
-            html +=        "\t\t<input type='text' name='request_carrier_rate_total_summ' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_total_summ]' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr></tbody>\n"
             $('#rateVariants').replaceWith(html)
@@ -508,27 +496,27 @@ $(document).ready(function() {
             html =  "\t<tbody id='rateVariants'><tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerTopLeft customerPaymentSdeln'>По договорному тарифу:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer dog fieldInnerTopRight'>\n"
-            html +=        "\t\t<input type='text' name='customerRateSumm' id='customerRateSumm' value='"+cusDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_summ]' id='customerRateSumm' value='"+cusDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='fieldBetween'></td>\n"
             html +=    "\t\t<td class='carrier fieldName fieldInnerTopLeft carrierPaymentPovrem1'  >Мин.вр. работы:</td>\n"
             html +=    "\t\t<td class='carrier fieldInnerMediumTop'>\n"
-            html +=        "\t\t<input type='text' name='carrierRateHours' id='carrierRateHours' value='"+carMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_hours]' id='carrierRateHours' value='"+carMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='carrier fieldName fieldInnerMediumTop'  >Время подачи:</td>\n"
             html +=    "\t\t<td class='carrier fieldInnerTopRight'>\n"
-            html +=         "\t\t<input type='text' name='carrierRatePodachaHours' id='carrierRatePodachaHours' value='"+carVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=         "\t\t<input type='text' name='request[carrier_rate_podacha_hours]' id='carrierRatePodachaHours' value='"+carVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerBottomLeft customerNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldInnerMiddleRight customerNext'>\n"
-            html +=        "\t\t<input type='text' name='customerRateSverhPrice' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_sverh_price]' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerMiddleLeft carrierPaymentPovrem2'>Цена за час:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldInnerMiddleRight'>\n"
-            html +=        "\t\t<input type='text' name='carrierRateHourPrice' id='carrierRateHourPrice' value='"+carHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_hour_price]' id='carrierRateHourPrice' value='"+carHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
@@ -537,12 +525,12 @@ $(document).ready(function() {
             html +=        "\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=     "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='customer sdel fieldInnerBottomRight customerTotal' style='border-top: 1px solid black;'>\n"
-            html +=        "\t\t<input type='text' name='request_customer_rate_total_summ' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_total_summ]' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerBottomLeft carrierNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldInnerMiddleRight carrierNext'>\n"
-            html +=        "\t\t<input type='text' name='carrierRateSverhPrice' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_sverh_price]' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
@@ -553,7 +541,7 @@ $(document).ready(function() {
             html +=        "\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='carrier sdel fieldInnerBottomRight' style='border-top: 1px solid black;'>\n"
-            html +=        "\t\t<input type='text' name='request_carrier_rate_total_summ' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_total_summ]' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr></tbody>\n"
             $('#rateVariants').replaceWith(html)
@@ -562,33 +550,33 @@ $(document).ready(function() {
             html = "\t<tbody id='rateVariants'><tr>\n"
             html +=    "\t\t<td class='customer fieldName fieldInnerTopLeft customerPaymentPovrem1'  >Мин.вр. работы:</td>\n"
             html +=    "\t\t<td class='customer fieldInnerMediumTop'>\n"
-            html +=        "\t\t<input type='text' name='customerRateHours' id='customerRateHours' value='"+cusMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_hours]' id='customerRateHours' value='"+cusMinVremRab+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='customer fieldName fieldInnerMediumTop'  >Время подачи:</td>\n"
             html +=    "\t\t<td class='customer fieldInnerTopRight'>\n"
-            html +=        "\t\t<input type='text' name='customerRatePodachaHours' id='customerRatePodachaHours' value='"+cusVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_podacha_hours]' id='customerRatePodachaHours' value='"+cusVremPodach+"' class='inp required' size='3'><span style='color: red; font-size: 16px;'>*</span> ч.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerTopLeft carrierPaymentSdeln'>По договорному тарифу:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier dog fieldInnerTopRight carrierPaymentSdeln'>\n"
-            html +=        "\t\t<input type='text' name='carrierRateSumm' id='carrierRateSumm' value='"+carDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_summ]' id='carrierRateSumm' value='"+carDogTarif+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerMiddleLeft customerPaymentPovrem2'  >Цена за час:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldInnerMiddleRight'>\n"
-            html +=        "\t\t<input type='text' name='customerRateHourPrice' id='customerRateHourPrice' value='"+cusHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_hour_price]' id='customerRateHourPrice' value='"+cusHourPrice+"' class='inp required' size='8'><span style='color: red; font-size: 16px;'>*</span> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldName fieldInnerBottomLeft customerNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='customer fieldInnerMiddleRight customerNext'>\n"
-            html +=        "\t\t<input type='text' name='customerRateSverhPrice' id='customerRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_sverh_price]' id='carrierRateSverhPrice' value='"+cusDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldName fieldInnerBottomLeft carrierNext'>Далее:</td>\n"
             html +=    "\t\t<td colspan='2' class='carrier fieldInnerMiddleRight carrierNext'>\n"
-            html +=        "\t\t<input type='text' name='carrierRateSverhPrice' id='carrierRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_sverh_price]' id='customerRateSverhPrice' value='"+carDaleePrice+"' class='inp' size='8'>руб./час\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td class='borNone' colspan='2'></td>\n"
@@ -596,7 +584,7 @@ $(document).ready(function() {
             html +=        "\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='carrier sdel fieldInnerBottomRight' style='border-top: 1px solid black;'>\n"
-            html +=        "\t\t<input type='text' name='request_carrier_rate_total_summ' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=        "\t\t<input type='text' name='request[carrier_rate_total_summ]' id='request_carrier_rate_total_summ' value='"+carTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html += "\t</tr>\n"
             html += "\t<tr>\n"
@@ -605,7 +593,7 @@ $(document).ready(function() {
             html +=        "\t\t<span style='font-style: italic; font-size:14px; text-decoration: underline;'>Итого:</span>\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td colspan='1' class='customer sdel fieldInnerBottomRight customerTotal' style='border-top: 1px solid black;'>\n"
-            html +=        "\t\t<input type='text' name='request_customer_rate_total_summ' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
+            html +=        "\t\t<input type='text' name='request[customer_rate_total_summ]' id='request_customer_rate_total_summ' value='"+cusTotalSumm+"' class='summ' readonly='readonly' size='8'> руб.\n"
             html +=    "\t\t</td>\n"
             html +=    "\t\t<td  class='fieldBetween'></td>\n"
             html +=    "\t\t<td colspan='4' class='borNone'></td>\n"
@@ -617,29 +605,29 @@ $(document).ready(function() {
     blockFields()
 
     function blockFields() {
-        $('#request_customer_dop_prab_count').attr('readonly','readonly')
-        $('#request_customer_dop_dop_tochka_pogr_count').attr('readonly','readonly')
-        $('#request_customer_dop_dop_tochka_razgr_count').attr('readonly','readonly')
-        $('#request_customer_dop_rastentovka_count').attr('readonly','readonly')
-        $('#request_customer_dop_pereg_count').attr('readonly','readonly')
-        $('#request_customer_dop_night_stay_count').attr('readonly','readonly')
-        $('#request_customer_dop_mezgorod_count').attr('readonly','readonly')
-        $('#request_customer_dop_soprov_count').attr('readonly','readonly')
-        $('#request_customer_dop_vozvr_count').attr('readonly','readonly')
-        $('#request_customer_dop_negabarit_count').attr('readonly','readonly')
-        $('#request_customer_dop_gruzch_count').attr('readonly','readonly')
+        $('#customerDopPrabCount').attr('readonly','readonly')
+        $('#customerDopDopTochkaPogrCount').attr('readonly','readonly')
+        $('#customerDopDopTochkaRazgrCount').attr('readonly','readonly')
+        $('#customerDopRastentovkaCount').attr('readonly','readonly')
+        $('#customerDopPeregCount').attr('readonly','readonly')
+        $('#customerDopNightStayCount').attr('readonly','readonly')
+        $('#customerDopMezgorodCount').attr('readonly','readonly')
+        $('#customerDopSoprovCount').attr('readonly','readonly')
+        $('#customerDopVozvrCount').attr('readonly','readonly')
+        $('#customerDopNegabaritCount').attr('readonly','readonly')
+        $('#customerDopGruzchCount').attr('readonly','readonly')
 
-        $('#request_carrier_dop_prab_count').attr('readonly','readonly')
-        $('#request_carrier_dop_dop_tochka_pogr_count').attr('readonly','readonly')
-        $('#request_carrier_dop_dop_tochka_razgr_count').attr('readonly','readonly')
-        $('#request_carrier_dop_rastentovka_count').attr('readonly','readonly')
-        $('#request_carrier_dop_pereg_count').attr('readonly','readonly')
-        $('#request_carrier_dop_night_stay_count').attr('readonly','readonly')
-        $('#request_carrier_dop_mezgorod_count').attr('readonly','readonly')
-        $('#request_carrier_dop_soprov_count').attr('readonly','readonly')
-        $('#request_carrier_dop_vozvr_count').attr('readonly','readonly')
-        $('#request_carrier_dop_negabarit_count').attr('readonly','readonly')
-        $('#request_carrier_dop_gruzch_count').attr('readonly','readonly')
+        $('#carrierDopPrabCount').attr('readonly','readonly')
+        $('#carrierDopDopTochkaPogrCount').attr('readonly','readonly')
+        $('#carrierDopDopTochkaRazgrCount').attr('readonly','readonly')
+        $('#carrierDopRastentovkaCount').attr('readonly','readonly')
+        $('#carrierDopPeregCount').attr('readonly','readonly')
+        $('#carrierDopNightStayCount').attr('readonly','readonly')
+        $('#carrierDopMezgorodCount').attr('readonly','readonly')
+        $('#carrierDopSoprovCount').attr('readonly','readonly')
+        $('#carrierDopVozvrCount').attr('readonly','readonly')
+        $('#carrierDopNegabaritCount').attr('readonly','readonly')
+        $('#carrierDopGruzchCount').attr('readonly','readonly')
 
     }
 

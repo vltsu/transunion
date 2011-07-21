@@ -45,69 +45,69 @@
   %td.customer.fieldInnerMediumMiddle
     в день погр.
   %td.customer.fieldInnerMediumMiddle
-    != "#{f.text_field :customer_responsibility_car_deny_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :customer_responsibility_car_deny_price, :id => 'customerResponsibilityCarDenyPrice', :class => 'inp', :size => 4}%"
   %td.customer.fieldInnerMiddleRight
-    != "#{f.text_field :customer_responsibility_car_deny_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
+    != "#{f.text_field :customer_responsibility_car_deny_summ, :id => 'customerResponsibilityCarDenySumm', :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
   %td.fieldBetween
   %td.carrier.fieldName.fieldInnerMiddleLeft
     Неподача ТС:
   %td.carrier.fieldInnerMediumMiddle
     в день погр.
   %td.carrier.fieldInnerMediumMiddle
-    != "#{f.text_field :carrier_responsibility_car_deny_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :carrier_responsibility_car_deny_price, :id => 'carrierResponsibilityCarDenyPrice', :class => 'inp', :size => 4}%"
   %td.carrier.fieldInnerMiddleRight
-    != "#{f.text_field :carrier_responsibility_car_deny_summ, :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
+    != "#{f.text_field :carrier_responsibility_car_deny_summ, :id => 'carrierResponsibilityCarDenySumm', :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
 %tr
   %td.customer.fieldName.fieldInnerMiddleLeft
     Простой ТС:
   %td.customer.fieldInnerMediumMiddle
-    != "#{f.text_field :customer_responsibility_prostoy_count, :class => 'inp', :size => 2}часов"
+    != "#{f.text_field :customer_responsibility_prostoy_count, :id => 'customerResponsibilityProstoyCount', :class => 'inp', :size => 2}часов"
   %td.customer.fieldInnerMediumMiddle
-    != "#{f.text_field :customer_responsibility_prostoy_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :customer_responsibility_prostoy_price, :id => 'customerResponsibilityProstoyPrice', :class => 'inp', :size => 4}%"
   %td.customer.fieldInnerMiddleRight
-    != "#{f.text_field :customer_responsibility_prostoy_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
+    != "#{f.text_field :customer_responsibility_prostoy_summ, :id => 'customerResponsibilityProstoySumm', :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
   %td.fieldBetween
   %td.carrier.fieldName.fieldInnerMiddleLeft
     Опоздание ТС:
   %td.carrier.fieldInnerMediumMiddle
-    != "#{f.text_field :carrier_responsibility_late_count, :class => 'inp', :size => 2}часа"
+    != "#{f.text_field :carrier_responsibility_late_count, :id => 'carrierResponsibilityLateCount', :class => 'inp', :size => 2}часа"
   %td.carrier.fieldInnerMediumMiddle
-    != "#{f.text_field :carrier_responsibility_late_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :carrier_responsibility_late_price, :id => 'carrierResponsibilityLatePrice', :class => 'inp', :size => 4}%"
   %td.carrier.fieldInnerMiddleRight
-    != "#{f.text_field :carrier_responsibility_late_summ, :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
+    != "#{f.text_field :carrier_responsibility_late_summ, :id => 'carrierResponsibilityLateSumm', :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
 %tr
   %td.customer.fieldName.fieldInnerBottomLeft
     Задержка опл.:
   %td.customer.fieldInnerMediumMiddle
-    != "#{f.text_field :customer_responsibility_payment_late_count, :class => 'inp', :size => 2}часов"
+    != "#{f.text_field :customer_responsibility_payment_late_count, :id => 'customerResponsibilityPaymentLateCount', :class => 'inp', :size => 2}часов"
   %td.customer.fieldInnerMediumMiddle
-    != "#{f.text_field :customer_responsibility_payment_late_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :customer_responsibility_payment_late_price, :id => 'customerResponsibilityPaymentLatePrice', :class => 'inp', :size => 4}%"
   %td.customer.fieldInnerMiddleRight
-    != "#{f.text_field :customer_responsibility_payment_late_summ, :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
+    != "#{f.text_field :customer_responsibility_payment_late_summ, :id => 'customerResponsibilityPaymentLateSumm', :class => 'summ', :size => 6, :readonly => 'readonly'} руб."
   %td.fieldBetween
   %td.carrier.fieldName.fieldInnerMiddleLeft
     Просрочка дост.:
   %td.carrier.fieldInnerMediumMiddle
-    != "#{f.text_field :carrier_responsibility_delivery_late_count, :class => 'inp', :size => 2}часа"
+    != "#{f.text_field :carrier_responsibility_delivery_late_count, :id => 'carrierResponsibilityDeliveryLateCount', :class => 'inp', :size => 2}часа"
   %td.carrier.fieldInnerMediumMiddle
-    != "#{f.text_field :carrier_responsibility_delivery_late_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :carrier_responsibility_delivery_late_price, :id => 'carrierResponsibilityDeliveryLatePrice', :class => 'inp', :size => 4}%"
   %td.carrier.fieldInnerMiddleRight
-    != "#{f.text_field :carrier_responsibility_delivery_late_summ, :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
+    != "#{f.text_field :carrier_responsibility_delivery_late_summ, :id => 'carrierResponsibilityDeliveryLateSumm', :class => 'summ', :size => 6, :readonly => 'readonly'}руб."
 %tr
   %td.borNone
   %td{ :class => 'fieldInnerBottomLeft fieldName', :style => 'border-top:1px black solid;', :align => 'right', :colspan => 2 }
     %b Итого за штрафные санкции:
   %td{ :class => 'customer borNone fieldInnerBottomRight', :style => 'border-top:1px black solid;', :colspan => 1 }
-    %b!= "#{f.text_field :customer_responsibility_summ, :class => 'summ', :readonly => 'readonly', :size => 8 } руб."
+    %b!= "#{f.text_field :customer_responsibility_summ, :id => 'customerResponsibilitySumm', :class => 'summ', :readonly => 'readonly', :size => 8 } руб."
   %td.fieldBetween
   %td{ :class => 'carrier fieldName fieldInnerBottomLeft' }
     Возврат док.:
   %td{ :class => 'carrier fieldInnerMediumMiddle' }
-    != "#{f.text_field :carrier_responsibility_document_late_count, :class => 'inp', :size => 2}б/дней"
+    != "#{f.text_field :carrier_responsibility_document_late_count, :id => 'carrierResponsibilityDocumentLateCount', :class => 'inp', :size => 2}б/дней"
   %td{ :class => 'carrier fieldInnerMediumMiddle' }
-    != "#{f.text_field :carrier_responsibility_document_late_price, :class => 'inp', :size => 4}%"
+    != "#{f.text_field :carrier_responsibility_document_late_price, :id => 'carrierResponsibilityDocumentLatePrice', :class => 'inp', :size => 4}%"
   %td{ :class => 'carrier fieldInnerMiddleRight' }
-    != "#{f.text_field :carrier_responsibility_document_late_summ, :class => 'summ', :readonly => 'readonly', :size => 6 } руб."
+    != "#{f.text_field :carrier_responsibility_document_late_summ, :id => 'carrierResponsibilityDocumentLateSumm', :class => 'summ', :readonly => 'readonly', :size => 6 } руб."
 %tr
   %td{ :class => 'borNone', :colspan => 4 }
   %td{ :class => 'fieldBetween' }
@@ -115,4 +115,4 @@
   %td{ :class => 'fieldInnerBottomLeft fieldName', :style => 'border-top:1px black solid;', :align => 'right', :colspan => 2 }
     %b Итого за штрафные санкции:
   %td{ :class => 'carrier borNone fieldInnerBottomRight', :style => 'border-top:1px black solid;', :colspan => 1 }
-    %b!= "#{f.text_field :carrier_responsibility_summ, :class => 'summ', :readonly => 'readonly', :size => 8 } руб."
+    %b!= "#{f.text_field :carrier_responsibility_summ, :id => 'carrierResponsibilitySumm', :class => 'summ', :readonly => 'readonly', :size => 8 } руб."

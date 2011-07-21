@@ -4,10 +4,10 @@ class LoadingPoint < ActiveRecord::Base
   @@per_page = 20
   belongs_to :request
 
-  validates  :contact_person, :presence => { :message => 'Точка погрузки - введите контактное лицо' }
-  validates  :date,           :presence => { :message => 'Точка погрузки - введите дату погрузки' }
-  validates  :address,        :presence => { :message => 'Точка погрузки - введите адрес' }
-  validates  :shipper,        :presence => { :message => 'Точка погрузки - введите грузоотправителя' }
-  validates  :phone,          :presence => { :message => 'Точка погрузки - введите телефон для связи(моб) ' }
+  validates  :contact_person, :presence => { :message => "Точка погрузки - введите контактное лицо" }
+  validates  :date,           :presence => { :message => "Точка погрузки - введите дату погрузки" }
+  validates  :address,        :presence => { :message => "Точка погрузки - введите адрес" }
+  validates  :shipper,        :presence => { :message => "Точка погрузки - введите грузоотправителя" }
+  validates  :phone,          :presence => { :message => "Точка погрузки - введите телефон для связи(моб)" }
 
 end

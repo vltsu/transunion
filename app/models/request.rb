@@ -37,7 +37,7 @@ class Request < ActiveRecord::Base
   protected
 
   def standartise_fields
-    #Проверка на случай если данные идут не из формы, а из fixtures
+    #Проверка на случай если данные идут не из формы, а из тестов
     if params
       self.volume                               = params[:volume].to_s.gsub(/,/,'.')
       self.weight                               = params[:weight].to_s.gsub(/,/,'.')
@@ -88,6 +88,39 @@ class Request < ActiveRecord::Base
       self.customer_dop_gruzch_count            = params[:customer_dop_gruzch_count].to_s.gsub(/,/,'.')
       self.customer_dop_gruzch_price            = params[:customer_dop_gruzch_price].to_s.gsub(/,/,'.')
       self.customer_dop_gruzch_summ             = params[:customer_dop_gruzch_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_prab_count              = params[:carrier_dop_prab_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_prab_price              = params[:carrier_dop_prab_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_prab_summ               = params[:carrier_dop_prab_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_dop_tochka_pogr_count   = params[:carrier_dop_dop_tochka_pogr_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_dop_tochka_pogr_price   = params[:carrier_dop_dop_tochka_pogr_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_dop_tochka_pogr_summ    = params[:carrier_dop_dop_tochka_pogr_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_dop_tochka_razgr_count  = params[:carrier_dop_dop_tochka_razgr_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_dop_tochka_razgr_price  = params[:carrier_dop_dop_tochka_razgr_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_dop_tochka_razgr_summ   = params[:carrier_dop_dop_tochka_razgr_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_rastentovka_count       = params[:carrier_dop_rastentovka_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_rastentovka_price       = params[:carrier_dop_rastentovka_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_rastentovka_summ        = params[:carrier_dop_rastentovka_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_pereg_count             = params[:carrier_dop_pereg_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_pereg_price             = params[:carrier_dop_pereg_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_pereg_summ              = params[:carrier_dop_pereg_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_night_stay_count        = params[:carrier_dop_night_stay_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_night_stay_price        = params[:carrier_dop_night_stay_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_night_stay_summ         = params[:carrier_dop_night_stay_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_mezgorod_count          = params[:carrier_dop_mezgorod_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_mezgorod_price          = params[:carrier_dop_mezgorod_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_mezgorod_summ           = params[:carrier_dop_mezgorod_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_soprov_count            = params[:carrier_dop_soprov_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_soprov_price            = params[:carrier_dop_soprov_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_soprov_summ             = params[:carrier_dop_soprov_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_vozvr_count             = params[:carrier_dop_vozvr_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_vozvr_price             = params[:carrier_dop_vozvr_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_vozvr_summ              = params[:carrier_dop_vozvr_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_negabarit_count         = params[:carrier_dop_negabarit_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_negabarit_price         = params[:carrier_dop_negabarit_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_negabarit_summ          = params[:carrier_dop_negabarit_summ].to_s.gsub(/,/,'.')
+      self.carrier_dop_gruzch_count            = params[:carrier_dop_gruzch_count].to_s.gsub(/,/,'.')
+      self.carrier_dop_gruzch_price            = params[:carrier_dop_gruzch_price].to_s.gsub(/,/,'.')
+      self.carrier_dop_gruzch_summ             = params[:carrier_dop_gruzch_summ].to_s.gsub(/,/,'.')
     end
   end
 

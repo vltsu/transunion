@@ -5,7 +5,7 @@ class CreateRequests < ActiveRecord::Migration
       t.integer :cargo_classification_id
       t.decimal :weight, :precision => 5, :scale => 2
       t.decimal :volume, :precision => 5, :scale => 2
-      t.integer :temperature
+      t.string  :temperature
       t.integer :evropallet
       t.integer :bigpallet
       t.integer :belts_count

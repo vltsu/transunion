@@ -1,720 +1,90 @@
-%tbody#point2
-  %tr
-    %td{ :id => 'loadingTitle2', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Вторая точка погрузки
-    %td{ :id => 'unloadingTitle2', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Вторая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point2 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time2, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point2 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time2, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point2 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point2 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point2 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point2 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point2 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point2 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point2 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point2 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point2 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point2 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 2 }
-      %p
-    %td{ :align => 'right', :num => 2, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 2 }
-      %p
-    %td{ :align => 'right', :num => 2, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point3
-  %tr
-    %td{ :id => 'loadingTitle3', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Третья точка погрузки
-    %td{ :id => 'unloadingTitle3', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Третья точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point3 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point3 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point3 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point3 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point3 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point3 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point3 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point3 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point3 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point3 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point3 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point3 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 3 }
-      %p
-    %td{ :align => 'right', :num => 3, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 3 }
-      %p
-    %td{ :align => 'right', :num => 3, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point4
-  %tr
-    %td{ :id => 'loadingTitle4', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Четвертая точка погрузки
-    %td{ :id => 'unloadingTitle4', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Четвертая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point4 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point4 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point4 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point4 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point4 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point4 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point4 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point4 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point4 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point4 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point4 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point4 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 4 }
-      %p
-    %td{ :align => 'right', :num => 4, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 4 }
-      %p
-    %td{ :align => 'right', :num => 4, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point5
-  %tr
-    %td{ :id => 'loadingTitle5', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Пятая точка погрузки
-    %td{ :id => 'unloadingTitle5', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Пятая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point5 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point5 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point5 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point5 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point5 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point5 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point5 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point5 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point5 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point5 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point5 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point5 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 5 }
-      %p
-    %td{ :align => 'right', :num => 5, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 5 }
-      %p
-    %td{ :align => 'right', :num => 5, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point6
-  %tr
-    %td{ :id => 'loadingTitle6', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Шестая точка погрузки
-    %td{ :id => 'unloadingTitle6', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Шестая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point6 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point6 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point6 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point6 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point6 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point6 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point6 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point6 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point6 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point6 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point6 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point6 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 6 }
-      %p
-    %td{ :align => 'right', :num => 6, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 6 }
-      %p
-    %td{ :align => 'right', :num => 6, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point7
-  %tr
-    %td{ :id => 'loadingTitle7', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Седьмая точка погрузки
-    %td{ :id => 'unloadingTitle7', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Седьмая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point7 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point7 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point7 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point7 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point7 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point7 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point7 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point7 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point7 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point7 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point7 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point7 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 7 }
-      %p
-    %td{ :align => 'right', :num => 7, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 7 }
-      %p
-    %td{ :align => 'right', :num => 7, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point8
-  %tr
-    %td{ :id => 'loadingTitle8', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Восьмая точка погрузки
-    %td{ :id => 'unloadingTitle8', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Восьмая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point8 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point8 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point8 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point8 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point8 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point8 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point8 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point8 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point8 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point8 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point8 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point8 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => 8 }
-      %p
-    %td{ :align => 'right', :num => 8, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :id => 'unloadingButton', :num => 8 }
-      %p
-    %td{ :align => 'right', :num => 8, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-%tbody#point9
-  %tr
-    %td{ :id => 'loadingTitle9', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Девятая точка погрузки
-    %td{ :id => 'unloadingTitle9', :class => 'borNone', :align => 'center', :colspan => '4' }
-      %span{ :style => 'font-style:italic; text-decoration: underline;' }
-        Девятая точка разгрузки
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :loading_point9 do |loading_point_form|
-        != "#{loading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{loading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
-      Дата, время погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
-      = fields_for :unloading_point9 do |unloading_point_form|
-        != "#{unloading_point_form.text_field :date, :size => 10, :class => 'ddateshort hasDatetimeEntry' } до:#{unloading_point_form.text_field :loading_time3, :size => 5, :class => 'inp' }"
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес погрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point9 do |loading_point_form|
-        = loading_point_form.text_field :address, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :id => 'unloadingDate2', :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Адрес разгрузки:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point9 do |unloading_point_form|
-        = unloading_point_form.text_field :address, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузоотправитель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point9 do |loading_point_form|
-        = loading_point_form.text_field :shipper, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Грузополучатель:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point9 do |unloading_point_form|
-        = unloading_point_form.text_field :consignee, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point9 do |loading_point_form|
-        = loading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Контактное лицо:
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point9 do |unloading_point_form|
-        = unloading_point_form.text_field :contact_person, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :loading_point9 do |loading_point_form|
-        = loading_point_form.text_field :phone, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
-      Телефон для связи (моб):
-    %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
-      = fields_for :unloading_point9 do |unloading_point_form|
-        = unloading_point_form.text_field :phone, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :loading_point9 do |loading_point_form|
-        = loading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
-      Телефон для связи (раб):
-    %td{ :colspan => 2, :class => 'fieldInnerBottomRight fieldForm' }
-      = fields_for :unloading_point9 do |unloading_point_form|
-        = unloading_point_form.text_field :phone_work, :size => 25, :class => 'inp'
-  %tr
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :num => 9 }
-      %p
-    %td{ :align => 'right', :num => 9, :id => 'loadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
-    %td.fieldBetween
-    %td{ :colspan => 2, :class => 'borNone', :align => 'left', :num => 9 }
-      %p
-    %td{ :align => 'right', :num => 9, :id => 'unloadingButtonDelete', :class => 'borNone', :colspan => 2 }
-      %p
+- (2..9).each do |num|
+  %tbody{ :id => "point#{num}" }
+    %tr
+      %td{ :class => 'borNone', :id => "loadingTitle#{num}", :align => 'center', :colspan => 4 }
+        %span{ :style => 'font-style:italic; text-decoration:underline;' }
+          = rus_points_num(num) + ' точка погрузки'
+      %td.fieldBetween
+      %td{ :class => 'borNone', :id => "unloadingTitle#{num}", :align => 'center', :colspan => 4 }
+        %span{ :style => 'font-style:italic; text-decoration:underline;' }
+          = rus_points_num(num) + ' точка разгрузки'
+    %tr
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
+        Дата, время погрузки:
+      %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
+        = f.fields_for "loading_point#{num}" do |loading_point_form|
+          != "#{loading_point_form.text_field :date, :id => "loadingDate#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][date]', :size => 10, :class => 'inp ddateshort ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).date.strftime("%Y-%m-%d") : nil } до:#{loading_point_form.text_field :time, :name => 'request[loading_points_attributes]['+num.to_s+'][time]', :size => 5, :class => 'inp', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).time : nil}"
+      %td.fieldBetween
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
+        Дата, время разгрузки:
+      %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
+        = f.fields_for "unloading_point#{num}" do |unloading_point_form|
+          != "#{unloading_point_form.text_field :date, :id => "unloadingDate#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][date]', :size => 10, :class => 'inp  ddateshort', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).date.strftime("%Y-%m-%d") : nil } до:#{unloading_point_form.text_field :time, :name => 'request[unloading_points_attributes]['+num.to_s+'][time]', :size => 5, :class => 'inp', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).time : nil}"
+    %tr
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Адрес погрузки:
+      %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "loading_point#{num}" do |loading_point_form|
+          = loading_point_form.text_field :address, :id => "loadingAddress#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][address]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).address : nil
+      %td.fieldBetween
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Адрес разгрузки:
+      %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "unloading_point#{num}" do |unloading_point_form|
+          = unloading_point_form.text_field :address, :id => "unloadingAddress#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][address]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).address : nil
+    %tr
+      %td{ :colspan => 2, :id => "loadingCompany#{num}", :class => 'fieldName fieldInnerMiddleLeft' }
+        Грузоотправитель:
+      %td{ :colspan => 2, :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "loading_point#{num}" do |loading_point_form|
+          = loading_point_form.text_field :shipper, :id => "shipper#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][shipper]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).shipper : nil
+      %td.fieldBetween
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Грузополучатель:
+      %td{ :colspan => 2, :id => "unloadingCompany#{num}", :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "unloading_point#{num}" do |unloading_point_form|
+          = unloading_point_form.text_field :consignee, :id => "consignee#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][consignee]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).consignee : nil
+    %tr
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Контактное лицо:
+      %td{ :colspan => 2, :id => "loadingPerson#{num}", :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "loading_point#{num}" do |loading_point_form|
+          = loading_point_form.text_field :contact_person, :id => "loadingContactPerson#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][contact_person]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).contact_person : nil
+      %td.fieldBetween
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Контактное лицо:
+      %td{ :colspan => 2, :id => "unloadingPerson#{num}", :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "unloading_point#{num}" do |unloading_point_form|
+          = unloading_point_form.text_field :contact_person, :id => "unloadingContactPerson#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][contact_person]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).contact_person : nil
+    %tr
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Телефон для связи (моб):
+      %td{ :colspan => 2, :id => "loadingMobile#{num}", :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "loading_point#{num}" do |loading_point_form|
+          = loading_point_form.text_field :phone, :id => "loadingContactPhone#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][phone]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).phone : nil
+      %td.fieldBetween
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerMiddleLeft' }
+        Телефон для связи (моб):
+      %td{ :colspan => 2, :id => "unloadingMobile#{num}", :class => 'fieldInnerMiddleRight fieldForm' }
+        = f.fields_for "unloading_point#{num}" do |unloading_point_form|
+          = unloading_point_form.text_field :phone,  :id => "unloadingContactPhone#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][phone]', :size => 25, :class => 'inp ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).phone : nil
+    %tr
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
+        Телефон для связи (раб):
+      %td{ :colspan => 2, :id => "loadingWorkPhone#{num}", :class => 'fieldInnerBottomRight fieldForm' }
+        = f.fields_for "loading_point#{num}" do |loading_point_form|
+          = loading_point_form.text_field :phone_work, :id => "loadingPhoneWork#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][phone_work]', :size => 25, :class => 'inp', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).phone_work : nil
+      %td.fieldBetween
+      %td{ :colspan => 2, :class => 'fieldName fieldInnerBottomLeft' }
+        Телефон для связи (раб):
+      %td{ :colspan => 2, :id => "unloadingWorkPhone#{num}", :class => 'fieldInnerBottomRight fieldForm' }
+        = f.fields_for "unloading_point#{num}" do |unloading_point_form|
+          = unloading_point_form.text_field :phone_work, :id => "unloadingPhoneWork#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][phone_work]', :size => 25, :class => 'inp', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).phone_work : nil
+    %tr
+      %td{ :colspan => 1, :class => 'borNone', :align => 'left', :id => 'loadingButton', :num => num }
+        %p
+      %td{ :colspan => 1, :class => 'borNone', :align => 'left', :id => 'loadingButtonDelete', :num => num, :style => 'background:none; cursor:default;' }
+        %p
+      %td{ :colspan => 2, :class => 'borNone'}
+      %td.fieldBetween
+      %td{ :colspan => 4, :class => 'borNone'}

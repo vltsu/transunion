@@ -1,12 +1,12 @@
-%h1{:class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red;"} Просмотр карточки ...
+%h1{:class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red;"} Просмотр заявки
 %br/
-- content_for(:head) do 
-  = javascript_include_tag 'disableForms' 
-- if notice 
+- content_for(:head) do
+  = javascript_include_tag 'disableForms'
+- if notice
   = render :partial => "shared/notice", :locals => { :notice => notice }
 %br/
 = render 'form'
-%br/ 
+%br/
 %br/
 
 %div{:style =>"width: 600px; margin: 0px auto;"}
@@ -14,4 +14,22 @@
   = link_to image_tag("deleteButton.jpg"), @request, :confirm => 'Вы уверены', :id => 'deleteRequestLink', :method => :delete
 %br/
 %div{:style => "width: 200px; margin: 0px auto;"}
-  = link_to 'к списку ...', requests_path
+  = link_to 'к списку заявок', requests_path
+
+%div{:style => "display:none;"}
+  %p#customerRateSummService= @request.customer_rate_summ
+  %p#customerRateHoursService= @request.customer_rate_hours
+  %p#customerRatePodachaHoursService= @request.customer_rate_podacha_hours
+  %p#customerRateHourPriceService= @request.customer_rate_hour_price
+  %p#customerRateSverhPriceService= @request.customer_rate_sverh_price
+  %p#customerRateSverhCountService= @request.customer_rate_sverh_count
+  %p#customerRateSverhSummService= @request.customer_rate_sverh_summ
+  %p#customerRateTotalSummService= @request.customer_rate_total_summ
+  %p#carrierRateSummService= @request.carrier_rate_summ
+  %p#carrierRateHoursService= @request.carrier_rate_hours
+  %p#carrierRatePodachaHoursService= @request.carrier_rate_podacha_hours
+  %p#carrierRateHourPriceService= @request.carrier_rate_hour_price
+  %p#carrierRateSverhCountService= @request.carrier_rate_sverh_count
+  %p#carrierRateSverhPriceService= @request.carrier_rate_sverh_price
+  %p#carrierRateSverhSummService= @request.carrier_rate_sverh_summ
+  %p#carrierRateTotalSummService= @request.carrier_rate_total_summ
