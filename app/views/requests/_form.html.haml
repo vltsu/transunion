@@ -706,7 +706,7 @@
         Номер счета
       %td{ :colspan => 2, :class => 'carrier fieldInnerBottomRight'}
         = f.text_field :carrier_bill_id, :size => 3, :class => 'inp'
-    - if params[:action] == 'edit'
+    - if params[:action] == 'edit' || params[:action] == 'show'
       = render :partial => 'responsibility', :locals => { :f => f }
     %tr
       %td{ :class => 'borNone', :align => 'center', :colspan => '9' }

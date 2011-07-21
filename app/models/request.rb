@@ -10,9 +10,11 @@ class Request < ActiveRecord::Base
   belongs_to :carrier_company
   belongs_to :customer_company
   belongs_to :driver
+  belongs_to :car
   belongs_to :payment_doc
   belongs_to :payment_way
   belongs_to :payment_method
+  belongs_to :cargo_classification
 
   has_many :loading_points
   has_many :unloading_points

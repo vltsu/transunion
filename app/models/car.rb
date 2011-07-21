@@ -1,10 +1,9 @@
 # encoding: UTF-8
 class Car < ActiveRecord::Base
-
-  cattr_accessor :params
+ # Параметр содержащий приходящие данные из формы
+ cattr_accessor :params
 
   before_validation :standartise_fields
-
 
   cattr_reader :per_page
   @@per_page = 20

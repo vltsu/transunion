@@ -11,13 +11,13 @@
     %tr
       %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
         Дата, время погрузки:
-      %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
+      %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm', :id => "loadingDateForm#{num}" }
         = f.fields_for "loading_point#{num}" do |loading_point_form|
           != "#{loading_point_form.text_field :date, :id => "loadingDate#{num}", :name => 'request[loading_points_attributes]['+num.to_s+'][date]', :size => 10, :class => 'inp ddateshort ', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).date.strftime("%Y-%m-%d") : nil } до:#{loading_point_form.text_field :time, :name => 'request[loading_points_attributes]['+num.to_s+'][time]', :size => 5, :class => 'inp', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@lp#{num}".to_sym)) ? self.instance_variable_get("@lp#{num}".to_sym).time : nil}"
       %td.fieldBetween
       %td{ :colspan => 2, :class => 'fieldName fieldInnerTopLeft' }
         Дата, время разгрузки:
-      %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm' }
+      %td{ :colspan => 2, :class => 'fieldInnerTopRight fieldForm', :id => "unloadingDateForm#{num}" }
         = f.fields_for "unloading_point#{num}" do |unloading_point_form|
           != "#{unloading_point_form.text_field :date, :id => "unloadingDate#{num}", :name => 'request[unloading_points_attributes]['+num.to_s+'][date]', :size => 10, :class => 'inp  ddateshort', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).date.strftime("%Y-%m-%d") : nil } до:#{unloading_point_form.text_field :time, :name => 'request[unloading_points_attributes]['+num.to_s+'][time]', :size => 5, :class => 'inp', :value => edit_or_show_action_and_point_exist(self.instance_variable_get("@up#{num}".to_sym)) ? self.instance_variable_get("@up#{num}".to_sym).time : nil}"
     %tr

@@ -375,68 +375,69 @@ $(document).ready(function() {
         #customerResponsibilityProstoyPrice,#customerResponsibilityPaymentLateCount,#customerResponsibilityPaymentLatePrice,\n\
         #customerResponsibilityDocumentLateCount,#customerResponsibilityDocumentLatePrice,#carrierResponsibilityCarDenyPrice,#carrierResponsibilityLateCount,\n\
         #carrierResponsibilityLatePrice,#carrierResponsibilityDeliveryLateCount,#carrierResponsibilityDeliveryLatePrice,#carrierResponsibilityDocumentLateCount,\n\
-        #carrierResponsibilityDocumentLatePrice').change(function() {
+        #carrierResponsibilityDocumentLatePrice,#customerRateSumm, #carrierRateSumm').live('change', function() {
 
-        var customerResponsibilityCarDenyPrice      = $('#customerResponsibilityCarDenyPrice').val();
-        var customerResponsibilityProstoyCount      = $('#customerResponsibilityProstoyCount').val();
-        var customerResponsibilityProstoyPrice      = $('#customerResponsibilityProstoyPrice').val();
-        var customerResponsibilityPaymentLateCount  = $('#customerResponsibilityPaymentLateCount').val();
-        var customerResponsibilityPaymentLatePrice  = $('#customerResponsibilityPaymentLatePrice').val();
-        var customerResponsibilityDocumentLateCount = $('#customerResponsibilityDocumentLateCount').val();
-        var customerResponsibilityDocumentLatePrice = $('#customerResponsibilityDocumentLatePrice').val();
-        var carrierResponsibilityCarDenyPrice       = $('#carrierResponsibilityCarDenyPrice').val();
-        var carrierResponsibilityLateCount       = $('#carrierResponsibilityLateCount').val();
-        var carrierResponsibilityLatePrice       = $('#carrierResponsibilityLatePrice').val();
-        var carrierResponsibilityDeliveryLateCount   = $('#carrierResponsibilityDeliveryLateCount').val();
-        var carrierResponsibilityDeliveryLatePrice   = $('#carrierResponsibilityDeliveryLatePrice').val();
-        var carrierResponsibilityDocumentLateCount  = $('#carrierResponsibilityDocumentLateCount').val();
-        var carrierResponsibilityDocumentLatePrice  = $('#carrierResponsibilityDocumentLatePrice').val();
-        var carrierTotalSumm   = $('#carrierTotalSumm').val();
-        var customerTotalSumm  = $('#customerTotalSumm').val();
+          var customerResponsibilityCarDenyPrice      = $('#customerResponsibilityCarDenyPrice').val();
+          var customerResponsibilityProstoyCount      = $('#customerResponsibilityProstoyCount').val();
+          var customerResponsibilityProstoyPrice      = $('#customerResponsibilityProstoyPrice').val();
+          var customerResponsibilityPaymentLateCount  = $('#customerResponsibilityPaymentLateCount').val();
+          var customerResponsibilityPaymentLatePrice  = $('#customerResponsibilityPaymentLatePrice').val();
+          var customerResponsibilityDocumentLateCount = $('#customerResponsibilityDocumentLateCount').val();
+          var customerResponsibilityDocumentLatePrice = $('#customerResponsibilityDocumentLatePrice').val();
+          var carrierResponsibilityCarDenyPrice       = $('#carrierResponsibilityCarDenyPrice').val();
+          var carrierResponsibilityLateCount       = $('#carrierResponsibilityLateCount').val();
+          var carrierResponsibilityLatePrice       = $('#carrierResponsibilityLatePrice').val();
+          var carrierResponsibilityDeliveryLateCount   = $('#carrierResponsibilityDeliveryLateCount').val();
+          var carrierResponsibilityDeliveryLatePrice   = $('#carrierResponsibilityDeliveryLatePrice').val();
+          var carrierResponsibilityDocumentLateCount  = $('#carrierResponsibilityDocumentLateCount').val();
+          var carrierResponsibilityDocumentLatePrice  = $('#carrierResponsibilityDocumentLatePrice').val();
+          var carrierTotalSumm   = $('#carrierTotalSumm').val();
+          var customerTotalSumm  = $('#customerTotalSumm').val();
 
-        if (!customerResponsibilityCarDenyPrice) customerResponsibilityCarDenyPrice=0;
-        if (!customerResponsibilityProstoyCount) customerResponsibilityProstoyCount=0;
-        if (!customerResponsibilityProstoyPrice) customerResponsibilityProstoyPrice=0;
-        if (!customerResponsibilityPaymentLateCount) customerResponsibilityPaymentLateCount=0;
-        if (!customerResponsibilityPaymentLatePrice) customerResponsibilityPaymentLatePrice=0;
-        if (!customerResponsibilityDocumentLateCount) customerResponsibilityDocumentLateCount=0;
-        if (!customerResponsibilityDocumentLatePrice) customerResponsibilityDocumentLatePrice=0;
-        if (!carrierResponsibilityCarDenyPrice) carrierResponsibilityCarDenyPrice=0;
-        if (!carrierResponsibilityLateCount) carrierResponsibilityLateCount=0;
-        if (!carrierResponsibilityLatePrice) carrierResponsibilityLatePrice=0;
-        if (!carrierResponsibilityDeliveryLateCount) carrierResponsibilityDeliveryLateCount=0;
-        if (!carrierResponsibilityDeliveryLatePrice) carrierResponsibilityDeliveryLatePrice=0;
-        if (!carrierResponsibilityDocumentLateCount) carrierResponsibilityDocumentLateCount=0;
-        if (!carrierResponsibilityDocumentLatePrice) carrierResponsibilityDocumentLatePrice=0;
+          if (!customerResponsibilityCarDenyPrice) customerResponsibilityCarDenyPrice=0;
+          if (!customerResponsibilityProstoyCount) customerResponsibilityProstoyCount=0;
+          if (!customerResponsibilityProstoyPrice) customerResponsibilityProstoyPrice=0;
+          if (!customerResponsibilityPaymentLateCount) customerResponsibilityPaymentLateCount=0;
+          if (!customerResponsibilityPaymentLatePrice) customerResponsibilityPaymentLatePrice=0;
+          if (!customerResponsibilityDocumentLateCount) customerResponsibilityDocumentLateCount=0;
+          if (!customerResponsibilityDocumentLatePrice) customerResponsibilityDocumentLatePrice=0;
+          if (!carrierResponsibilityCarDenyPrice) carrierResponsibilityCarDenyPrice=0;
+          if (!carrierResponsibilityLateCount) carrierResponsibilityLateCount=0;
+          if (!carrierResponsibilityLatePrice) carrierResponsibilityLatePrice=0;
+          if (!carrierResponsibilityDeliveryLateCount) carrierResponsibilityDeliveryLateCount=0;
+          if (!carrierResponsibilityDeliveryLatePrice) carrierResponsibilityDeliveryLatePrice=0;
+          if (!carrierResponsibilityDocumentLateCount) carrierResponsibilityDocumentLateCount=0;
+          if (!carrierResponsibilityDocumentLatePrice) carrierResponsibilityDocumentLatePrice=0;
 
-        var customerResponsibilityCarDenySumm      = (parseFloat(customerResponsibilityCarDenyPrice) / 100) * parseFloat(customerTotalSumm);
-        var customerResponsibilityProstoySumm      = parseFloat(customerResponsibilityProstoyCount) * (parseFloat(customerResponsibilityProstoyPrice) / 100 * parseFloat(customerTotalSumm));
-        var customerResponsibilityPaymentLateSumm  = parseFloat(customerResponsibilityPaymentLateCount) * (parseFloat(customerResponsibilityPaymentLatePrice) / 100  * parseFloat(customerTotalSumm));
-        var customerResponsibilityDocumentLateSumm = parseFloat(customerResponsibilityDocumentLateCount) * (parseFloat(customerResponsibilityDocumentLatePrice / 100  * parseFloat(customerTotalSumm)));
-        var carrierResponsibilityCarDenySumm       = parseFloat(carrierResponsibilityCarDenyPrice) / 100  * parseFloat(carrierTotalSumm);
-        var carrierResponsibilityLateSumm          = parseFloat(carrierResponsibilityLateCount) * (parseFloat(carrierResponsibilityLatePrice) / 100  * parseFloat(carrierTotalSumm));
-        var carrierResponsibilityDeliveryLateSumm  = parseFloat(carrierResponsibilityDeliveryLateCount) * (parseFloat(carrierResponsibilityDeliveryLatePrice) / 100  * parseFloat(carrierTotalSumm));
-        var carrierResponsibilityDocumentLateSumm  = parseFloat(carrierResponsibilityDocumentLateCount) * (parseFloat(carrierResponsibilityDocumentLatePrice) / 100  * parseFloat(carrierTotalSumm));
+          var customerResponsibilityCarDenySumm      = (parseFloat(customerResponsibilityCarDenyPrice) / 100) * parseFloat(customerTotalSumm);
+          var customerResponsibilityProstoySumm      = parseFloat(customerResponsibilityProstoyCount) * (parseFloat(customerResponsibilityProstoyPrice) / 100 * parseFloat(customerTotalSumm));
+          var customerResponsibilityPaymentLateSumm  = parseFloat(customerResponsibilityPaymentLateCount) * (parseFloat(customerResponsibilityPaymentLatePrice) / 100  * parseFloat(customerTotalSumm));
+          var customerResponsibilityDocumentLateSumm = parseFloat(customerResponsibilityDocumentLateCount) * (parseFloat(customerResponsibilityDocumentLatePrice / 100  * parseFloat(customerTotalSumm)));
+          var carrierResponsibilityCarDenySumm       = parseFloat(carrierResponsibilityCarDenyPrice) / 100  * parseFloat(carrierTotalSumm);
+          var carrierResponsibilityLateSumm          = parseFloat(carrierResponsibilityLateCount) * (parseFloat(carrierResponsibilityLatePrice) / 100  * parseFloat(carrierTotalSumm));
+          var carrierResponsibilityDeliveryLateSumm  = parseFloat(carrierResponsibilityDeliveryLateCount) * (parseFloat(carrierResponsibilityDeliveryLatePrice) / 100  * parseFloat(carrierTotalSumm));
+          var carrierResponsibilityDocumentLateSumm  = parseFloat(carrierResponsibilityDocumentLateCount) * (parseFloat(carrierResponsibilityDocumentLatePrice) / 100  * parseFloat(carrierTotalSumm));
 
-        $('#customerResponsibilityCarDenySumm').val(customerResponsibilityCarDenySumm);
-        $('#customerResponsibilityProstoySumm').val(customerResponsibilityProstoySumm);
-        $('#customerResponsibilityPaymentLateSumm').val(customerResponsibilityPaymentLateSumm);
-        $('#customerResponsibilityDocumentLateSumm').val(customerResponsibilityDocumentLateSumm);
-        $('#carrierResponsibilityCarDenySumm').val(carrierResponsibilityCarDenySumm);
-        $('#carrierResponsibilityLateSumm').val(carrierResponsibilityLateSumm);
-        $('#carrierResponsibilityDeliveryLateSumm').val(carrierResponsibilityDeliveryLateSumm);
-        $('#carrierResponsibilityDocumentLateSumm').val(carrierResponsibilityDocumentLateSumm);
+          $('#customerResponsibilityCarDenySumm').val(customerResponsibilityCarDenySumm);
+          $('#customerResponsibilityProstoySumm').val(customerResponsibilityProstoySumm);
+          $('#customerResponsibilityPaymentLateSumm').val(customerResponsibilityPaymentLateSumm);
+          $('#customerResponsibilityDocumentLateSumm').val(customerResponsibilityDocumentLateSumm);
+          $('#carrierResponsibilityCarDenySumm').val(carrierResponsibilityCarDenySumm);
+          $('#carrierResponsibilityLateSumm').val(carrierResponsibilityLateSumm);
+          $('#carrierResponsibilityDeliveryLateSumm').val(carrierResponsibilityDeliveryLateSumm);
+          $('#carrierResponsibilityDocumentLateSumm').val(carrierResponsibilityDocumentLateSumm);
 
-        var customerTotal = parseFloat(customerResponsibilityCarDenySumm)+parseFloat(customerResponsibilityProstoySumm)
-            +parseFloat(customerResponsibilityPaymentLateSumm)+parseFloat(customerResponsibilityDocumentLateSumm);
+          var customerTotal = parseFloat(customerResponsibilityCarDenySumm)+parseFloat(customerResponsibilityProstoySumm)
+              +parseFloat(customerResponsibilityPaymentLateSumm)+parseFloat(customerResponsibilityDocumentLateSumm);
 
-        var carrierTotal = parseFloat(carrierResponsibilityCarDenySumm)+parseFloat(carrierResponsibilityLateSumm)
-            +parseFloat(carrierResponsibilityDeliveryLateSumm)+parseFloat(carrierResponsibilityDocumentLateSumm);
+          var carrierTotal = parseFloat(carrierResponsibilityCarDenySumm)+parseFloat(carrierResponsibilityLateSumm)
+              +parseFloat(carrierResponsibilityDeliveryLateSumm)+parseFloat(carrierResponsibilityDocumentLateSumm);
 
-        $('#customerResponsibilitySumm').val(customerTotal);
-        $('#carrierResponsibilitySumm').val(carrierTotal);
+          $('#customerResponsibilitySumm').val(customerTotal);
+          $('#carrierResponsibilitySumm').val(carrierTotal);
 
-    });
+      }
+    );
 
     // Изменение статуса кнопок при нажатии
     $('.customerPayMethodButton').live('click',
