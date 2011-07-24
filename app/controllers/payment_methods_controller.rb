@@ -23,11 +23,11 @@ class PaymentMethodsController < ApplicationController
   # POST /payment_methods
   def create
     @payment_method = PaymentMethod.new(params[:payment_method])
- 
+
     if @payment_method.save
-      redirect_to({:action => 'index'}, {:notice => 'Метод оплаты добавлен'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Вид расчёта добавлен'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +36,9 @@ class PaymentMethodsController < ApplicationController
     @payment_method = PaymentMethod.find(params[:id])
 
     if @payment_method.update_attributes(params[:payment_method])
-      redirect_to(@payment_method, :notice => 'Изменения внесены') 
+      redirect_to(@payment_method, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

@@ -18,6 +18,7 @@ $(document).ready(function() {
 
                 var total =  parseFloat(customerRateSumm) + (parseFloat(customerRateSverhCount) * parseFloat(customerRateSverhPrice))
                 $('#request_customer_rate_total_summ').val(total);
+                $('#customerSummToPay').val(total);
             }
         }
     );
@@ -38,6 +39,7 @@ $(document).ready(function() {
                 $('#carrierRateSverhSumm').val(carrierRateSverhSumm);
 
                 $('#request_carrier_rate_total_summ').val(carrierRateSverhSumm + parseFloat(carrierRateSumm));
+                $('#carrierSummToPay').val(carrierRateSverhSumm + parseFloat(carrierRateSumm));
             }
         }
     );
@@ -59,6 +61,7 @@ $(document).ready(function() {
 
                 var total = ( parseFloat(customerRateHours)+parseFloat(customerRatePodachaHours) ) * parseFloat(customerRateHourPrice)
                 $('#request_customer_rate_total_summ').val(total);
+                $('#customerSummToPay').val(total);
             }
         }
     );
@@ -78,6 +81,7 @@ $(document).ready(function() {
 
                 var total = ( parseFloat(carrierRateHours)+parseFloat(carrierRatePodachaHours) ) * parseFloat(carrierRateHourPrice)
                 $('#request_carrier_rate_total_summ').val(total);
+                $('#carrierSummToPay').val(total);
             }
         }
     );

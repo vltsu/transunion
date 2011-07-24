@@ -7,7 +7,7 @@ class CustomerCompany < ActiveRecord::Base
 
   cattr_reader :per_page
   @@per_page = 20
-  has_many :requests
+  has_many    :requests
   belongs_to  :opf
   belongs_to  :company_face
 
@@ -29,7 +29,7 @@ class CustomerCompany < ActiveRecord::Base
   validates_numericality_of :respons_transport_late_loading_hours
   validates_numericality_of :respons_transport_late_loading_percent
   validates_numericality_of :respons_transport_late_destination_hours
-  validates_numericality_of :response_transport_late_destination_percent
+  validates_numericality_of :respons_transport_late_destination_percent
   validates_numericality_of :respons_document_late
 
   def name
@@ -47,7 +47,7 @@ class CustomerCompany < ActiveRecord::Base
       self.respons_transport_late_loading_hours        = params[:respons_transport_late_loading_hours].to_s.gsub(/,/,'.')
       self.respons_transport_late_loading_percent      = params[:respons_transport_late_loading_percent].to_s.gsub(/,/,'.')
       self.respons_transport_late_destination_hours    = params[:respons_transport_late_destination_hours].to_s.gsub(/,/,'.')
-      self.response_transport_late_destination_percent = params[:response_transport_late_destination_percent].to_s.gsub(/,/,'.')
+      self.respons_transport_late_destination_percent  = params[:respons_transport_late_destination_percent].to_s.gsub(/,/,'.')
       self.respons_document_late                       = params[:respons_document_late].to_s.gsub(/,/,'.')
     end
   end

@@ -1,0 +1,155 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    %div{ :style => "width: 450px; margin: 0px auto;", :id => "error_explanation" }
+      %h2{:align => 'center'} Чтобы сохранить:
+      - @user.errors.each do |key,msg|
+        = msg
+        %br/
+      %br/
+
+  %table
+    %tr
+      %td{ :class => "fieldName fieldInnerTopLeft"} Фамилия:
+      %td{ :class => "fieldForm fieldInnerTopRight"}= f.text_field :lastname, :class => "inp required"
+    %tr
+      %td{ :class => "fieldName fieldInnerMiddleLeft"} Имя:
+      %td{ :class => "fieldForm fieldInnerMiddleRight"}= f.text_field :firstname, :class => "inp required"
+    %tr
+      %td{ :class => "fieldName fieldInnerBottomLeft"} Отчество:
+      %td{ :class => "fieldForm fieldInnerBottomRight"}= f.text_field :middlename, :class => "inp required"
+    %tr
+      %td{ :style => "border-width: 0px;border:none none;", :align => "center", :colspan=>"2" }
+        %span{ :style => "font-style: italic; text-decoration: underline;"} Должность
+    %tr
+      %td{ :class => "fieldName fieldInnerTopLeft"} Должность:
+      %td{ :class => "fieldForm fieldInnerTopRight"}= f.text_field :position, :class => "inp"
+    %tr
+      %td{ :class => "fieldName fieldInnerMiddleLeft"} Оклад:
+      %td{ :class => "fieldForm fieldInnerMiddleRight"}= f.text_field :salary, :class => "inp"
+    %tr
+      %td{ :class => "fieldName fieldInnerMiddleLeft"} % от перевозок:
+      %td{ :class => "fieldForm fieldInnerMiddleRight"}= f.text_field :request_percent, :class => "inp"
+    %tr
+      %td{ :class => "fieldName fieldInnerMiddleLeft"} Премия(%):
+      %td{ :class => "fieldForm fieldInnerMiddleRight"}= f.text_field :premium_percent, :class => "inp"
+    %tr
+      %td{ :class=> "fieldName fieldInnerMiddleLeft"} Общий стаж:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}= f.text_field :global_experience, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Непрерывный стаж:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :unbroken_experience, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Выслуга лет:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}=f.text_field :visluga_let, :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Образование
+    %tr
+      %td{ :class=>"fieldName fieldInnerTopLeft"} ВУЗ:
+      %td{ :class=>"fieldForm fieldInnerTopRight"}=f.text_field :university, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Специальность:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}=f.text_field :speciality, :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Адрес
+    %tr
+      %td{ :class=>"fieldName fieldInnerTopLeft"} Город:
+      %td{ :class=>"fieldForm fieldInnerTopRight"}=f.text_field :city, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Район:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :district, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Улица:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :street, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Дом:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :house, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Корпус/лит:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :housing, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Квартира:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}=f.text_field :apartment, :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Контакты
+    %tr
+      %td{ :class=>"fieldName fieldInnerTopLeft"} Мобильный телефон рабочий:
+      %td{ :class=>"fieldForm fieldInnerTopRight"}=f.text_field :mobile_phone_business, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Мобильный телефон личный:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :mobile_phone_personal, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Домашний телефон:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :home_phone, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Email:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :email, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} ICQ:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :icq, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Skype:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}=f.text_field :skype, :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Паспортные данные
+    %tr
+      %td{ :class=>"fieldName fieldInnerTopLeft"} Гражданство:
+      %td{ :class=>"fieldForm fieldInnerTopRight"}=f.text_field :citizenship, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Дата рождения:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.date_select :date_of_birth, :start_year => Time.now.year, :end_year => 1940, :include_blank => true, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Адрес по паспорту:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :passport_address, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Паспорт серия:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :passport_series, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Паспорт номер:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :passport_address, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Паспорт дата выдачи:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.date_select :passport_issue_date, :start_year => Time.now.year, :end_year => 1970, :include_blank => true,  :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Паспорт кем выдан:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}=f.text_field :passport_issue_whom, :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Документы
+    %tr
+      %td{ :class=>"fieldName fieldInnerTopLeft"} ИНН:
+      %td{ :class=>"fieldForm fieldInnerTopRight"}=f.text_field :inn, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Пенсионное:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :pensionnoe, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Мед. страховка:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.text_field :medical_insurance, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Трудовой договор:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}=f.text_field :working_contract, :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Дополнительно
+    %tr
+      %td{ :class=>"fieldName fieldBothLeft"} Примечание:
+      %td{ :class=>"fieldForm fieldBothRight"}=f.text_area :about, :size => "28x5", :class => "inp"
+    %tr
+      %td{ :style=>"border-width: 0px;border:none none;", :align=>"center", :colspan=>"2"}
+        %span{ :style=>"font-style: italic; text-decoration: underline;"} Дополнительно
+    %tr
+      %td{ :class=>"fieldName fieldInnerTopLeft"} Логин:
+      %td{ :class=>"fieldForm fieldInnerTopRight"}=f.text_field :login, :class => "inp"
+    %tr
+      %td{ :class=>"fieldName fieldInnerMiddleLeft"} Роль:
+      %td{ :class=>"fieldForm fieldInnerMiddleRight"}=f.select :role, options_for_select([ ['менеджер','manager'],['администратор','administrator'] ], @user.role), :class => 'inp'
+    %tr
+      %td{ :class=>"fieldName fieldInnerBottomLeft"} Пароль:
+      %td{ :class=>"fieldForm fieldInnerBottomRight"}
+    - # Не показывать кнопку сохранить для просмотра карточки
+    - if !(params[:action] == 'show')
+      %tr
+        %td{:colspan=>'2', :align=>'center', :class=>'borNone'}= f.submit "Сохранить"

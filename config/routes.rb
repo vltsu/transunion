@@ -25,7 +25,7 @@ Transunion::Application.routes.draw do
   resources :opfs
 
   resources :users
-  
+
   root :to =>'index#index', :as => :home
 
   get "index/index"
@@ -41,6 +41,8 @@ Transunion::Application.routes.draw do
   match 'signin_form' => 'index#signin_form', :as => :signin_form
   match 'signin'      => 'index#signin'
   match 'signout'     => 'index#signout'
+
+  match 'requests/:id/customer_document' => 'requests#customer_document'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

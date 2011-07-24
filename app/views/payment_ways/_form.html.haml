@@ -2,14 +2,14 @@
   -if @payment_way.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @payment_way.errors.each do |key,message| 
+      - @payment_way.errors.each do |key,message|
         = message
         %br/
     %br/
 
   %table
     %tr
-      %td{:class => 'fieldName fieldBothLeft'} Вид оплаты:
+      %td{:class => 'fieldName fieldBothLeft'} Способ оплаты:
       %td{:class => 'fieldForm fieldBothRight'}= f.text_field :payment_way, :class => 'inp'
     -# Не показывать кнопку сохранить для просмотра карточки
     - if !(params[:action] == 'show')

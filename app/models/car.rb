@@ -1,7 +1,10 @@
 # encoding: UTF-8
 class Car < ActiveRecord::Base
- # Параметр содержащий приходящие данные из формы
- cattr_accessor :params
+  # Параметр содержащий приходящие данные из формы
+  cattr_accessor :params
+
+  cattr_reader :car_gabarits
+  cattr_reader :full_name
 
   before_validation :standartise_fields
 
@@ -22,11 +25,15 @@ class Car < ActiveRecord::Base
   validates_numericality_of :dimensions_length, :allow_nil => true
   validates_numericality_of :dimensions_height, :allow_nil => true
 
-  def name
+  def full_name
     "#{self.car_model.car_model} #{self.car_type.car_type} #{self.car_tonnage.car_tonnage}"
   end
 
-  protected
+  def car_gabarits
+    "#{self.dimensions_length}x#{self.dimensions_width}x#{self.dimensions_height}"
+  end
+
+ protected
 
   def standartise_fields
     #Проверка на случай если данные идут не из формы, а из fixtures

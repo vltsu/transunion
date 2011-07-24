@@ -15,6 +15,7 @@ class CreateCustomerCompanies < ActiveRecord::Migration
       t.string :email
       t.string :current_account
       t.string :bank
+      t.string :bank_inn
       t.string :correspondent_account
       t.string :bik
       t.string :operates_basis
@@ -29,7 +30,7 @@ class CreateCustomerCompanies < ActiveRecord::Migration
       t.decimal :respons_transport_late_loading_hours, :precision => 5, :scale => 2
       t.decimal :respons_transport_late_loading_percent, :precision => 5, :scale => 2
       t.decimal :respons_transport_late_destination_hours, :precision => 5, :scale => 2
-      t.decimal :response_transport_late_destination_percent, :precision => 5, :scale => 2
+      t.decimal :respons_transport_late_destination_percent, :precision => 5, :scale => 2
       t.decimal :respons_document_late, :precision => 5, :scale => 2
       t.boolean :black_label
 

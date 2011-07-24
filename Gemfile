@@ -6,6 +6,10 @@ gem 'rails', '3.0.8'
 
 gem 'mysql2', '0.2.6'
 
+gem 'nokogiri'
+
+gem 'ru_propisju'
+
 #to activate debugger
 gem "ruby-debug19"
 #rusification for rails

@@ -5,7 +5,7 @@
   -if @customer_company.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @customer_company.errors.each do |key,message| 
+      - @customer_company.errors.each do |key,message|
         = message
         %br/
     %br/
@@ -28,7 +28,7 @@
     %tr
       %td{:class => 'fieldName fieldInnerMiddleLeft'} ФИО управляющего:
       %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :manager_name, :class => 'inp required'
-    %tr  
+    %tr
       %td{:class => 'fieldName fieldInnerMiddleLeft'} Юридический адрес:
       %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :legal_address, :class => 'inp required'
     %tr
@@ -62,6 +62,9 @@
       %td{:class => 'fieldName fieldInnerMiddleLeft'} Банк:
       %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :bank, :class => 'inp'
     %tr
+      %td{:class => 'fieldName fieldInnerMiddleLeft'} Банковский ИНН:
+      %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :bank_inn, :class => 'inp'
+    %tr
       %td{:class => 'fieldName fieldInnerMiddleLeft'} Корреспондентский счет:
       %td{:class => 'fieldForm fieldInnerMiddleRight'}= f.text_field :correspondent_account, :class => 'inp'
     %tr
@@ -73,9 +76,9 @@
     %tr
       %td{:class => 'borNone', :align => 'center', :colspan => '2'} <br />
     %tr
-      %td{:class => 'borNone', :id => 'responsibilityButton', 
+      %td{:class => 'borNone', :id => 'responsibilityButton',
                                :align => 'center', :style => 'color:blue; text-decoration:underline; cursor:pointer',
-                               :colspan=>'2'} Ответственность сторон 
+                               :colspan=>'2'} Ответственность сторон
     %tr
       %td{:class => 'borNone', :align => 'center', :colspan => '2'} <br />
     %tbody{:id => 'responsibility', :style => 'display:none'}
@@ -96,7 +99,7 @@
         %td{:class => 'borNone', :align => 'center', :colspan => '2'}!= "<span style='font-size: 16px; font-style: italic; text-decoration: underline;'>Ответственность перевозчика:</span>"
       %tr
         %td{:class => 'fieldName fieldInnerTopLeft'} Требования по замене ТС:
-        %td{:class => 'fieldForm fieldInnerTopRight'}= f.text_field :respons_transport_replacement_req, :class => 'inp', :size => 80, :id =>'resp', 
+        %td{:class => 'fieldForm fieldInnerTopRight'}= f.text_field :respons_transport_replacement_req, :class => 'inp', :size => 80, :id =>'resp',
           :value => params[:action] == 'new' ? 'в случае поломки или аварии ТС в пути следования предоставить взамен равноценное исправное ТС своими силами не позднее 24 часов с момента неисправности ТС и за свой счет.' : @customer_company.respons_transport_replacement_req
       %tr
         %td{:class => 'fieldName fieldInnerMiddleLeft'} Возмещение ущерба:
@@ -110,7 +113,7 @@
         %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_transport_late_loading_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @customer_company.respons_transport_late_loading_percent } % от стоимости перевозки за каждый час опоздания."
       %tr
         %td{:class => 'fieldName fieldInnerMiddleLeft'}!= "Штраф за просрочку доставки груза более: #{f.text_field :respons_transport_late_destination_hours, :class => 'inp', :size=>'5', :value => params[:action] == 'new' ? '4' : @customer_company.respons_transport_late_destination_hours } часов"
-        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :response_transport_late_destination_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @customer_company.response_transport_late_destination_percent } % от стоимости перевозки за каждый час просрочки."
+        %td{:class => 'fieldForm fieldInnerMiddleRight'}!= "в размере #{f.text_field :respons_transport_late_destination_percent, :class => 'inp', :size => '5', :value => params[:action] == 'new' ? '5' : @customer_company.respons_transport_late_destination_percent } % от стоимости перевозки за каждый час просрочки."
       %tr
         %td{:class => 'fieldName fieldInnerBottomLeft'} Штраф за несвоевременное возвращение документов:
         %td{:class => 'fieldForm fieldInnerBottomRight'}!= "в размере #{f.text_field :respons_document_late, :class => 'inp', :size=>'5', :value => params[:action] == 'new' ? '0.5' : @customer_company.respons_document_late} % от стоимости перевозки за каждый день просрочки"

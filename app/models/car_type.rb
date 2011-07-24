@@ -2,5 +2,5 @@
 class CarType < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
-  has_many :car
+  has_many :cars
 end

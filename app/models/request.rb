@@ -2,18 +2,24 @@
 class Request < ActiveRecord::Base
 
   cattr_accessor :params
+  cattr_reader   :cargo_gabarits
+
   before_validation :standartise_fields
 
   cattr_reader :per_page
   @@per_page = 20
 
+  belongs_to :user
   belongs_to :carrier_company
   belongs_to :customer_company
   belongs_to :driver
   belongs_to :car
-  belongs_to :payment_doc
-  belongs_to :payment_way
-  belongs_to :payment_method
+  belongs_to :customer_payment_doc,    :class_name => "PaymentDoc",    :foreign_key => "customer_payment_doc_id"
+  belongs_to :carrier_payment_doc,     :class_name => "PaymentDoc",    :foreign_key => "carrier_payment_doc_id"
+  belongs_to :customer_payment_method, :class_name => "PaymentMethod", :foreign_key => "customer_payment_method_id"
+  belongs_to :carrier_payment_method,  :class_name => "PaymentMethod", :foreign_key => "carrier_payment_method_id"
+  belongs_to :customer_payment_way,    :class_name => "PaymentWay",    :foreign_key => "customer_payment_way_id"
+  belongs_to :carrier_payment_way,     :class_name => "PaymentWay",    :foreign_key => "carrier_payment_way_id"
   belongs_to :cargo_classification
 
   has_many :loading_points
@@ -35,6 +41,10 @@ class Request < ActiveRecord::Base
   validates :carrier_payment_method_id,  :presence => { :message => 'Выберите вид расчёта с перевозчиком' }
   validates :carrier_payment_way_id,     :presence => { :message => 'Выберите спocоб оплаты перевозчику' }
   validates :carrier_payment_doc_id,     :presence => { :message => 'Выберите тип документов для перевозчика' }
+
+  def cargo_gabarits
+    "#{self.length}x#{self.width}x#{self.height}"
+  end
 
   protected
 

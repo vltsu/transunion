@@ -1,5 +1,12 @@
+# encoding: UTF-8
 class User < ActiveRecord::Base
+
   validates_uniqueness_of :login
+
+  validates :lastname,                   :presence => { :message => 'Введите фамилию' }
+  validates :firstname,                  :presence => { :message => 'Введите имя' }
+  validates :middlename,                 :presence => { :message => 'Введите отчество' }
+
   def password=(pass)
     salt = [Array.new(6){rand(256).chr}.join].pack('m').chomp
     self.password_salt, self.password_hash =
@@ -13,6 +20,6 @@ class User < ActiveRecord::Base
         user.password_hash
     else
       user
-    end  
-  end      
+    end
+  end
 end

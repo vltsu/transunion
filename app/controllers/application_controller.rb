@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_filter :check_authentication, 
-                :check_authorization, 
+  before_filter :check_authentication,
+                :check_authorization,
                 :except => [:signin_form, :signin]
   before_filter :hide_sign_in_form, :only => [:signin_form]
 
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
       session[:intended_action] = action_name
       redirect_to signin_form_url
     end
+  end
+
+  def current_user
+    session[:user]
   end
 
   #Check if logined user has access to requested
@@ -70,7 +74,7 @@ class ApplicationController < ActionController::Base
     acl.allow('administrator','requests')
 
     user_role = User.find(session[:user]).role
-    
+
     request_controller = params[:controller]
     request_action     = params[:action]
 

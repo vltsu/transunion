@@ -30,7 +30,7 @@ class CarrierCompany < ActiveRecord::Base
   validates_numericality_of :respons_transport_late_loading_hours
   validates_numericality_of :respons_transport_late_loading_percent
   validates_numericality_of :respons_transport_late_destination_hours
-  validates_numericality_of :response_transport_late_destination_percent
+  validates_numericality_of :respons_transport_late_destination_percent
   validates_numericality_of :respons_document_late
 
   def name
@@ -50,7 +50,7 @@ class CarrierCompany < ActiveRecord::Base
       self.respons_transport_late_loading_hours        = params[:respons_transport_late_loading_hours].to_s.gsub(/,/,'.')
       self.respons_transport_late_loading_percent      = params[:respons_transport_late_loading_percent].to_s.gsub(/,/,'.')
       self.respons_transport_late_destination_hours    = params[:respons_transport_late_destination_hours].to_s.gsub(/,/,'.')
-      self.response_transport_late_destination_percent = params[:response_transport_late_destination_percent].to_s.gsub(/,/,'.')
+      self.respons_transport_late_destination_percent  = params[:respons_transport_late_destination_percent].to_s.gsub(/,/,'.')
       self.respons_document_late                       = params[:respons_document_late].to_s.gsub(/,/,'.')
     end
   end
