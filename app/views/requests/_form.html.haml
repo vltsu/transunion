@@ -156,7 +156,7 @@
       %td{ :class=>'customer fieldName', :colspan=> 1, :style =>'border: 3px black solid; border-right: 1px black solid;' }
         Компания:
       %td{ :class=>'customer fieldForm', :colspan=> 3, :style=>'border: 3px black solid; border-left: 1px black solid;' }
-        = f.collection_select :customer_company_id, CustomerCompany.find(:all), :id, :title, { :include_blank => true },
+        = f.collection_select :customer_company_id, CustomerCompany.find(:all), :id, :name, { :include_blank => true },
           { :class => 'inp required' }
         %span#addButton
           %a{ :style => 'margin-left:20px;', :target => '_blank', :href => '/customer_companies/new' }
@@ -165,7 +165,7 @@
       %td{ :class=>'carrier fieldName fieldInnerTopLeft', :align => 'left', :colspan=> 1 }
         Компания
       %td{ :class=>'carrier fieldInnerTopRight', :colspan => 3 }
-        = f.collection_select :carrier_company_id, CarrierCompany.find(:all), :id, :title, { :include_blank => true },
+        = f.collection_select :carrier_company_id, CarrierCompany.find(:all), :id, :name, { :include_blank => true },
           { :class => 'inp required' }
         %span#addButton
           %a{ :style => 'margin-left:100px;', :target => '_blank', :href => '/carrier_companies/new' }

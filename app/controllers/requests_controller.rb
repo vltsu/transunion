@@ -149,7 +149,14 @@ class RequestsController < ApplicationController
         line.gsub!(/«orderDay»/,"#{request.created_at.strftime('%d')}" )
         line.gsub!(/«orderMonth»/,"#{month(request.created_at.strftime('%-m').to_i)}" )
         line.gsub!(/«orderYear»/,"#{request.created_at.strftime('%Y')}" )
+
+        if request.customer_company.opf.opf == "ИП"
+          line.gsub!(/«customerFacePodp»/, '' )
+        else
+          line.gsub!(/«customerFacePodp»/, request.customer_company.company_face.company_face_podp )
+        end
         line.gsub!(/customerCompanyTitle/, request.customer_company.name )
+
         line.gsub!(/«customerFace»/, request.customer_company.company_face.company_face )
         line.gsub!(/«customerManager»/, request.customer_company.manager_name )
         line.gsub!(/«nameR»/, request.customer_company.manager_name )
@@ -181,6 +188,8 @@ class RequestsController < ApplicationController
         request.car.car_tonnage.car_tonnage ? line.gsub!(/«gruzpod»/, request.car.car_tonnage.car_tonnage.to_s) : line.gsub!(/«gruzpod»/, '--')
         request.other_conditions            ? line.gsub!(/«otherConditions»/, request.other_conditions)         : line.gsub!(/«otherConditions»/, '---------')
         line.gsub!(/«cargoClass»/, request.cargo_classification.classification )
+
+        #Условия погрузки
         loading_conditions = ''
         if request.loading_up
           loading_conditions = loading_conditions+'верх '
@@ -193,6 +202,7 @@ class RequestsController < ApplicationController
         end
         loading_conditions.size > 1 ? line.gsub!(/«loadingConditions»/,loading_conditions) : line.gsub!(/«loadingConditions»/, '--------')
 
+        #Точки погрузки/разгрузки
         f_lp = request.loading_points.find(:first, :conditions => 'point_number = 1')
         line.gsub!(/«ld1»/, f_lp.date.strftime("%d-%m-%Y") )
         line.gsub!(/«lt1»/, f_lp.time )

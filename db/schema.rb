@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20110710164926) do
 
   create_table "company_faces", :force => true do |t|
     t.string   "company_face"
+    t.string   "company_face_podp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

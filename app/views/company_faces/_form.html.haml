@@ -2,15 +2,18 @@
   -if @company_face.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
-      - @company_face.errors.each do |key,message| 
+      - @company_face.errors.each do |key,message|
         = message
-      %br/
+        %br/
     %br/
 
   %table
     %tr
-      %td{:class => 'fieldName fieldBothLeft'} Компания в лице:
-      %td{:class => 'fieldForm fieldBothRight'}= f.text_field :company_face, :class => 'inp'
+      %td{:class => 'fieldName fieldInnerTopLeft'} Компания в лице(пример "генерального директора"):
+      %td{:class => 'fieldForm fieldInnerTopRight'}= f.text_field :company_face, :class => 'inp'
+    %tr
+      %td{:class => 'fieldName fieldInnerBottomLeft'} Компания в лице для подписи(пример "Генеральный директор"):
+      %td{:class => 'fieldForm fieldInnerBottomRight'}= f.text_field :company_face_podp, :class => 'inp'
     -# Не показывать кнопку сохранить для просмотра карточки
     - if !(params[:action] == 'show')
       %tr
