@@ -1,5 +1,8 @@
 Transunion::Application.routes.draw do
 
+  #Для сохранения заявки через Сохранить как
+  match 'requests/create_sas' => 'requests#create_sas', :as => :create_sas
+
   resources :requests
 
   resources :payment_docs
@@ -42,7 +45,10 @@ Transunion::Application.routes.draw do
   match 'signin'      => 'index#signin'
   match 'signout'     => 'index#signout'
 
-  match 'requests/:id/customer_document' => 'requests#customer_document'
+  match 'requests/:id/customer_document' => 'requests#customer_document', :as => :customer_doc
+  match 'requests/:id/carrier_document' => 'requests#carrier_document',   :as => :carrier_doc
+
+  match 'requests/:id/save_as' => 'requests#save_as', :as => :save_as
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

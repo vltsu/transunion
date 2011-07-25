@@ -35,12 +35,12 @@ $(document).ready(function() {
 
     // Заполнение полей
     function fillFields() {
-        var customerRateSummService = parseFloat($('#customerRateSummService').text())
+        var customerRateSummService =  parseFloat($('#customerRateSummService').text())
         var customerRateHoursService = parseFloat($('#customerRateHoursService').text())
         var customerRatePodachaHoursService = parseFloat($('#customerRatePodachaHoursService').text())
         var customerRateHourPriceService = parseFloat($('#customerRateHourPriceService').text())
         var customerRateSverhCountService = parseFloat($('#customerRateSverhCountService').text())
-        var customerRateSverhPriceService = parseFloat($('#customerRateSverhPriceService').text())
+        var customerRateSverhPriceService = $('#customerRateSverhPriceService').text() ? parseFloat($('#customerRateSverhPriceService').text()) : 0
         var customerRateSverhSummService = parseFloat($('#customerRateSverhSummService').text())
         var customerRateTotalSummService = parseFloat($('#customerRateTotalSummService').text())
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
         var carrierRatePodachaHoursService = parseFloat($('#carrierRatePodachaHoursService').text())
         var carrierRateHourPriceService = parseFloat($('#carrierRateHourPriceService').text())
         var carrierRateSverhCountService = parseFloat($('#carrierRateSverhCountService').text())
-        var carrierRateSverhPriceService = parseFloat($('#carrierRateSverhPriceService').text())
+        var carrierRateSverhPriceService = $('#customerRateSverhPriceService').text() ? parseFloat($('#carrierRateSverhPriceService').text()) : 0
         var carrierRateSverhSummService = parseFloat($('#carrierRateSverhSummService').text())
         var carrierRateTotalSummService = parseFloat($('#carrierRateTotalSummService').text())
 

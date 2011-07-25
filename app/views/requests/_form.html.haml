@@ -8,7 +8,7 @@
   - javascript_include_tag 'validation'
 - content_for(:head) do
   - javascript_include_tag 'transport_select'
-- if params[:action] == 'new'
+- if params[:action] == 'new' || params[:action] == 'save_as'
   - content_for(:head) do
     - javascript_include_tag 'request_add'
   - content_for(:head) do
@@ -18,7 +18,11 @@
     - javascript_include_tag 'request_edit'
   - content_for(:head) do
     - javascript_include_tag 'cargopoints_edit'
-= form_for @request do |f|
+- if params[:action] == 'save_as'
+  - content_for(:head) do
+    - javascript_include_tag 'save_as_clean'
+- args = params[:action] == 'save_as' ? {:url => create_sas_path, :html => { :class => 'new_request', :id => 'new_request' } } : {}
+= form_for @request, args do |f|
   -if @request.errors.any?
     %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
       %h2{:align=>'center'} Чтобы сохранить:
