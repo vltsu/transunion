@@ -1,8 +1,15 @@
 Transunion::Application.routes.draw do
 
+  match 'finances/customer_payment_bill' => 'finances#customer_payment_bill', :as => :customer_payment_bill
+  match 'finances/customer_payment_bill/:id/edit' => 'finances#customer_payment_bill_edit', :as => :customer_payment_bill_edit
+  match 'finances/customer_payment_bill_create' => 'finances#customer_payment_bill_create', :as => :customer_payment_bill_create
+  match 'finances/customer_payment_bill_update/:id' => 'finances#customer_payment_bill_update', :as => :customer_payment_bill_update
+
   resources :outcome_sections
 
   resources :income_sections
+
+  resources :finances
 
   #Для сохранения заявки через Сохранить как
   match 'requests/create_sas' => 'requests#create_sas', :as => :create_sas

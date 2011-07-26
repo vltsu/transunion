@@ -1,0 +1,30 @@
+- content_for(:head) do
+  - javascript_include_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.js'
+- content_for(:head) do
+  - stylesheet_link_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.css'
+- content_for(:head) do
+  - javascript_include_tag 'datetime'
+- content_for(:head) do
+  - javascript_include_tag 'validation'
+- args = ( params[:action] == 'customer_payment_bill' || params[:action] == 'customer_payment_bill_create' ) ? {:url => customer_payment_bill_create_path } : {:url => customer_payment_bill_update_path }
+= form_for @finance, args do |f|
+  - if @finance.errors.any?
+    %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
+      %h2{:align=>'center'} Чтобы сохранить:
+      - if @finance.errors
+        - @finance.errors.each do |key,message|
+          = message
+          %br/
+    %br/
+  %table
+    %tr
+      %td{:class => "fieldName fieldInnerTopLeft"} Номер счёта:
+      %td{:class => "fieldForm fieldInnerTopRight"}= f.text_field :bill_id, :class => "inp required", :size => 3
+    %tr
+      %td{:class => "fieldName fieldInnerMiddleLeft"} Дата:
+      %td{:class => "fieldForm fieldInnerMiddleRight"}= f.text_field :date, :class => "inp required ddateshort", :size => 8
+    %tr
+      %td{:class => "fieldName fieldInnerBottomLeft"} Сумма:
+      %td{:class => "fieldForm fieldInnerBottomRight"}= f.text_field :summ, :class => "inp required", :size => 7
+    %tr
+      %td{:colspan=>"2", :align=>"center", :class=>"borNone"}= f.submit "Сохранить"

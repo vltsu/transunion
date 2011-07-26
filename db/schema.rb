@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726091029) do
+ActiveRecord::Schema.define(:version => 20110726094105) do
 
   create_table "car_models", :force => true do |t|
     t.string   "car_model"
@@ -166,6 +166,23 @@ ActiveRecord::Schema.define(:version => 20110726091029) do
     t.date     "date_of_birth"
     t.string   "about"
     t.boolean  "med_book"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "finances", :force => true do |t|
+    t.string   "glob_type"
+    t.string   "local_type"
+    t.datetime "date"
+    t.decimal  "summ",               :precision => 10, :scale => 2
+    t.text     "description"
+    t.integer  "request_id"
+    t.integer  "bill_id"
+    t.integer  "income_section_id"
+    t.integer  "expenditure_id"
+    t.string   "payment_way"
+    t.integer  "salary_person_id"
+    t.string   "carrier_beznal_way"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
