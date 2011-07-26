@@ -62,4 +62,62 @@ class FinancesController < ApplicationController
     end
   end
 
+  #Оплата заказчиком наличными
+  def customer_payment_cash
+    @finance = Finance.new
+  end
+
+  #Редактирование оплаты заказчиком наличными
+  def customer_payment_cash_edit
+    @finance = Finance.find(params[:id])
+  end
+
+
+  #Создание записи оплаты заказчиком наличными
+  def customer_payment_cash_create
+
+    @finance = Finance.new(params[:finance])
+
+    request_one = Request.find(:first, :conditions => "id = #{params[:finance][:request_id]}")
+
+    if !request_one
+      render :action => 'customer_payment_cash', :locals => { :notice => 'Заявки с указанным номером не существует' }
+    else
+      params[:finance]['local_type'] = 'income'
+      params[:finance]['glob_type']  = 'customer_payment_cash'
+      params[:finance]['request_id'] = request_one.id
+
+      if request_one.customer_payment_way_for_salary == 'безнал с ндс'
+        #do nothing
+      else
+        request_one.customer_payment_way_for_salary = 'наличные'
+        requset_one.save
+      end
+
+      @finance = Finance.new(params[:finance])
+      if @finance.save
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате заказчиком наличными добавлена' })
+      else
+        render :action => 'customer_payment_cash'
+      end
+    end
+  end
+
+  #Обновление записи оплаты заказчиком наличными
+  def customer_payment_cash_update
+    @finance = Finance.find(params[:id])
+    request_one = Request.find(:first, :conditions => "id = #{params[:finance][:request_id]}")
+
+    if !request_one
+      render :action => 'customer_payment_cash_edit', :locals => { :notice => 'Заявки с указанным номером не существует' }
+    else
+      params[:finance][:request_id] = request_one.id
+      if @finance.update_attributes(params[:finance])
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате заказчиком наличными добавлена' })
+      else
+        render :action => 'customer_payment_cash_edit', :locals => { :notice => 'Заявки с указанным номером не существует' }
+      end
+    end
+  end
+
 end

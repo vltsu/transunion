@@ -1,9 +1,16 @@
 Transunion::Application.routes.draw do
 
-  match 'finances/customer_payment_bill' => 'finances#customer_payment_bill', :as => :customer_payment_bill
-  match 'finances/customer_payment_bill/:id/edit' => 'finances#customer_payment_bill_edit', :as => :customer_payment_bill_edit
-  match 'finances/customer_payment_bill_create' => 'finances#customer_payment_bill_create', :as => :customer_payment_bill_create
+  #Оплата заказчиком по счёту
+  match 'finances/customer_payment_bill'            => 'finances#customer_payment_bill',        :as => :customer_payment_bill
+  match 'finances/customer_payment_bill/:id/edit'   => 'finances#customer_payment_bill_edit',   :as => :customer_payment_bill_edit
+  match 'finances/customer_payment_bill_create'     => 'finances#customer_payment_bill_create', :as => :customer_payment_bill_create
   match 'finances/customer_payment_bill_update/:id' => 'finances#customer_payment_bill_update', :as => :customer_payment_bill_update
+
+  #Оплата заказчиком наличными
+  match 'finances/customer_payment_cash'            => 'finances#customer_payment_cash',        :as => :customer_payment_cash
+  match 'finances/customer_payment_cash/:id/edit'   => 'finances#customer_payment_cash_edit',   :as => :customer_payment_cash_edit
+  match 'finances/customer_payment_cash_create'     => 'finances#customer_payment_cash_create', :as => :customer_payment_cash_create
+  match 'finances/customer_payment_cash_update/:id' => 'finances#customer_payment_cash_update', :as => :customer_payment_cash_update
 
   resources :outcome_sections
 
