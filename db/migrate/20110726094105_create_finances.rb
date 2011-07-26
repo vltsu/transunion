@@ -9,8 +9,8 @@ class CreateFinances < ActiveRecord::Migration
       t.integer  :request_id
       t.integer  :bill_id
       t.integer  :income_section_id
-      t.integer  :expenditure_id
-      t.string   :payment_way
+      t.integer  :outcome_section_id
+      t.integer  :payment_method_id
       t.integer  :salary_person_id
       t.string   :carrier_beznal_way
 

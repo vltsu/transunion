@@ -113,9 +113,134 @@ class FinancesController < ApplicationController
     else
       params[:finance][:request_id] = request_one.id
       if @finance.update_attributes(params[:finance])
-        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате заказчиком наличными добавлена' })
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате заказчиком наличными обновлена' })
       else
-        render :action => 'customer_payment_cash_edit', :locals => { :notice => 'Заявки с указанным номером не существует' }
+        render :action => 'customer_payment_cash_edit'
+      end
+    end
+  end
+
+  #Приход прочий
+  def income_others
+    @finance = Finance.new
+  end
+
+  #Редактирование приход прочий
+  def income_others_edit
+    @finance = Finance.find(params[:id])
+  end
+
+
+  #Создание записи приход прочий
+  def income_others_create
+    params[:finance]['local_type'] = 'income'
+    params[:finance]['glob_type']  = 'income_others'
+
+    @finance = Finance.new(params[:finance])
+    if @finance.save
+      redirect_to({:action => 'index'}, {:notice => 'Запись о приходе добавлена' })
+    else
+      render :action => 'income_others'
+    end
+  end
+
+  #Обновление записи приход прочий
+  def income_others_update
+    @finance = Finance.find(params[:id])
+
+    if @finance.update_attributes(params[:finance])
+      redirect_to({:action => 'index'}, {:notice => 'Запись о приходе обновлена' })
+    else
+      render :action => 'income_others'
+    end
+  end
+
+  #Оплата перевозчику по счёту
+  def carrier_payment_bill
+    @finance = Finance.new
+  end
+
+  #Редактирование оплаты перевозчику по счёту
+  def carrier_payment_bill_edit
+    @finance = Finance.find(params[:id])
+  end
+
+
+  #Создание записи оплаты перевозчиком по счёту
+  def carrier_payment_bill_create
+
+    @finance = Finance.new(params[:finance])
+
+    request_one = Request.find(:first, :conditions => "id = #{params[:finance]['request_id']}")
+
+    if !request_one
+      render :action => 'carrier_payment_bill', :locals => { :notice => 'Заявки с указанным номером не существует' }
+    else
+      params[:finance]['local_type'] = 'outcome'
+      params[:finance]['glob_type']  = 'carrier_payment_bill'
+      params[:finance]['request_id'] = request_one.id
+
+      #Проставление значения поля способа оплаты, для последующего расчёта зарплаты
+      if request_one.carrier_payment_way_for_salary == 'наличные'
+        #do nothing
+      elsif request_one.carrier_payment_way_for_salary == 'безнал с ндс'
+        #do nothing
+      elsif request_one.carrier_payment_way_for_salary == 'безнал без ндс'
+        if params[:finance][:carrier_beznal_way] == 'с ндс'
+          request_one.carrier_payment_way_for_salary = 'безнал с ндс'
+          request_one.save
+        end
+      else #если значение не задано
+        if params[:finance][:carrier_beznal_way] == 'с ндс'
+          request_one.carrier_payment_way_for_salary = 'безнал с ндс'
+          request_one.save
+        elsif params[:finance][:carrier_beznal_way] == 'без ндс'
+          request_one.carrier_payment_way_for_salary = 'безнал без ндс'
+          request_one.save
+        end
+      end
+
+      @finance = Finance.new(params[:finance])
+      if @finance.save
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате перевозчику по счету добавлена' })
+      else
+        render :action => 'carrier_payment_bill'
+      end
+    end
+  end
+
+  #Обновление записи оплаты перевозчиком по счёту
+  def carrier_payment_bill_update
+    @finance = Finance.find(params[:id])
+    request_one = Request.find(:first, :conditions => "id = #{params[:finance][:request_id]}")
+
+    if !request_one
+      render :action => 'carrier_payment_bill_edit', :locals => { :notice => 'Заявки с указанным номером счёта не существует' }
+    else
+      params[:finance][:request_id] = request_one.id
+      #Проставление значения поля способа оплаты, для последующего расчёта зарплаты
+      if request_one.carrier_payment_way_for_salary == 'наличные'
+        #do nothing
+      elsif request_one.carrier_payment_way_for_salary == 'безнал с ндс'
+        #do nothing
+      elsif request_one.carrier_payment_way_for_salary == 'безнал без ндс'
+        if params[:finance][:carrier_beznal_way] == 'с ндс'
+          request_one.carrier_payment_way_for_salary = 'безнал с ндс'
+          request_one.save
+        end
+      else #если значение не задано
+        if params[:finance][:carrier_beznal_way] == 'с ндс'
+          request_one.carrier_payment_way_for_salary = 'безнал с ндс'
+          request_one.save
+        elsif params[:finance][:carrier_beznal_way] == 'без ндс'
+          request_one.carrier_payment_way_for_salary = 'безнал без ндс'
+          request_one.save
+        end
+      end
+      if @finance.update_attributes(params[:finance])
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате перевозчику по счету добавлена' })
+      else
+        render :action => 'carrier_payment_bill_edit', :locals => { :notice => 'Заявки с указанным номером счёта не существует' }
       end
     end
   end

@@ -1,0 +1,6 @@
+%h1{:class=>"tableTitle", :style => 'width: 850px; margin: 0px auto; color:red;'} Редактирование - Транспорт оплата заказчиком безнал
+%br/
+- if notice
+  %div{:style => 'width: 400px; margin: 0px auto; color: red;'}= notice
+%br
+= render 'carrier_payment_bill_form'

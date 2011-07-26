@@ -1,0 +1,36 @@
+- content_for(:head) do
+  - javascript_include_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.js'
+- content_for(:head) do
+  - stylesheet_link_tag '/javascripts/jquery-datetimeentry/jquery.datetimeentry.css'
+- content_for(:head) do
+  - javascript_include_tag 'datetime'
+- content_for(:head) do
+  - javascript_include_tag 'validation'
+- args = ( params[:action] == 'income_others' || params[:action] == 'income_others_create' ) ? {:url => income_others_create_path } : {:url => income_others_update_path }
+= form_for @finance, args do |f|
+  - if @finance.errors.any?
+    %div{:style => "width: 450px; margin: 0px auto;", :id => "error_explanation"}
+      %h2{:align=>'center'} Чтобы сохранить:
+      - if @finance.errors
+        - @finance.errors.each do |key,message|
+          = message
+          %br/
+    %br/
+  %table
+    %tr
+      %td{:class => "fieldName fieldInnerTopLeft"} Статья прихода:
+      %td{:class => "fieldForm fieldInnerTopRight"}= f.collection_select :income_section_id, IncomeSection.find(:all), :id, :income_section, { :include_blank => true}, {:class => 'required'}
+    %tr
+      %td{:class => "fieldName fieldInnerMiddleLeft"} Способ расчёта:
+      %td{:class => "fieldForm fieldInnerMiddleRight"}= f.collection_select :payment_method_id, PaymentMethod.find(:all), :id, :payment_method, { :include_blank => true}, { :class => "required" }
+    %tr
+      %td{:class => "fieldName fieldInnerBottomLeft"} Примечание:
+      %td{:class => "fieldForm fieldInnerBottomRight"}= f.text_area :description, :class => "inp required", :cols => 20, :rows => 5
+    %tr
+      %td{:class => "fieldName fieldInnerMiddleLeft"} Дата:
+      %td{:class => "fieldForm fieldInnerMiddleRight"}= f.text_field :date, :class => "inp required ddateshort", :size => 8
+    %tr
+      %td{:class => "fieldName fieldInnerBottomLeft"} Сумма:
+      %td{:class => "fieldForm fieldInnerBottomRight"}= f.text_field :summ, :class => "inp required", :size => 7
+    %tr
+      %td{:colspan=>"2", :align=>"center", :class=>"borNone"}= f.submit "Сохранить"

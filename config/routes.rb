@@ -12,6 +12,24 @@ Transunion::Application.routes.draw do
   match 'finances/customer_payment_cash_create'     => 'finances#customer_payment_cash_create', :as => :customer_payment_cash_create
   match 'finances/customer_payment_cash_update/:id' => 'finances#customer_payment_cash_update', :as => :customer_payment_cash_update
 
+  #Оплата заказчиком наличными
+  match 'finances/income_others'            => 'finances#income_others',        :as => :income_others_cash
+  match 'finances/income_others/:id/edit'   => 'finances#income_others_edit',   :as => :income_others_edit
+  match 'finances/income_others_create'     => 'finances#income_others_create', :as => :income_others_create
+  match 'finances/income_others_update/:id' => 'finances#income_others_update', :as => :income_others_update
+
+  #Оплата перевозчику безнал
+  match 'finances/carrier_payment_bill'            => 'finances#carrier_payment_bill',        :as => :carrier_payment_bill
+  match 'finances/carrier_payment_bill/:id/edit'   => 'finances#carrier_payment_bill_edit',   :as => :carrier_payment_bill_edit
+  match 'finances/carrier_payment_bill_create'     => 'finances#carrier_payment_bill_create', :as => :carrier_payment_bill_create
+  match 'finances/carrier_payment_bill_update/:id' => 'finances#carrier_payment_bill_update', :as => :carrier_payment_bill_update
+
+  #Оплата перевозчику наличными
+  match 'finances/carrier_payment_cash'            => 'finances#carrier_payment_cash',        :as => :carrier_payment_cash
+  match 'finances/carrier_payment_cash/:id/edit'   => 'finances#carrier_payment_cash_edit',   :as => :carrier_payment_cash_edit
+  match 'finances/carrier_payment_cash_create'     => 'finances#carrier_payment_cash_create', :as => :carrier_payment_cash_create
+  match 'finances/carrier_payment_cash_update/:id' => 'finances#carrier_payment_cash_update', :as => :carrier_payment_cash_update
+
   resources :outcome_sections
 
   resources :income_sections
