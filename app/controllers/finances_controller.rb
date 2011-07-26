@@ -245,4 +245,132 @@ class FinancesController < ApplicationController
     end
   end
 
+  #Оплата перевозчику наличными
+  def carrier_payment_cash
+    @finance = Finance.new
+  end
+
+  #Редактирование оплаты перевозчику наличными
+  def carrier_payment_cash_edit
+    @finance = Finance.find(params[:id])
+  end
+
+
+  #Создание записи оплаты перевозчику наличными
+  def carrier_payment_cash_create
+
+    @finance = Finance.new(params[:finance])
+
+    request_one = Request.find(:first, :conditions => "id = #{params[:finance][:request_id]}")
+
+    if !request_one
+      render :action => 'carrier_payment_cash', :locals => { :notice => 'Заявки с указанным номером не существует' }
+    else
+      params[:finance]['local_type'] = 'outcome'
+      params[:finance]['glob_type']  = 'carrier_payment_cash'
+      params[:finance]['request_id'] = request_one.id
+
+      if request_one.carrier_payment_way_for_salary == 'безнал с ндс'
+        #do nothing
+      else
+        request_one.carrier_payment_way_for_salary = 'наличные'
+        requset_one.save
+      end
+
+      @finance = Finance.new(params[:finance])
+      if @finance.save
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате перевозчику  наличными добавлена' })
+      else
+        render :action => 'carrier_payment_cash'
+      end
+    end
+  end
+
+  #Обновление записи оплаты перевозчику наличными
+  def carrier_payment_cash_update
+    @finance = Finance.find(params[:id])
+    request_one = Request.find(:first, :conditions => "id = #{params[:finance][:request_id]}")
+
+    if !request_one
+      render :action => 'carrier_payment_cash_edit', :locals => { :notice => 'Заявки с указанным номером не существует' }
+    else
+      params[:finance][:request_id] = request_one.id
+      if @finance.update_attributes(params[:finance])
+        redirect_to({:action => 'index'}, {:notice => 'Запись об оплате перевозчику наличными обновлена' })
+      else
+        render :action => 'carrier_payment_cash_edit'
+      end
+    end
+  end
+
+  #Расход прочий
+  def outcome_others
+    @finance = Finance.new
+  end
+
+  #Редактирование расход прочий
+  def outcome_others_edit
+    @finance = Finance.find(params[:id])
+  end
+
+
+  #Создание записи расход прочий
+  def outcome_others_create
+    params[:finance]['local_type'] = 'outcome'
+    params[:finance]['glob_type']  = 'outcome_others'
+
+    @finance = Finance.new(params[:finance])
+    if @finance.save
+      redirect_to({:action => 'index'}, {:notice => 'Запись о расходе добавлена' })
+    else
+      render :action => 'outcome_others'
+    end
+  end
+
+  #Обновление записи расход прочий
+  def outcome_others_update
+    @finance = Finance.find(params[:id])
+
+    if @finance.update_attributes(params[:finance])
+      redirect_to({:action => 'index'}, {:notice => 'Запись о расходе обновлена' })
+    else
+      render :action => 'outcome_others'
+    end
+  end
+
+  #Зарплата
+  def outcome_salary
+    @finance = Finance.new
+  end
+
+  #Зарплата редактирование
+  def outcome_salary_edit
+    @finance = Finance.find(params[:id])
+  end
+
+
+  #Создание записи зарплата
+  def outcome_salary_create
+    params[:finance]['local_type'] = 'outcome'
+    params[:finance]['glob_type']  = 'outcome_salary'
+
+    @finance = Finance.new(params[:finance])
+    if @finance.save
+      redirect_to({:action => 'index'}, {:notice => 'Запись о зарплате добавлена' })
+    else
+      render :action => 'outcome_salary'
+    end
+  end
+
+  #Обновление записи зарплата
+  def outcome_salary_update
+    @finance = Finance.find(params[:id])
+
+    if @finance.update_attributes(params[:finance])
+      redirect_to({:action => 'index'}, {:notice => 'Запись о зарплате обновлена' })
+    else
+      render :action => 'outcome_salary'
+    end
+  end
+
 end

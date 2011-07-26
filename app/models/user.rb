@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
 
+  cattr_reader :full_name
+
   validates_uniqueness_of :login
 
   validates :lastname,                   :presence => { :message => 'Введите фамилию' }
@@ -21,5 +23,9 @@ class User < ActiveRecord::Base
     else
       user
     end
+  end
+
+  def full_name
+    "#{self.lastname} #{self.firstname} #{self.middlename}"
   end
 end

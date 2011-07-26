@@ -30,6 +30,18 @@ Transunion::Application.routes.draw do
   match 'finances/carrier_payment_cash_create'     => 'finances#carrier_payment_cash_create', :as => :carrier_payment_cash_create
   match 'finances/carrier_payment_cash_update/:id' => 'finances#carrier_payment_cash_update', :as => :carrier_payment_cash_update
 
+  #Оплата заказчиком наличными
+  match 'finances/outcome_others'            => 'finances#outcome_others',        :as => :outcome_others_cash
+  match 'finances/outcome_others/:id/edit'   => 'finances#outcome_others_edit',   :as => :outcome_others_edit
+  match 'finances/outcome_others_create'     => 'finances#outcome_others_create', :as => :outcome_others_create
+  match 'finances/outcome_others_update/:id' => 'finances#outcome_others_update', :as => :outcome_others_update
+
+  #Зарплата
+  match 'finances/outcome_salary'            => 'finances#outcome_salary',        :as => :outcome_salary
+  match 'finances/outcome_salary/:id/edit'   => 'finances#outcome_salary_edit',   :as => :outcome_salary
+  match 'finances/outcome_salary_create'     => 'finances#outcome_salary_create', :as => :outcome_salary_create
+  match 'finances/outcome_salary_update/:id' => 'finances#outcome_salary_update', :as => :outcome_salary_update
+
   resources :outcome_sections
 
   resources :income_sections
