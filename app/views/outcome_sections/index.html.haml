@@ -1,0 +1,17 @@
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%div{:style => 'width: 210px; margin: 0px auto;'}
+  = link_to image_tag("add_outcome_section_button.jpg", :border=>0), new_outcome_section_path, :class => 'editLink', :id => 'addOutcome_sectionLink', :style => 'width: 300px; margin: 0px auto;'
+%table
+  %tr
+    %th.th1 Статья расходов
+    %th.th1 Открыть
+
+  - @outcome_sections.each do |outcome_section|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3= outcome_section.outcome_section
+      %td.th3= link_to 'Открыть', outcome_section, :id => "showOutcome_sectionLink"
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@outcome_section, :previous_label => '&#8592;', :next_label => '&#8594;')

@@ -1,0 +1,272 @@
+---
+rspec:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+authlogic:session:
+- --fixture
+- --fixture-replacement=
+- --dir=
+- --force
+- --pretend
+- --quiet
+- --skip
+- --test-framework=
+mongo_mapper:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --host=
+mustache:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+koala:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+jquery:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --ui
+cucumber_scaffold:feature:
+- --force
+- --pretend
+- --quiet
+- --skip
+cucumber_scaffold:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+cucumber:feature:
+- --force
+- --pretend
+- --quiet
+- --skip
+cucumber:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --rspec
+- --testunit
+- --spork
+- --skip-database
+client_side_validations:install:
+- --force
+- --pretend
+- --quiet
+- --skip
+client_side_validations:copy_asset:
+- --force
+- --pretend
+- --quiet
+- --skip
+model:
+- --migration
+- --timestamps
+- --parent=
+- --test-framework=
+- --fixture
+- --fixture-replacement=
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+resource:
+- --migration
+- --timestamps
+- --parent=
+- --test-framework=
+- --fixture
+- --fixture-replacement=
+- --controller-specs
+- --view-specs
+- --template-engine=
+- --helper
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+- --force-plural
+- --resource-controller=
+- --actions=
+active_scaffold:
+- --migration
+- --timestamps
+- --parent=
+- --test-framework=
+- --fixture
+- --fixture-replacement=
+- --template-engine=
+- --singleton
+- --controller-specs
+- --view-specs
+- --webrat
+- --webrat-matchers
+- --helper-specs
+- --routing-specs
+- --helper
+- --integration-tool=
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+- --force-plural
+active_scaffold_controller:
+- --template-engine=
+- --singleton
+- --controller-specs
+- --view-specs
+- --webrat
+- --webrat-matchers
+- --helper-specs
+- --routing-specs
+- --helper
+- --integration-tool=
+- --request-specs
+- --force
+- --pretend
+- --quiet
+- --skip
+- --force-plural
+- --orm=
+- --test-framework=
+active_scaffold_setup:
+- --force
+- --pretend
+- --quiet
+- --skip
+controller:
+- --controller-specs
+- --view-specs
+- --force
+- --pretend
+- --quiet
+- --skip
+- --template-engine=
+- --test-framework=
+- --helper
+stylesheets:
+- --force
+- --pretend
+- --quiet
+- --skip
+scaffold:
+- --migration
+- --timestamps
+- --parent=
+- --test-framework=
+- --fixture
+- --fixture-replacement=
+- --singleton
+- --controller-specs
+- --view-specs
+- --webrat
+- --webrat-matchers
+- --helper-specs
+- --routing-specs
+- --integration-tool=
+- --template-engine=
+- --helper
+- --form-builder=
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+- --force-plural
+- --scaffold-controller=
+- --stylesheets
+helper:
+- --helper-specs
+- --force
+- --pretend
+- --quiet
+- --skip
+- --test-framework=
+scaffold_controller:
+- --form-builder=
+- --singleton
+- --controller-specs
+- --view-specs
+- --webrat
+- --webrat-matchers
+- --helper-specs
+- --routing-specs
+- --integration-tool=
+- --request-specs
+- --force
+- --pretend
+- --quiet
+- --skip
+- --force-plural
+- --orm=
+- --template-engine=
+- --test-framework=
+- --helper
+integration_test:
+- --request-specs
+- --webrat
+- --webrat-matchers
+- --force
+- --pretend
+- --quiet
+- --skip
+- --integration-tool=
+session_migration:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+generator:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --namespace
+migration:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+performance_test:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --performance-tool=
+plugin:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --tasks=
+- --generator
+- --test-framework=
+observer:
+- --test-framework=
+- --force
+- --pretend
+- --quiet
+- --skip
+- --orm=
+mailer:
+- --force
+- --pretend
+- --quiet
+- --skip
+- --template-engine=
+- --test-framework=

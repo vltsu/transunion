@@ -1,5 +1,9 @@
 Transunion::Application.routes.draw do
 
+  resources :outcome_sections
+
+  resources :income_sections
+
   #Для сохранения заявки через Сохранить как
   match 'requests/create_sas' => 'requests#create_sas', :as => :create_sas
 

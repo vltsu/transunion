@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110710164926) do
+ActiveRecord::Schema.define(:version => 20110726091029) do
 
   create_table "car_models", :force => true do |t|
     t.string   "car_model"
@@ -51,27 +51,27 @@ ActiveRecord::Schema.define(:version => 20110710164926) do
     t.string   "email"
     t.string   "current_account"
     t.string   "bank"
-    t.string   "bank_inn"
     t.string   "correspondent_account"
     t.string   "bik"
     t.string   "operates_basis"
     t.string   "company_face"
     t.string   "manager_name"
-    t.decimal  "respons_refuse_loading_day",                  :precision => 5, :scale => 2
-    t.decimal  "respons_idle_excessively_hours",              :precision => 5, :scale => 2
-    t.decimal  "respons_idle_excessively_percent",            :precision => 5, :scale => 2
-    t.decimal  "respons_payment_late",                        :precision => 5, :scale => 2
+    t.decimal  "respons_refuse_loading_day",                 :precision => 5, :scale => 2
+    t.decimal  "respons_idle_excessively_hours",             :precision => 5, :scale => 2
+    t.decimal  "respons_idle_excessively_percent",           :precision => 5, :scale => 2
+    t.decimal  "respons_payment_late",                       :precision => 5, :scale => 2
     t.string   "respons_transport_replacement_req"
     t.string   "respons_compensation_for_damage"
-    t.decimal  "respons_undeliver_transport_loading",         :precision => 5, :scale => 2
-    t.decimal  "respons_transport_late_loading_hours",        :precision => 5, :scale => 2
-    t.decimal  "respons_transport_late_loading_percent",      :precision => 5, :scale => 2
-    t.decimal  "respons_transport_late_destination_hours",    :precision => 5, :scale => 2
+    t.decimal  "respons_undeliver_transport_loading",        :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_loading_hours",       :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_loading_percent",     :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_destination_hours",   :precision => 5, :scale => 2
     t.decimal  "respons_transport_late_destination_percent", :precision => 5, :scale => 2
-    t.decimal  "respons_document_late",                       :precision => 5, :scale => 2
+    t.decimal  "respons_document_late",                      :precision => 5, :scale => 2
     t.boolean  "black_label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "bank_inn"
   end
 
   create_table "cars", :force => true do |t|
@@ -100,9 +100,9 @@ ActiveRecord::Schema.define(:version => 20110710164926) do
 
   create_table "company_faces", :force => true do |t|
     t.string   "company_face"
-    t.string   "company_face_podp"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "company_face_podp"
   end
 
   create_table "customer_companies", :force => true do |t|
@@ -120,26 +120,26 @@ ActiveRecord::Schema.define(:version => 20110710164926) do
     t.string   "email"
     t.string   "current_account"
     t.string   "bank"
-    t.string   "bank_inn"
     t.string   "correspondent_account"
     t.string   "bik"
     t.string   "operates_basis"
     t.string   "manager_name"
-    t.decimal  "respons_refuse_loading_day",                  :precision => 5, :scale => 2
-    t.decimal  "respons_idle_excessively_hours",              :precision => 5, :scale => 2
-    t.decimal  "respons_idle_excessively_percent",            :precision => 5, :scale => 2
-    t.decimal  "respons_payment_late",                        :precision => 5, :scale => 2
+    t.decimal  "respons_refuse_loading_day",                 :precision => 5, :scale => 2
+    t.decimal  "respons_idle_excessively_hours",             :precision => 5, :scale => 2
+    t.decimal  "respons_idle_excessively_percent",           :precision => 5, :scale => 2
+    t.decimal  "respons_payment_late",                       :precision => 5, :scale => 2
     t.string   "respons_transport_replacement_req"
     t.string   "respons_compensation_for_damage"
-    t.decimal  "respons_undeliver_transport_loading",         :precision => 5, :scale => 2
-    t.decimal  "respons_transport_late_loading_hours",        :precision => 5, :scale => 2
-    t.decimal  "respons_transport_late_loading_percent",      :precision => 5, :scale => 2
-    t.decimal  "respons_transport_late_destination_hours",    :precision => 5, :scale => 2
+    t.decimal  "respons_undeliver_transport_loading",        :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_loading_hours",       :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_loading_percent",     :precision => 5, :scale => 2
+    t.decimal  "respons_transport_late_destination_hours",   :precision => 5, :scale => 2
     t.decimal  "respons_transport_late_destination_percent", :precision => 5, :scale => 2
-    t.decimal  "respons_document_late",                       :precision => 5, :scale => 2
+    t.decimal  "respons_document_late",                      :precision => 5, :scale => 2
     t.boolean  "black_label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "bank_inn"
   end
 
   create_table "drivers", :force => true do |t|
@@ -170,6 +170,12 @@ ActiveRecord::Schema.define(:version => 20110710164926) do
     t.datetime "updated_at"
   end
 
+  create_table "income_sections", :force => true do |t|
+    t.string   "income_section"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "loading_points", :force => true do |t|
     t.datetime "date"
     t.string   "time"
@@ -186,6 +192,12 @@ ActiveRecord::Schema.define(:version => 20110710164926) do
 
   create_table "opfs", :force => true do |t|
     t.string   "opf"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "outcome_sections", :force => true do |t|
+    t.string   "outcome_section"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
