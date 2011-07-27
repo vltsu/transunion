@@ -1,6 +1,10 @@
 #encoding: UTF-8
 class FinancesController < ApplicationController
 
+  def index
+    @finances = Finance.find(:all, :order => "id DESC")
+  end
+
   #Оплата заказчиком по счёту
   def customer_payment_bill
     @finance = Finance.new
@@ -23,8 +27,8 @@ class FinancesController < ApplicationController
       render :action => 'customer_payment_bill', :locals => { :notice => 'Заявки с указанным номером счёта не существует' }
     else
       requests_all = Request.find(:all, :conditions => "bill_id = #{params[:finance]['bill_id']}")
-      params[:finance]['local_type'] = 'income'
-      params[:finance]['glob_type']  = 'customer_payment_bill'
+      params[:finance]['glob_type'] = 'income'
+      params[:finance]['local_type']  = 'customer_payment_bill'
       params[:finance]['request_id'] = request_one.id
 
       if request_one.customer_payment_way_for_salary == 'безнал с ндс'
@@ -83,8 +87,8 @@ class FinancesController < ApplicationController
     if !request_one
       render :action => 'customer_payment_cash', :locals => { :notice => 'Заявки с указанным номером не существует' }
     else
-      params[:finance]['local_type'] = 'income'
-      params[:finance]['glob_type']  = 'customer_payment_cash'
+      params[:finance]['glob_type'] = 'income'
+      params[:finance]['local_type']  = 'customer_payment_cash'
       params[:finance]['request_id'] = request_one.id
 
       if request_one.customer_payment_way_for_salary == 'безнал с ндс'
@@ -133,8 +137,8 @@ class FinancesController < ApplicationController
 
   #Создание записи приход прочий
   def income_others_create
-    params[:finance]['local_type'] = 'income'
-    params[:finance]['glob_type']  = 'income_others'
+    params[:finance]['glob_type'] = 'income'
+    params[:finance]['local_type']  = 'income_others'
 
     @finance = Finance.new(params[:finance])
     if @finance.save
@@ -176,8 +180,8 @@ class FinancesController < ApplicationController
     if !request_one
       render :action => 'carrier_payment_bill', :locals => { :notice => 'Заявки с указанным номером не существует' }
     else
-      params[:finance]['local_type'] = 'outcome'
-      params[:finance]['glob_type']  = 'carrier_payment_bill'
+      params[:finance]['glob_type'] = 'outcome'
+      params[:finance]['local_type']  = 'carrier_payment_bill'
       params[:finance]['request_id'] = request_one.id
 
       #Проставление значения поля способа оплаты, для последующего расчёта зарплаты
@@ -266,8 +270,8 @@ class FinancesController < ApplicationController
     if !request_one
       render :action => 'carrier_payment_cash', :locals => { :notice => 'Заявки с указанным номером не существует' }
     else
-      params[:finance]['local_type'] = 'outcome'
-      params[:finance]['glob_type']  = 'carrier_payment_cash'
+      params[:finance]['glob_type'] = 'outcome'
+      params[:finance]['local_type']  = 'carrier_payment_cash'
       params[:finance]['request_id'] = request_one.id
 
       if request_one.carrier_payment_way_for_salary == 'безнал с ндс'
@@ -316,8 +320,8 @@ class FinancesController < ApplicationController
 
   #Создание записи расход прочий
   def outcome_others_create
-    params[:finance]['local_type'] = 'outcome'
-    params[:finance]['glob_type']  = 'outcome_others'
+    params[:finance]['glob_type'] = 'outcome'
+    params[:finance]['local_type']  = 'outcome_others'
 
     @finance = Finance.new(params[:finance])
     if @finance.save
@@ -351,8 +355,8 @@ class FinancesController < ApplicationController
 
   #Создание записи зарплата
   def outcome_salary_create
-    params[:finance]['local_type'] = 'outcome'
-    params[:finance]['glob_type']  = 'outcome_salary'
+    params[:finance]['glob_type'] = 'outcome'
+    params[:finance]['local_type']  = 'outcome_salary'
 
     @finance = Finance.new(params[:finance])
     if @finance.save
@@ -371,6 +375,24 @@ class FinancesController < ApplicationController
     else
       render :action => 'outcome_salary'
     end
+  end
+
+  #Приход заявка - наличные
+  def income_cash
+    @finance = Finance.find(params[:id])
+    @incomes = Finance.find(:all, :conditions => "request_id = #{@finance.request_id} AND local_type = 'customer_payment_cash'")
+  end
+
+  #Приход заявка - по счёту
+  def income_bill
+    @finance = Finance.find(params[:id])
+    @incomes = Finance.find(:all, :conditions => "bill_id = #{@finance.bill_id} AND local_type = 'customer_payment_bill'")
+  end
+
+  #Расход заявка
+  def outcome_request
+    @finance  = Finance.find(params[:id])
+    @outcomes = Finance.find(:all, :conditions => "request_id = #{@finance.request_id} AND glob_type = 'outcome'")
   end
 
 end

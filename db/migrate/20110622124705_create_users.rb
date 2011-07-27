@@ -23,7 +23,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :citizenship
       t.datetime :date_of_birth
       t.string :about
-      t.integer :position
+      t.string :position
       t.decimal :salary
       t.decimal :premium_percent
       t.decimal :request_percent

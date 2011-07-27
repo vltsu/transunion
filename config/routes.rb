@@ -13,7 +13,7 @@ Transunion::Application.routes.draw do
   match 'finances/customer_payment_cash_update/:id' => 'finances#customer_payment_cash_update', :as => :customer_payment_cash_update
 
   #Оплата заказчиком наличными
-  match 'finances/income_others'            => 'finances#income_others',        :as => :income_others_cash
+  match 'finances/income_others'            => 'finances#income_others',        :as => :income_others
   match 'finances/income_others/:id/edit'   => 'finances#income_others_edit',   :as => :income_others_edit
   match 'finances/income_others_create'     => 'finances#income_others_create', :as => :income_others_create
   match 'finances/income_others_update/:id' => 'finances#income_others_update', :as => :income_others_update
@@ -31,16 +31,22 @@ Transunion::Application.routes.draw do
   match 'finances/carrier_payment_cash_update/:id' => 'finances#carrier_payment_cash_update', :as => :carrier_payment_cash_update
 
   #Оплата заказчиком наличными
-  match 'finances/outcome_others'            => 'finances#outcome_others',        :as => :outcome_others_cash
+  match 'finances/outcome_others'            => 'finances#outcome_others',        :as => :outcome_others
   match 'finances/outcome_others/:id/edit'   => 'finances#outcome_others_edit',   :as => :outcome_others_edit
   match 'finances/outcome_others_create'     => 'finances#outcome_others_create', :as => :outcome_others_create
   match 'finances/outcome_others_update/:id' => 'finances#outcome_others_update', :as => :outcome_others_update
 
   #Зарплата
   match 'finances/outcome_salary'            => 'finances#outcome_salary',        :as => :outcome_salary
-  match 'finances/outcome_salary/:id/edit'   => 'finances#outcome_salary_edit',   :as => :outcome_salary
+  match 'finances/outcome_salary/:id/edit'   => 'finances#outcome_salary_edit',   :as => :outcome_salary_edit
   match 'finances/outcome_salary_create'     => 'finances#outcome_salary_create', :as => :outcome_salary_create
   match 'finances/outcome_salary_update/:id' => 'finances#outcome_salary_update', :as => :outcome_salary_update
+
+  #Перечни платежей
+  match 'finances/income_cash/:id'     => 'finances#income_cash',     :as => :income_cash
+  match 'finances/income_bill/:id'     => 'finances#income_bill',     :as => :income_bill
+  match 'finances/outcome_request/:id' => 'finances#outcome_request', :as => :outcome_request
+
 
   resources :outcome_sections
 

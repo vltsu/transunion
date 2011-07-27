@@ -472,7 +472,7 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.string   "citizenship"
     t.datetime "date_of_birth"
     t.string   "about"
-    t.integer  "position"
+    t.string   "position"
     t.decimal  "salary",                :precision => 10, :scale => 0
     t.decimal  "premium_percent",       :precision => 10, :scale => 0
     t.decimal  "request_percent",       :precision => 10, :scale => 0

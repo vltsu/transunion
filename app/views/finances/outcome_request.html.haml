@@ -1,0 +1,21 @@
+%h1{:class=>"tableTitle", :style => 'color:red; width: 350px; margin: 0px auto;'}!= "Расход по заявке №#{@finance.request_id}"
+%br/
+%table
+  %tr
+    %th.th1 №
+    %th.th1 Дата
+    %th.th1 Сумма
+    %th.th1
+  - i = 1
+  - @outcomes.each do |outcome|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3=i
+      %td.th3=outcome.date.strftime('%d-%m-%Y')
+      %td.th3=outcome.summ
+      %td.th3= link_to 'Изменить', outcome.local_type == 'carrier_payment_cash' ? carrier_payment_cash_edit_path(outcome) : carrier_payment_bill_edit_path(outcome)
+      - i = i+1
+  %tr.odd
+    %td{:class => 'th3', :colspan => '2'}
+      %span{:style => 'color:red;'}!= "Сумма к оплате #{@finance.request.carrier_summ_to_pay}"
+    %td{:class => 'th3', :colspan => '2'}
+      %span{:style => 'color:green;'}!= "Оплаченная сумма #{payed_summ_for_request_to_carrier(@finance.request_id)}"

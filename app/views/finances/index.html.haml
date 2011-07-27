@@ -1,0 +1,113 @@
+= link_to image_tag("income_transp_nal_button.jpg"), customer_payment_cash_path, :class => 'financeAdd'
+= link_to image_tag("income_trans_beznal_button.jpg", :border=>0), customer_payment_bill_path, :class => 'financeAdd'
+= link_to image_tag("income_other_button.jpg", :border=>0), income_others_path, :class => 'financeAdd'
+= link_to image_tag("outcome_trans_nal_button.jpg", :border=>0), carrier_payment_cash_path, :class => 'financeAdd', :style => 'margin-left:100px;'
+= link_to image_tag("outcome_trans_beznal_button.jpg", :border=>0), carrier_payment_bill_path, :class => 'financeAdd'
+= link_to image_tag("outcome_colleagues_button.jpg", :border=>0), outcome_salary_path, :class => 'financeAdd'
+= link_to image_tag("outcome_other_button.jpg", :border=>0), outcome_others_path, :class => 'financeAdd'
+%br/
+%br/
+%table
+  %tr
+    %td{:class => 'borNone', :colspan => '3', :align => 'center'}
+      %span{:style => 'font-size: 20px; font-style: bold;'}
+        != "Касса <b>#{Time.now.strftime('%d.%m.%Y %H:%M')}</b>"
+  %tr
+    %td{:style => 'background:#c4f8da;'} Приход наличных: руб
+    %td{:style => 'background:#EEE8AA;'} Наличных в кассе :<b>5 </b> руб
+    %td{:style => 'background:#f8ccca;'} Расход наличных : руб
+%br/
+%table
+  %tr
+    %th{:class => "th1 bold", :rowspan => '2'}Приход<br/>/<br/>Расход
+    %th{:class => "th1 bold", :rowspan => '2'}Дата
+    %th{:class => "th1 bold", :rowspan => '2'}Тип
+    %th{:class => "th1 bold", :rowspan => '2'}Заявка №
+    %th{:class => "th1 bold", :rowspan => '2'}Счёт №
+    %th{:class => "th1 bold", :rowspan => '2'}Компания
+    %th{:class => "th1 bold", :colspan => '3', :style => 'border-bottom:medium none;'}Сумма
+    %th{:class => "th1 bold", :colspan => '2', :style => 'border-bottom:medium none;'}Сотрудник
+    %th{:class => "th1 bold", :rowspan => '2'}
+    %th{:class => "th1 bold", :rowspan => '2'}
+  %tr
+    %th{:class => 'th2'}К оплате
+    %th{:class => 'th2'}Оплачено
+    %th{:class => 'th2'}Остаток
+    %th{:class => 'th2'}ФИО
+    %th{:class => 'th2'}Должность
+  - @finances.each do |fin|
+    %tr
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =fin.glob_type == 'income' ? 'приход' : 'расход'
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =fin.date.strftime('%d-%m-%Y')
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; 'перев/безнал'; end;
+        =if fin.local_type == 'carrier_payment_cash'; 'перев/нал'; end;
+        =if fin.local_type == 'customer_payment_bill'; 'заказч/безнал'; end;
+        =if fin.local_type == 'customer_payment_cash'; 'заказч/нал'; end;
+        =if fin.local_type == 'outcome_others'; 'расх/проч'; end;
+        =if fin.local_type == 'income_others'; 'прих/проч'; end;
+        =if fin.local_type == 'outcome_salary'; 'зарплата'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; fin.request_id; end;
+        =if fin.local_type == 'carrier_payment_cash'; fin.request_id ; end;
+        =if fin.local_type == 'customer_payment_bill'; '------------'; end;
+        =if fin.local_type == 'customer_payment_cash'; fin.request_id ; end;
+        =if fin.local_type == 'outcome_others'; '------------'; end;
+        =if fin.local_type == 'income_others'; '------------'; end;
+        =if fin.local_type == 'outcome_salary'; '------------'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; '------------'; end;
+        =if fin.local_type == 'carrier_payment_cash'; '------------' ; end;
+        =if fin.local_type == 'customer_payment_bill'; fin.bill_id; end;
+        =if fin.local_type == 'customer_payment_cash'; '------------' ; end;
+        =if fin.local_type == 'outcome_others'; '------------'; end;
+        =if fin.local_type == 'income_others'; '------------'; end;
+        =if fin.local_type == 'outcome_salary'; '------------'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; fin.request.carrier_company.name; end;
+        =if fin.local_type == 'carrier_payment_cash'; fin.request.carrier_company.name ; end;
+        =if fin.local_type == 'customer_payment_bill'; fin.request.customer_company.name; end;
+        =if fin.local_type == 'customer_payment_cash'; fin.request.customer_company.name ; end;
+        =if fin.local_type == 'outcome_others'; '------------'; end;
+        =if fin.local_type == 'income_others'; '------------'; end;
+        =if fin.local_type == 'outcome_salary'; '------------'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; fin.request.carrier_summ_to_pay; end;
+        =if fin.local_type == 'carrier_payment_cash'; fin.request.carrier_summ_to_pay ; end;
+        =if fin.local_type == 'customer_payment_bill'; customer_summ_to_pay_for_bill(fin); end;
+        =if fin.local_type == 'customer_payment_cash'; fin.request.customer_summ_to_pay ; end;
+        =if fin.local_type == 'outcome_others'; '------------'; end;
+        =if fin.local_type == 'income_others'; '------------'; end;
+        =if fin.local_type == 'outcome_salary'; '------------'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =fin.summ
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; finance_balance(fin); end;
+        =if fin.local_type == 'carrier_payment_cash'; finance_balance(fin); end;
+        =if fin.local_type == 'customer_payment_bill'; finance_balance(fin); end;
+        =if fin.local_type == 'customer_payment_cash'; finance_balance(fin) ; end;
+        =if fin.local_type == 'outcome_others'; '------------'; end;
+        =if fin.local_type == 'income_others'; '------------'; end;
+        =if fin.local_type == 'outcome_salary'; '------------'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =fin.local_type == 'outcome_salary' ? fin.user.full_name : '------------'
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =fin.local_type == 'outcome_salary' ? fin.user.position : '------------'
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; link_to 'открыть', outcome_request_path(fin); end;
+        =if fin.local_type == 'carrier_payment_cash'; link_to 'открыть', outcome_request_path(fin); end;
+        =if fin.local_type == 'customer_payment_bill'; link_to 'открыть', income_bill_path(fin); end;
+        =if fin.local_type == 'customer_payment_cash'; link_to 'открыть', income_cash_path(fin); end;
+        =if fin.local_type == 'outcome_others'; '------------'; end;
+        =if fin.local_type == 'income_others'; '------------'; end;
+        =if fin.local_type == 'outcome_salary'; '------------'; end;
+      %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
+        =if fin.local_type == 'carrier_payment_bill'; '------'; end;
+        =if fin.local_type == 'carrier_payment_cash'; '------' ; end;
+        =if fin.local_type == 'customer_payment_bill'; '------'; end;
+        =if fin.local_type == 'customer_payment_cash'; '------' ; end;
+        =if fin.local_type == 'outcome_others'; link_to 'изменить', outcome_others_edit_path(fin); end;
+        =if fin.local_type == 'income_others'; link_to 'изменить', income_others_edit_path(fin); end;
+        =if fin.local_type == 'outcome_salary'; link_to 'изменить', outcome_salary_edit_path(fin); end;

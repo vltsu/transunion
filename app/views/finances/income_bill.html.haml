@@ -1,0 +1,21 @@
+%h1{:class=>"tableTitle", :style => 'color:red; width: 300px; margin: 0px auto;'}!= "Приход по счёту №#{@finance.bill_id}"
+%br/
+%table
+  %tr
+    %th.th1 №
+    %th.th1 Дата
+    %th.th1 Сумма
+    %th.th1
+  - i = 1
+  - @incomes.each do |income|
+    %tr{ :class => cycle('odd','even') }
+      %td.th3=i
+      %td.th3=income.date.strftime('%d-%m-%Y')
+      %td.th3=income.summ
+      %td.th3= link_to 'Изменить', customer_payment_bill_edit_path(income)
+      - i = i+1
+  %tr.odd
+    %td{:class => 'th3', :colspan => '2'}
+      %span{:style => 'color:red;'}!= "Сумма к оплате #{customer_summ_to_pay_for_bill(@finance)}"
+    %td{:class => 'th3', :colspan => '2'}
+      %span{:style => 'color:green;'}!= "Оплаченная сумма #{payed_summ_for_bill_income(@finance.bill_id)}"
