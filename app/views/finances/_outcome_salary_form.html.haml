@@ -21,7 +21,7 @@
       %td{:class => "fieldName fieldInnerTopLeft"} Способ расчёта:
       %td{:class => "fieldForm fieldInnerTopRight"}= f.collection_select :payment_method_id, PaymentMethod.find(:all), :id, :payment_method, { :include_blank => true}, { :class => "required" }
     %tr
-      %td{:class => "fieldName fieldInnerMiddleLeft"} Сотредник:
+      %td{:class => "fieldName fieldInnerMiddleLeft"} Сотрудник:
       %td{:class => "fieldForm fieldInnerMiddleRight"}= f.collection_select :salary_person_id, User.find(:all), :id, :full_name, { :include_blank => true}, { :class => "required" }
     %tr
       %td{:class => "fieldName fieldInnerMiddleLeft"} Дата:

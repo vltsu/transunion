@@ -19,8 +19,8 @@
     %td{ :class => 'th2', :colspan => 2, :style => 'text-align: center;' } Водитель
     %td{ :class => 'th2', :colspan => 1, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Стоим.
     %td{ :class => 'th2', :colspan => 1, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Опл.
-    %td{ :class => 'th2', :colspan => 2, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Сумма заказчику
-    %td{ :class => 'th2', :colspan => 2, :style => "background: url('/images/car_th_bg.png') no-repeat scroll left top transparent;" } Опл.
+    %td{ :class => 'th2', :colspan => 2, :style => "background: url('/images/cus_th_bg.png') no-repeat scroll left top transparent;" } Сумма заказчику
+    %td{ :class => 'th2', :colspan => 2, :style => "background: url('/images/cus_th_bg.png') no-repeat scroll left top transparent;" } Опл.
 
   - @requests.each do |request|
     %tr{ :class => cycle('odd','even') }
@@ -38,9 +38,9 @@
       %td{ :class => 'th3', :colspan => '2' }= request.carrier_company.name
       %td{ :class => 'th3', :colspan => '2' }= request.driver.full_name
       %td{ :class => 'th3', :colspan => '1' }= request.carrier_summ_to_pay
-      %td{ :class => 'th3', :colspan => '1' } Оплачено
+      %td{ :class => 'th3', :colspan => '1', :style => is_payed_to_carrier(request) ? 'background:green;' : 'background:red;' }= is_payed_to_carrier(request) ? 'Да' : 'Нет'
       %td{ :class => 'th3', :colspan => '2' }= request.customer_summ_to_pay
-      %td{ :class => 'th3', :colspan => '2' } Оплачено
+      %td{ :class => 'th3', :colspan => '2', :style => is_payed_by_customer(request) ? 'background:green;' : 'background:red;' }= is_payed_by_customer(request) ? 'Да' : 'Нет'
       %td{ :class => 'th3', :colspan => '4' }= link_to 'Открыть', request, :id => 'showRequestLink'
 
 %br

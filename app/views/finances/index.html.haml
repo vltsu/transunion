@@ -13,9 +13,9 @@
       %span{:style => 'font-size: 20px; font-style: bold;'}
         != "Касса <b>#{Time.now.strftime('%d.%m.%Y %H:%M')}</b>"
   %tr
-    %td{:style => 'background:#c4f8da;'} Приход наличных: руб
-    %td{:style => 'background:#EEE8AA;'} Наличных в кассе :<b>5 </b> руб
-    %td{:style => 'background:#f8ccca;'} Расход наличных : руб
+    %td{:style => 'background:#c4f8da;'}= "Приход наличных: #{income_cash_all} руб"
+    %td{:style => 'background:#EEE8AA;'}!= "Наличных в кассе: <b>#{income_cash_all - outcome_cash_all}</b> руб"
+    %td{:style => 'background:#f8ccca;'}= "Расход наличных: #{outcome_cash_all} руб"
 %br/
 %table
   %tr
@@ -76,7 +76,7 @@
       %td{:class => 'th3', :id => fin.glob_type == 'income' ? 'income' : 'outcome' }
         =if fin.local_type == 'carrier_payment_bill'; fin.request.carrier_summ_to_pay; end;
         =if fin.local_type == 'carrier_payment_cash'; fin.request.carrier_summ_to_pay ; end;
-        =if fin.local_type == 'customer_payment_bill'; customer_summ_to_pay_for_bill(fin); end;
+        =if fin.local_type == 'customer_payment_bill'; customer_summ_to_pay_for_bill(fin.bill_id); end;
         =if fin.local_type == 'customer_payment_cash'; fin.request.customer_summ_to_pay ; end;
         =if fin.local_type == 'outcome_others'; '------------'; end;
         =if fin.local_type == 'income_others'; '------------'; end;
