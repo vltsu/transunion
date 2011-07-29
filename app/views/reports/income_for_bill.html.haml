@@ -1,0 +1,37 @@
+%h1{:class => 'tableTitle', :style => 'width: 500px; margin: 0px auto; color:red;'} Приход средств по номеру счёта
+%br/
+- if notice
+  = render :partial => "shared/notice", :locals => { :notice => notice }
+%br/
+- if @finances.size > 0
+  %table
+    %tr
+      %td{:class => 'fieldName', :colspan => 3, :align => 'center'}= "Сумма по счёту: #{customer_summ_to_pay_for_bill(@bill_id)} руб"
+    %tr
+      %td{:class => 'borNone', :colspan => 3}
+    %tr
+      %th.th1.bold №
+      %th.th1.bold Дата
+      %th.th1.bold Сумма
+    - i=1; total_summ=0
+    - @finances.each do |f|
+      %tr{:class => cycle('odd','even')}
+        %td.th3=i
+        %td.th3=f.date.strftime("%Y-%m-%d")
+        %td.th3=f.summ
+        - i+=1
+        - total_summ += f.summ
+    %tr
+      %td.borNone
+      %td{:class => 'odd', :align => 'center'}!= "<b>Оплачено:</b>"
+      %td{:class => 'odd', :align => 'center'}!= "<b>#{total_summ}</b>"
+- else
+  - form_for :bill, :as => :get, :url => income_for_bill_path do |f|
+    %table
+      %tr
+        %td.fieldName.fieldBothLeft Номер счёта:
+        %td.fieldForm.fieldBothRight
+          = f.text_field 'bill_id', :size => 5, :class => 'inp'
+      %tr
+        %td{ :colspan => 2, :class => 'borNone', :align => 'center'}
+          = f.submit 'Сформировать'

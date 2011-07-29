@@ -25,4 +25,16 @@ class ReportsController < ApplicationController
     @finances = Finance.find(:all, :conditions => "salary_person_id = #{@colleague.id} AND month(date) = #{@date.month} AND year(date) = #{@date.year} AND local_type='outcome_salary' ")
   end
 
+  def income_for_bill
+    if params[:bill] && params[:bill][:bill_id].to_i > 0
+      @bill_id = params[:bill][:bill_id] || 'some_value'
+    else
+      @bill_id = 0
+    end
+    @finances = Finance.find(:all, :conditions => "bill_id = #{@bill_id} AND local_type = 'customer_payment_bill'")
+    if @finances.size == 0 && @bill_id != 0
+      redirect_to({:action => 'income_for_bill'}, {:notice => 'Счёт не найден'})
+    end
+  end
+
 end

@@ -51,6 +51,7 @@ Transunion::Application.routes.draw do
   match 'reports/salary'                                  => 'reports#salary_index',            :as => :salary
   match 'reports/salary_colleague_stat/:id'               => 'reports#salary_colleague_stat',   :as => :salary_colleague_stat
   match 'reports/salary_colleague_payed/:id'              => 'reports#salary_colleague_payed',  :as => :salary_colleague_payed
+  match 'reports/income_for_bill'                         => 'reports#income_for_bill',         :as => :income_for_bill
 
   resources :outcome_sections
 
