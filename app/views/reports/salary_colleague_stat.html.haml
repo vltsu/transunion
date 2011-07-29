@@ -1,0 +1,30 @@
+%h1{:class => 'tableTitle', :style => 'width: 800px; margin: 0px auto; color:red;'}= "Формирование зарплаты сотрудника за #{Russian::strftime(@date,'%B')} #{@date.year}г."
+%br/
+%table
+  %tr
+    %td{:class => 'odd bold', :colspan => '5', :align => 'center'}
+      = "#{@colleague.full_name} - #{@colleague.position}"
+  %tr
+    %td{:class => 'odd bold', :colspan => '5', :align => 'center'}
+      = "Оклад: #{@colleague.salary}"
+  %tr
+    %th.th1.bold Заявка №
+    %th.th1.bold Дата
+    %th.th1.bold Оплачено заказчиком
+    %th.th1.bold Оплачено перевозчиком
+    %th.th1.bold Вознаграждение
+  - total_premium_summ = 0
+  - @requests.each do |r|
+    - if is_payed_to_carrier(r) && is_payed_by_customer(r)
+      %tr{:class => cycle('odd','even')}
+        %td.th3= r.id
+        %td.th3= r.created_at.strftime("%Y-%m-%d")
+        %td.th3= r.customer_summ_to_pay
+        %td.th3= r.carrier_summ_to_pay
+        %td.th3= request_premium_summ(r)
+      - total_premium_summ += request_premium_summ(r)
+  %tr
+    %td{:colspan => 3, :class => 'borNone'}
+    %td{:align => 'center', :colspan => 1, :class => 'odd bold', :style => 'font-size:16px;'}Итого:
+    %td{:align => 'center', :colspan => 1, :class => 'odd', :style => 'font-size:16px;'}= "#{total_premium_summ + @colleague.salary}"
+%br/

@@ -181,7 +181,7 @@ class FinancesController < ApplicationController
       render :action => 'carrier_payment_bill', :locals => { :notice => 'Заявки с указанным номером не существует' }
     else
       params[:finance]['glob_type'] = 'outcome'
-      params[:finance]['local_type']  = 'carrier_payment_bill'
+      params[:finance]['local_type'] = 'carrier_payment_bill'
       params[:finance]['request_id'] = request_one.id
 
       #Проставление значения поля способа оплаты, для последующего расчёта зарплаты
@@ -351,7 +351,6 @@ class FinancesController < ApplicationController
   def outcome_salary_edit
     @finance = Finance.find(params[:id])
   end
-
 
   #Создание записи зарплата
   def outcome_salary_create

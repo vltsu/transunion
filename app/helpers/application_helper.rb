@@ -9,7 +9,7 @@ module ApplicationHelper
     #Оплаченная сумма
     payed_summ = 0
     payments.each do |pay|
-      payed_summ = payed_summ + pay.summ
+      payed_summ += pay.summ
     end
     #Сравнение оплаченной суммы и суммы к оплате
     if summ_to_pay == payed_summ && payed_summ != 0
@@ -35,7 +35,7 @@ module ApplicationHelper
       #Оплаченная сумма
       payed_summ = 0
       payments.each do |pay|
-        payed_summ = payed_summ + pay.summ
+        payed_summ += pay.summ
       end
     end
     #Сравнение оплаченной суммы и суммы к оплате
@@ -51,7 +51,7 @@ module ApplicationHelper
     requests = Request.find(:all, :conditions => "bill_id = #{bill_id}")
     summ_to_pay = 0
     requests.each do |req|
-      summ_to_pay = summ_to_pay + req.customer_summ_to_pay
+      summ_to_pay += req.customer_summ_to_pay
     end
     summ_to_pay
   end
@@ -61,7 +61,7 @@ module ApplicationHelper
     finances = Finance.find(:all, :conditions => "bill_id = #{bill_id} AND local_type ='customer_payment_bill'")
     payed_summ = 0
     finances.each do |fin|
-      payed_summ = payed_summ + fin.summ
+      payed_summ += fin.summ
     end
     payed_summ
   end
@@ -71,7 +71,7 @@ module ApplicationHelper
     finances  = Finance.find(:all, :conditions => "request_id = #{request_id} AND local_type = 'customer_payment_cash'")
     payed_summ = 0
     finances.each do |fin|
-      payed_summ = payed_summ + fin.summ
+      payed_summ += fin.summ
     end
     payed_summ
   end
@@ -81,7 +81,7 @@ module ApplicationHelper
     finances = Finance.find(:all, :conditions => "request_id = #{request_id} AND glob_type = 'outcome'")
     payed_summ = 0
     finances.each do |fin|
-      payed_summ = payed_summ + fin.summ
+      payed_summ += fin.summ
     end
     payed_summ
   end
@@ -137,8 +137,78 @@ module ApplicationHelper
     #Подсчёт суммы
     cash_outcome_summ = 0
     finances.each do |fin|
-      cash_outcome_summ = cash_outcome_summ + fin.summ
+      cash_outcome_summ += fin.summ
     end
     cash_outcome_summ
+  end
+
+  #Подсчёт премии за все закрытые заявки по месяцу и году
+  def colleague_request_percent_summ(colleague, year, month)
+    #Поиск всех заявок по сотруднику, месяцу и году
+    requests = Request.find(:all, :conditions => "user_id = #{colleague.id} AND year(created_at) = #{year} AND month(created_at) = #{month}" )
+    summ = 0
+    #Обработка всех заказов, поиск оплаченных и подсчёт суммы в зависимости от условий
+    requests.each do |req|
+      if is_payed_by_customer(req) && is_payed_to_carrier(req)
+        if req.customer_payment_way_for_salary == 'наличные' && req.carrier_payment_way_for_salary == 'наличные'
+          summ += req.customer_summ_to_pay - req.carrier_summ_to_pay
+        end
+
+        if req.customer_payment_way_for_salary == 'безнал с ндс' && req.carrier_payment_way_for_salary == 'наличные'
+          summ += 0.93 * req.customer_summ_to_pay - req.carrier_summ_to_pay
+        end
+
+        if req.customer_payment_way_for_salary == 'безнал с ндс' && req.carrier_payment_way_for_salary == 'безнал без ндс'
+          carrier_summ_to_pay = req.carrier_summ_to_pay + 0.02 * req.carrier_summ_to_pay
+          summ += 0.93 * (req.customer_summ_to_pay - carrier_summ_to_pay)
+        end
+
+        if req.customer_payment_way_for_salary == 'безнал с ндс' && req.carrier_payment_way_for_salary == 'безнал с ндс'
+          summ += 0.93 * (req.customer_summ_to_pay - req.carrier_summ_to_pay)
+        end
+      end
+    end
+    #Сумма к оплате
+    summ_to_pay = summ * (colleague.request_percent / 100)
+    #Округление до целого числа
+    summ_to_pay.round
+  end
+
+  #Подсчёт премии по конкретной заявке
+  def request_premium_summ(request_instance)
+    req = Request.find(request_instance.id)
+    if is_payed_by_customer(req) && is_payed_to_carrier(req)
+      if req.customer_payment_way_for_salary == 'наличные' && req.carrier_payment_way_for_salary == 'наличные'
+        summ = req.customer_summ_to_pay - req.carrier_summ_to_pay
+      end
+
+      if req.customer_payment_way_for_salary == 'безнал с ндс' && req.carrier_payment_way_for_salary == 'наличные'
+        summ = 0.93 * req.customer_summ_to_pay - req.carrier_summ_to_pay
+      end
+
+      if req.customer_payment_way_for_salary == 'безнал с ндс' && req.carrier_payment_way_for_salary == 'безнал без ндс'
+        carrier_summ_to_pay = req.carrier_summ_to_pay + 0.02 * req.carrier_summ_to_pay
+        summ = 0.93 * (req.customer_summ_to_pay - carrier_summ_to_pay)
+      end
+
+      if req.customer_payment_way_for_salary == 'безнал с ндс' && req.carrier_payment_way_for_salary == 'безнал с ндс'
+        summ = 0.93 * (req.customer_summ_to_pay - req.carrier_summ_to_pay)
+      end
+    end
+    #Размер премии
+    summ ||= 0
+    premium_summ = summ * (request_instance.user.request_percent / 100)
+    #Округление до целого числа
+    premium_summ.round
+  end
+
+  #Выплачено сотруднику за месяц
+  def salary_payed_for_month(colleague, year, month)
+    finances = Finance.find(:all, :conditions => "salary_person_id = #{colleague.id} AND year(date) = #{year} AND month(date) = #{month} AND local_type = 'outcome_salary'" )
+    summ = 0
+    finances.each do |fin|
+      summ += fin.summ
+    end
+    summ ||= 0
   end
 end

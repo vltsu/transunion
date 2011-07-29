@@ -1,0 +1,21 @@
+- content_for(:head) do
+  - javascript_include_tag 'salary'
+%h1{:class => 'tableTitle', :style => 'width: 650px; margin: 0px auto; color:red;'}= "Отчёт по зарплате за #{Russian::strftime(@date,'%B')} #{@date.year}"
+%br/
+%div{:class => 'search_panel', :style => "width:400px; margin: 0px auto;"}
+  = select_month(@date.month, :use_month_names => %w(Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь))
+  = select_year(@date.year, :start_year => 2011, :end_year => 2012, :id => 'salaryYear')
+  = submit_tag('Сформировать', :id => 'salaryButton')
+%br/
+%table
+  %tr
+    %th.th1.bold ФИО
+    %th.th1.bold Должность
+    %th.th1.bold Сумма к оплате
+    %th.th1.bold Оплачено
+  - @colleagues.each do |c|
+    %tr{:class => cycle('odd','even')}
+      %td.th3= c.full_name
+      %td.th3= c.position
+      %td.th3= link_to "#{colleague_request_percent_summ(c, @date.year, @date.month) + c.salary}", "/reports/salary_colleague_stat/#{c.id}?month=#{@date.month}&year=#{@date.year}", :style => 'text-decoration:none; font-size:12px; color: blue;'
+      %td.th3= link_to "#{salary_payed_for_month(c, @date.year, @date.month)}", "/reports/salary_colleague_payed/#{c.id}?month=#{@date.month}&year=#{@date.year}", :style => 'text-decoration:none; font-size:12px; color: blue;'

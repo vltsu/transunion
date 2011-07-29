@@ -22,11 +22,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :passport_address
       t.string :citizenship
       t.datetime :date_of_birth
-      t.string :about
-      t.string :position
-      t.decimal :salary
-      t.decimal :premium_percent
-      t.decimal :request_percent
+      t.string  :about
+      t.string  :position
+      t.decimal :salary,          :precision => 10, :scale => 2
+      t.decimal :premium_percent, :precision => 5,  :scale => 2
+      t.decimal :request_percent, :precision => 5,  :scale => 2
       t.string :global_experience
       t.string :unbroken_experience
       t.string :visluga_let

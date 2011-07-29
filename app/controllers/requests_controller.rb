@@ -110,6 +110,11 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
 
+    #Обработка checkbox'a is_finished
+    if !params[:request][:is_finished]
+      params[:request][:is_finished] = 0
+    end
+
     #Удаление всех связанных с заявкой точек погрузки
     loading_points = @request.loading_points
     loading_points.each do |lp|

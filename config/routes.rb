@@ -47,6 +47,10 @@ Transunion::Application.routes.draw do
   match 'finances/income_bill/:id'     => 'finances#income_bill',     :as => :income_bill
   match 'finances/outcome_request/:id' => 'finances#outcome_request', :as => :outcome_request
 
+  #Отчёты
+  match 'reports/salary'                                  => 'reports#salary_index',            :as => :salary
+  match 'reports/salary_colleague_stat/:id'               => 'reports#salary_colleague_stat',   :as => :salary_colleague_stat
+  match 'reports/salary_colleague_payed/:id'              => 'reports#salary_colleague_payed',  :as => :salary_colleague_payed
 
   resources :outcome_sections
 
@@ -94,6 +98,8 @@ Transunion::Application.routes.draw do
   resources :drivers
 
   resources :index
+
+  resources :reports
 
   match 'signin_form' => 'index#signin_form', :as => :signin_form
   match 'signin'      => 'index#signin'

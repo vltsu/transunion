@@ -715,6 +715,15 @@
     %tr
       %td{ :class => 'borNone', :align => 'center', :colspan => '9' }
         %br
+    %tr
+      %td{ :class => 'borNone', :align => 'center', :colspan => '9' }
+        %p{:style => 'color: green;'}!="#{check_box_tag 'request[is_finished]', 1, @request.is_finished} Закрыть заявку"
+    %tr
+      %td{ :class => 'borNone', :align => 'center', :colspan => '9' }
+        %br
+    %tr
+      %td{ :class => 'borNone', :align => 'center', :colspan => '9' }
+        %br
     - if params[:action] != 'show'
       %tr
         %td{ :class => 'borNone', :align => 'center', :colspan => 9 }

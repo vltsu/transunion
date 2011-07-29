@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   validates :firstname,                  :presence => { :message => 'Введите имя' }
   validates :middlename,                 :presence => { :message => 'Введите отчество' }
 
+  validates :request_percent,            :presence => { :message => 'Введите процент от заявки' }
+  validates :salary,                     :presence => { :message => 'Введите оклад' }
+
   def password=(pass)
     salt = [Array.new(6){rand(256).chr}.join].pack('m').chomp
     self.password_salt, self.password_hash =

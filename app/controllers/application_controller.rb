@@ -50,6 +50,7 @@ class ApplicationController < ActionController::Base
     acl.add_resource('income_sections')
     acl.add_resource('outcome_sections')
     acl.add_resource('finances')
+    acl.add_resource('reports')
 
     acl.allow('manager','index')
     acl.allow('manager','users')
@@ -78,6 +79,7 @@ class ApplicationController < ActionController::Base
     acl.allow('administrator','income_sections')
     acl.allow('administrator','outcome_sections')
     acl.allow('administrator','finances')
+    acl.allow('administrator','reports')
 
     user_role = User.find(session[:user]).role
 

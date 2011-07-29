@@ -1,0 +1,21 @@
+%div{:style => 'width: 800px; margin: 0px auto; color:red;'}
+  %h1{:class => 'tableTitle', :style => 'text-align: center; width: 700px; margin: 0px auto; color:red;'}
+    = "Выплаты за #{Russian::strftime(@date, '%B')} #{@date.year}г."
+  %br/
+  %h1{:class => 'tableTitle', :style => 'text-align: center; width: 700px; margin: 0px auto; color:red; font-size: 18px;'}
+    = @colleague.full_name
+%br/
+%table
+  %tr
+    %th.th1.bold Дата
+    %th.th1.bold Сумма
+    - total_payed_summ = 0
+    - @finances.each do |f|
+      %tr{:class => cycle('odd','even')}
+        %td.th3= f.date.strftime("%Y-%m-%d")
+        %td.th3= f.summ
+        - total_payed_summ += f.summ
+    %tr
+      %td{:align => 'center', :class => 'odd bold', :style => 'font-size:16px;'}Итого:
+      %td{:align => 'center', :class => 'odd', :style => 'font-size:16px;'}= "#{total_payed_summ}"
+%br/
