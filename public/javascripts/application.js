@@ -6,7 +6,6 @@ $(document).ready(function() {
     }
     requiredField()
 
-
     //Удаляет datetimeentry панель, используется в тестах
     datetimeEntryDelete = function (i) {
         $('#loadingDateForm'+i).livequery(function(){
