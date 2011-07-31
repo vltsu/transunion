@@ -317,8 +317,10 @@ class RequestsController < ApplicationController
         #Оплата по ставке 37000 (тридцать семь тысяч) руб. или (повременная: 5+1 по 900руб./час)
         if request.customer_rate_summ
           line.gsub!(/«payment»/, "Оплата по ставке #{request.customer_rate_summ} (#{RuPropisju.propisju(request.customer_rate_summ)}) руб.")
+          line.gsub!(/paymentPlus/, ", более 8-ми часов #{request.customer_rate_sverh_price.to_s}")
         else
           line.gsub!(/«payment»/, "Повременная: #{request.customer_rate_hours}+#{request.customer_rate_podacha_hours} по #{request.customer_rate_hour_price} руб./час")
+          line.gsub!(/paymentPlus/,", далее: #{request.customer_rate_sverh_price.to_s}")
         end
 
         line.gsub!(/paymentPlus/, request.customer_rate_sverh_price.to_s)
@@ -660,11 +662,12 @@ class RequestsController < ApplicationController
         #Оплата по ставке 37000 (тридцать семь тысяч) руб. или (повременная: 5+1 по 900руб./час)
         if request.carrier_rate_summ
           line.gsub!(/«payment»/, "Оплата по ставке #{request.carrier_rate_summ} (#{RuPropisju.propisju(request.carrier_rate_summ)}) руб.")
+          line.gsub!(/paymentPlus/, ", более 8-ми часов #{request.carrier_rate_sverh_price.to_s}")
         else
           line.gsub!(/«payment»/, "Повременная: #{request.carrier_rate_hours}+#{request.carrier_rate_podacha_hours} по #{request.carrier_rate_hour_price} руб./час")
+          line.gsub!(/paymentPlus/,", далее: #{request.carrier_rate_sverh_price.to_s}")
         end
 
-        line.gsub!(/paymentPlus/, request.carrier_rate_sverh_price.to_s)
         line.gsub!(/«rateHours»/, request.carrier_rate_hours.to_s)
         line.gsub!(/«prepayment»/, request.carrier_prepayment.to_s)
         line.gsub!(/«summToPay»/, request.carrier_summ_to_pay.to_s)
