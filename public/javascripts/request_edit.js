@@ -5,6 +5,13 @@ $(document).ready(function() {
     rateFields()
     fillFields()
 
+    //Вызов функции подсчёта общих сумм при изменении полей
+    $('.inp').live('focusout',
+      function() {
+        countSumm()
+      }
+    )
+
     // Выбор нужной формы
     function startEdit() {
 
@@ -73,7 +80,34 @@ $(document).ready(function() {
 
     }
 
+    //Функция рассчитывает общие суммы
+    function countSumm() {
+        carrierRateSumm  = parseFloat($('#carrierRateTotalSumm').val()) || 0
+        customerRateSumm = parseFloat($('#customerRateTotalSumm').val()) || 0
 
+        carrierDopSumm  = parseFloat($('#carrierDopSumm').val()) || 0
+        customerDopSumm = parseFloat($('#customerDopSumm').val()) || 0
+
+        carrierResponsSumm  = parseFloat($('#carrierResponsibilitySumm').val()) || 0
+        customerResponsSumm = parseFloat($('#customerResponsibilitySumm').val()) || 0
+
+        //Сумма по тарифу + сумма доп. условия
+        carrierRateDopSumm  = carrierRateSumm + carrierDopSumm
+        customerRateDopSumm = customerRateSumm + customerDopSumm
+
+        //сумма по тарифу + сумма доп. условия + сумма штрафов
+        carrierTotalSumm  = carrierRateDopSumm + carrierResponsSumm
+        customerTotalSumm = customerRateDopSumm + customerResponsSumm
+
+        //Присваивание значений
+          //Тариф + доп условия
+        $('#carrierTotalSumm').val(carrierRateDopSumm)
+        $('#customerTotalSumm').val(customerRateDopSumm)
+
+          //Тариф + доп условия + штрафы
+        $('#carrierSummToPay').val(carrierTotalSumm)
+        $('#customerSummToPay').val(customerTotalSumm)
+    }
 
     // Расчёт стоимости перевозки по сдельному тарифу
     $('#customerRateSumm,#customerRateSverhPrice').live('change',
@@ -168,11 +202,7 @@ $(document).ready(function() {
         #customerDopVozvrCount,#customerDopVozvrPrice,#customerDopPeregCount,#customerDopPeregPrice,\n\
         #customerDopNightStayCount,#customerDopNightStayPrice,#customerDopMezgorodCount,#customerDopMezgorodPrice,\n\
         #customerDopRastentovkaCount,#customerDopRastentovkaPrice,#customerDopSoprovCount,#customerDopSoprovPrice,\n\
-        #customerDopNegabaritCount,#customerDopNegabaritPrice,#customerDopGruzchCount,#customerDopGruzchPrice,\n\
-        #customerRateHours,#customerRatePodachaHours,#customerRateHourPrice,#customerRateSumm,#customerPrepayment,#customerRateTotalSumm,#customerRateSumm,\n\
-        #customerRateSverhCount,#customerRateSverhPrice,#customerResponsibilityCarDenyPrice,#customerResponsibilityProstoyCount,\n\
-        #customerResponsibilityProstoyPrice,#customerResponsibilityPaymentLateCount,#customerResponsibilityPaymentLatePrice,\n\
-        #customerResponsibilityDocumentLateCount,#customerResponsibilityDocumentLatePrice,#carrierResponsibilityCarDenyPrice,#carrierResponsibilityLateCount').live('change',
+        #customerDopNegabaritCount,#customerDopNegabaritPrice,#customerDopGruzchCount,#customerDopGruzchPrice').live('change',
             function() {
                 var customerDopPrabCount           = $('#customerDopPrabCount').val();
                 var customerDopPrabPrice           = $('#customerDopPrabPrice').val();
@@ -246,23 +276,12 @@ $(document).ready(function() {
                 $('#customerDopNegabaritSumm').val(customerDopNegabaritSumm);
                 $('#customerDopGruzchSumm').val(customerDopGruzchSumm);
 
+                //Сумма заказчику по доп условиям
                 var total = parseFloat(customerDopPrabSumm)+parseFloat(customerDopDopTochkaPogrSumm)
                     +parseFloat(customerDopDopTochkaRazgrSumm)+parseFloat(customerDopVozvrSumm)+parseFloat(customerDopPeregSumm)+parseFloat(customerDopNightStaySumm)+parseFloat(customerDopMezgorodSumm)
                     +parseFloat(customerDopRastentovkaSumm)+parseFloat(customerDopSoprovSumm)+parseFloat(customerDopNegabaritSumm)+parseFloat(customerDopGruzchSumm)
                 ;
                 $('#customerDopSumm').val(total);
-
-                // Подсчёт итоговой суммы за перевозку
-                var customerRateTotalSumm = $('#customerRateTotalSumm').val();
-                if ( !customerRateTotalSumm || customerRateTotalSumm == 0) {
-                    var customerRateTotalSumm = $('#customerRateTotalSumm').val();
-                }
-                var totalSumm = parseFloat(customerRateTotalSumm) + total;
-                $('#customerTotalSumm').val(totalSumm);
-
-                // Подсчёт суммы к оплате
-                var summToPay = totalSumm + parseFloat(customerResponsibilitySumm);
-                $('#customerSummToPay').val(summToPay);
             }
         );
 
@@ -271,11 +290,7 @@ $(document).ready(function() {
         #carrierDopVozvrCount,#carrierDopVozvrPrice,#carrierDopPeregCount,#carrierDopPeregPrice,\n\
         #carrierDopNightStayCount,#carrierDopNightStayPrice,#carrierDopMezgorodCount,#carrierDopMezgorodPrice,\n\
         #carrierDopRastentovkaCount,#carrierDopRastentovkaPrice,#carrierDopSoprovCount,#carrierDopSoprovPrice,\n\
-        #carrierDopNegabaritCount,#carrierDopNegabaritPrice,#carrierDopGruzchCount,#carrierDopGruzchPrice,\n\
-        #carrierRateHours,#carrierRatePodachaHours,#carrierRateHourPrice,#carrierRateSumm,#carrierPrepayment,#carrierRateTotalSumm,#carrierRateSumm,\n\
-        #carrierRateSverhCount,#carrierRateSverhPrice,#carrierResponsibilityCarDenyPrice,#carrierResponsibilityLateCount,\n\
-        #carrierResponsibilityLatePrice,#carrierResponsibilityDeliveryLateCount,#carrierResponsibilityDeliveryLatePrice,#carrierResponsibilityDocumentLateCount,\n\
-        #carrierResponsibilityDocumentLatePrice').live('change',
+        #carrierDopNegabaritCount,#carrierDopNegabaritPrice,#carrierDopGruzchCount,#carrierDopGruzchPrice').live('change',
             function() {
                 var carrierDopPrabCount           = $('#carrierDopPrabCount').val();
                 var carrierDopPrabPrice           = $('#carrierDopPrabPrice').val();
@@ -336,6 +351,7 @@ $(document).ready(function() {
                 var carrierDopSoprovSumm         = parseFloat(carrierDopSoprovCount)*parseFloat(carrierDopSoprovPrice);
                 var carrierDopNegabaritSumm      = parseFloat(carrierDopNegabaritCount)/100*parseFloat(carrierDopNegabaritPrice);
                 var carrierDopGruzchSumm         = parseFloat(carrierDopGruzchCount)*parseFloat(carrierDopGruzchPrice);
+                var carrierResponsibilitySumm    = parseFloat(carrierResponsibilitySumm);
 
                 $('#carrierDopPrabSumm').val(carrierDopPrabSumm);
                 $('#carrierDopDopTochkaPogrSumm').val(carrierDopDopTochkaPogrSumm);
@@ -349,33 +365,17 @@ $(document).ready(function() {
                 $('#carrierDopNegabaritSumm').val(carrierDopNegabaritSumm);
                 $('#carrierDopGruzchSumm').val(carrierDopGruzchSumm);
 
+                //Сумма заказчику за доп услуги
                 var total = parseFloat(carrierDopPrabSumm)+parseFloat(carrierDopDopTochkaPogrSumm)
                     +parseFloat(carrierDopDopTochkaRazgrSumm)+parseFloat(carrierDopVozvrSumm)+parseFloat(carrierDopPeregSumm)+parseFloat(carrierDopNightStaySumm)+parseFloat(carrierDopMezgorodSumm)
                     +parseFloat(carrierDopRastentovkaSumm)+parseFloat(carrierDopSoprovSumm)+parseFloat(carrierDopNegabaritSumm)+parseFloat(carrierDopGruzchSumm)
                 ;
                 $('#carrierDopSumm').val(total);
-
-                // Подсчёт итоговой суммы за перевозку
-                var carrierRateTotalSumm = $('#carrierRateTotalSumm').val();
-                if ( !carrierRateTotalSumm || carrierRateTotalSumm == 0 ) {
-                    var carrierRateTotalSumm = $('#carrierRateTotalSumm').val();
-                }
-
-                var totalSumm = parseFloat(carrierRateTotalSumm) + total;
-                $('#carrierTotalSumm').val(totalSumm);
-
-                // Подсчёт суммы к оплате
-                var summToPay = totalSumm + parseFloat(carrierResponsibilitySumm);
-                $('#carrierSummToPay').val(summToPay);
             }
     );
 
     // Расчёт ответственности сторон
-    $('#customerResponsibilityCarDenyPrice,#customerResponsibilityProstoyCount,\n\
-        #customerResponsibilityProstoyPrice,#customerResponsibilityPaymentLateCount,#customerResponsibilityPaymentLatePrice,\n\
-        #customerResponsibilityDocumentLateCount,#customerResponsibilityDocumentLatePrice,#carrierResponsibilityCarDenyPrice,#carrierResponsibilityLateCount,\n\
-        #carrierResponsibilityLatePrice,#carrierResponsibilityDeliveryLateCount,#carrierResponsibilityDeliveryLatePrice,#carrierResponsibilityDocumentLateCount,\n\
-        #carrierResponsibilityDocumentLatePrice,#customerRateSumm, #carrierRateSumm').live('change', function() {
+    $('.inp').live('focusout', function() {
 
           var customerResponsibilityCarDenyPrice      = $('#customerResponsibilityCarDenyPrice').val();
           var customerResponsibilityProstoyCount      = $('#customerResponsibilityProstoyCount').val();
@@ -385,14 +385,14 @@ $(document).ready(function() {
           var customerResponsibilityDocumentLateCount = $('#customerResponsibilityDocumentLateCount').val();
           var customerResponsibilityDocumentLatePrice = $('#customerResponsibilityDocumentLatePrice').val();
           var carrierResponsibilityCarDenyPrice       = $('#carrierResponsibilityCarDenyPrice').val();
-          var carrierResponsibilityLateCount       = $('#carrierResponsibilityLateCount').val();
-          var carrierResponsibilityLatePrice       = $('#carrierResponsibilityLatePrice').val();
-          var carrierResponsibilityDeliveryLateCount   = $('#carrierResponsibilityDeliveryLateCount').val();
-          var carrierResponsibilityDeliveryLatePrice   = $('#carrierResponsibilityDeliveryLatePrice').val();
+          var carrierResponsibilityLateCount          = $('#carrierResponsibilityLateCount').val();
+          var carrierResponsibilityLatePrice          = $('#carrierResponsibilityLatePrice').val();
+          var carrierResponsibilityDeliveryLateCount  = $('#carrierResponsibilityDeliveryLateCount').val();
+          var carrierResponsibilityDeliveryLatePrice  = $('#carrierResponsibilityDeliveryLatePrice').val();
           var carrierResponsibilityDocumentLateCount  = $('#carrierResponsibilityDocumentLateCount').val();
           var carrierResponsibilityDocumentLatePrice  = $('#carrierResponsibilityDocumentLatePrice').val();
-          var carrierTotalSumm   = $('#carrierTotalSumm').val();
-          var customerTotalSumm  = $('#customerTotalSumm').val();
+          var carrierTotalSumm                        = $('#carrierTotalSumm').val();
+          var customerTotalSumm                       = $('#customerTotalSumm').val();
 
           if (!customerResponsibilityCarDenyPrice) customerResponsibilityCarDenyPrice=0;
           if (!customerResponsibilityProstoyCount) customerResponsibilityProstoyCount=0;
@@ -409,11 +409,24 @@ $(document).ready(function() {
           if (!carrierResponsibilityDocumentLateCount) carrierResponsibilityDocumentLateCount=0;
           if (!carrierResponsibilityDocumentLatePrice) carrierResponsibilityDocumentLatePrice=0;
 
-          var customerResponsibilityCarDenySumm      = (parseFloat(customerResponsibilityCarDenyPrice) / 100) * parseFloat(customerTotalSumm);
+          //Если чекбокс напротив не активен, не расчитывать сумму
+          if ($("#request_customer_responsibility_car_deny_true").attr('checked')) {
+            var customerResponsibilityCarDenySumm      = (parseFloat(customerResponsibilityCarDenyPrice) / 100) * parseFloat(customerTotalSumm);
+          } else {
+            var customerResponsibilityCarDenySumm      = 0
+          }
+
           var customerResponsibilityProstoySumm      = parseFloat(customerResponsibilityProstoyCount) * (parseFloat(customerResponsibilityProstoyPrice) / 100 * parseFloat(customerTotalSumm));
           var customerResponsibilityPaymentLateSumm  = parseFloat(customerResponsibilityPaymentLateCount) * (parseFloat(customerResponsibilityPaymentLatePrice) / 100  * parseFloat(customerTotalSumm));
           var customerResponsibilityDocumentLateSumm = parseFloat(customerResponsibilityDocumentLateCount) * (parseFloat(customerResponsibilityDocumentLatePrice / 100  * parseFloat(customerTotalSumm)));
-          var carrierResponsibilityCarDenySumm       = parseFloat(carrierResponsibilityCarDenyPrice) / 100  * parseFloat(carrierTotalSumm);
+
+          //Если чекбокс напротив не активен, не расчитывать сумму
+          if ($("#request_carrier_responsibility_car_deny_true").attr('checked') ) {
+            var carrierResponsibilityCarDenySumm       = parseFloat(carrierResponsibilityCarDenyPrice) / 100  * parseFloat(carrierTotalSumm);
+          } else {
+            var carrierResponsibilityCarDenySumm      = 0
+          }
+
           var carrierResponsibilityLateSumm          = parseFloat(carrierResponsibilityLateCount) * (parseFloat(carrierResponsibilityLatePrice) / 100  * parseFloat(carrierTotalSumm));
           var carrierResponsibilityDeliveryLateSumm  = parseFloat(carrierResponsibilityDeliveryLateCount) * (parseFloat(carrierResponsibilityDeliveryLatePrice) / 100  * parseFloat(carrierTotalSumm));
           var carrierResponsibilityDocumentLateSumm  = parseFloat(carrierResponsibilityDocumentLateCount) * (parseFloat(carrierResponsibilityDocumentLatePrice) / 100  * parseFloat(carrierTotalSumm));
@@ -427,15 +440,19 @@ $(document).ready(function() {
           $('#carrierResponsibilityDeliveryLateSumm').val(carrierResponsibilityDeliveryLateSumm);
           $('#carrierResponsibilityDocumentLateSumm').val(carrierResponsibilityDocumentLateSumm);
 
-          var customerTotal = parseFloat(customerResponsibilityCarDenySumm)+parseFloat(customerResponsibilityProstoySumm)
+          //Сумма штрафов заказчику
+          var customerTotalResponsibility = parseFloat(customerResponsibilityCarDenySumm)+parseFloat(customerResponsibilityProstoySumm)
               +parseFloat(customerResponsibilityPaymentLateSumm)+parseFloat(customerResponsibilityDocumentLateSumm);
 
-          var carrierTotal = parseFloat(carrierResponsibilityCarDenySumm)+parseFloat(carrierResponsibilityLateSumm)
+          //Сумма штрафов перевозчику
+          var carrierTotalResponsibility = parseFloat(carrierResponsibilityCarDenySumm)+parseFloat(carrierResponsibilityLateSumm)
               +parseFloat(carrierResponsibilityDeliveryLateSumm)+parseFloat(carrierResponsibilityDocumentLateSumm);
 
-          $('#customerResponsibilitySumm').val(customerTotal);
-          $('#carrierResponsibilitySumm').val(carrierTotal);
+          $('#customerResponsibilitySumm').val(customerTotalResponsibility);
+          $('#carrierResponsibilitySumm').val(carrierTotalResponsibility);
 
+          //Перерасчёт итоговой суммы после изменения размера штрафа
+          countSumm();
       }
     );
 

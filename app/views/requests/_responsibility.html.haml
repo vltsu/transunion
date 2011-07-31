@@ -43,7 +43,7 @@
   %td.customer.fieldName.fieldInnerMiddleLeft
     Отказ от ТС:
   %td.customer.fieldInnerMediumMiddle
-    в день погр.
+    != "в день погр. вкл. #{check_box_tag 'request[customer_responsibility_car_deny_true]', 1, @request.customer_responsibility_car_deny_true}"
   %td.customer.fieldInnerMediumMiddle
     != "#{f.text_field :customer_responsibility_car_deny_price, :id => 'customerResponsibilityCarDenyPrice', :class => 'inp', :size => 4}%"
   %td.customer.fieldInnerMiddleRight
@@ -52,7 +52,7 @@
   %td.carrier.fieldName.fieldInnerMiddleLeft
     Неподача ТС:
   %td.carrier.fieldInnerMediumMiddle
-    в день погр.
+    != "в день погр. вкл. #{check_box_tag 'request[carrier_responsibility_car_deny_true]', 1, @request.carrier_responsibility_car_deny_true}"
   %td.carrier.fieldInnerMediumMiddle
     != "#{f.text_field :carrier_responsibility_car_deny_price, :id => 'carrierResponsibilityCarDenyPrice', :class => 'inp', :size => 4}%"
   %td.carrier.fieldInnerMiddleRight

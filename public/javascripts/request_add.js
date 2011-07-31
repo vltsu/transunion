@@ -86,7 +86,6 @@ $(document).ready(function() {
         }
     );
 
-
     // Подсчёт общих сумм
     $('#request_customer_dop_prab_count,#request_customer_dop_prab_price,\n\
         #request_customer_dop_dop_tochka_pogr_count,#request_customer_dop_dop_tochka_pogr_price,#request_customer_dop_dop_tochka_razgr_count,#request_customer_dop_dop_tochka_razgr_price,\n\
@@ -94,7 +93,7 @@ $(document).ready(function() {
         #request_customer_dop_night_stay_count,#request_customer_dop_night_stay_price,#request_customer_dop_mezgorod_count,#request_customer_dop_mezgorod_price,\n\
         #request_customer_dop_rastentovka_count,#request_customer_dop_rastentovka_price,#request_customer_dop_soprov_count,#request_customer_dop_soprov_price,\n\
         #request_customer_dop_negabarit_count,#request_customer_dop_negabarit_price,#request_customer_dop_gruzch_count,#request_customer_dop_gruzch_price,\n\
-        #customerRateHours,#customerRatePodachaHours,#customerRateHourPrice,#customerRateSumm,#customerPrepayment,#request_customer_rate_total_summ,#customerRateSumm\n\
+        #customerRateHours,#customerRatePodachaHours,#customerRateHourPrice,#customerRateSumm,#customerPrepayment,#customerRateSumm,\n\
         #customerRateSverhCount,#customerRateSverhPrice').live('change',
             function() {
                 var request_customer_dop_prab_count           = $('#request_customer_dop_prab_count').val();
@@ -175,14 +174,11 @@ $(document).ready(function() {
 
                 // Подсчёт итоговой суммы за перевозку
                 var request_customer_rate_total_summ = $('#request_customer_rate_total_summ').val();
-                if ( !request_customer_rate_total_summ || request_customer_rate_total_summ == 0) {
-                    var request_customer_rate_total_summ = $('#request_customer_rate_total_summ').val();
-                }
                 var totalSumm = parseFloat(request_customer_rate_total_summ) + total;
-                $('#request_customer_total_summ').val(totalSumm);
+                $('#customerTotalSumm').val(totalSumm);
 
                 // Сумма к оплате
-                $('#request_customer_summ_to_pay').val(totalSumm);
+                $('#customerSummToPay').val(totalSumm);
             }
         );
 
@@ -273,15 +269,12 @@ $(document).ready(function() {
 
                 // Подсчёт итоговой суммы за перевозку
                 var request_carrier_rate_total_summ = $('#request_carrier_rate_total_summ').val();
-                if ( !request_carrier_rate_total_summ || request_carrier_rate_total_summ == 0 ) {
-                    var request_carrier_rate_total_summ = $('#request_carrier_rate_total_summ').val();
-                }
 
                 var totalSumm = parseFloat(request_carrier_rate_total_summ) + total;
-                $('#request_carrier_total_summ').val(totalSumm);
+                $('#carrierTotalSumm').val(totalSumm);
 
                 // Сумма к оплате
-                $('#request_carrier_summ_to_pay').val(totalSumm);
+                $('#requestCarrierSummToPay').val(totalSumm);
             }
     );
 

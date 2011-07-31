@@ -14,7 +14,6 @@ class RequestsController < ApplicationController
     @requests = Request.paginate :page => params[:page], :order => 'id DESC'
   end
 
-
   # GET /requests/1
   def show
     @request = Request.find(params[:id])
@@ -75,6 +74,17 @@ class RequestsController < ApplicationController
     @request = Request.new(params[:request])
 
     if @request.save
+      #Установка значений в поля штрафных санкций из карточек соотв. компаний
+      @request.customer_responsibility_car_deny_price      = @request.customer_company.respons_refuse_loading_day
+      @request.customer_responsibility_prostoy_price       = @request.customer_company.respons_idle_excessively_percent
+      @request.customer_responsibility_payment_late_price  = @request.customer_company.respons_payment_late
+
+      @request.carrier_responsibility_car_deny_price       = @request.carrier_company.respons_undeliver_transport_loading
+      @request.carrier_responsibility_late_price           = @request.carrier_company.respons_transport_late_loading_percent
+      @request.carrier_responsibility_delivery_late_price  = @request.carrier_company.respons_transport_late_destination_percent
+      @request.carrier_responsibility_document_late_price  = @request.carrier_company.respons_document_late
+      @request.save
+
       redirect_to({:action => 'index'}, {:notice => 'Заявка добавлена'})
     else
       render :action => "new"
@@ -113,6 +123,16 @@ class RequestsController < ApplicationController
     #Обработка checkbox'a is_finished
     if !params[:request][:is_finished]
       params[:request][:is_finished] = 0
+    end
+
+    #Обработка checkbox'a отказ от ТС заказчик
+    if !params[:request][:customer_responsibility_car_deny_true]
+      params[:request][:customer_responsibility_car_deny_true] = 0
+    end
+
+    #Обработка checkbox'a отказ от ТС перевозчик
+    if !params[:request][:carrier_responsibility_car_deny_true]
+      params[:request][:carrier_responsibility_car_deny_true] = 0
     end
 
     #Удаление всех связанных с заявкой точек погрузки

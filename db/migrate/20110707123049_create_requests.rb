@@ -154,28 +154,30 @@ class CreateRequests < ActiveRecord::Migration
       t.string :transport_idle_excessively_intercity
       t.string :payment_late
       t.string :document_late
-      t.decimal :customer_responsibility_car_deny_price, :precision => 10, :scale => 2
-      t.decimal :customer_responsibility_car_deny_summ, :precision => 10, :scale => 2
-      t.string :customer_responsibility_prostoy_count
-      t.decimal :customer_responsibility_prostoy_price, :precision => 10, :scale => 2
-      t.decimal :customer_responsibility_prostoy_summ, :precision => 10, :scale => 2
-      t.string :customer_responsibility_payment_late_count
-      t.decimal :customer_responsibility_payment_late_price, :precision => 10, :scale => 2
-      t.decimal :customer_responsibility_payment_late_summ, :precision => 10, :scale => 2
-      t.string :customer_responsibility_document_late_count
-      t.string :customer_responsibility_document_late_price
-      t.string :customer_responsibility_document_late_summ
-      t.string :carrier_responsibility_car_deny_price
-      t.string :carrier_responsibility_car_deny_summ
-      t.string :carrier_responsibility_late_count
-      t.string :carrier_responsibility_late_price
-      t.string :carrier_responsibility_late_summ
-      t.string :carrier_responsibility_delivery_late_count
-      t.string :carrier_responsibility_delivery_late_price
-      t.string :carrier_responsibility_delivery_late_summ
-      t.string :carrier_responsibility_document_late_count
-      t.string :carrier_responsibility_document_late_price
-      t.string :carrier_responsibility_document_late_summ
+      t.boolean  "customer_responsibility_car_deny_true",
+      t.decimal  "customer_responsibility_car_deny_price",                         :precision => 5, :scale => 2
+      t.decimal  "customer_responsibility_car_deny_summ",                          :precision => 10, :scale => 2
+      t.integer  "customer_responsibility_prostoy_count"
+      t.decimal  "customer_responsibility_prostoy_price",                          :precision => 5, :scale => 2
+      t.decimal  "customer_responsibility_prostoy_summ",                           :precision => 10, :scale => 2
+      t.integer  "customer_responsibility_payment_late_count"
+      t.decimal  "customer_responsibility_payment_late_price",                     :precision => 5, :scale => 2
+      t.decimal  "customer_responsibility_payment_late_summ",                      :precision => 10, :scale => 2
+      t.integer  "customer_responsibility_document_late_count"
+      t.decimal  "customer_responsibility_document_late_price",
+      t.decimal  "customer_responsibility_document_late_summ"
+      t.boolean  "carrier_responsibility_car_deny_true"
+      t.decimal  "carrier_responsibility_car_deny_price",                          :precision => 5, :scale => 2
+      t.decimal  "carrier_responsibility_car_deny_summ",                           :precision => 10, :scale => 2
+      t.integer  "carrier_responsibility_late_count"
+      t.decimal  "carrier_responsibility_late_price",                              :precision => 5, :scale => 2
+      t.decimal  "carrier_responsibility_late_summ",                               :precision => 10, :scale => 2
+      t.integer  "carrier_responsibility_delivery_late_count"
+      t.decimal  "carrier_responsibility_delivery_late_price",                     :precision => 5, :scale => 2
+      t.decimal  "carrier_responsibility_delivery_late_summ",                      :precision => 10, :scale => 2
+      t.integer  "carrier_responsibility_document_late_count"
+      t.decimal  "carrier_responsibility_document_late_price",                     :precision => 5, :scale => 2
+      t.decimal  "carrier_responsibility_document_late_summ",                      :precision => 10, :scale => 2
       t.string :carrier_responsibility_summ
       t.string :customer_responsibility_summ
       t.string :transport_idle_excessively_hours
