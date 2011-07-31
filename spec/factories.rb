@@ -17,7 +17,7 @@ Factory.define :carrier_company do |f|
   f.respons_transport_late_loading_hours '11.11'
   f.respons_transport_late_loading_percent '11.11'
   f.respons_transport_late_destination_hours '11.11'
-  f.response_transport_late_destination_percent '11.11'
+  f.respons_transport_late_destination_percent '11.11'
   f.respons_document_late '11.11'
 end
 
@@ -43,7 +43,7 @@ Factory.define :customer_company do |f|
   f.respons_transport_late_loading_hours '11.11'
   f.respons_transport_late_loading_percent '11.11'
   f.respons_transport_late_destination_hours '11.11'
-  f.response_transport_late_destination_percent '11.11'
+  f.respons_transport_late_destination_percent '11.11'
   f.respons_document_late '11.11'
 end
 
@@ -66,9 +66,15 @@ Factory.define :driver2, :class => Driver do |f|
 end
 
 Factory.define :user do |f|
-  f.login    'user'
-  f.password 'password'
-  f.role     'manager'
+  f.firstname      'Иван'
+  f.lastname       'Петров'
+  f.middlename     'Иванович'
+  f.login          'user'
+  f.password       'password'
+  f.role           'manager'
+  f.request_percent '10'
+  f.salary          '25000'
+
 end
 
 Factory.define :admin, :class => User do |u|
@@ -86,11 +92,13 @@ Factory.define :opf2, :class => Opf do |f|
 end
 
 Factory.define :company_face do |f|
-  f.company_face 'General Director'
+  f.company_face      'General Director'
+  f.company_face_podp 'General Directors'
 end
 
 Factory.define :company_face2, :class => CompanyFace do |f|
   f.company_face 'CIO'
+  f.company_face_podp 'CIOs'
 end
 
 Factory.define :car_type do |f|

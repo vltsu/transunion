@@ -48,10 +48,15 @@ Transunion::Application.routes.draw do
   match 'finances/outcome_request/:id' => 'finances#outcome_request', :as => :outcome_request
 
   #Отчёты
-  match 'reports/salary'                                  => 'reports#salary_index',            :as => :salary
-  match 'reports/salary_colleague_stat/:id'               => 'reports#salary_colleague_stat',   :as => :salary_colleague_stat
-  match 'reports/salary_colleague_payed/:id'              => 'reports#salary_colleague_payed',  :as => :salary_colleague_payed
-  match 'reports/income_for_bill'                         => 'reports#income_for_bill',         :as => :income_for_bill
+  match 'reports/salary'                     => 'reports#salary_index',            :as => :salary
+  match 'reports/salary_colleague_stat/:id'  => 'reports#salary_colleague_stat',   :as => :salary_colleague_stat
+  match 'reports/salary_colleague_payed/:id' => 'reports#salary_colleague_payed',  :as => :salary_colleague_payed
+  match 'reports/income_for_bill'            => 'reports#income_for_bill',         :as => :income_for_bill
+
+  #JavaScript
+  match 'javascripts/dynamic_drivers' => 'javascripts#dynamic_drivers'
+
+  resources :javascripts
 
   resources :outcome_sections
 
@@ -110,6 +115,8 @@ Transunion::Application.routes.draw do
   match 'requests/:id/carrier_document' => 'requests#carrier_document',   :as => :carrier_doc
 
   match 'requests/:id/save_as' => 'requests#save_as', :as => :save_as
+
+  match '/:controller(/:action(/:id))'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

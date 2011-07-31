@@ -6,18 +6,20 @@
   - javascript_include_tag 'datetime'
 - content_for(:head) do
   - javascript_include_tag 'validation'
-- content_for(:head) do
-  - javascript_include_tag 'transport_select'
 - if params[:action] == 'new' || params[:action] == 'save_as'
   - content_for(:head) do
     - javascript_include_tag 'request_add'
   - content_for(:head) do
     - javascript_include_tag 'cargopoints'
+  - content_for(:head) do
+    - javascript_include_tag 'dynamic_drivers'
 - if params[:action] == 'edit' || params[:action] == 'show'
   - content_for(:head) do
     - javascript_include_tag 'request_edit'
   - content_for(:head) do
     - javascript_include_tag 'cargopoints_edit'
+  - content_for(:head) do
+    - javascript_include_tag 'dynamic_drivers'
 - if params[:action] == 'save_as'
   - content_for(:head) do
     - javascript_include_tag 'save_as_clean'
@@ -180,8 +182,7 @@
       %td{ :class=>'carrier fieldName fieldInnerMiddleLeft', :colspan => 1, :align => 'left' }
         Водитель
       %td{ :class=>'carrier fieldInnerMiddleRight', :colspan => 3}
-        =f.collection_select :driver_id, Driver.find(:all), :id, :full_name, { :include_blank => true },
-          { :class => 'inp required' }
+        = select 'request', 'driver_id', {@request.driver ? @request.driver.full_name : '' => @request.driver ? @request.driver.id : '' }, { :include_blank => true }, { :class => 'inp required' }
         %span#addButton
           %a{ :style => 'margin-left:28px;', :target => '_blank', :href => "/drivers/new" }
             %img{ :alt=>'button', :src => '/images/add_button.gif'}
@@ -191,8 +192,7 @@
       %td{ :class => 'carrier fieldName fieldInnerBottomLeft', :colspan => 1, :align => 'left' }
         Автомобиль
       %td{ :class => 'carrier fieldInnerBottomRight', :colspan => 3}
-        =f.collection_select :car_id, Car.find(:all), :id, :full_name, { :include_blank => true },
-          { :class => 'inp required' }
+        = select 'request', 'car_id', {@request.car ? @request.car.full_name : '' => @request.car ? @request.car.id : '' }, { :include_blank => true }, { :class => 'inp required' }
         %span#addButton
           %a{ :style => 'margin-left:94px;', :target=>'_blank', :href=>'/cars/new' }
             %img{ :alt => 'button', :src => '/images/add_button.gif'}

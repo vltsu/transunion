@@ -1,0 +1,10 @@
+:javascript
+  var drivers = new Array();
+- for driver in @drivers
+  :javascript
+    drivers.push(new Array(#{driver.carrier_company_id}, "#{driver.full_name}", #{driver.id} ));
+
+:javascript
+  ${document).ready(function() {
+    alert('hello')
+  }

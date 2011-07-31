@@ -1,0 +1,48 @@
+var drivers = new Array();
+var cars = new Array();
+
+<% for driver in @drivers -%>
+  drivers.push(new Array(<%= driver.carrier_company_id %>, '<%=h driver.full_name %>', <%= driver.id %>));
+<% end -%>
+
+<% for car in @cars -%>
+  cars.push(new Array(<%= car.driver_id %>, '<%=h car.full_name %>', <%= car.id %>));
+<% end -%>
+
+function companySelected() {
+  company_id = $('#request_carrier_company_id').val()
+  html = "<option value=''></option>"
+  $.each(drivers, function(index, driver) {
+    if (driver[0] == company_id) {
+      html += "<option value='"+driver[2]+"'>"+driver[1]+"</option>"
+    }
+  });
+  $("#request_driver_id").html(html)
+}
+
+function driverSelected() {
+  driver_id = $('#request_driver_id').val()
+  html = "<option value=''></option>"
+  $.each(cars, function(index, car) {
+    if (car[0] == driver_id) {
+      html += "<option value='"+car[2]+"'>"+car[1]+"</option>"
+    }
+  });
+  $("#request_car_id").html(html)
+}
+
+$(document).ready(function() {
+
+  <% if params[:action] == 'new' -%>
+    companySelected();
+    driverSelected();
+  <% end -%>
+
+  $("#request_carrier_company_id").live('change',function() {
+    companySelected()
+  })
+
+  $("#request_driver_id").live('change',function() {
+    driverSelected()
+  })
+})
