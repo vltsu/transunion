@@ -1,5 +1,22 @@
 $(document).ready(function() {
 
+    //Деактивировать кнопки смены методов оплаты после введения значения
+    $('#customerRateSumm,#customerRateSverhPrice,#customerRateHours,#customerRatePodachaHours,\n\
+      #customerRateHourPrice').live('change',
+        function() {
+          $('#cusSdel').remove()
+          $('#cusPovr').remove()
+        }
+    )
+
+    $('#carrierRateSumm,#carrierRateSverhPrice,#carrierRateHours,#carrierRatePodachaHours,\n\
+      #carrierRateHourPrice').live('change',
+        function() {
+          $('#carSdel').remove()
+          $('#carPovr').remove()
+        }
+    )
+
     // Расчёт стоимости перевозки по сдельному тарифу
     $('#customerRateSumm,#customerRateSverhCount,#customerRateSverhPrice').live('change',
         function () {
