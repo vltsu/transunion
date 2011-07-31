@@ -1,5 +1,12 @@
 #encoding: UTF-8
 module ApplicationHelper
+  #Администратор?
+  def admin?
+    user = User.find(session[:user])
+    user.role == 'administrator'
+  end
+
+
   #Оплачена ли заявка перевозчику
   def is_payed_to_carrier(request_instance)
     #Платежи перевозчику по данной заявке

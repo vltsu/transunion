@@ -54,7 +54,6 @@ class ApplicationController < ActionController::Base
     acl.add_resource('javascripts')
 
     acl.allow('manager','index')
-    acl.allow('manager','users')
     acl.allow('manager','drivers')
     acl.allow('manager','carrier_companies')
     acl.allow('manager','customer_companies')

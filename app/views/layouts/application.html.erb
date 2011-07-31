@@ -27,7 +27,9 @@
         <ul>
           <li><a href="/customer_companies">Заказчики</a></li>
           <li><a href="/carrier_companies">Перевозчики</a></li>
-          <li><a href="/opfs">ОПФ</a></li>
+          <% if admin? %>
+            <li><a href="/opfs">ОПФ</a></li>
+          <% end %>
         </ul>
       </li>
 
@@ -35,45 +37,50 @@
         <ul>
           <li><a href="/cars">Машины</a></li>
           <li><a href="/drivers">Водители</a></li>
-          <li><a href="javascript:void(0);">Прочее</a>
-            <ul>
-              <li><a href="/car_models">Модель ТС</a></li>
-              <li><a href="/car_types">Тип ТС</a></li>
-              <li><a href="/car_tonnages">Тоннаж</a></li>
-              <li><a href="/cargo_classifications">Классификация груза</a></li>
-            </ul>
-          </li>
+          <% if admin? %>
+            <li><a href="javascript:void(0);">Прочее</a>
+              <ul>
+                <li><a href="/car_models">Модель ТС</a></li>
+                <li><a href="/car_types">Тип ТС</a></li>
+                <li><a href="/car_tonnages">Тоннаж</a></li>
+                <li><a href="/cargo_classifications">Классификация груза</a></li>
+              </ul>
+            </li>
+          <% end %>
         </ul>
       </li>
 
-      <li class="menuTitle"><a href="javascript:void(0);">СОТРУДНИКИ</a>
-        <ul>
-          <li><a href="/users">Пользователи</a></li>
-        </ul>
-      </li>
+      <%if admin? %>
+        <li class="menuTitle"><a href="javascript:void(0);">СОТРУДНИКИ</a>
+          <ul>
+            <li><a href="/users">Пользователи</a></li>
+          </ul>
+        </li>
 
-      <li class="menuTitle"><a href="javascript:void(0);">БУХГАЛТЕРИЯ</a>
-        <ul>
-          <li><a href="/finances">Финансы</a></li>
-          <li><a href="javascript:void(0);">Прочее</a>
-            <ul>
-              <li><a href="/income_sections">Статьи прихода</a></li>
-              <li><a href="/outcome_sections">Статьи расхода</a></li>
-              <li><a href="/payment_methods">Вид расчёта</a></li>
-              <li><a href="/payment_ways">Способы оплаты</a></li>
-              <li><a href="/payment_docs">Оплата по документам</a></li>
-              <li><a href="/company_faces">Компания в лице</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+        <li class="menuTitle"><a href="javascript:void(0);">БУХГАЛТЕРИЯ</a>
+          <ul>
+            <li><a href="/finances">Финансы</a></li>
+            <li><a href="javascript:void(0);">Прочее</a>
+              <ul>
+                <li><a href="/income_sections">Статьи прихода</a></li>
+                <li><a href="/outcome_sections">Статьи расхода</a></li>
+                <li><a href="/payment_methods">Вид расчёта</a></li>
+                <li><a href="/payment_ways">Способы оплаты</a></li>
+                <li><a href="/payment_docs">Оплата по документам</a></li>
+                <li><a href="/company_faces">Компания в лице</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
 
-      <li class="menuTitle"><a href="javascript:void(0);">ОТЧЁТЫ</a>
-        <ul>
-          <li><a href="/reports/salary">Зарплата</a></li>
-          <li><a href="/reports/income_for_bill">Приход по счёту</a></li>
-        </ul>
-      </li>
+        <li class="menuTitle"><a href="javascript:void(0);">ОТЧЁТЫ</a>
+          <ul>
+            <li><a href="/reports/salary">Зарплата</a></li>
+            <li><a href="/reports/income_for_bill">Приход по счёту</a></li>
+          </ul>
+        </li>
+
+      <% end %>
 
       <li style="float: right;"><a style="color:#FFD700;" id='signout' href="/signout">Выход</a></li>
 
