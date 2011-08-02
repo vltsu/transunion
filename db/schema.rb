@@ -391,7 +391,7 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.string   "transport_idle_excessively_intercity"
     t.string   "payment_late"
     t.string   "document_late"
-    t.boolean  "customer_responsibility_car_deny_true",
+    t.boolean  "customer_responsibility_car_deny_true"
     t.decimal  "customer_responsibility_car_deny_price",                         :precision => 5, :scale => 2
     t.decimal  "customer_responsibility_car_deny_summ",                          :precision => 10, :scale => 2
     t.integer  "customer_responsibility_prostoy_count"
@@ -401,7 +401,7 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.decimal  "customer_responsibility_payment_late_price",                     :precision => 5, :scale => 2
     t.decimal  "customer_responsibility_payment_late_summ",                      :precision => 10, :scale => 2
     t.integer  "customer_responsibility_document_late_count"
-    t.decimal  "customer_responsibility_document_late_price",
+    t.decimal  "customer_responsibility_document_late_price"
     t.decimal  "customer_responsibility_document_late_summ"
     t.boolean  "carrier_responsibility_car_deny_true"
     t.decimal  "carrier_responsibility_car_deny_price",                          :precision => 5, :scale => 2

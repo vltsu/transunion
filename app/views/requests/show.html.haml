@@ -10,7 +10,7 @@
 %br/
 
 %div{:style =>"width: 900px; margin: 0px auto;"}
-  = link_to image_tag("saveAsButton.jpg"), save_as_path(@request), :id => 'editRequestLink'
+  = link_to image_tag("saveAsButton.jpg"), save_as_path(@request), :id => 'saveAsRequestLink'
   -# Показывать кнопку редактировать админам; менеджерам если только она не закрыта
   - if admin? || !@request.is_finished
     = link_to image_tag("editButton.jpg"), edit_request_path(@request), :id => 'editRequestLink'

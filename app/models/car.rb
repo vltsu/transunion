@@ -16,6 +16,7 @@ class Car < ActiveRecord::Base
   belongs_to :car_type
   belongs_to :driver
 
+  validates_presence_of :driver
   validates :car_model_id,   :presence => { :message => 'Выберите марку автомобиля' }
   validates :car_tonnage_id, :presence => { :message => 'Выберите тоннаж автомобиля' }
   validates :car_type_id,    :presence => { :message => 'Выберите тип кузова' }

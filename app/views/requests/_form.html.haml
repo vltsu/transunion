@@ -182,7 +182,8 @@
       %td{ :class=>'carrier fieldName fieldInnerMiddleLeft', :colspan => 1, :align => 'left' }
         Водитель
       %td{ :class=>'carrier fieldInnerMiddleRight', :colspan => 3}
-        = select 'request', 'driver_id', {@request.driver ? @request.driver.full_name : '' => @request.driver ? @request.driver.id : '' }, { :include_blank => true }, { :class => 'inp required' }
+        = f.collection_select :driver_id, Driver.find(:all), :id, :full_name, { :include_blank => true },
+          { :class => 'inp required' }
         %span#addButton
           %a{ :style => 'margin-left:28px;', :target => '_blank', :href => "/drivers/new" }
             %img{ :alt=>'button', :src => '/images/add_button.gif'}
@@ -192,7 +193,8 @@
       %td{ :class => 'carrier fieldName fieldInnerBottomLeft', :colspan => 1, :align => 'left' }
         Автомобиль
       %td{ :class => 'carrier fieldInnerBottomRight', :colspan => 3}
-        = select 'request', 'car_id', {@request.car ? @request.car.full_name : '' => @request.car ? @request.car.id : '' }, { :include_blank => true }, { :class => 'inp required' }
+        = f.collection_select :car_id, Car.find(:all), :id, :full_name, { :include_blank => true },
+          { :class => 'inp required' }
         %span#addButton
           %a{ :style => 'margin-left:94px;', :target=>'_blank', :href=>'/cars/new' }
             %img{ :alt => 'button', :src => '/images/add_button.gif'}

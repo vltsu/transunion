@@ -4,9 +4,6 @@ And /^I have all required fixtures up$/ do
   Factory.create(:customer_company)
   Factory.create(:customer_company)
   Factory.create(:carrier_company)
-  Factory.create(:carrier_company)
-  Factory.create(:driver)
-  Factory.create(:driver2)
   Factory.create(:car)
   Factory.create(:car2)
   Factory.create(:payment_method)
@@ -19,6 +16,7 @@ end
 
 And /^I have one filled request$/ do
   Factory.create(:request)
+  Factory.create(:car2)
   Factory.create(:cargo_classification2)
   Factory.create(:customer_company)
   Factory.create(:payment_method)
@@ -28,9 +26,4 @@ And /^I have one filled request$/ do
   Factory.create(:payment_doc)
   Factory.create(:payment_doc2)
   Factory.create(:driver2)
-  Factory.create(:car2)
-end
-
-Given /^I create table$/ do
-  Factory(:car_tonnage)
 end

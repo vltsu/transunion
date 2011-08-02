@@ -10,6 +10,9 @@ class Driver < ActiveRecord::Base
   has_many :cars
   has_many :requests
 
+  accepts_nested_attributes_for :cars
+
+  validates_presence_of :carrier_company
   validates :lastname, :presence => { :message => "Укажите фамилию" }
   validates :firstname, :presence => { :message => "Укажите имя" }
   validates :carrier_company_id, :presence => { :message => "Выберите компанию" }

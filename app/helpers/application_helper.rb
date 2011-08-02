@@ -58,7 +58,7 @@ module ApplicationHelper
     requests = Request.find(:all, :conditions => "bill_id = #{bill_id}")
     summ_to_pay = 0
     requests.each do |req|
-      summ_to_pay += req.customer_summ_to_pay
+      summ_to_pay += req.customer_summ_to_pay.to_f
     end
     summ_to_pay
   end

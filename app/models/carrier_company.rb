@@ -12,6 +12,8 @@ class CarrierCompany < ActiveRecord::Base
   belongs_to  :opf
   belongs_to  :company_face
 
+  accepts_nested_attributes_for :drivers
+
   validates :title,           :presence => { :message => "Укажите название компании" }
   validates :opf_id,          :presence => { :message => "Укажите ОПФ компании" }
   validates :operates_basis,  :presence => { :message => "Заполните поле 'Действует на основании'" }

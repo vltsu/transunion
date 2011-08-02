@@ -249,8 +249,8 @@ Feature: Manage Requests
     And the "request_loading_up" checkbox should be checked
     And the "request_loading_down" checkbox should not be checked
     And the "request_loading_side" checkbox should be checked
-    And "CustomerCompany2" should be selected for "request_customer_company_id"
-    And "CarrierCompany2" should be selected for "request_carrier_company_id"
+    And "ZAO CustomerCompany2" should be selected for "request_customer_company_id"
+    And "ZAO CarrierCompany2" should be selected for "request_carrier_company_id"
     And "Иванов Семен Петрович" should be selected for "request_driver_id"
     And "Mercedes Рефрижератор 15.0" should be selected for "request_car_id"
     And the "loadingDate1" field should contain "2011-12-04"
@@ -466,8 +466,8 @@ Feature: Manage Requests
     And I fill in "request_other_conditions" with "разгружать осторожно"
     And I check "request_loading_up"
     And I check "request_loading_side"
-    And I select "CustomerCompany3" from "request_customer_company_id"
-    And I select "CarrierCompany8" from "request_carrier_company_id"
+    And I select "ZAO CustomerCompany3" from "request_customer_company_id"
+    And I select "ZAO CarrierCompany8" from "request_carrier_company_id"
     And I select "Иванов Семен Петрович" from "request_driver_id"
     And I select "Mercedes Рефрижератор 15.0" from "request_car_id"
 
@@ -585,8 +585,8 @@ Feature: Manage Requests
     And the "request_loading_up" checkbox should be checked
     And the "request_loading_down" checkbox should be checked
     And the "request_loading_side" checkbox should be checked
-    And "CustomerCompany3" should be selected for "request_customer_company_id"
-    And "CarrierCompany8" should be selected for "request_carrier_company_id"
+    And "ZAO CustomerCompany3" should be selected for "request_customer_company_id"
+    And "ZAO CarrierCompany8" should be selected for "request_carrier_company_id"
     And "Иванов Семен Петрович" should be selected for "request_driver_id"
     And "Mercedes Рефрижератор 15.0" should be selected for "request_car_id"
 
@@ -616,5 +616,5 @@ Feature: Manage Requests
     And "По копиям" should be selected for "request_carrier_payment_doc_id"
     And the "request_carrier_documents_return_term" field should contain "6"
     And the "request_carrier_bill_id" field should contain "11"
-    And the "customerResponsibilitySumm" field should contain "146084"
-    And the "carrierResponsibilitySumm" field should contain "575853"
+    And the "customerResponsibilitySumm" field should contain "133704"
+    And the "carrierResponsibilitySumm" field should contain "476568"
