@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726094105) do
+ActiveRecord::Schema.define(:version => 20110804103746) do
 
   create_table "car_models", :force => true do |t|
     t.string   "car_model"
@@ -207,6 +207,15 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.datetime "updated_at"
   end
 
+  create_table "members", :force => true do |t|
+    t.string   "email",                             :default => "", :null => false
+    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "members", ["email"], :name => "index_members_on_email", :unique => true
+
   create_table "opfs", :force => true do |t|
     t.string   "opf"
     t.datetime "created_at"
@@ -242,7 +251,7 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.integer  "cargo_classification_id"
     t.decimal  "weight",                                                         :precision => 5,  :scale => 2
     t.decimal  "volume",                                                         :precision => 5,  :scale => 2
-    t.string   "temperature",                                                    :limit => 11
+    t.string   "temperature",                                      :limit => 11
     t.integer  "evropallet"
     t.integer  "bigpallet"
     t.integer  "belts_count"
@@ -392,31 +401,31 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.string   "payment_late"
     t.string   "document_late"
     t.boolean  "customer_responsibility_car_deny_true"
-    t.decimal  "customer_responsibility_car_deny_price",                         :precision => 5, :scale => 2
+    t.decimal  "customer_responsibility_car_deny_price",                         :precision => 5,  :scale => 2
     t.decimal  "customer_responsibility_car_deny_summ",                          :precision => 10, :scale => 2
     t.integer  "customer_responsibility_prostoy_count"
-    t.decimal  "customer_responsibility_prostoy_price",                          :precision => 5, :scale => 2
+    t.decimal  "customer_responsibility_prostoy_price",                          :precision => 5,  :scale => 2
     t.decimal  "customer_responsibility_prostoy_summ",                           :precision => 10, :scale => 2
     t.integer  "customer_responsibility_payment_late_count"
-    t.decimal  "customer_responsibility_payment_late_price",                     :precision => 5, :scale => 2
+    t.decimal  "customer_responsibility_payment_late_price",                     :precision => 5,  :scale => 2
     t.decimal  "customer_responsibility_payment_late_summ",                      :precision => 10, :scale => 2
     t.integer  "customer_responsibility_document_late_count"
-    t.decimal  "customer_responsibility_document_late_price"
-    t.decimal  "customer_responsibility_document_late_summ"
+    t.decimal  "customer_responsibility_document_late_price",                    :precision => 5,  :scale => 2
+    t.decimal  "customer_responsibility_document_late_summ",                     :precision => 10, :scale => 2
     t.boolean  "carrier_responsibility_car_deny_true"
-    t.decimal  "carrier_responsibility_car_deny_price",                          :precision => 5, :scale => 2
+    t.decimal  "carrier_responsibility_car_deny_price",                          :precision => 5,  :scale => 2
     t.decimal  "carrier_responsibility_car_deny_summ",                           :precision => 10, :scale => 2
     t.integer  "carrier_responsibility_late_count"
-    t.decimal  "carrier_responsibility_late_price",                              :precision => 5, :scale => 2
+    t.decimal  "carrier_responsibility_late_price",                              :precision => 5,  :scale => 2
     t.decimal  "carrier_responsibility_late_summ",                               :precision => 10, :scale => 2
     t.integer  "carrier_responsibility_delivery_late_count"
-    t.decimal  "carrier_responsibility_delivery_late_price",                     :precision => 5, :scale => 2
+    t.decimal  "carrier_responsibility_delivery_late_price",                     :precision => 5,  :scale => 2
     t.decimal  "carrier_responsibility_delivery_late_summ",                      :precision => 10, :scale => 2
     t.integer  "carrier_responsibility_document_late_count"
-    t.decimal  "carrier_responsibility_document_late_price",                     :precision => 5, :scale => 2
+    t.decimal  "carrier_responsibility_document_late_price",                     :precision => 5,  :scale => 2
     t.decimal  "carrier_responsibility_document_late_summ",                      :precision => 10, :scale => 2
-    t.decimal  "carrier_responsibility_summ"
-    t.decimal  "customer_responsibility_summ"
+    t.decimal  "carrier_responsibility_summ",                                    :precision => 10, :scale => 2
+    t.decimal  "customer_responsibility_summ",                                   :precision => 10, :scale => 2
     t.string   "transport_idle_excessively_hours"
     t.string   "transport_late_loading_hours"
     t.string   "transport_late_destination_hours"
@@ -476,8 +485,8 @@ ActiveRecord::Schema.define(:version => 20110726094105) do
     t.string   "about"
     t.string   "position"
     t.decimal  "salary",                :precision => 10, :scale => 2
-    t.decimal  "premium_percent",       :precision => 5, :scale => 2
-    t.decimal  "request_percent",       :precision => 5, :scale => 2
+    t.decimal  "premium_percent",       :precision => 5,  :scale => 2
+    t.decimal  "request_percent",       :precision => 5,  :scale => 2
     t.string   "global_experience"
     t.string   "unbroken_experience"
     t.string   "visluga_let"

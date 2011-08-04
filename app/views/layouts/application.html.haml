@@ -27,9 +27,8 @@
               %a{:href => "/customer_companies"} Заказчики
             %li
               %a{:href => "/carrier_companies"} Перевозчики
-            - if admin?
-              %li
-                %a{:href => "/opfs"} ОПФ
+            %li
+              %a{:href => "/opfs"} ОПФ
         %li.menuTitle
           %a{:href => "javascript:void(0);"} ТРАНСПОРТ
           %ul
@@ -37,53 +36,51 @@
               %a{:href => "/cars"} Машины
             %li
               %a{:href => "/drivers"} Водители
-            - if admin?
-              %li
-                %a{:href => "javascript:void(0);"} Прочее
-                %ul
-                  %li
-                    %a{:href => "/car_models"} Модель ТС
-                  %li
-                    %a{:href => "/car_types"} Тип ТС
-                  %li
-                    %a{:href => "/car_tonnages"} Тоннаж
-                  %li
-                    %a{:href => "/cargo_classifications"} Классификация груза
-        - if admin?
-          %li.menuTitle
-            %a{:href => "javascript:void(0);"} СОТРУДНИКИ
-            %ul
-              %li
-                %a{:href => "/users"} Пользователи
-          %li.menuTitle
-            %a{:href => "javascript:void(0);"} БУХГАЛТЕРИЯ
-            %ul
-              %li
-                %a{:href => "/finances"} Финансы
-              %li
-                %a{:href => "javascript:void(0);"} Прочее
-                %ul
-                  %li
-                    %a{:href => "/income_sections"} Статьи прихода
-                  %li
-                    %a{:href => "/outcome_sections"} Статьи расхода
-                  %li
-                    %a{:href => "/payment_methods"} Вид расчёта
-                  %li
-                    %a{:href => "/payment_ways"} Способы оплаты
-                  %li
-                    %a{:href => "/payment_docs"} Оплата по документам
-                  %li
-                    %a{:href => "/company_faces"} Компания в лице
-          %li.menuTitle
-            %a{:href => "javascript:void(0);"} ОТЧЁТЫ
-            %ul
-              %li
-                %a{:href => "/reports/salary"} Зарплата
-              %li
-                %a{:href => "/reports/income_for_bill"} Приход по счёту
+            %li
+              %a{:href => "javascript:void(0);"} Прочее
+              %ul
+                %li
+                  %a{:href => "/car_models"} Модель ТС
+                %li
+                  %a{:href => "/car_types"} Тип ТС
+                %li
+                  %a{:href => "/car_tonnages"} Тоннаж
+                %li
+                  %a{:href => "/cargo_classifications"} Классификация груза
+        %li.menuTitle
+          %a{:href => "javascript:void(0);"} СОТРУДНИКИ
+          %ul
+            %li
+              %a{:href => "/users"} Пользователи
+        %li.menuTitle
+          %a{:href => "javascript:void(0);"} БУХГАЛТЕРИЯ
+          %ul
+            %li
+              %a{:href => "/finances"} Финансы
+            %li
+              %a{:href => "javascript:void(0);"} Прочее
+              %ul
+                %li
+                  %a{:href => "/income_sections"} Статьи прихода
+                %li
+                  %a{:href => "/outcome_sections"} Статьи расхода
+                %li
+                  %a{:href => "/payment_methods"} Вид расчёта
+                %li
+                  %a{:href => "/payment_ways"} Способы оплаты
+                %li
+                  %a{:href => "/payment_docs"} Оплата по документам
+                %li
+                  %a{:href => "/company_faces"} Компания в лице
+        %li.menuTitle
+          %a{:href => "javascript:void(0);"} ОТЧЁТЫ
+          %ul
+            %li
+              %a{:href => "/reports/salary"} Зарплата
+            %li
+              %a{:href => "/reports/income_for_bill"} Приход по счёту
         %li{:style => "float: right;"}
-          %a#signout{:href => "/signout", :style => "color:#FFD700;"} Выход
+          = link_to "Выход", destroy_member_session_path, :method => :delete, :id => 'signout', :style => 'color:#FFD700'
       %br{:style => "clear: left"}/
     #main-content
       %br/

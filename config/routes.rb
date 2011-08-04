@@ -1,5 +1,7 @@
 Transunion::Application.routes.draw do
 
+  devise_for :members
+
   #Оплата заказчиком по счёту
   match 'finances/customer_payment_bill'            => 'finances#customer_payment_bill',        :as => :customer_payment_bill
   match 'finances/customer_payment_bill/:id/edit'   => 'finances#customer_payment_bill_edit',   :as => :customer_payment_bill_edit

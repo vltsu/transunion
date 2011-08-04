@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+
+  devise:
+    failure:
+      invalid: "Неверный логин/пароль"
+    sessions:
+      signed_id: 'Добро пожаловать на сайт'
