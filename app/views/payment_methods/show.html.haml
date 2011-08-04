@@ -2,8 +2,6 @@
 %br/
 - content_for(:head) do
   = javascript_include_tag 'disableForms'
-- if notice
-  = render :partial => "shared/notice", :locals => { :notice => notice }
 %br/
 = render 'form'
 %br/

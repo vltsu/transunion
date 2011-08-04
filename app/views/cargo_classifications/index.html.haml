@@ -1,10 +1,8 @@
-- if notice
-  = render :partial => "shared/notice", :locals => { :notice => notice }
 %div{:style => 'width: 270px; margin: 0px auto;'}
   = link_to image_tag("add_cargo_classification_button.jpg", :border=>0), new_cargo_classification_path, :class => 'editLink', :id => 'addCargo_classificationLink', :style => 'width: 300px; margin: 0px auto;'
 %table
   %tr
-    %th.th1 № 
+    %th.th1 №
     %th.th1 Классификация груза
     %th.th1 Открыть
 

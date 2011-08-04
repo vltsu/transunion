@@ -1,5 +1,5 @@
 <br />
-<div style="width: 170px; margin: 0px auto;"> 
+<div style="width: 170px; margin: 0px auto;">
   <%= link_to image_tag("add_user_button.jpg", :border=>0), new_user_path, :class => 'editLink', :id => 'addUserLink', :style => 'width: 300px; margin: 0px auto;' %>
 </div>
 <table>
@@ -13,7 +13,7 @@
   </tr>
 
   <% @users.each do |user| %>
-    <tr <%= cycle('class=odd','class=even') %>> 
+    <tr <%= cycle('class=odd','class=even') %>>
       <td class="th3"><%= user.id %></td>
       <td class="th3"><%= user.lastname+' '+user.firstname+' '+user.middlename %></td>
       <td class="th3"><%= user.position %></td>

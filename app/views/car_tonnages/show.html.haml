@@ -1,12 +1,10 @@
 %h1{:class => "tableTitle", :style => "width: 450px; margin: 0px auto; color:red;"} Просмотр карточки тоннажа
 %br/
-- content_for(:head) do 
-  = javascript_include_tag 'disableForms' 
-- if notice 
-  = render :partial => "shared/notice", :locals => { :notice => notice }
+- content_for(:head) do
+  = javascript_include_tag 'disableForms'
 %br/
 = render 'form'
-%br/ 
+%br/
 %br/
 
 %div{:style =>"width: 600px; margin: 0px auto;"}

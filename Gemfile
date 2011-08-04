@@ -8,6 +8,8 @@ gem 'mysql2', '0.2.6'
 
 gem 'nokogiri'
 
+gem 'devise'
+
 gem 'ru_propisju'
 
 #to activate debugger

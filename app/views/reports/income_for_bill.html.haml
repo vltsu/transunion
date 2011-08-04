@@ -1,8 +1,5 @@
 %h1{:class => 'tableTitle', :style => 'width: 500px; margin: 0px auto; color:red;'} Приход средств по номеру счёта
 %br/
-- if notice
-  = render :partial => "shared/notice", :locals => { :notice => notice }
-%br/
 - if @finances.size > 0
   %table
     %tr

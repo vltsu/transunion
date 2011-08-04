@@ -6,7 +6,7 @@ caption,th {text-align:left;}
 table {border-collapse:collapse; border-spacing:0;}
 td {vertical-align:top;}
 
-body:nth-of-type(1) p{
+body p{
    color: #333333;
 }
 
@@ -422,7 +422,8 @@ input.summ {
     background: #f8ccca;
 }
 
-#notice {
+p.notice {
+  color: green;
   width: 250px;
   margin: 0px auto;
 }
