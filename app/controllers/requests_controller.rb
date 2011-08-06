@@ -69,7 +69,7 @@ class RequestsController < AuthorizeController
     end
 
     #Установка текущего пользователя владельцем документа
-    params[:request]['user_id'] = current_user
+    params[:request]['user_id'] = current_member.id
 
     @request = Request.new(params[:request])
 

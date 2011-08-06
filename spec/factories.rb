@@ -74,13 +74,18 @@ Factory.define :user do |f|
   f.role           'manager'
   f.request_percent '10'
   f.salary          '25000'
-
 end
 
-Factory.define :admin, :class => User do |u|
-  u.login     'admin'
+Factory.define :member do |f|
+  f.email    'manager@manager.ru'
+  f.password 'password'
+  f.admin     false
+end
+
+Factory.define :admin, :class => Member do |u|
+  u.email     'admin@admin.ru'
   u.password  'password'
-  u.role      'administrator'
+  u.admin     true
 end
 
 Factory.define :opf do |f|
