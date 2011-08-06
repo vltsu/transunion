@@ -9,6 +9,7 @@ gem 'mysql2', '0.2.6'
 gem 'nokogiri'
 
 gem 'devise'
+gem 'cancan'
 
 gem 'ru_propisju'
 

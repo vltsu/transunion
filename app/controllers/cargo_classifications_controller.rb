@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CargoClassificationsController < ApplicationController
+class CargoClassificationsController < AuthorizeController
   # GET /cargo_classifications
   def index
     @cargo_classifications = CargoClassification.paginate :page => params[:page], :order => 'id DESC'
@@ -23,11 +23,11 @@ class CargoClassificationsController < ApplicationController
   # POST /cargo_classifications
   def create
     @cargo_classification = CargoClassification.new(params[:cargo_classification])
- 
+
     if @cargo_classification.save
-      redirect_to({:action => 'index'}, {:notice => 'Классификация груза добавлена'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Классификация груза добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +36,9 @@ class CargoClassificationsController < ApplicationController
     @cargo_classification = CargoClassification.find(params[:id])
 
     if @cargo_classification.update_attributes(params[:cargo_classification])
-      redirect_to(@cargo_classification, :notice => 'Изменения внесены') 
+      redirect_to(@cargo_classification, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

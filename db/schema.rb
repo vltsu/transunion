@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20110804103746) do
   create_table "members", :force => true do |t|
     t.string   "email",                             :default => "", :null => false
     t.string   "encrypted_password", :limit => 128, :default => "", :null => false
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

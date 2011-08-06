@@ -1,10 +1,10 @@
 # encoding: UTF-8
-class CarTonnagesController < ApplicationController
+class CarTonnagesController < AuthorizeController
   before_filter do
     #Передача params в модель
     CarTonnage.params = params[:car_tonnage]
   end
-  
+
   # GET /car_tonnages
   def index
     @car_tonnages = CarTonnage.paginate :page => params[:page], :order => 'id DESC'
@@ -28,11 +28,11 @@ class CarTonnagesController < ApplicationController
   # POST /car_tonnages
   def create
     @car_tonnage = CarTonnage.new(params[:car_tonnage])
- 
+
     if @car_tonnage.save
-      redirect_to({:action => 'index'}, {:notice => 'Тоннаж добавлен'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Тоннаж добавлен'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -41,9 +41,9 @@ class CarTonnagesController < ApplicationController
     @car_tonnage = CarTonnage.find(params[:id])
 
     if @car_tonnage.update_attributes(params[:car_tonnage])
-      redirect_to(@car_tonnage, :notice => 'Изменения внесены') 
+      redirect_to(@car_tonnage, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

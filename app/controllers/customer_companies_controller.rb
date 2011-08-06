@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CustomerCompaniesController < ApplicationController
+class CustomerCompaniesController < AuthorizeController
   before_filter do
     #Передача params в модель
     CustomerCompany.params = params[:customer_company]
@@ -28,11 +28,11 @@ class CustomerCompaniesController < ApplicationController
   # POST /customer_companies
   def create
     @customer_company = CustomerCompany.new(params[:customer_company])
- 
+
     if @customer_company.save
-      redirect_to({:action => 'index'}, {:notice => 'Компания заказчик добавлена'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Компания заказчик добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -41,9 +41,9 @@ class CustomerCompaniesController < ApplicationController
     @customer_company = CustomerCompany.find(params[:id])
 
     if @customer_company.update_attributes(params[:customer_company])
-      redirect_to(@customer_company, :notice => 'Изменения внесены') 
+      redirect_to(@customer_company, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

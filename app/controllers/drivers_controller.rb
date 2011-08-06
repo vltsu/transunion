@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class DriversController < ApplicationController
+class DriversController < AuthorizeController
 
   # GET /drivers
   def index

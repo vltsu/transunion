@@ -1,5 +1,5 @@
 #encoding: UTF-8
-class FinancesController < ApplicationController
+class FinancesController < AuthorizeController
 
   def index
     @finances = Finance.find(:all, :order => "id DESC")

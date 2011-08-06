@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CompanyFacesController < ApplicationController
+class CompanyFacesController < AuthorizeController
   # GET /company_faces
   def index
     @company_faces = CompanyFace.paginate :page => params[:page], :order => 'id DESC'
@@ -23,11 +23,11 @@ class CompanyFacesController < ApplicationController
   # POST /company_faces
   def create
     @company_face = CompanyFace.new(params[:company_face])
- 
+
     if @company_face.save
-      redirect_to({:action => 'index'}, {:notice => 'Компания в лице добавлена'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Компания в лице добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +36,9 @@ class CompanyFacesController < ApplicationController
     @company_face = CompanyFace.find(params[:id])
 
     if @company_face.update_attributes(params[:company_face])
-      redirect_to(@company_face, :notice => 'Изменения внесены') 
+      redirect_to(@company_face, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

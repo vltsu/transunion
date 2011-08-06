@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class IncomeSectionsController < ApplicationController
+class IncomeSectionsController < AuthorizeController
   # GET /income_sections
   def index
     @income_sections = IncomeSection.paginate :page => params[:page], :order => 'id DESC'

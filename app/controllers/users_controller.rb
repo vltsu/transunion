@@ -1,5 +1,5 @@
 #encoding: UTF-8
-class UsersController < ApplicationController
+class UsersController < AuthorizeController
   # GET /users
   # GET /users.xml
   def index

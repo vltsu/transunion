@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
+
   before_filter :authenticate_member!
 
   layout :layout_by_resource
 
   protect_from_forgery
+
+  def current_ability
+    @current_ability ||= Ability.new(current_member)
+  end
 
   protected
 
@@ -19,5 +24,4 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_of_scope)
     '/'
   end
-
 end

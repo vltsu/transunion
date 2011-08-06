@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CarsController < ApplicationController
+class CarsController < AuthorizeController
   before_filter do
     #Передача params в модель
     Car.params = params[:car]
@@ -28,11 +28,11 @@ class CarsController < ApplicationController
   # POST /cars
   def create
     @car = Car.new(params[:car])
- 
+
     if @car.save
-      redirect_to({:action => 'index'}, {:notice => 'Автомобиль добавлен'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Автомобиль добавлен'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -41,9 +41,9 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
 
     if @car.update_attributes(params[:car])
-      redirect_to(@car, :notice => 'Изменения внесены') 
+      redirect_to(@car, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

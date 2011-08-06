@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CarModelsController < ApplicationController
+class CarModelsController < AuthorizeController
   # GET /car_models
   def index
     @car_models = CarModel.paginate :page => params[:page], :order => 'id DESC'
@@ -23,11 +23,11 @@ class CarModelsController < ApplicationController
   # POST /car_models
   def create
     @car_model = CarModel.new(params[:car_model])
- 
+
     if @car_model.save
-      redirect_to({:action => 'index'}, {:notice => 'Модель ТС добавлена'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Модель ТС добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +36,9 @@ class CarModelsController < ApplicationController
     @car_model = CarModel.find(params[:id])
 
     if @car_model.update_attributes(params[:car_model])
-      redirect_to(@car_model, :notice => 'Изменения внесены') 
+      redirect_to(@car_model, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

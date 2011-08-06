@@ -2,8 +2,8 @@
 module ApplicationHelper
   #Администратор?
   def admin?
-    user = User.find(session[:user])
-    user.role == 'administrator'
+    member = current_member
+    member.admin == true
   end
 
 

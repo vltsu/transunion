@@ -2,11 +2,11 @@ class DeviseCreateMembers < ActiveRecord::Migration
   def self.up
     create_table(:members) do |t|
       t.database_authenticatable :null => false
+      t.boolean :admin
       # t.encryptable
       # t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
-
 
       t.timestamps
     end

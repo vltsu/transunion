@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class OpfsController < ApplicationController
+class OpfsController < AuthorizeController
   # GET /opfs
   def index
     @opfs = Opf.paginate :page => params[:page], :order => 'id DESC'
@@ -23,11 +23,11 @@ class OpfsController < ApplicationController
   # POST /opfs
   def create
     @opf = Opf.new(params[:opf])
- 
+
     if @opf.save
-      redirect_to({:action => 'index'}, {:notice => 'ОПФ добавлена'}) 
+      redirect_to({:action => 'index'}, {:notice => 'ОПФ добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +36,9 @@ class OpfsController < ApplicationController
     @opf = Opf.find(params[:id])
 
     if @opf.update_attributes(params[:opf])
-      redirect_to(@opf, :notice => 'Изменения внесены') 
+      redirect_to(@opf, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

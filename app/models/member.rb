@@ -8,4 +8,9 @@ class Member < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   cattr_reader :per_page
   @@per_page = 20
+
+  #Возвращает true если пользователь администратор
+  def admin?
+    self.admin == true
+  end
 end

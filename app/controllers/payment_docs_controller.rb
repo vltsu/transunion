@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class PaymentDocsController < ApplicationController
+class PaymentDocsController < AuthorizeController
   # GET /payment_docs
   def index
     @payment_docs = PaymentDoc.paginate :page => params[:page], :order => 'id DESC'
@@ -23,11 +23,11 @@ class PaymentDocsController < ApplicationController
   # POST /payment_docs
   def create
     @payment_doc = PaymentDoc.new(params[:payment_doc])
- 
+
     if @payment_doc.save
-      redirect_to({:action => 'index'}, {:notice => 'Документы для оплаты добавлены'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Документы для оплаты добавлены'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -36,9 +36,9 @@ class PaymentDocsController < ApplicationController
     @payment_doc = PaymentDoc.find(params[:id])
 
     if @payment_doc.update_attributes(params[:payment_doc])
-      redirect_to(@payment_doc, :notice => 'Изменения внесены') 
+      redirect_to(@payment_doc, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

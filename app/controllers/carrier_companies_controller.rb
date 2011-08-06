@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CarrierCompaniesController < ApplicationController
+class CarrierCompaniesController < AuthorizeController
   before_filter do
     #Передача params в модель
     CarrierCompany.params = params[:carrier_company]
@@ -28,11 +28,11 @@ class CarrierCompaniesController < ApplicationController
   # POST /carrier_companies
   def create
     @carrier_company = CarrierCompany.new(params[:carrier_company])
- 
+
     if @carrier_company.save
-      redirect_to({:action => 'index'}, {:notice => 'Компания добавлена'}) 
+      redirect_to({:action => 'index'}, {:notice => 'Компания добавлена'})
     else
-      render :action => "new" 
+      render :action => "new"
     end
   end
 
@@ -41,9 +41,9 @@ class CarrierCompaniesController < ApplicationController
     @carrier_company = CarrierCompany.find(params[:id])
 
     if @carrier_company.update_attributes(params[:carrier_company])
-      redirect_to(@carrier_company, :notice => 'Изменения внесены') 
+      redirect_to(@carrier_company, :notice => 'Изменения внесены')
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

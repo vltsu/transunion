@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class RequestsController < ApplicationController
+class RequestsController < AuthorizeController
 
   include ::MyHelpers::Date
 

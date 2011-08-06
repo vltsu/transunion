@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class PaymentWaysController < ApplicationController
+class PaymentWaysController < AuthorizeController
   # GET /payment_ways
   def index
     @payment_ways = PaymentWay.paginate :page => params[:page], :order => 'id DESC'

@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class OutcomeSectionsController < ApplicationController
+class OutcomeSectionsController < AuthorizeController
   # GET /outcome_sections
   def index
     @outcome_sections = OutcomeSection.paginate :page => params[:page], :order => 'id DESC'
