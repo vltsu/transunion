@@ -8,28 +8,34 @@ gem 'mysql2', '0.2.6'
 
 gem 'nokogiri'
 
+#Authorization
 gem 'devise'
 gem 'cancan'
 
-gem 'ru_propisju'
-
 #to activate debugger
 gem "ruby-debug19"
+
 #rusification for rails
 gem "russian"
+gem 'ru_propisju'
+
 #jquery plugin
 gem "jquery-rails", '>= 1.0.3'
 gem "client_side_validations"
 gem "active_scaffold"
 gem "launchy"
+
 #gem for pagination
 gem "will_paginate", "~> 3.0.pre2"
 #gem fix mistake in rake
 gem "escape_utils"
-#work with html
+
+#HTML and CSS
 gem "haml"
+gem 'sass'
 #scaffold for haml
 gem "haml-rails"
+
 #scaffold generator for non-rails ways
 gem "rails3-generators"
 gem "cucumber_scaffold"

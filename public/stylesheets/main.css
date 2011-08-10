@@ -1,434 +1,369 @@
-html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {margin:0; padding:0;}
-h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,strong,th {font-size:1em; font-weight:normal; font-style:normal;}
-ul,ol {list-style:none;}
-fieldset,img,hr {border:none;}
-caption,th {text-align:left;}
-table {border-collapse:collapse; border-spacing:0;}
-td {vertical-align:top;}
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, hr {
+  margin: 0;
+  padding: 0; }
 
-body p{
-   color: #333333;
-}
+h1 font, h2 font, h3 font, h4 font, h5 font, h6 font, pre font, code font, address font, caption font, cite font, code font, em font, strong font, th font {
+  size: 1em;
+  weight: normal;
+  style: normal; }
 
+ul, ol {
+  list-style: none; }
 
-* {
-    font-family: Verdana, sans-serif;
-    font-size: 10pt;
-}
+fieldset, img, hr {
+  border: none; }
+
+caption, th {
+  text-align: left; }
+
+table border {
+  collapse: collapse;
+  spacing: 0; }
+
+td {
+  vertical-align: top; }
+
+body p {
+  color: #333333; }
+
+* font {
+  family: Verdana, sans-serif;
+  size: 10pt; }
 
 body {
-    background: url('/images/background6.jpg');
-}
+  background: url("/images/background6.jpg"); }
 
 h1 {
-    font-size: 200%;
-    margin-left: 120px;
-}
+  font-size: 200%;
+  margin-left: 120px; }
 
 .bold {
-    font-weight: bold;
-}
+  font-weight: bold; }
 
 a:visited {
-    color: blue;
-}
+  color: blue; }
 
 #main-content {
-    padding: 0;
-}
+  padding: 0; }
 
 .pagination {
-    position: relative;
-    margin: 0 auto 0 auto;
-}
+  position: relative;
+    position-margin: 0 auto 0 auto; }
 
 .editLink {
-    margin-left: 40%;
-}
+  margin-left: 40%; }
 
 table {
-    border-collapse: collapse;
-    position: relative;
-    margin: 0 auto 0 auto;
-}
+  border-collapse: collapse;
+  position: relative;
+  margin: 0 auto 0 auto; }
 
 td, th {
-    border: 1px solid black;
-    padding: 3px;
-    vertical-align: top;
-}
+  border: 1px solid black;
+  padding: 3px;
+  vertical-align: top; }
 
 table p {
-    margin: 0;
-}
+  margin: 0; }
 
 table td {
-    font-size: 12px;
-}
+  font-size: 12px; }
 
-table td span{
-    font-size: 12px;
-}
+table td span {
+  font-size: 12px; }
 
 .th1 {
-    font-size: 12px;
-    background: #C0C0C0;
-    text-align: center;
-    vertical-align: middle;
-    border-bottom: 2px #9a0505 solid;
-    background: url("/images/th_bg.png") no-repeat scroll left top transparent;
-}
+  font-size: 12px;
+  background: silver;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 2px #9a0505 solid;
+  background: url("/images/th_bg.png") no-repeat scroll left top transparent; }
 
 .th2 {
-    font-size: 10px;
-    font-weight: bolder;
-    background: #e7e5e5;
-    text-align: center;
-    vertical-align: middle;
-    border-bottom: 2px #9a0505 solid;
-}
+  font-size: 10px;
+  font-weight: bolder;
+  background: #e7e5e5;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 2px #9a0505 solid; }
 
 .th3 {
-    font-size: 10.5px;
-}
+  font-size: 10.5px; }
 
 .th3 a {
-    font-size: 8px;
-}
+  font-size: 8px; }
 
 .odd {
-    background: #FFE4E1;
-}
+  background: #ffe4e1; }
 
 .even {
-    background: #f3b0bb;
-}
+  background: #f3b0bb; }
 
 .borNone {
-    border-width: 0px;
-    border-style:none;
-}
+  border-width: 0px;
+  border-style: none; }
 
 .borNoneExceptBottom {
-    border-top: none;
-    border-right: none;
-    border-bottom: 3px black solid;
-    border-left: none;
-}
+  border-top: none;
+  border-right: none;
+  border-bottom: 3px black solid;
+  border-left: none; }
 
 .tableTitle {
-    margin-left: 45%;
-}
+  margin-left: 45%; }
 
 .fieldBothLeft {
-    border-bottom: 3px black solid;
-    border-top: 3px black solid;
-    border-left: 3px black solid;
-}
+  border-bottom: 3px black solid;
+  border-top: 3px black solid;
+  border-left: 3px black solid; }
 
 .fieldBothRight {
-    border-bottom: 3px black solid;
-    border-top: 3px black solid;
-    border-right: 3px black solid;
-}
+  border-bottom: 3px black solid;
+  border-top: 3px black solid;
+  border-right: 3px black solid; }
 
 .fieldInnerMiddleLeft {
-    border-bottom: 1px black dotted;
-    border-top: 1px black dotted;
-    border-left: 3px black solid;
-}
+  border-bottom: 1px black dotted;
+  border-top: 1px black dotted;
+  border-left: 3px black solid; }
 
 .fieldInnerMiddleRight {
-    border-bottom: 1px black dotted;
-    border-top: 1px black dotted;
-    border-right: 3px black solid;
-}
+  border-bottom: 1px black dotted;
+  border-top: 1px black dotted;
+  border-right: 3px black solid; }
 
 .fieldInnerTopLeft {
-    border-bottom: 1px black dotted;
-    border-top: 3px black solid;
-    border-left: 3px black solid;
-}
+  border-bottom: 1px black dotted;
+  border-top: 3px black solid;
+  border-left: 3px black solid; }
 
 .fieldInnerTopRight {
-    border-bottom: 1px black dotted;
-    border-top: 3px black solid;
-    border-right: 3px black solid;
-}
+  border-bottom: 1px black dotted;
+  border-top: 3px black solid;
+  border-right: 3px black solid; }
 
 .fieldInnerBottomLeft {
-    border-top: 1px black dotted;
-    border-bottom: 3px black solid;
-    border-left: 3px black solid;
-}
+  border-top: 1px black dotted;
+  border-bottom: 3px black solid;
+  border-left: 3px black solid; }
 
 .fieldInnerBottomRight {
-    border-top: 1px black dotted;
-    border-bottom: 3px black solid;
-    border-right: 3px black solid;
-}
+  border-top: 1px black dotted;
+  border-bottom: 3px black solid;
+  border-right: 3px black solid; }
 
 .fieldInnerBoth {
-    border-top: 1px black dotted;
-    border-bottom: 1px black dotted;
-    border-right: 3px black solid;
-    border-left: 3px black solid;
-}
+  border-top: 1px black dotted;
+  border-bottom: 1px black dotted;
+  border-right: 3px black solid;
+  border-left: 3px black solid; }
 
 .fieldInnerMediumTop {
-    border-top: 3px black solid;
-    border-bottom: 1px black dotted;
-    border-right: 1px black solid;
-    border-left: 1px black solid;
-}
+  border-top: 3px black solid;
+  border-bottom: 1px black dotted;
+  border-right: 1px black solid;
+  border-left: 1px black solid; }
 
 .fieldInnerMediumBottom {
-    border-top: 1px black dotted;
-    border-bottom: 3px black solid;
-    border-right: 1px black solid;
-    border-left: 1px black solid;
-}
+  border-top: 1px black dotted;
+  border-bottom: 3px black solid;
+  border-right: 1px black solid;
+  border-left: 1px black solid; }
 
 .fieldInnerMediumMiddle {
-    border-top: 1px black dotted;
-    border-bottom: 1px black dotted;
-    border-right: 1px black solid;
-    border-left: 1px black solid;
-}
-
+  border-top: 1px black dotted;
+  border-bottom: 1px black dotted;
+  border-right: 1px black solid;
+  border-left: 1px black solid; }
 
 .fieldBetween {
-    border-width: 0px;
-    border-style: none;
-}
+  border-width: 0px;
+  border-style: none; }
 
 #addButton a {
-    color: #17A4F5;
-    font-size: 12px;
-    text-decoration: none;
-    padding-left: 15px;
-    padding-top: 2px;
-}
+  color: #17a4f5;
+  font-size: 12px;
+  text-decoration: none;
+  padding-left: 15px;
+  padding-top: 2px; }
 
 #loadingButton p {
-    background: url("../images/addbutton.jpg") no-repeat scroll;
-    color: #17A4F5;
-    font-size: 12px;
-    margin-left: 10px;
-    margin-top: 5px;
-    height: 25px;
-    width: 90px;
-}
+  background: url("../images/addbutton.jpg") no-repeat scroll;
+  color: #17a4f5;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: 5px;
+  height: 25px;
+  width: 90px; }
 
 #loadingButton p {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 #unloadingButton p {
-    background: url("../images/addbutton.jpg") no-repeat scroll;
-    color: #17A4F5;
-    font-size: 12px;
-    margin-left: 10px;
-    margin-top: 5px;
-    height: 25px;
-    width: 90px;
-}
+  background: url("../images/addbutton.jpg") no-repeat scroll;
+  color: #17a4f5;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: 5px;
+  height: 25px;
+  width: 90px; }
 
 #unloadingButton p {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 #loadingButtonDelete p {
-    background: url("../images/deletebutton.jpg") no-repeat scroll;
-    color: #17A4F5;
-    font-size: 12px;
-    margin-top: 5px;
-    height: 25px;
-    width: 80px;
-}
+  background: url("../images/deletebutton.jpg") no-repeat scroll;
+  color: #17a4f5;
+  font-size: 12px;
+  margin-top: 5px;
+  height: 25px;
+  width: 80px; }
 
 #loadingButtonDelete p {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 #unloadingButtonDelete p {
-    background: url("../images/deletebutton.jpg") no-repeat scroll;
-    color: #17A4F5;
-    font-size: 12px;
-    margin-top: 5px;
-    height: 25px;
-    width: 80px;
-}
+  background: url("../images/deletebutton.jpg") no-repeat scroll;
+  color: #17a4f5;
+  font-size: 12px;
+  margin-top: 5px;
+  height: 25px;
+  width: 80px; }
 
 #unloadingButtonDelete p {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 .saveAsButton a {
-    background: url("../images/saveAsButton.jpg") no-repeat scroll;
-    color: #17A4F5;
-    font-size: 12px;
-    margin-left: 10px;
-    margin-top: 5px;
-    height: 25px;
-    width: 150px;
-}
+  background: url("../images/saveAsButton.jpg") no-repeat scroll;
+  color: #17a4f5;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: 5px;
+  height: 25px;
+  width: 150px; }
 
 #resp {
-    font-size: 10px;
-}
+  font-size: 10px; }
 
 #response {
-    font-size: 10px;
-}
+  font-size: 10px; }
 
 .carrier {
-    background: #FFE4E1;
-}
+  background: #ffe4e1; }
 
 .customer {
-    background: #FFE4E1;
-}
+  background: #ffe4e1; }
 
 .fieldForm {
-    background: #FFE4E1;
-}
+  background: #ffe4e1; }
 
 .title {
-    font-family: serif;
-    text-decoration: underline;
-    font-size: 13pt;
-    font-weight: bold;
-}
+  font-family: serif;
+  text-decoration: underline;
+  font-size: 13pt;
+  font-weight: bold; }
 
 .subTitle {
-    font-size: 16px;
-    font-style: italic;
-    text-decoration: underline;
-}
+  font-size: 16px;
+  font-style: italic;
+  text-decoration: underline; }
 
 .fieldName {
-    font-weight: bold;
-    font-size: 14px;
-    font-family: serif;
-    padding-top: 6px;
-    background: #FFC0CB;
-}
+  font-weight: bold;
+  font-size: 14px;
+  font-family: serif;
+  padding-top: 6px;
+  background: #ffc0cb; }
 
 .inp {
-    font-size: 12px;
-}
-
-.inp:focus {
-    background: none repeat scroll 0 0 #FFFACD;
-    color: #000000;
-}
+  font-size: 12px; }
+  .inp:focus {
+    background: none repeat scroll 0 0 #fffacd;
+    color: black; }
 
 .field_with_errors {
-    border: 2px red dotted;
-
-}
+  border: 2px red dotted; }
 
 #height {
-    background: url("../images/icons.png") no-repeat scroll -10px -374px transparent;
-}
+  background: url("../images/icons.png") no-repeat scroll -10px -374px transparent; }
 
-#width  {
-    background: url("../images/icons.png") no-repeat scroll -10px -452px transparent;
-}
+#width {
+  background: url("../images/icons.png") no-repeat scroll -10px -452px transparent; }
 
 #length {
-    background: url("../images/icons.png") no-repeat scroll -10px -411px transparent;
-}
+  background: url("../images/icons.png") no-repeat scroll -10px -411px transparent; }
 
 #height:focus {
-    background: none repeat scroll 0 0 #FFFACD;
-    color: #000000;
-}
+  background: none repeat scroll 0 0 #fffacd;
+  color: black; }
 
-#width:focus  {
-    background: none repeat scroll 0 0 #FFFACD;
-    color: #000000;
-}
+#width:focus {
+  background: none repeat scroll 0 0 #fffacd;
+  color: black; }
 
 #length:focus {
-    background: none repeat scroll 0 0 #FFFACD;
-    color: #000000;
-}
+  background: none repeat scroll 0 0 #fffacd;
+  color: black; }
 
 .inp {
-    background: white;
-}
+  background: white; }
 
 input[readonly] {
-    background: #D3D3D3;
-}
+  background: #d3d3d3; }
 
 input[summ] {
-    background: #FFF0F5;
-    font-weight: bold;
-}
+  background: #fff0f5;
+  font-weight: bold; }
 
 .error {
-    font-size: 14px;
-    color: #8B0000;
-    background: yellow;
-}
+  font-size: 14px;
+  color: #8b0000;
+  background: yellow; }
 
 .customerPayMethodButton {
-    font-family: Arial;
-    font-size: 14px;
-    font-style: italic;
-    font-weight: bold;
-    color:blue;
-    cursor: pointer;
-}
+  font-family: Arial;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  color: blue;
+  cursor: pointer; }
 
 .customerPayMethodButton:hover {
-    text-decoration: underline;
-}
+  text-decoration: underline; }
 
 .carrierPayMethodButton {
-    font-family: Arial;
-    font-size: 14px;
-    font-style: italic;
-    font-weight: bold;
-    color:blue;
-    cursor: pointer;
-}
+  font-family: Arial;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  color: blue;
+  cursor: pointer; }
 
 .carrierPayMethodButton:hover {
-    text-decoration: underline;
-}
+  text-decoration: underline; }
 
 readonly {
-    background: black;
-}
+  background: black; }
 
 input.summ {
-    background: #DEB887;
-}
+  background: #deb887; }
 
 .financeAdd {
-    font-size: 12px;
-    margin-left: 15px;
-}
+  font-size: 12px;
+  margin-left: 15px; }
 
 #income {
-    background: #c4f8da;
-}
+  background: #c4f8da; }
 
 #outcome {
-    background: #f8ccca;
-}
+  background: #f8ccca; }
 
 p.notice {
   color: green;
   width: 250px;
-  margin: 0px auto;
-}
+  margin: 0px auto; }
 
 .radio {
   text-decoration: none;
-  font-weight: normal;
-}
+  font-weight: normal; }
