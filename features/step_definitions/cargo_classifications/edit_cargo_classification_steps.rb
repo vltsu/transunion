@@ -1,10 +1,5 @@
 Given /^an cargo_classification page$/ do
-  Factory.create(:admin)
   Factory.create(:cargo_classification)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit cargo_classifications_path
   click_link 'showCargo_classificationLink'
 end

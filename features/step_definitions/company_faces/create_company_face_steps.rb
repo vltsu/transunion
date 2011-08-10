@@ -1,6 +1,7 @@
 When /^I create a company_face with company_face "([^"]*)"$/ do |o|
   click_link 'addCompany_faceLink'
   fill_in "company_face[company_face]", :with => o
+  fill_in "company_face[company_face_podp]", :with => 'BB'
   click_button "company_face_submit"
 end
 

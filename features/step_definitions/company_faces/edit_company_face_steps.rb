@@ -1,10 +1,5 @@
 Given /^a company_face page$/ do
-  Factory.create(:admin)
   Factory.create(:company_face)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit company_faces_path
   click_link 'showCompany_faceLink'
 end

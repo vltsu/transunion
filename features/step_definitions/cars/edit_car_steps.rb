@@ -1,5 +1,4 @@
 Given /^a car page$/ do
-  Factory.create(:user)
   Factory.create(:car)
   Factory.create(:driver)
   Factory.create(:driver2)
@@ -9,10 +8,6 @@ Given /^a car page$/ do
   Factory.create(:car_model2)
   Factory.create(:car_tonnage)
   Factory.create(:car_tonnage2)
-  visit signin_form_url
-  fill_in 'username', :with => 'user'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit cars_path
   click_link 'showCarLink'
 end
@@ -40,4 +35,3 @@ Then /^updated with: model "([^"]*)", tonnage "([^"]*)"$/ do |m,t|
   find_by_id("car_car_model_id").text.should =~ /#{m}/
   find_by_id("car_car_tonnage_id").text.should =~ /#{t}/
 end
-

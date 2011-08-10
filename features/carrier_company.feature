@@ -1,12 +1,13 @@
 Feature: Carrier_companies
 
-  So managers can add, edit, delete, view carrier companies 
+  So managers can add, edit, delete, view carrier companies
   As a registered user with role manager
   I want to CRUD a carrier companies
 
   Scenario: Create carrier company
-    Given an index carrier company page
-    When I create a company with title "CarrierCompanyTitle" 
+    Given I logined as manager
+    And an index carrier company page
+    When I create a company with title "CarrierCompanyTitle"
     And opf "ZAO", deistvuet na osnovanii "Ustava", v lice "General Director"
     And manager name "Ivan Petrov", legal adress "Moscow, 5", actual address "Magadan, 8"
     And phone "12345"
@@ -16,7 +17,8 @@ Feature: Carrier_companies
     And Phone "12345" created
 
   Scenario: Edit carrier company
-    Given a carrier company page
+    Given I logined as manager
+    And a carrier company page
     When I update carrier company fields: title to "CarrierCompanySecondTitle"
     And update: opf "OOO", deistvuet na osnovanii "Zakona", v lice "CIO"
     And update: manager name "Ivan Ivanov", legal adress "Moscow, 8", actual address "Magadan, 1"
@@ -26,8 +28,8 @@ Feature: Carrier_companies
     And updated: manager name "Ivan Ivanov", legal adress "Moscow, 8", actual address "Magadan, 1"
     And updated: phone "34567"
 
-  Scenario: Delete carrier company 
-    Given an index carrier companies page with one company
+  Scenario: Delete carrier company
+    Given I logined as manager
+    And an index carrier companies page with one company
     When I open carrier companie's card and press Delete button
     Then carrier company deleted
-

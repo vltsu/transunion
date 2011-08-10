@@ -1,10 +1,5 @@
 Given /^an payment_doc page$/ do
-  Factory.create(:admin)
   Factory.create(:payment_doc)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit payment_docs_path
   click_link 'showPayment_docLink'
 end

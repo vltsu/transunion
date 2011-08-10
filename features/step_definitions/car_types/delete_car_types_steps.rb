@@ -1,10 +1,5 @@
 Given /^an index car_types page with one car_type$/ do
-  Factory.create(:admin)
   Factory.create(:car_type)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit car_types_path
 end
 
@@ -16,4 +11,3 @@ end
 Then /^Car_type deleted$/ do
   response.should_not have_selector('showCar_typeLink')
 end
-  

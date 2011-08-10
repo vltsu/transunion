@@ -1,4 +1,4 @@
-%h1{:class=>"tableTitle", :style => 'color:red; width: 300px; margin: 0px auto;'}!= "Приход по счёту №#{@finance.bill_id}"
+%h1{:class=>"tableTitle", :style => 'color:red; width: 350px; margin: 0px auto;'}!= "Приход по счёту №#{@finance.bill_id}"
 %br/
 %table
   %tr
@@ -16,6 +16,6 @@
       - i = i+1
   %tr.odd
     %td{:class => 'th3', :colspan => '2'}
-      %span{:style => 'color:red;'}!= "Сумма к оплате #{customer_summ_to_pay_for_bill(@finance)}"
+      %span{:style => 'color:red;'}!= "Сумма к оплате #{customer_summ_to_pay_for_bill(@finance.bill_id)}"
     %td{:class => 'th3', :colspan => '2'}
       %span{:style => 'color:green;'}!= "Оплаченная сумма #{payed_summ_for_bill_income(@finance.bill_id)}"

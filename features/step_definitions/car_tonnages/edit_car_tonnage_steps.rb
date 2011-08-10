@@ -1,10 +1,5 @@
 Given /^an car_tonnage page$/ do
-  Factory.create(:admin)
   Factory.create(:car_tonnage)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit car_tonnages_path
   click_link 'showCar_tonnageLink'
 end

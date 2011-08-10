@@ -1,12 +1,12 @@
-%h1{:class => "tableTitle", :style => "width: 350px; margin: 0px auto; color:red;"} Просмотр карточки ОПФ
+%h1{:class => "tableTitle", :style => "width: 400px; margin: 0px auto; color:red;"} Просмотр карточки ОПФ
 %br/
-- content_for(:head) do 
-  = javascript_include_tag 'disableForms' 
-- if notice 
+- content_for(:head) do
+  = javascript_include_tag 'disableForms'
+- if notice
   = render :partial => "shared/notice", :locals => { :notice => notice }
 %br/
 = render 'form'
-%br/ 
+%br/
 %br/
 
 %div{:style =>"width: 600px; margin: 0px auto;"}

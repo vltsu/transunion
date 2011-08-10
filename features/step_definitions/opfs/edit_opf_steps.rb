@@ -1,10 +1,5 @@
 Given /^an opf page$/ do
-  Factory.create(:admin)
   Factory.create(:opf)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit opfs_path
   click_link 'showOpfLink'
 end

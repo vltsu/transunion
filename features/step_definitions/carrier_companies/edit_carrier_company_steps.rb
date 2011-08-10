@@ -1,12 +1,7 @@
 Given /^a carrier company page$/ do
-  Factory.create(:user)
   Factory.create(:carrier_company)
   Factory.create(:opf2)
   Factory.create(:company_face2)
-  visit signin_form_url
-  fill_in 'username', :with => 'user'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit carrier_companies_path
   click_link 'showCarrier_companyLink'
 end
@@ -54,5 +49,3 @@ end
 Then /^updated: phone "([^"]*)"$/ do |p|
   find_by_id("carrier_company_phone").value.should =~ /#{p}/
 end
-
-

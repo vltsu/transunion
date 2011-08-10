@@ -1,5 +1,5 @@
 #encoding: UTF-8
-class ReportsController < AuthorizeController
+class ReportsController < ApplicationController
   def salary_index
     year  = params[:year]  || Time.now.year
     month = params[:month] || Time.now.month

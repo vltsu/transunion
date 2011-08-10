@@ -1,10 +1,5 @@
 Given /^an payment_way page$/ do
-  Factory.create(:admin)
   Factory.create(:payment_way)
-  visit signin_form_url
-  fill_in 'username', :with => 'admin'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit payment_ways_path
   click_link 'showPayment_wayLink'
 end

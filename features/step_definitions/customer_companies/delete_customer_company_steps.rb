@@ -1,10 +1,5 @@
 Given /^an index customer companies page with one company$/ do
-  Factory.create(:user)
   Factory.create(:customer_company)
-  visit signin_form_url
-  fill_in 'username', :with => 'user'
-  fill_in 'password', :with => 'password'
-  click_button 'submit'
   visit customer_companies_path
 end
 
@@ -16,4 +11,3 @@ end
 Then /^customer company deleted$/ do
   response.should_not have_selector('showCustomer_companyLink')
 end
-  
